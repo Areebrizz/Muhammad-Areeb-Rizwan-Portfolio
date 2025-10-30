@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adham Dannaway - UI/UX & Product Designer</title>
+    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
     <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Lucide icons for better visual quality -->
@@ -53,6 +53,15 @@
             background-color: theme('colors.gray.900');
             border-bottom: 1px solid theme('colors.gray.800');
         }
+
+        /* Hide Scrollbar for Project Carousel, but allow scrolling */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -67,7 +76,7 @@
     <!-- Navigation -->
     <nav id="mainNav" class="fixed top-0 w-full bg-transparent border-b border-transparent z-40 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 tracking-wider nav-link">AD</a>
+            <a href="#home" class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 tracking-wider nav-link">AR</a>
             <ul class="hidden md:flex space-x-8">
                 <li><a href="#work" class="text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors nav-link">Work</a></li>
                 <li><a href="#about" class="text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors nav-link">About</a></li>
@@ -81,11 +90,11 @@
         <div class="container mx-auto px-6 grid md:grid-cols-2 items-center gap-16">
             <div class="text-center md:text-left reveal">
                 <h1 class="text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-4 text-gray-900 dark:text-gray-50">
-                    <span class="block">UI/UX & Product</span>
-                    <span class="block text-blue-600 dark:text-blue-400">Designer</span>
+                    <span class="block">Muhammad Areeb Rizwan</span>
+                    <span class="block text-blue-600 dark:text-blue-400">Mechanical Engineer</span>
                 </h1>
                 <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl md:mx-0 mx-auto">
-                    I design beautiful, functional websites and apps that drive results.
+                    Discipline. Integrity. Innovation.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
                     <a href="#work" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 btn-primary">View My Work</a>
@@ -95,6 +104,7 @@
             <!-- Hero Visual (Floating Cards) -->
             <div class="relative h-96 md:h-full flex items-center justify-center reveal">
                 <div class="absolute w-52 h-32 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 floating-card" style="top: 10%; left: 0%; animation-delay: 0s;">
+                    <!-- Placeholder content for Mechanical Engineering theme -->
                     <div class="p-4">
                         <div class="h-2 bg-blue-500 rounded-full w-1/2 mb-3"></div>
                         <div class="h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mb-1"></div>
@@ -102,13 +112,15 @@
                     </div>
                 </div>
                 <div class="absolute w-40 h-24 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 floating-card" style="top: 40%; right: 0%; animation-delay: 1s;">
+                    <!-- Placeholder content for CAD/Analysis -->
                     <div class="flex justify-around p-3">
-                        <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
-                        <div class="w-6 h-6 bg-red-400 rounded-full"></div>
-                        <div class="w-6 h-6 bg-yellow-400 rounded-full"></div>
+                        <i data-lucide="cog" class="w-6 h-6 text-blue-500"></i>
+                        <i data-lucide="ruler" class="w-6 h-6 text-red-400"></i>
+                        <i data-lucide="trello" class="w-6 h-6 text-yellow-400"></i>
                     </div>
                 </div>
                 <div class="absolute w-48 h-28 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 floating-card" style="bottom: 10%; left: 20%; animation-delay: 0.5s;">
+                    <!-- Placeholder content for Project Management -->
                     <div class="p-4">
                         <div class="flex items-center space-x-2 mb-2">
                             <div class="w-2 h-2 rounded-full bg-green-500"></div>
@@ -121,65 +133,165 @@
         </div>
     </section>
 
-    <!-- Work Section -->
+    <!-- Work Section - Now a Horizontal Scroll Carousel -->
     <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 reveal">Selected Work</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <h2 class="text-4xl font-bold text-center mb-12 reveal">Selected Projects & Experience</h2>
+            
+            <div class="relative max-w-7xl mx-auto">
+                <!-- Navigation Arrows -->
+                <button id="scrollLeft" class="absolute left-0 top-1/2 -mt-12 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-700 p-3 rounded-full shadow-xl border border-gray-300 dark:border-gray-600 transition-transform hover:scale-110 opacity-70 hover:opacity-100 hidden md:block">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                </button>
+                <button id="scrollRight" class="absolute right-0 top-1/2 -mt-12 transform translate-x-1/2 z-10 bg-white dark:bg-gray-700 p-3 rounded-full shadow-xl border border-gray-300 dark:border-gray-600 transition-transform hover:scale-110 opacity-70 hover:opacity-100 hidden md:block">
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                </button>
 
-                <!-- Project 1 -->
-                <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 reveal">
-                    <div class="h-56 bg-gradient-to-tr from-blue-500 to-indigo-600 overflow-hidden">
-                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=E-commerce+Platform" onerror="this.src='https://placehold.co/600x400/3b82f6/ffffff?text=E-commerce+Platform'" alt="Project 1" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                <!-- Projects Container: Flex container for horizontal scroll -->
+                <div id="projectsContainer" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 pb-4 scrollbar-hide reveal">
+                    
+                    <!-- Project 1: Inventory Automation (NEW) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-yellow-500 to-amber-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Inventory+Automation" onerror="this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Inventory+Automation'" alt="Inventory Automation Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">Inventory Automation - SM Denim Mills</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Real-Time Process Optimization</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Collaborated with department staff to develop the first-ever comprehensive parts list, integrated with a real-time monitoring dashboard, enabling faster decision-making and ensuring consistent maintenance readiness. Adopted industry-wide and still in use.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-amber-700 bg-amber-100 dark:bg-amber-900 dark:text-amber-300 rounded-full">Process Automation</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-sky-700 bg-sky-100 dark:bg-sky-900 dark:text-sky-300 rounded-full">Data Integration</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 dark:bg-red-900 dark:text-red-300 rounded-full">Preventive Maintenance</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">A modern e-commerce experience with seamless checkout flow.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300 rounded-full">UI Design</span>
-                            <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">UX Research</span>
-                            <span class="px-3 py-1 text-xs font-medium text-yellow-700 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">Prototyping</span>
+
+                    <!-- Project 2: AI Car Defect Detection (NEW) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-pink-500 to-rose-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/ec4899/ffffff?text=AI+Defect+Detection" onerror="this.src='https://placehold.co/600x400/ec4899/ffffff?text=AI+Defect+Detection'" alt="AI Defect Detection Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">AI Car Defect Detection - MMCL Plant</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Computer Vision & Quality Control</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Trained an AI Model and constructed an AI-powered app that detects car body defects like scratches, dents, paint issues, and bumps using a custom-trained YOLOv8 model. Hosted on Streamlit Cloud.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-pink-700 bg-pink-100 dark:bg-pink-900 dark:text-pink-300 rounded-full">YOLOv8</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-violet-700 bg-violet-100 dark:bg-violet-900 dark:text-violet-300 rounded-full">Computer Vision</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Streamlit/Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Vehicle Component Failure Analyzer (NEW) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-teal-500 to-cyan-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/06b6d4/ffffff?text=Failure+Analyzer+AI" onerror="this.src='https://placehold.co/600x400/06b6d4/ffffff?text=Failure+Analyzer+AI'" alt="Failure Analyzer Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">Vehicle Component Failure Analyzer - MMCL Plant</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Predictive Maintenance AI</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Trained a Random Forest AI model to predict car component defects based on key parameters, enabling proactive quality control and significantly reducing failure rates in automotive manufacturing. Hosted on Streamlit Cloud.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-cyan-700 bg-cyan-100 dark:bg-cyan-900 dark:text-cyan-300 rounded-full">Machine Learning</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-purple-700 bg-purple-100 dark:bg-purple-900 dark:text-purple-300 rounded-full">Quality Assurance</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Streamlit/Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Production MES (NEW) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-red-500 to-orange-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/ef4444/ffffff?text=Production+MES" onerror="this.src='https://placehold.co/600x400/ef4444/ffffff?text=Production+MES'" alt="Production MES Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">Production MES - MMCL Plant</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Manufacturing Execution System</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Developed an ultimate database at MMCL streamlining production and integrating real-time station status and production logs/line-offs reporting. Auto-calculates production metrics like OEE, FMEA, cycle time, takt time, downtime, and first-pass yield.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-orange-700 bg-orange-100 dark:bg-orange-900 dark:text-orange-300 rounded-full">Industrial Data</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">OEE Calculation</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-300 rounded-full">Database Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: WeedBot Project (ORIGINAL 1) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-blue-500 to-indigo-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/3b82f6/ffffff?text=WeedBot+Robotics" onerror="this.src='https://placehold.co/600x400/3b82f6/ffffff?text=WeedBot+Robotics'" alt="WeedBot Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">WeedBot Project - NCAI NEDUET</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Sustainable Automation</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Developed a weeding robot prototype designed for precision agriculture and weed control in Pakistani farmlands, focusing on cost-effective, sustainable automation.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300 rounded-full">Robotics</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">CAD/FEA</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-yellow-700 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">Prototyping</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: CO2 Detection System (ORIGINAL 2) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-purple-500 to-pink-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Industrial+Sensor+Deployment" onerror="this.src='https://placehold.co/600x400/8b5cf6/ffffff?text=Industrial+Sensor+Deployment'" alt="CO2 Detection Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">CO2 Detection System - PQ KHI</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Process Safety & Automation</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Designed and deployed a real-time CO2 detection system at the MMCL Plant, enhancing industrial safety protocols and ensuring compliance with air quality standards.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-pink-700 bg-pink-100 dark:bg-pink-900 dark:text-pink-300 rounded-full">Sensor Integration</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 dark:bg-red-900 dark:text-red-300 rounded-full">Data Logging</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300 rounded-full">Industrial IoT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Final Year Project (ORIGINAL 3) -->
+                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="h-56 bg-gradient-to-tr from-green-500 to-teal-600 overflow-hidden">
+                                <img src="https://placehold.co/600x400/10b981/ffffff?text=De-Dusting+Plant+Design" onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=De-Dusting+Plant+Design'" alt="De-Dusting Plant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">Final Year Project: De-Dusting Plant</h3>
+                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Design Automation & Feasibility</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Conducted a comprehensive design automation and feasibility analysis for an advanced De-Dusting Plant (People Steel Mills), extracting 150,000 CFM dust, fumes, and waste gases from an electric arc furnace. Received the highest score among all capstone projects.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    <span class="px-3 py-1 text-xs font-medium text-teal-700 bg-teal-100 dark:bg-teal-900 dark:text-teal-300 rounded-full">CFD Analysis</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">Design Automation</span>
+                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Feasibility Study</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 reveal">
-                    <div class="h-56 bg-gradient-to-tr from-purple-500 to-pink-600 overflow-hidden">
-                        <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Mobile+Banking+App" onerror="this.src='https://placehold.co/600x400/8b5cf6/ffffff?text=Mobile+Banking+App'" alt="Project 2" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Mobile Banking App</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">Redesigned mobile banking experience for better usability.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-medium text-pink-700 bg-pink-100 dark:bg-pink-900 dark:text-pink-300 rounded-full">Mobile Design</span>
-                            <span class="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 dark:bg-red-900 dark:text-red-300 rounded-full">User Testing</span>
-                            <span class="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300 rounded-full">iOS/Android</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 reveal">
-                    <div class="h-56 bg-gradient-to-tr from-green-500 to-teal-600 overflow-hidden">
-                        <img src="https://placehold.co/600x400/10b981/ffffff?text=SaaS+Dashboard" onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=SaaS+Dashboard'" alt="Project 3" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">SaaS Dashboard</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">Complex data visualization and management interface.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-medium text-teal-700 bg-teal-100 dark:bg-teal-900 dark:text-teal-300 rounded-full">Dashboard</span>
-                            <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">Data Viz</span>
-                            <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Web App</span>
-                        </div>
-                    </div>
-                </div>
-
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-600 dark:text-gray-400">Scroll horizontally or use the arrows to see all 7 projects.</p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section - Skills Improvised -->
     <section id="about" class="py-16">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
@@ -187,46 +299,51 @@
                     <h2 class="text-4xl font-bold mb-8">About Me</h2>
                     <div class="text-lg text-gray-700 dark:text-gray-300 space-y-6">
                         <p>
-                            I'm a UI/UX and product designer with over **10 years of experience**
-                            creating digital products that users love. My focus is on turning complex
-                            problems into simple, elegant interfaces.
+                           A Mechanical Engineer and sustainable automation specialist with 4+ years of experience architecting intelligent solutions for complex industrial challenges. I bridge the gap between intricate engineering problems and intuitive, user-centric systems.
                         </p>
                         <p>
-                            My approach combines user-centered design principles with
-                            business objectives to create solutions that are both
-                            beautiful and effective. I thrive in collaborative environments and
-                            believe in iterating quickly to achieve the best user experience.
+                            My expertise lies in translating core business objectives into elegant, high-performance automated systems. By championing a design process focused on operational superiority and seamless adoption, I ensure solutions are robust and impactful. I excel in agile, cross-functional teams, leveraging rapid iteration to drive efficiency and sustainability in manufacturing and heavy industry.
                         </p>
                     </div>
 
+                    <!-- IMPROVISED SKILLS SECTION -->
                     <div class="mt-12">
                         <h3 class="text-2xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Skills & Expertise</h3>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-gray-700 dark:text-gray-300">
-                            <div class="reveal">
-                                <h4 class="font-bold mb-3 text-lg">Design</h4>
-                                <ul class="list-none space-y-1 text-sm">
-                                    <li>UI/UX Design</li>
-                                    <li>Product Strategy</li>
-                                    <li>Design Systems</li>
-                                    <li>Prototyping & Motion</li>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                            <!-- Skill Card 1: Core Mechanical -->
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-t-4 border-blue-500 reveal">
+                                <i data-lucide="scan-eye" class="w-8 h-8 text-blue-500 mb-3"></i>
+                                <h4 class="font-extrabold mb-3 text-xl text-gray-900 dark:text-gray-100">Design & Analysis</h4>
+                                <ul class="list-none space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>CAD Modeling (SolidWorks/AutoCAD)</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>CFD & FEA (ANSYS)</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Systems Engineering & Robotics</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Prototyping & Motion Analysis</li>
                                 </ul>
                             </div>
-                            <div class="reveal">
-                                <h4 class="font-bold mb-3 text-lg">Research</h4>
-                                <ul class="list-none space-y-1 text-sm">
-                                    <li>User Research</li>
-                                    <li>Usability Testing</li>
-                                    <li>User Flows & IA</li>
-                                    <li>Wireframing</li>
+
+                            <!-- Skill Card 2: Industrial & Management -->
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-t-4 border-green-500 reveal" style="animation-delay: 0.1s;">
+                                <i data-lucide="factory" class="w-8 h-8 text-green-500 mb-3"></i>
+                                <h4 class="font-extrabold mb-3 text-xl text-gray-900 dark:text-gray-100">Industrial & Project Mgmt</h4>
+                                <ul class="list-none space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Lean & Additive Manufacturing</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>FMEA, TPM, & Project Management (P6)</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Process Optimization (OEE/Takt Time)</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Preventive & Predictive Maintenance</li>
                                 </ul>
                             </div>
-                            <div class="reveal">
-                                <h4 class="font-bold mb-3 text-lg">Tools</h4>
-                                <ul class="list-none space-y-1 text-sm">
-                                    <li>Figma & Sketch</li>
-                                    <li>Adobe Creative Suite</li>
-                                    <li>Webflow/Framewor</li>
-                                    <li>HTML/CSS/JS</li>
+
+                            <!-- Skill Card 3: Data & Software -->
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-t-4 border-purple-500 reveal" style="animation-delay: 0.2s;">
+                                <i data-lucide="database" class="w-8 h-8 text-purple-500 mb-3"></i>
+                                <h4 class="font-extrabold mb-3 text-xl text-gray-900 dark:text-gray-100">Data & Software Tools</h4>
+                                <ul class="list-none space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Python (YOLOv8, OpenCV, Streamlit)</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>MATLAB, Minitab, Arduino/IoT</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Power BI & Tableau</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Primavera P6, Advanced MS Excel</li>
                                 </ul>
                             </div>
                         </div>
@@ -235,7 +352,7 @@
 
                 <div class="lg:col-span-1 flex justify-center reveal">
                     <div class="w-72 h-72 rounded-full border-4 border-blue-600 dark:border-blue-400 overflow-hidden shadow-2xl">
-                        <img src="https://placehold.co/400x400/1f2937/ffffff?text=ADHAM+AVATAR" onerror="this.src='https://placehold.co/400x400/1f2937/ffffff?text=ADHAM+AVATAR'" alt="Profile Avatar" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x400/1f2937/ffffff?text=MUHAMMAD+AREEB+RIZWAN" onerror="this.src='https://placehold.co/400x400/1f2937/ffffff?text=MUHAMMAD+AREEB+RIZWAN'" alt="Profile Avatar" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -250,8 +367,8 @@
                 <div class="reveal">
                     <h3 class="text-3xl font-bold mb-4">Let's build something great.</h3>
                     <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">
-                        I'm always interested in new opportunities and exciting projects.
-                        Feel free to reach out, whether you have a project in mind or just want to say hi.
+                        I'm always interested in new opportunities, particularly those involving sustainable automation and industrial optimization.
+                        Feel free to reach out, whether you have a project in mind or just want to connect.
                     </p>
                     
                     <div class="space-y-6">
@@ -259,21 +376,21 @@
                             <i data-lucide="mail" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
                             <div>
                                 <strong class="block font-semibold">Email</strong>
-                                <a href="mailto:hello@example.com" class="text-blue-600 dark:text-blue-400 hover:underline">hello@example.com</a>
+                                <a href="mailto:engr.areebriz@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">engr.areebriz@gmail.com</a>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
                             <i data-lucide="linkedin" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
                             <div>
                                 <strong class="block font-semibold">LinkedIn</strong>
-                                <a href="#" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">linkedin.com/in/yourprofile</a>
+                                <a href="https://www.linkedin.com/in/areebrizwan" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">linkedin.com/in/areebrizwan</a>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
-                            <i data-lucide="dribbble" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                            <i data-lucide="github" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
                             <div>
-                                <strong class="block font-semibold">Dribbble</strong>
-                                <a href="#" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">dribbble.com/yourprofile</a>
+                                <strong class="block font-semibold">GitHub</strong>
+                                <a href="https://github.com/areebrizz" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">github.com/areebrizz</a>
                             </div>
                         </div>
                     </div>
@@ -305,12 +422,11 @@
     <!-- Footer -->
     <footer class="py-8 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400 space-y-4 md:space-y-0">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>&copy; 2024 Muhammad Areeb Rizwan. All rights reserved.</p>
             <div class="flex space-x-6">
                 <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Twitter</a>
-                <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">LinkedIn</a>
-                <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Dribbble</a>
-                <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/areebrizwan" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">LinkedIn</a>
+                <a href="https://github.com/areebrizz" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">GitHub</a>
             </div>
         </div>
     </footer>
@@ -319,7 +435,7 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // 1. Theme Manager Logic (Replacing js/theme.js)
+        // 1. Theme Manager Logic
         const htmlElement = document.documentElement;
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
@@ -346,7 +462,7 @@
             applyTheme(currentTheme);
         });
 
-        // 2. Main Logic (Replacing js/main.js)
+        // 2. Main Logic
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -395,6 +511,7 @@
         const mainNav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
+                // Ensure a smooth transition and backdrop effect
                 mainNav.classList.add('nav-scrolled', 'bg-white/90', 'dark:bg-gray-900/90', 'backdrop-blur');
             } else {
                 mainNav.classList.remove('nav-scrolled', 'bg-white/90', 'dark:bg-gray-900/90', 'backdrop-blur');
@@ -402,8 +519,7 @@
         });
 
 
-        // 3. Scroll Animations (Replacing js/animations.js)
-
+        // 3. Scroll Animations
         function checkScrollReveal() {
             const elements = document.querySelectorAll('.reveal');
             const triggerBottom = window.innerHeight * 0.85; // 85% from top
@@ -425,6 +541,48 @@
         window.addEventListener('DOMContentLoaded', checkScrollReveal);
         window.addEventListener('load', checkScrollReveal);
 
+
+        // 4. Project Carousel Logic (New)
+        const projectsContainer = document.getElementById('projectsContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        // Function to smoothly scroll the carousel
+        const scrollCarousel = (direction) => {
+            const scrollAmount = projectsContainer.offsetWidth / 2; // Scroll half the container width
+            
+            // Determine scroll distance based on device and layout
+            let targetScroll = projectsContainer.scrollLeft + (direction === 'right' ? scrollAmount : -scrollAmount);
+            
+            // On mobile (full width card), ensure it snaps to the next card
+            if (projectsContainer.offsetWidth < 640) { // Tailwind's 'sm' breakpoint
+                const cardWidth = projectsContainer.querySelector('.flex-shrink-0').offsetWidth + 32; // Card width + space-x-8 (32px)
+                const currentCardIndex = Math.round(projectsContainer.scrollLeft / cardWidth);
+
+                if (direction === 'right') {
+                    targetScroll = (currentCardIndex + 1) * cardWidth;
+                } else {
+                    targetScroll = (currentCardIndex - 1) * cardWidth;
+                }
+            } else if (projectsContainer.offsetWidth < 1024) { // Tailwind's 'lg' breakpoint, showing 2 cards
+                const cardWidth = projectsContainer.querySelector('.flex-shrink-0').offsetWidth + 32;
+                if (direction === 'right') {
+                    targetScroll = projectsContainer.scrollLeft + cardWidth + 32; // Scroll past 2 cards (approx)
+                } else {
+                    targetScroll = projectsContainer.scrollLeft - cardWidth - 32; // Scroll back 2 cards (approx)
+                }
+            }
+
+
+            projectsContainer.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+        };
+
+        scrollLeftBtn?.addEventListener('click', () => scrollCarousel('left'));
+        scrollRightBtn?.addEventListener('click', () => scrollCarousel('right'));
+        
     </script>
 </body>
 </html>
