@@ -350,15 +350,11 @@
                     </div>
                 </div>
 
-        </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="lg:col-span-1 flex justify-center reveal">
+                <!-- Profile Picture Column - Now correctly positioned inside the grid -->
+                <div class="lg:col-span-1 flex justify-center reveal">
                     <div class="w-72 h-72 rounded-full border-4 border-blue-600 dark:border-blue-400 overflow-hidden shadow-2xl">
-                        <img src="assets/images/formal pic.png" alt="Muhammad Areeb Rizwan" class="w-full h-full object-cover">
+                        <!-- Replaced 'assets/images/formal pic.png' with a placeholder image -->
+                        <img src="https://placehold.co/300x300/4f46e5/ffffff?text=AR" alt="Muhammad Areeb Rizwan" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -371,223 +367,164 @@
             <h2 class="text-4xl font-bold text-center mb-12 reveal">Get In Touch</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div class="reveal">
-                    <h3 class="text-3xl font-bold mb-4">Let's build something great.</h3>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">
-                        I'm always interested in new opportunities, particularly those involving sustainable automation and industrial optimization.
-                        Feel free to reach out, whether you have a project in mind or just want to connect.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <i data-lucide="mail" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-                            <div>
-                                <strong class="block font-semibold">Email</strong>
-                                <a href="mailto:engr.areebriz@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">engr.areebriz@gmail.com</a>
+                    <!-- ... rest of contact section ... -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Contact Information</h3>
+                        <div class="space-y-6 text-gray-700 dark:text-gray-300">
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="mail" class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Email</p>
+                                    <a href="mailto:MuhammadAreebRizwan@example.com" class="hover:underline">MuhammadAreebRizwan@example.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="phone" class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Phone</p>
+                                    <p>+92 333 1234567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Location</p>
+                                    <p>Karachi, Pakistan</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <i data-lucide="linkedin" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-                            <div>
-                                <strong class="block font-semibold">LinkedIn</strong>
-                                <a href="https://www.linkedin.com/in/areebrizwan" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">linkedin.com/in/areebrizwan</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i data-lucide="github" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-                            <div>
-                                <strong class="block font-semibold">GitHub</strong>
-                                <a href="https://github.com/areebrizz" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">github.com/areebrizz</a>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Connect Online</h3>
+                            <div class="flex space-x-6">
+                                <a href="#" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+                                </a>
+                                <a href="#" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                    <i data-lucide="github" class="w-8 h-8"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <form id="contactForm" class="p-8 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 reveal">
-                    <div id="successMessage" class="hidden mb-6 p-4 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-600 text-green-800 dark:text-green-200 rounded-lg" role="alert">
-                        <p class="font-medium">Message Sent! Thanks for reaching out. I'll be in touch soon.</p>
-                    </div>
-
-                    <div class="mb-5">
-                        <label for="name" class="block mb-2 font-medium">Name</label>
-                        <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-5">
-                        <label for="email" class="block mb-2 font-medium">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block mb-2 font-medium">Message</label>
-                        <textarea id="message" name="message" rows="5" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"></textarea>
-                    </div>
-                    <button type="submit" class="w-full px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Send Message</button>
-                </form>
+                <div class="reveal">
+                    <form class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl space-y-6">
+                        <h3 class="text-2xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Send Me A Message</h3>
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500 transition duration-150"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md transform hover:-translate-y-0.5">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400 space-y-4 md:space-y-0">
-            <p>&copy; 2024 Muhammad Areeb Rizwan. All rights reserved.</p>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Twitter</a>
-                <a href="https://www.linkedin.com/in/areebrizwan" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">LinkedIn</a>
-                <a href="https://github.com/areebrizz" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">GitHub</a>
-            </div>
+    <footer class="py-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Muhammad Areeb Rizwan. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- JavaScript for Interactions -->
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // 1. Theme Manager Logic
-        const htmlElement = document.documentElement;
+        // 1. Theme Toggle Logic
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
-        const sunIcon = '<i data-lucide="sun" class="w-6 h-6 text-yellow-400"></i>';
-        const moonIcon = '<i data-lucide="moon" class="w-6 h-6 text-blue-600"></i>';
+        const body = document.body;
 
-        // Check local storage or system preference
-        const storedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let currentTheme = (storedTheme === 'dark' || (!storedTheme && prefersDark)) ? 'dark' : 'light';
+        const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && isSystemDark);
 
-        function applyTheme(theme) {
-            htmlElement.classList.toggle('dark', theme === 'dark');
-            localStorage.setItem('theme', theme);
-            themeIcon.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
-            // Re-render lucide icons after updating innerHTML
-            lucide.createIcons(); 
+        function updateTheme() {
+            if (isDarkMode) {
+                body.classList.add('dark');
+                themeIcon.innerHTML = '<i data-lucide="sun" class="w-6 h-6 text-yellow-400"></i>';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.innerHTML = '<i data-lucide="moon" class="w-6 h-6 text-blue-600"></i>';
+            }
+            lucide.createIcons();
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         }
 
-        applyTheme(currentTheme);
-
         themeToggle.addEventListener('click', () => {
-            currentTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
-            applyTheme(currentTheme);
+            isDarkMode = !isDarkMode;
+            updateTheme();
         });
 
-        // 2. Main Logic
+        // Initialize theme on load
+        updateTheme();
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    // Offset scroll by navbar height for better viewing
-                    const offset = document.querySelector('#mainNav').offsetHeight;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Form handling (Replacing alert() with custom UI message)
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-
-        contactForm?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Log data for demonstration (replace with actual API call)
-            console.log('Form submitted:', data);
-            
-            // Show success message and hide form content temporarily
-            successMessage.classList.remove('hidden');
-            this.reset();
-
-            // Hide the message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-            }, 5000);
-        });
-
-        // Navbar appearance on scroll
+        // 2. Navbar Scroll Effect Logic
         const mainNav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                // Ensure a smooth transition and backdrop effect
-                mainNav.classList.add('nav-scrolled', 'bg-white/90', 'dark:bg-gray-900/90', 'backdrop-blur');
+                mainNav.classList.add('nav-scrolled');
+                mainNav.classList.remove('bg-transparent', 'border-b', 'border-transparent');
             } else {
-                mainNav.classList.remove('nav-scrolled', 'bg-white/90', 'dark:bg-gray-900/90', 'backdrop-blur');
+                mainNav.classList.remove('nav-scrolled');
+                mainNav.classList.add('bg-transparent', 'border-b', 'border-transparent');
             }
         });
 
 
-        // 3. Scroll Animations
-        function checkScrollReveal() {
-            const elements = document.querySelectorAll('.reveal');
-            const triggerBottom = window.innerHeight * 0.85; // 85% from top
+        // 3. Scroll Reveal Animation Logic
+        const revealElements = document.querySelectorAll('.reveal');
 
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                
-                if (elementTop < triggerBottom) {
-                    element.classList.add('active');
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            for (let i = 0; i < revealElements.length; i++) {
+                const elementTop = revealElements[i].getBoundingClientRect().top;
+                const revealPoint = 100; // Offset from bottom of viewport
+
+                if (elementTop < windowHeight - revealPoint) {
+                    revealElements[i].classList.add('active');
                 } else {
-                    // Optional: remove 'active' when scrolled past (for repeated animation)
-                    // element.classList.remove('active');
+                    // Optional: remove 'active' class if scrolling back up
+                    // revealElements[i].classList.remove('active');
                 }
-            });
+            }
         }
 
-        // Initial check and bind events
-        window.addEventListener('scroll', checkScrollReveal);
-        window.addEventListener('DOMContentLoaded', checkScrollReveal);
-        window.addEventListener('load', checkScrollReveal);
+        window.addEventListener('scroll', revealOnScroll);
+        // Run once on load to show elements already in view
+        window.addEventListener('load', revealOnScroll);
 
 
-        // 4. Project Carousel Logic (New)
+        // 4. Horizontal Scroll Carousel Logic
         const projectsContainer = document.getElementById('projectsContainer');
         const scrollLeftBtn = document.getElementById('scrollLeft');
         const scrollRightBtn = document.getElementById('scrollRight');
 
-        // Function to smoothly scroll the carousel
-        const scrollCarousel = (direction) => {
-            const scrollAmount = projectsContainer.offsetWidth / 2; // Scroll half the container width
-            
-            // Determine scroll distance based on device and layout
-            let targetScroll = projectsContainer.scrollLeft + (direction === 'right' ? scrollAmount : -scrollAmount);
-            
-            // On mobile (full width card), ensure it snaps to the next card
-            if (projectsContainer.offsetWidth < 640) { // Tailwind's 'sm' breakpoint
-                const cardWidth = projectsContainer.querySelector('.flex-shrink-0').offsetWidth + 32; // Card width + space-x-8 (32px)
-                const currentCardIndex = Math.round(projectsContainer.scrollLeft / cardWidth);
-
-                if (direction === 'right') {
-                    targetScroll = (currentCardIndex + 1) * cardWidth;
-                } else {
-                    targetScroll = (currentCardIndex - 1) * cardWidth;
-                }
-            } else if (projectsContainer.offsetWidth < 1024) { // Tailwind's 'lg' breakpoint, showing 2 cards
-                const cardWidth = projectsContainer.querySelector('.flex-shrink-0').offsetWidth + 32;
-                if (direction === 'right') {
-                    targetScroll = projectsContainer.scrollLeft + cardWidth + 32; // Scroll past 2 cards (approx)
-                } else {
-                    targetScroll = projectsContainer.scrollLeft - cardWidth - 32; // Scroll back 2 cards (approx)
-                }
-            }
-
-
-            projectsContainer.scrollTo({
-                left: targetScroll,
-                behavior: 'smooth'
+        if (projectsContainer) {
+            scrollLeftBtn.addEventListener('click', () => {
+                // Scroll left by roughly two card widths plus spacing
+                const scrollAmount = projectsContainer.clientWidth * 0.6; 
+                projectsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             });
-        };
 
-        scrollLeftBtn?.addEventListener('click', () => scrollCarousel('left'));
-        scrollRightBtn?.addEventListener('click', () => scrollCarousel('right'));
+            scrollRightBtn.addEventListener('click', () => {
+                // Scroll right by roughly two card widths plus spacing
+                const scrollAmount = projectsContainer.clientWidth * 0.6;
+                projectsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
         
     </script>
 </body>
