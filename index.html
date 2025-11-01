@@ -63,13 +63,16 @@
             display: none;  /* Chrome, Safari and Opera */
         }
 
-        /* NEW: Hero Section Styles */
+        /* IMPROVED: Hero Section Styles */
         .hero-section {
             background-image: url('assets/images/background 1.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         
         /* Overlay to improve text readability */
@@ -80,17 +83,18 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
             z-index: 1;
         }
         
         .dark .hero-section::before {
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
+            width: 100%;
         }
         
         .profile-image {
@@ -105,17 +109,63 @@
         
         .profile-img {
             width: 100%;
-            max-width: 600px;
-            height: 100%;
-            max-height: 80vh;
+            max-width: 700px;
+            height: 85vh;
             object-fit: cover;
-            object-position: center;
+            object-position: center top;
             border-radius: 0;
             box-shadow: none;
             border: none;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+        }
+
+        .hero-text {
+            padding-right: 2rem;
+        }
+
+        /* Text animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .text-delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .text-delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .text-delay-3 {
+            animation-delay: 0.6s;
+            opacity: 0;
         }
 
         /* Responsive design */
+        @media (max-width: 1024px) {
+            .profile-img {
+                max-width: 600px;
+                height: 75vh;
+            }
+            
+            .hero-text {
+                padding-right: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 background-position: left center;
@@ -123,12 +173,28 @@
             
             .profile-img {
                 max-width: 100%;
-                max-height: 50vh;
+                height: 60vh;
+                clip-path: none;
+                margin-top: 2rem;
             }
             
             .profile-image {
                 justify-content: center;
-                margin-top: 2rem;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                text-align: center;
+            }
+            
+            .hero-section::before {
+                background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .profile-img {
+                height: 50vh;
             }
         }
     </style>
@@ -154,23 +220,24 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section min-h-screen pt-32 pb-16 flex items-center">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 items-center gap-16 hero-content">
-            <div class="text-center md:text-left reveal">
-                <h1 class="text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-4 text-white">
-                    <span class="block">Muhammad Areeb Rizwan</span>
-                    <span class="block text-blue-400">Mechanical Engineer</span>
+    <!-- IMPROVED Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 items-center hero-content">
+            <div class="hero-text reveal">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight mb-6 text-white animate-fade-in-up">
+                    <span class="block">Muhammad</span>
+                    <span class="block">Areeb Rizwan</span>
+                    <span class="block text-blue-400 mt-4 text-4xl md:text-5xl lg:text-6xl">Mechanical Engineer</span>
                 </h1>
-                <p class="text-xl text-gray-200 mb-8 max-w-xl md:mx-0 mx-auto">
+                <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-xl text-delay-1 animate-fade-in-up">
                     Discipline. Integrity. Innovation.
                 </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#work" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 btn-primary">View My Work</a>
-                    <a href="#contact" class="px-8 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-gray-300 hover:border-blue-400 transition-all transform hover:-translate-y-0.5 btn-secondary">Get In Touch</a>
+                <div class="flex flex-wrap justify-start gap-6 text-delay-2 animate-fade-in-up">
+                    <a href="#work" class="px-10 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 btn-primary text-lg">View My Work</a>
+                    <a href="#contact" class="px-10 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:border-blue-400 hover:bg-blue-400/10 transition-all transform hover:-translate-y-1 btn-secondary text-lg">Get In Touch</a>
                 </div>
             </div>
-            <!-- Profile Image on the Right Side - Full Size -->
+            <!-- Profile Image on the Right Side - Larger Size -->
             <div class="profile-image reveal">
                 <img src="assets/images/formal1.png" alt="Muhammad Areeb Rizwan" class="profile-img">
             </div>
@@ -266,6 +333,14 @@
         window.addEventListener('scroll', revealOnScroll);
         // Run once on load to show elements already in view
         window.addEventListener('load', revealOnScroll);
+
+        // 4. Text animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'running';
+            });
+        });
     </script>
 </body>
 </html>
