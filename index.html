@@ -35,6 +35,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            /* NOTE: This background will be obscured by the full-screen .center-image */
             background-image: url('assets/images/background 1.png'); /* Center Background */
             background-size: cover;
             background-position: center;
@@ -83,41 +84,50 @@
             text-align: center;
             color: white;
             z-index: 35;
-            position: relative;
+            position: absolute; /* Position relative to state-center */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the content overlay */
+            width: 80%; /* Ensure content isn't too wide */
         }
 
         .center-image {
-            width: 800px; /* Adjust size as needed */
-            height: 800px; /* Adjust size as needed */
-            background-image: url('assets/images/collage1.png'); /* Center Big Picture */
-            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Make collage1.png fill the entire state-center area */
+            background-image: url('assets/images/collage1.png'); 
+            background-size: cover; /* This makes the image fill the space */
             background-repeat: no-repeat;
             background-position: center;
-            margin: 0 auto 20px auto;
-            border-radius: 10px;
+            z-index: 34; /* Below the text */
         }
 
-        .center-text-group {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+        .center-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
         }
 
-        .center-text-group h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            padding: 10px 20px;
-            border-radius: 5px;
+        .center-subtitle {
+            font-size: 1.8rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
             background: rgba(0, 0, 0, 0.5);
-            transition: background 0.3s ease, color 0.3s ease;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 5px;
         }
 
-        /* --- LEFT/RIGHT STATE CONTENT --- */
+        /* We remove .center-text-group h2 as it's no longer used */
 
-        /* Content wrappers for alignment */
+        /* --- LEFT/RIGHT STATE CONTENT (Unchanged) --- */
         .side-wrapper {
-            width: 80%; /* Space for text on the expanded side */
+            width: 80%;
             padding: 0 5%;
             text-align: left;
         }
@@ -140,70 +150,66 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
-        /* Image Placeholder on the opposite side */
+        /* Image Placeholder on the opposite side (Unchanged) */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
-            width: 50%; /* Image placeholder width */
+            width: 50%; 
             background-size: cover;
             background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 39; /* Below text, above background */
+            z-index: 39;
         }
         
         .state-left .side-image-placeholder {
             right: 0;
-            background-image: url('assets/images/formal1.png'); /* Left (Formal) Opposite Image */
+            background-image: url('assets/images/formal1.png'); 
         }
 
         .state-right .side-image-placeholder {
             left: 0;
-            background-image: url('assets/images/funky4.png'); /* Right (Creative) Opposite Image */
+            background-image: url('assets/images/funky4.png'); 
         }
 
-        /* --- ACTIVE STATE STYLES (Controlled by JS) --- */
+        /* --- ACTIVE STATE STYLES (Unchanged) --- */
 
         .state-center.hidden {
             opacity: 0;
-            z-index: 20; /* Move behind expanded states */
+            z-index: 20; 
         }
 
-        /* Left Active State */
         .state-left.active {
-            width: 100%; /* Expands to full screen */
+            width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: center; /* Center the wrapper content */
+            justify-content: center; 
         }
         .state-left.active .side-image-placeholder {
-            opacity: 1; /* Show the image on the right */
+            opacity: 1; 
         }
         
-        /* Right Active State */
         .state-right.active {
-            width: 100%; /* Expands to full screen */
+            width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: center; /* Center the wrapper content */
+            justify-content: center; 
         }
         .state-right.active .side-image-placeholder {
-            opacity: 1; /* Show the image on the left */
+            opacity: 1; 
         }
 
-        /* Reset non-active state opacity (must be done to allow it to be interactable later) */
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .center-image {
-                width: 200px;
-                height: 200px;
+            .center-title {
+                font-size: 2rem;
             }
-            .center-text-group h2 {
-                font-size: 1.5rem;
+            .center-subtitle {
+                font-size: 1.1rem;
             }
             .side-wrapper h1 {
                 font-size: 2.5rem;
@@ -219,12 +225,10 @@
     <section class="hero-section" id="heroSection">
         
         <div class="state-center" id="stateCenter">
+            <div class="center-image"></div>
             <div class="center-content">
-                <div class="center-image"></div>
-                <div class="center-text-group">
-                    <h2 id="centerLeftText">MECHANICAL ENGINEER</h2>
-                    <h2 id="centerRightText">AUTOMATION SPECIALIST</h2>
-                </div>
+                <h1 class="center-title">MUHAMMAD AREEB RIZWAN SIDDIQUI</h1>
+                <p class="center-subtitle">MECHANICAL ENGINEER. DISCIPLINE. INTEGRITY. INNOVATION.</p>
             </div>
         </div>
 
@@ -253,8 +257,6 @@
         const center = document.getElementById('stateCenter');
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
-        const leftText = document.getElementById('centerLeftText');
-        const rightText = document.getElementById('centerRightText');
         
         // Define the center buffer size (e.g., 20% of the screen width/height)
         const CENTER_BUFFER = 0.20; 
