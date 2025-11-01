@@ -16,20 +16,11 @@
             50% { transform: translateY(-20px) rotate(2deg); }
         }
 
-        /* Custom style for the floating cards and avatar placeholder */
-        .floating-card {
-            animation: float 8s ease-in-out infinite;
-            background-color: theme('colors.white');
-        }
-        .dark .floating-card {
-            background-color: theme('colors.gray.800');
-        }
-
         /* Custom style for scroll reveal animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out-quad */
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .reveal.active {
@@ -98,11 +89,13 @@
             width: 100%;
         }
         
-        /* Split Screen Effect */
+        /* Split Screen Effect - Adham Dannaway Style */
         .face {
             width: 100%;
-            position: relative;
             height: 600px;
+            position: relative;
+            margin: 0 auto;
+            max-width: 1040px;
         }
         
         .face a {
@@ -113,27 +106,24 @@
         .face .coder, .face .designer {
             position: absolute;
             width: 50%;
+            height: 100%;
             display: block;
             z-index: 10;
-            height: 100%;
-            /* vertical centering */
-            margin: auto;
             top: 0;
-            bottom: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .face .designer {
             left: 0;
+            justify-content: flex-start;
         }
         
         .face .coder {
             right: 0;
-            text-align: right;
+            justify-content: flex-end;
         }
         
         .face .designer:hover, .face .coder:hover {
@@ -152,10 +142,11 @@
             position: absolute;
             top: 0;
             height: 100%;
-            width: 100%;
+            width: 50%;
             background-size: cover;
             background-position: center;
             transition: all 0.3s ease;
+            z-index: 1;
         }
         
         .face .designer-img {
@@ -192,19 +183,28 @@
             color: white;
             padding: 2rem;
             max-width: 80%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .face .designer .description {
+            text-align: left;
+            left: 0;
+        }
+        
+        .face .coder .description {
+            text-align: right;
+            right: 0;
         }
         
         .face h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .face p {
             font-size: 1.25rem;
             line-height: 1.5;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .face .designer h1 {
@@ -227,7 +227,7 @@
         .face .coder:hover .chevron-right {
             transform: translateX(5px);
         }
-        
+
         /* Text animation */
         @keyframes fadeInUp {
             from {
@@ -469,405 +469,6 @@
         window.addEventListener('scroll', revealOnScroll);
         // Initial check
         revealOnScroll();
-    </script>
-</body>
-</html>
-
-    <!-- Work Section - Horizontal Scroll Carousel -->
-    <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 reveal">Selected Projects & Experience</h2>
-            
-            <div class="relative max-w-7xl mx-auto">
-                <!-- Navigation Arrows -->
-                <button id="scrollLeft" class="absolute left-0 top-1/2 -mt-12 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-700 p-3 rounded-full shadow-xl border border-gray-300 dark:border-gray-600 transition-transform hover:scale-110 opacity-70 hover:opacity-100 hidden md:block">
-                    <i data-lucide="chevron-left" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-                </button>
-                <button id="scrollRight" class="absolute right-0 top-1/2 -mt-12 transform translate-x-1/2 z-10 bg-white dark:bg-gray-700 p-3 rounded-full shadow-xl border border-gray-300 dark:border-gray-600 transition-transform hover:scale-110 opacity-70 hover:opacity-100 hidden md:block">
-                    <i data-lucide="chevron-right" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
-                </button>
-
-                <!-- Projects Container: Flex container for horizontal scroll -->
-                <div id="projectsContainer" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 pb-4 scrollbar-hide reveal">
-                    
-                    <!-- Project 1: Inventory Automation (NEW) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-yellow-500 to-amber-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Inventory+Automation" onerror="this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Inventory+Automation'" alt="Inventory Automation Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">Inventory Automation - SM Denim Mills</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Real-Time Process Optimization</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Collaborated with department staff to develop the first-ever comprehensive parts list, integrated with a real-time monitoring dashboard, enabling faster decision-making and ensuring consistent maintenance readiness. Adopted industry-wide and still in use.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-amber-700 bg-amber-100 dark:bg-amber-900 dark:text-amber-300 rounded-full">Process Automation</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-sky-700 bg-sky-100 dark:bg-sky-900 dark:text-sky-300 rounded-full">Data Integration</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 dark:bg-red-900 dark:text-red-300 rounded-full">Preventive Maintenance</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: AI Car Defect Detection (NEW) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-pink-500 to-rose-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/ec4899/ffffff?text=AI+Defect+Detection" onerror="this.src='https://placehold.co/600x400/ec4899/ffffff?text=AI+Defect+Detection'" alt="AI Defect Detection Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">AI Car Defect Detection - MMCL Plant</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Computer Vision & Quality Control</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Trained an AI Model and constructed an AI-powered app that detects car body defects like scratches, dents, paint issues, and bumps using a custom-trained YOLOv8 model. Hosted on Streamlit Cloud.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-pink-700 bg-pink-100 dark:bg-pink-900 dark:text-pink-300 rounded-full">YOLOv8</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-violet-700 bg-violet-100 dark:bg-violet-900 dark:text-violet-300 rounded-full">Computer Vision</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Streamlit/Python</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: Vehicle Component Failure Analyzer (NEW) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-teal-500 to-cyan-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/06b6d4/ffffff?text=Failure+Analyzer+AI" onerror="this.src='https://placehold.co/600x400/06b6d4/ffffff?text=Failure+Analyzer+AI'" alt="Failure Analyzer Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">Vehicle Component Failure Analyzer - MMCL Plant</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Predictive Maintenance AI</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Trained a Random Forest AI model to predict car component defects based on key parameters, enabling proactive quality control and significantly reducing failure rates in automotive manufacturing. Hosted on Streamlit Cloud.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-cyan-700 bg-cyan-100 dark:bg-cyan-900 dark:text-cyan-300 rounded-full">Machine Learning</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-purple-700 bg-purple-100 dark:bg-purple-900 dark:text-purple-300 rounded-full">Quality Assurance</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Streamlit/Python</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: Production MES (NEW) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-red-500 to-orange-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/ef4444/ffffff?text=Production+MES" onerror="this.src='https://placehold.co/600x400/ef4444/ffffff?text=Production+MES'" alt="Production MES Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">Production MES - MMCL Plant</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Manufacturing Execution System</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Developed an ultimate database at MMCL streamlining production and integrating real-time station status and production logs/line-offs reporting. Auto-calculates production metrics like OEE, FMEA, cycle time, takt time, downtime, and first-pass yield.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-orange-700 bg-orange-100 dark:bg-orange-900 dark:text-orange-300 rounded-full">Industrial Data</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">OEE Calculation</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-300 rounded-full">Database Integration</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 5: WeedBot Project (ORIGINAL 1) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-blue-500 to-indigo-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/3b82f6/ffffff?text=WeedBot+Robotics" onerror="this.src='https://placehold.co/600x400/3b82f6/ffffff?text=WeedBot+Robotics'" alt="WeedBot Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">WeedBot Project - NCAI NEDUET</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Sustainable Automation</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Developed a weeding robot prototype designed for precision agriculture and weed control in Pakistani farmlands, focusing on cost-effective, sustainable automation.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300 rounded-full">Robotics</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">CAD/FEA</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-yellow-700 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">Prototyping</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 6: CO2 Detection System (ORIGINAL 2) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-purple-500 to-pink-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Industrial+Sensor+Deployment" onerror="this.src='https://placehold.co/600x400/8b5cf6/ffffff?text=Industrial+Sensor+Deployment'" alt="CO2 Detection Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">CO2 Detection System - PQ KHI</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Process Safety & Automation</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Designed and deployed a real-time CO2 detection system at the MMCL Plant, enhancing industrial safety protocols and ensuring compliance with air quality standards.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-pink-700 bg-pink-100 dark:bg-pink-900 dark:text-pink-300 rounded-full">Sensor Integration</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 dark:bg-red-900 dark:text-red-300 rounded-full">Data Logging</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300 rounded-full">Industrial IoT</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 7: Final Year Project (ORIGINAL 3) -->
-                    <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-0.5rem)] flex-shrink-0 snap-center">
-                        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700 h-full flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="h-56 bg-gradient-to-tr from-green-500 to-teal-600 overflow-hidden">
-                                <img src="https://placehold.co/600x400/10b981/ffffff?text=De-Dusting+Plant+Design" onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=De-Dusting+Plant+Design'" alt="De-Dusting Plant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                            </div>
-                            <div class="p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl font-semibold mb-2">Final Year Project: De-Dusting Plant</h3>
-                                <h4 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">Design Automation & Feasibility</h4>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">Conducted a comprehensive design automation and feasibility analysis for an advanced De-Dusting Plant (People Steel Mills), extracting 150,000 CFM dust, fumes, and waste gases from an electric arc furnace. Received the highest score among all capstone projects.</p>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    <span class="px-3 py-1 text-xs font-medium text-teal-700 bg-teal-100 dark:bg-teal-900 dark:text-teal-300 rounded-full">CFD Analysis</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">Design Automation</span>
-                                    <span class="px-3 py-1 text-xs font-medium text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">Feasibility Study</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <p class="text-gray-600 dark:text-gray-400">Scroll horizontally or use the arrows to see all 7 projects.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section - Skills Improvised -->
-    <section id="about" class="py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-                <div class="lg:col-span-2 reveal">
-                    <h2 class="text-4xl font-bold mb-8">About Me</h2>
-                    <div class="text-lg text-gray-700 dark:text-gray-300 space-y-6">
-                        <p>
-                           A Mechanical Engineer and sustainable automation specialist with 4+ years of experience architecting intelligent solutions for complex industrial challenges. I bridge the gap between intricate engineering problems and intuitive, user-centric systems.
-                        </p>
-                        <p>
-                            My expertise lies in translating core business objectives into elegant, high-performance automated systems. By championing a design process focused on operational superiority and seamless adoption, I ensure solutions are robust and impactful. I excel in agile, cross-functional teams, leveraging rapid iteration to drive efficiency and sustainability in manufacturing and heavy industry.
-                        </p>
-                    </div>
-
-                    <!-- IMPROVISED SKILLS SECTION -->
-                    <div class="mt-12">
-                        <h3 class="text-2xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Skills & Expertise</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-
-                            <!-- Skill Card 1: Core Mechanical -->
-                            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-t-4 border-blue-500 reveal">
-                                <i data-lucide="scan-eye" class="w-8 h-8 text-blue-500 mb-3"></i>
-                                <h4 class="font-extrabold mb-3 text-xl text-gray-900 dark:text-gray-100">Design & Analysis</h4>
-                                <ul class="list-none space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>CAD Modeling (SolidWorks/AutoCAD)</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>CFD & FEA (ANSYS)</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Systems Engineering & Robotics</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Prototyping & Motion Analysis</li>
-                                </ul>
-                            </div>
-
-                            <!-- Skill Card 2: Industrial & Management -->
-                            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-t-4 border-green-500 reveal" style="animation-delay: 0.1s;">
-                                <i data-lucide="factory" class="w-8 h-8 text-green-500 mb-3"></i>
-                                <h4 class="font-extrabold mb-3 text-xl text-gray-900 dark:text-gray-100">Industrial & Management</h4>
-                                <ul class="list-none space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Lean & Additive Manufacturing</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>FMEA, TPM, & Project Management (P6)</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Process Optimization (OEE/Takt Time)</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Preventive & Predictive Maintenance</li>
-                                </ul>
-                            </div>
-
-                            <!-- Skill Card 3: Data & Software -->
-                            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-t-4 border-purple-500 reveal" style="animation-delay: 0.2s;">
-                                <i data-lucide="database" class="w-8 h-8 text-purple-500 mb-3"></i>
-                                <h4 class="font-extrabold mb-3 text-xl text-gray-900 dark:text-gray-100">Data & Software Tools</h4>
-                                <ul class="list-none space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Python (YOLOv8, OpenCV, Streamlit)</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>MATLAB, Minitab, Arduino/IoT</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Power BI & Tableau</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500 flex-shrink-0"></i>Primavera P6, Advanced MS Excel</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Profile Picture Column - Now correctly positioned inside the grid -->
-                <div class="lg:col-span-1 flex justify-center reveal">
-                    <div class="w-77 h-77 rounded-full border-4 border-blue-600 dark:border-blue-400 overflow-hidden shadow-2xl">
-                        <img src="assets/images/formal pic 1.png" alt="Muhammad Areeb Rizwan" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 reveal">Get In Touch</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div class="reveal">
-                    <div class="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-xl">
-                        <h3 class="text-2xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Contact Information</h3>
-                        <div class="space-y-6 text-gray-700 dark:text-gray-300">
-                            <div class="flex items-start space-x-4">
-                                <i data-lucide="mail" class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1"></i>
-                                <div>
-                                    <p class="font-medium">Email</p>
-                                    <a href="mailto:MuhammadAreebRizwan@example.com" class="hover:underline">MuhammadAreebRizwan@example.com</a>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <i data-lucide="phone" class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1"></i>
-                                <div>
-                                    <p class="font-medium">Phone</p>
-                                    <p>+92 333 1234567</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1"></i>
-                                <div>
-                                    <p class="font-medium">Location</p>
-                                    <p>Karachi, Pakistan</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Connect Online</h3>
-                            <div class="flex space-x-6">
-                                <a href="#" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                    <i data-lucide="linkedin" class="w-8 h-8"></i>
-                                </a>
-                                <a href="#" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                    <i data-lucide="github" class="w-8 h-8"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal">
-                    <form class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl space-y-6">
-                        <h3 class="text-2xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Send Me A Message</h3>
-                        <div>
-                            <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500 transition duration-150"></textarea>
-                        </div>
-                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md transform hover:-translate-y-0.5">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Muhammad Areeb Rizwan. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Interactions -->
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // 1. Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-
-        const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && isSystemDark);
-
-        function updateTheme() {
-            if (isDarkMode) {
-                body.classList.add('dark');
-                themeIcon.innerHTML = '<i data-lucide="sun" class="w-6 h-6 text-yellow-400"></i>';
-            } else {
-                body.classList.remove('dark');
-                themeIcon.innerHTML = '<i data-lucide="moon" class="w-6 h-6 text-blue-600"></i>';
-            }
-            lucide.createIcons();
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            updateTheme();
-        });
-
-        // Initialize theme on load
-        updateTheme();
-
-        // 2. Navbar Scroll Effect Logic
-        const mainNav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                mainNav.classList.add('nav-scrolled');
-                mainNav.classList.remove('bg-transparent', 'border-b', 'border-transparent');
-            } else {
-                mainNav.classList.remove('nav-scrolled');
-                mainNav.classList.add('bg-transparent', 'border-b', 'border-transparent');
-            }
-        });
-
-        // 3. Scroll Reveal Animation Logic
-        const revealElements = document.querySelectorAll('.reveal');
-
-        function revealOnScroll() {
-            const windowHeight = window.innerHeight;
-            for (let i = 0; i < revealElements.length; i++) {
-                const elementTop = revealElements[i].getBoundingClientRect().top;
-                const revealPoint = 100; // Offset from bottom of viewport
-
-                if (elementTop < windowHeight - revealPoint) {
-                    revealElements[i].classList.add('active');
-                } else {
-                    // Optional: remove 'active' class if scrolling back up
-                    // revealElements[i].classList.remove('active');
-                }
-            }
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-        // Run once on load to show elements already in view
-        window.addEventListener('load', revealOnScroll);
-
-        // 4. Horizontal Scroll Carousel Logic
-        const projectsContainer = document.getElementById('projectsContainer');
-        const scrollLeftBtn = document.getElementById('scrollLeft');
-        const scrollRightBtn = document.getElementById('scrollRight');
-
-        if (projectsContainer) {
-            scrollLeftBtn.addEventListener('click', () => {
-                // Scroll left by roughly two card widths plus spacing
-                const scrollAmount = projectsContainer.clientWidth * 0.6; 
-                projectsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
-
-            scrollRightBtn.addEventListener('click', () => {
-                // Scroll right by roughly two card widths plus spacing
-                const scrollAmount = projectsContainer.clientWidth * 0.6;
-                projectsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
-        }
-
-        // 5. Text animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
-            animatedElements.forEach(el => {
-                el.style.animationPlayState = 'running';
-            });
-        });
     </script>
 </body>
 </html>
