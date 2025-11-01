@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,213 +14,300 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            overflow: hidden; /* Prevent scroll on the single-page hero */
         }
 
-        /* Hero Section */
+        /* Hero Section Container */
         .hero-section {
             height: 100vh;
+            width: 100vw;
             position: relative;
-            background: #f5f5f5;
-        }
-
-        .face {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-        }
-
-        /* Left Side - Formal */
-        .designer {
-            position: absolute;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 20;
-            transition: all 0.4s ease;
-            cursor: pointer;
+            background-color: #333; /* Default fallback */
             overflow: hidden;
         }
 
-        .designer::before {
-            content: '';
+        /* --- STATE-BASED CONTAINERS --- */
+
+        /* 1. Center/Default State - This sits behind everything initially */
+        .state-center {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/images/formal1.png');
+            background-image: url('background 1.png'); /* Center Background */
             background-size: cover;
             background-position: center;
-            z-index: -1;
-            transition: all 0.4s ease;
-        }
-
-        /* Right Side - Creative */
-        .coder {
-            position: absolute;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 20;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            overflow: hidden;
+            z-index: 30;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1; /* Default state is visible */
         }
-
-        .coder::before {
-            content: '';
+        
+        /* 2. Left State (Formal) & 3. Right State (Creative) - These expand */
+        .state-left, .state-right {
             position: absolute;
             top: 0;
-            right: 0;
-            width: 100%;
             height: 100%;
-            background-image: url('assets/images/funky1.png');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            transition: all 0.4s ease;
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            z-index: 40; /* Above center state */
+            opacity: 0; /* Hidden by default */
         }
 
-        /* Text Content */
-        .description {
+        /* Initial sizes for Left/Right states (visible only when center state fades) */
+        .state-left {
+            left: 0;
+            width: 50%;
+            background-image: url('background 2.png'); /* Left Background */
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-start;
+        }
+
+        .state-right {
+            right: 0;
+            width: 50%;
+            background-image: url('background 3.png'); /* Right Background */
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-end;
+        }
+        
+        /* --- CENTER STATE CONTENT --- */
+        .center-content {
             text-align: center;
             color: white;
-            padding: 2rem;
-            max-width: 400px;
-            z-index: 30;
+            z-index: 35;
+            position: relative;
         }
 
-        .description h1 {
-            font-size: 3rem;
+        .center-image {
+            width: 300px; /* Adjust size as needed */
+            height: 300px; /* Adjust size as needed */
+            background-image: url('collage.png'); /* Center Big Picture */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+        }
+
+        .center-text-group {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .center-text-group h2 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .description p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        /* --- LEFT/RIGHT STATE CONTENT --- */
+
+        /* Content wrappers for alignment */
+        .side-wrapper {
+            width: 80%; /* Space for text on the expanded side */
+            padding: 0 5%;
+            text-align: left;
+        }
+        .state-right .side-wrapper {
+            text-align: right;
         }
 
-        /* Hover Effects */
-        .designer:hover {
-            width: 70%;
+        .side-wrapper h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
         }
 
-        .designer:hover::before {
-            transform: scale(1.05);
+        .side-wrapper p.moto {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ccc;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
-        .coder:hover {
-            width: 70%;
+        /* Image Placeholder on the opposite side */
+        .side-image-placeholder {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%; /* Image placeholder width */
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 39; /* Below text, above background */
+        }
+        
+        .state-left .side-image-placeholder {
+            right: 0;
+            background-image: url('formal1.png'); /* Left (Formal) Opposite Image */
         }
 
-        .coder:hover::before {
-            transform: scale(1.05);
+        .state-right .side-image-placeholder {
+            left: 0;
+            background-image: url('funky4.png'); /* Right (Creative) Opposite Image */
         }
 
-        .designer:hover ~ .coder {
-            width: 30%;
+        /* --- ACTIVE STATE STYLES (Controlled by JS) --- */
+
+        .state-center.hidden {
+            opacity: 0;
+            z-index: 20; /* Move behind expanded states */
         }
 
-        .coder:hover ~ .designer {
-            width: 30%;
+        /* Left Active State */
+        .state-left.active {
+            width: 100%; /* Expands to full screen */
+            opacity: 1;
+            z-index: 50;
+            justify-content: center; /* Center the wrapper content */
+        }
+        .state-left.active .side-image-placeholder {
+            opacity: 1; /* Show the image on the right */
+        }
+        
+        /* Right Active State */
+        .state-right.active {
+            width: 100%; /* Expands to full screen */
+            opacity: 1;
+            z-index: 50;
+            justify-content: center; /* Center the wrapper content */
+        }
+        .state-right.active .side-image-placeholder {
+            opacity: 1; /* Show the image on the left */
         }
 
-        /* Chevron Animation */
-        .chevron-right {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
+        /* Reset non-active state opacity (must be done to allow it to be interactable later) */
+        .state-left:not(.active) { opacity: 0; z-index: 40; }
+        .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        .coder:hover .chevron-right {
-            transform: translateX(10px);
-        }
-
-        /* Mobile Responsive */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .face {
-                flex-direction: column;
+            .center-image {
+                width: 200px;
+                height: 200px;
             }
-
-            .designer, .coder {
-                position: relative;
-                width: 100%;
-                height: 50%;
+            .center-text-group h2 {
+                font-size: 1.5rem;
             }
-
-            .designer:hover, .coder:hover {
-                width: 100%;
-                height: 70%;
+            .side-wrapper h1 {
+                font-size: 2.5rem;
             }
-
-            .designer:hover ~ .coder, .coder:hover ~ .designer {
-                width: 100%;
-                height: 30%;
-            }
-
-            .description h1 {
-                font-size: 2rem;
-            }
-
-            .description p {
-                font-size: 1rem;
+            .side-wrapper p.moto {
+                font-size: 1.2rem;
             }
         }
+
     </style>
 </head>
 <body>
-    <!-- Hero Section with Split Screen -->
-    <section class="hero-section">
-        <div class="face">
-            <!-- Left Side - Formal -->
-            <a href="/about" class="designer">
-                <div class="description">
-                    <h1>Formal</h1>
-                    <p>Professional mechanical engineer with expertise in engineering design and analysis.</p>
+    <section class="hero-section" id="heroSection">
+        
+        <div class="state-center" id="stateCenter">
+            <div class="center-content">
+                <div class="center-image"></div>
+                <div class="center-text-group">
+                    <h2 id="centerLeftText">MECHANICAL ENGINEER</h2>
+                    <h2 id="centerRightText">AUTOMATION SPECIALIST</h2>
                 </div>
-            </a>
-
-            <!-- Right Side - Creative -->
-            <a href="/portfolio" class="coder">
-                <div class="description">
-                    <h1>Creative <span class="chevron-right">></span></h1>
-                    <p>Innovative problem solver with a passion for creative engineering solutions.</p>
-                </div>
-            </a>
+            </div>
         </div>
+
+        <div class="state-left" id="stateLeft">
+            <div class="side-wrapper">
+                <h1>MECHANICAL ENGINEER</h1>
+                <p class="moto">Discipline. Integrity. Innovation.</p>
+                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
+            </div>
+            <div class="side-image-placeholder"></div>
+        </div>
+
+        <div class="state-right" id="stateRight">
+            <div class="side-wrapper">
+                <h1>AUTOMATION SPECIALIST</h1>
+                <p class="moto">Innovation through Intelligent Systems.</p>
+                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio ></a>
+            </div>
+            <div class="side-image-placeholder"></div>
+        </div>
+
     </section>
 
     <script>
-        // Simple hover effect enhancement
-        document.addEventListener('DOMContentLoaded', function() {
-            const designer = document.querySelector('.designer');
-            const coder = document.querySelector('.coder');
-            
-            // Add click handlers if needed
-            designer.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Add your navigation logic here
-                console.log('Navigate to about page');
-            });
-            
-            coder.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Add your navigation logic here
-                console.log('Navigate to portfolio page');
-            });
-        });
+        const hero = document.getElementById('heroSection');
+        const center = document.getElementById('stateCenter');
+        const left = document.getElementById('stateLeft');
+        const right = document.getElementById('stateRight');
+        const leftText = document.getElementById('centerLeftText');
+        const rightText = document.getElementById('centerRightText');
+        
+        // Define the center buffer size (e.g., 20% of the screen width/height)
+        const CENTER_BUFFER = 0.20; 
+
+        function handleMouseMove(e) {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const bufferX = rect.width * CENTER_BUFFER;
+            const bufferY = rect.height * CENTER_BUFFER;
+
+            let currentState = 'center';
+
+            if (x < centerX - bufferX) {
+                // Mouse is far left
+                currentState = 'left';
+            } else if (x > centerX + bufferX) {
+                // Mouse is far right
+                currentState = 'right';
+            } else {
+                // Mouse is near the center
+                currentState = 'center';
+            }
+
+            // Apply State Transitions
+            if (currentState === 'center') {
+                center.classList.remove('hidden');
+                left.classList.remove('active');
+                right.classList.remove('active');
+            } else if (currentState === 'left') {
+                center.classList.add('hidden');
+                left.classList.add('active');
+                right.classList.remove('active');
+            } else if (currentState === 'right') {
+                center.classList.add('hidden');
+                left.classList.remove('active');
+                right.classList.add('active');
+            }
+        }
+        
+        // Optional: Reset to center if the mouse leaves the hero section
+        function handleMouseLeave() {
+            center.classList.remove('hidden');
+            left.classList.remove('active');
+            right.classList.remove('active');
+        }
+
+        // Add event listeners
+        hero.addEventListener('mousemove', handleMouseMove);
+        hero.addEventListener('mouseleave', handleMouseLeave);
+        
     </script>
 </body>
 </html>
