@@ -16,7 +16,7 @@
             50% { transform: translateY(-20px) rotate(2deg); }
         }
 
-        /* Custom style for the floating cards and avatar placeholder (Not visible in new hero but kept for other sections) */
+        /* Custom style for the floating cards and avatar placeholder */
         .floating-card {
             animation: float 8s ease-in-out infinite;
             background-color: theme('colors.white');
@@ -43,50 +43,44 @@
             scroll-behavior: smooth;
         }
 
-        /* --- SPLIT SCREEN HERO STYLES --- */
-
-        /* Base styles for the hero container */
+        /* Split Screen Hero Styles */
         #hero-container {
             height: 100vh;
             width: 100vw;
             display: flex;
-            overflow: hidden; /* Prevent scrollbar during transitions */
+            overflow: hidden;
         }
 
-        /* Base styles for the panels */
         .panel {
             position: relative;
             height: 100%;
-            transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition */
+            transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             background-size: cover;
             background-position: center;
         }
 
-        /* Left Panel: Human Image (B&W filter applied) */
+        /* Left Panel: Mechanical Engineer (B&W filter applied) */
         #left-panel {
-            /* This is where your first image (formalpic111.png) is placed */
-            background-image: url('uploaded:formalpic111.png-ce9e6dc3-4196-454a-af40-a98a0d8e904e');
-            filter: grayscale(100%); /* Apply B&W filter to the human image */
+            background-image: url('images/formalpic111.png'); /* YOUR IMAGE HERE */
+            filter: grayscale(100%);
             width: 50%;
         }
 
-        /* Right Panel: Robot Image (Full Color) */
+        /* Right Panel: Automation Specialist (Full Color) */
         #right-panel {
-            /* This is where your second image (formalpic1112.png) is placed */
-            background-image: url('uploaded:formalpic1112.png-efdaa259-a1ac-425c-be5b-4c1c713075af');
+            background-image: url('images/formalpic1112.png'); /* YOUR IMAGE HERE */
             width: 50%;
         }
         
-        /* Text Overlay Styling */
         .overlay-text {
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            pointer-events: none; /* Allows mouse events to pass through to the panel */
+            pointer-events: none;
         }
 
         .show-text {
             opacity: 1;
-            transition-delay: 0.3s; /* Delay appearance until panel is mostly expanded */
+            transition-delay: 0.3s;
         }
 
         /* Responsive adjustments for mobile */
@@ -98,7 +92,6 @@
                 width: 100% !important;
                 height: 50vh;
             }
-            /* Adjust hover size for vertical layout */
             .panel-hover-left {
                 height: 75vh !important;
                 width: 100% !important;
@@ -117,6 +110,25 @@
             }
         }
 
+        /* Style for Navbar visibility on scroll (initial state) */
+        .nav-scrolled {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            background-color: theme('colors.white');
+            border-bottom: 1px solid theme('colors.gray.200');
+        }
+        .dark .nav-scrolled {
+            background-color: theme('colors.gray.900');
+            border-bottom: 1px solid theme('colors.gray.800');
+        }
+
+        /* Hide Scrollbar for Project Carousel, but allow scrolling */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -140,114 +152,63 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Now using the split-screen design) -->
-    <section id="home">
+    <!-- NEW SPLIT-SCREEN HERO SECTION -->
+    <section id="home" class="min-h-screen">
         <div id="hero-container">
-
-            <!-- Left Panel (Muhammad Areeb Rizwan - Black & White) -->
+            <!-- Left Panel (Mechanical Engineer - Black & White) -->
             <div id="left-panel" class="panel" onmouseenter="handleHover('left')" onmouseleave="handleReset()">
                 <div id="left-text" class="overlay-text absolute inset-0 flex flex-col justify-center items-center p-8 bg-black bg-opacity-40">
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tighter text-center">MUHAMMAD AREEB RIZWAN</h1>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tighter">MECHANICAL ENGINEER</h1>
                     <p class="text-lg md:text-xl text-white text-center max-w-lg">
-                        Mechanical Engineer | Driven by human intuition, detailed design, and tangible innovation.
+                        Precision engineering meets innovative design. Explore mechanical solutions built on discipline and technical excellence.
                     </p>
-                    <button class="mt-8 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-xl hover:bg-gray-200 transition duration-300">
-                        View My Portfolio
-                    </button>
+                    <a href="#about" class="mt-8 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-xl hover:bg-gray-200 transition duration-300">
+                        View My Expertise
+                    </a>
                 </div>
             </div>
 
-            <!-- Right Panel (Future/AI - Color) -->
+            <!-- Right Panel (Automation Specialist - Color) -->
             <div id="right-panel" class="panel" onmouseenter="handleHover('right')" onmouseleave="handleReset()">
                 <div id="right-text" class="overlay-text absolute inset-0 flex flex-col justify-center items-center p-8 bg-black bg-opacity-40">
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tighter text-center">ENGINEERING FUTURE</h1>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tighter">AUTOMATION SPECIALIST</h1>
                     <p class="text-lg md:text-xl text-white text-center max-w-lg">
-                        Utilizing digital tools, automation, and AI for high-precision design and manufacturing.
+                        Intelligent systems driving industrial efficiency. Discover automated solutions powered by data and innovation.
                     </p>
-                    <button class="mt-8 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-xl hover:bg-gray-200 transition duration-300">
-                        Explore Technologies
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    
-    <!-- Placeholder Work Section (Added back with scroll reveal) -->
-    <section id="work" class="min-h-screen pt-24 pb-16 bg-white dark:bg-gray-800 flex items-center">
-        <div class="container mx-auto px-6 py-12 reveal">
-            <h2 class="text-5xl font-extrabold text-blue-600 dark:text-blue-400 mb-8 text-center">My Work & Projects</h2>
-            <p class="text-xl text-gray-700 dark:text-gray-300 text-center max-w-3xl mx-auto">
-                This is the placeholder for your engineering projects, case studies, and technical achievements. The content will reveal on scroll.
-            </p>
-            <div class="mt-12 grid md:grid-cols-3 gap-8">
-                <!-- Project Card Placeholder 1 (Uses original floating-card animation class for demonstration) -->
-                <div class="p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 transition-shadow hover:shadow-xl floating-card reveal" style="animation-delay: 0.1s;">
-                    <i data-lucide="wrench" class="w-8 h-8 text-blue-500 mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">CAD Design</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Detailed component modeling.</p>
-                </div>
-                <!-- Project Card Placeholder 2 -->
-                <div class="p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 transition-shadow hover:shadow-xl reveal" style="animation-delay: 0.2s;">
-                    <i data-lucide="line-chart" class="w-8 h-8 text-green-500 mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">FEA Analysis</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Structural and thermal analysis reports.</p>
-                </div>
-                <!-- Project Card Placeholder 3 -->
-                <div class="p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 transition-shadow hover:shadow-xl reveal" style="animation-delay: 0.3s;">
-                    <i data-lucide="hard-hat" class="w-8 h-8 text-yellow-500 mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">Prototyping</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Hands-on fabrication experience.</p>
+                    <a href="#work" class="mt-8 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-xl hover:bg-gray-200 transition duration-300">
+                        See My Projects
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Placeholder About Section (Added back with scroll reveal) -->
-    <section id="about" class="min-h-screen pt-24 pb-16 flex items-center">
-        <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-12 items-center reveal">
-            <div class="md:col-span-2">
-                <h2 class="text-5xl font-extrabold text-blue-600 dark:text-blue-400 mb-4">About Muhammad Areeb Rizwan</h2>
-                <p class="text-xl text-gray-700 dark:text-gray-300 mb-6">
-                    I am a dedicated Mechanical Engineer specializing in design optimization and advanced material science. My approach blends foundational engineering principles with modern computational tools to deliver efficient and reliable solutions.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400">
-                    This section serves as a placeholder to detail my career history, educational background, and core philosophies.
-                </p>
-            </div>
-            <div class="md:col-span-1 flex justify-center">
-                <!-- Placeholder for skills chart/visual -->
-                <div class="w-48 h-48 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center reveal" style="animation-delay: 0.4s;">
-                    <i data-lucide="layers-3" class="w-12 h-12 text-gray-500 dark:text-gray-400"></i>
-                </div>
-            </div>
-        </div>
+    <!-- REST OF YOUR ORIGINAL CONTENT (Work, About, Contact sections) -->
+    <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <!-- Your existing work section content -->
     </section>
 
-    <!-- Placeholder Contact Section (Added back with scroll reveal) -->
-    <section id="contact" class="min-h-screen pt-24 pb-16 bg-white dark:bg-gray-800 flex items-center">
-        <div class="container mx-auto px-6 py-12 reveal">
-            <h2 class="text-5xl font-extrabold text-blue-600 dark:text-blue-400 mb-8 text-center">Get In Touch</h2>
-            <div class="max-w-xl mx-auto p-8 rounded-xl shadow-2xl bg-gray-50 dark:bg-gray-700">
-                <p class="text-gray-700 dark:text-gray-300 mb-6 text-center">
-                    I am currently open to new project collaborations and full-time opportunities.
-                </p>
-                <form onsubmit="event.preventDefault(); alert('Form submission simulated! Check the console for details.');">
-                    <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 rounded-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-100">
-                    <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 rounded-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-100">
-                    <textarea placeholder="Your Message" rows="4" class="w-full p-3 mb-6 rounded-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-100"></textarea>
-                    <button type="submit" class="w-full px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md">Send Message</button>
-                </form>
-            </div>
-        </div>
+    <section id="about" class="py-16">
+        <!-- Your existing about section content -->
     </section>
-    
+
+    <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <!-- Your existing contact section content -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Muhammad Areeb Rizwan. All rights reserved.</p>
+        </div>
+    </footer>
+
     <!-- JavaScript for Interactions -->
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // 1. Theme Toggle Logic (Existing)
+        // 1. Theme Toggle Logic
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
@@ -275,14 +236,26 @@
         // Initialize theme on load
         updateTheme();
 
-        // 2. Scroll Reveal Animation Logic (Existing)
+        // 2. Navbar Scroll Effect Logic
+        const mainNav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('nav-scrolled');
+                mainNav.classList.remove('bg-transparent', 'border-b', 'border-transparent');
+            } else {
+                mainNav.classList.remove('nav-scrolled');
+                mainNav.classList.add('bg-transparent', 'border-b', 'border-transparent');
+            }
+        });
+
+        // 3. Scroll Reveal Animation Logic
         const revealElements = document.querySelectorAll('.reveal');
 
         function revealOnScroll() {
             const windowHeight = window.innerHeight;
             for (let i = 0; i < revealElements.length; i++) {
                 const elementTop = revealElements[i].getBoundingClientRect().top;
-                const revealPoint = 100; // Offset from bottom of viewport
+                const revealPoint = 100;
 
                 if (elementTop < windowHeight - revealPoint) {
                     revealElements[i].classList.add('active');
@@ -291,61 +264,58 @@
         }
 
         window.addEventListener('scroll', revealOnScroll);
-        // Run once on load to show elements already in view
         window.addEventListener('load', revealOnScroll);
-        
-        /* --- SPLIT SCREEN HERO LOGIC --- */
 
+        // 4. Split Screen Hero Functionality
         const leftPanel = document.getElementById('left-panel');
         const rightPanel = document.getElementById('right-panel');
         const leftText = document.getElementById('left-text');
         const rightText = document.getElementById('right-text');
         
-        // Define the default and expanded states
         const defaultState = { left: '50%', right: '50%' };
         const expandedLeftState = { left: '75%', right: '25%' };
         const expandedRightState = { left: '25%', right: '75%' };
 
-        /**
-         * Handles the hover effect by adjusting panel widths and showing text.
-         * @param {string} side - 'left' or 'right'
-         */
         function handleHover(side) {
             if (side === 'left') {
-                // Expand Left, Shrink Right
                 leftPanel.style.width = expandedLeftState.left;
                 rightPanel.style.width = expandedLeftState.right;
-                
-                // Show Left Text, Hide Right Text
                 leftText.classList.add('show-text');
                 rightText.classList.remove('show-text');
-
             } else if (side === 'right') {
-                // Expand Right, Shrink Left
                 leftPanel.style.width = expandedRightState.left;
                 rightPanel.style.width = expandedRightState.right;
-                
-                // Show Right Text, Hide Left Text
                 leftText.classList.remove('show-text');
                 rightText.classList.add('show-text');
             }
         }
 
-        /**
-         * Resets the panels to their default 50/50 state and hides text overlays.
-         */
         function handleReset() {
             leftPanel.style.width = defaultState.left;
             rightPanel.style.width = defaultState.right;
-
             leftText.classList.remove('show-text');
             rightText.classList.remove('show-text');
         }
 
-        // Initialize the split-screen layout on load and resize
         window.addEventListener('load', handleReset);
-        window.addEventListener('resize', handleReset); 
+        window.addEventListener('resize', handleReset);
 
+        // 5. Horizontal Scroll Carousel Logic (if you keep your work section)
+        const projectsContainer = document.getElementById('projectsContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        if (projectsContainer && scrollLeftBtn && scrollRightBtn) {
+            scrollLeftBtn.addEventListener('click', () => {
+                const scrollAmount = projectsContainer.clientWidth * 0.6;
+                projectsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                const scrollAmount = projectsContainer.clientWidth * 0.6;
+                projectsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
     </script>
 </body>
 </html>
