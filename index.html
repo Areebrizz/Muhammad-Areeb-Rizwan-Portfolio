@@ -62,6 +62,94 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none;  /* Chrome, Safari and Opera */
         }
+
+        /* NEW: Face Merge Animation Styles */
+        .animation-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .face-half {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation-duration: 3s;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-fill-mode: both;
+        }
+
+        .face-left {
+            left: 0;
+            background-image: url('assets/images/Gemini_Generated_Image_34i0cf34i0cf34i0.png');
+            filter: grayscale(100%) contrast(110%);
+            animation-name: fadeInLeft;
+        }
+
+        .face-right {
+            right: 0;
+            background-image: url('assets/images/Gemini_Generated_Image_rw7vtbrw7vtbrw7v.png');
+            animation-name: slideInRight;
+        }
+
+        /* Animation for left face - fade in */
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px) scale(0.95);
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        /* Animation for right face - slide in from right */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%) scale(0.95);
+                opacity: 0;
+            }
+            20% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+            80% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Auto-restart animation */
+        .face-left, .face-right {
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .animation-container {
+                height: 300px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -101,37 +189,125 @@
                     <a href="#contact" class="px-8 py-3 bg-transparent text-gray-800 dark:text-gray-100 font-semibold rounded-lg border-2 border-gray-400 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 transition-all transform hover:-translate-y-0.5 btn-secondary">Get In Touch</a>
                 </div>
             </div>
-            <!-- Hero Visual (Floating Cards) -->
+            <!-- NEW: Face Merge Animation instead of Floating Cards -->
             <div class="relative h-96 md:h-full flex items-center justify-center reveal">
-                <div class="absolute w-52 h-32 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 floating-card" style="top: 10%; left: 0%; animation-delay: 0s;">
-                    <!-- Placeholder content for Mechanical Engineering theme -->
-                    <div class="p-4">
-                        <div class="h-2 bg-blue-500 rounded-full w-1/2 mb-3"></div>
-                        <div class="h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mb-1"></div>
-                        <div class="h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full w-3/4"></div>
-                    </div>
-                </div>
-                <div class="absolute w-40 h-24 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 floating-card" style="top: 40%; right: 0%; animation-delay: 1s;">
-                    <!-- Placeholder content for CAD/Analysis -->
-                    <div class="flex justify-around p-3">
-                        <i data-lucide="cog" class="w-6 h-6 text-blue-500"></i>
-                        <i data-lucide="ruler" class="w-6 h-6 text-red-400"></i>
-                        <i data-lucide="trello" class="w-6 h-6 text-yellow-400"></i>
-                    </div>
-                </div>
-                <div class="absolute w-48 h-28 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 floating-card" style="bottom: 10%; left: 20%; animation-delay: 0.5s;">
-                    <!-- Placeholder content for Project Management -->
-                    <div class="p-4">
-                        <div class="flex items-center space-x-2 mb-2">
-                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full w-3/5"></div>
-                        </div>
-                        <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full w-4/5"></div>
-                    </div>
+                <div class="animation-container">
+                    <div class="face-half face-left"></div>
+                    <div class="face-half face-right"></div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- REST OF YOUR ORIGINAL CONTENT REMAINS UNCHANGED -->
+    <!-- Work Section -->
+    <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <!-- Your existing work section content -->
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <!-- Your existing about section content -->
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <!-- Your existing contact section content -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Muhammad Areeb Rizwan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // 1. Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && isSystemDark);
+
+        function updateTheme() {
+            if (isDarkMode) {
+                body.classList.add('dark');
+                themeIcon.innerHTML = '<i data-lucide="sun" class="w-6 h-6 text-yellow-400"></i>';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.innerHTML = '<i data-lucide="moon" class="w-6 h-6 text-blue-600"></i>';
+            }
+            lucide.createIcons();
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            updateTheme();
+        });
+
+        // Initialize theme on load
+        updateTheme();
+
+        // 2. Navbar Scroll Effect Logic
+        const mainNav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('nav-scrolled');
+                mainNav.classList.remove('bg-transparent', 'border-b', 'border-transparent');
+            } else {
+                mainNav.classList.remove('nav-scrolled');
+                mainNav.classList.add('bg-transparent', 'border-b', 'border-transparent');
+            }
+        });
+
+        // 3. Scroll Reveal Animation Logic
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            for (let i = 0; i < revealElements.length; i++) {
+                const elementTop = revealElements[i].getBoundingClientRect().top;
+                const revealPoint = 100; // Offset from bottom of viewport
+
+                if (elementTop < windowHeight - revealPoint) {
+                    revealElements[i].classList.add('active');
+                } else {
+                    // Optional: remove 'active' class if scrolling back up
+                    // revealElements[i].classList.remove('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Run once on load to show elements already in view
+        window.addEventListener('load', revealOnScroll);
+
+        // 4. Horizontal Scroll Carousel Logic
+        const projectsContainer = document.getElementById('projectsContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        if (projectsContainer) {
+            scrollLeftBtn.addEventListener('click', () => {
+                // Scroll left by roughly two card widths plus spacing
+                const scrollAmount = projectsContainer.clientWidth * 0.6; 
+                projectsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                // Scroll right by roughly two card widths plus spacing
+                const scrollAmount = projectsContainer.clientWidth * 0.6;
+                projectsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+ 
 
     <!-- Work Section - Now a Horizontal Scroll Carousel -->
     <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
