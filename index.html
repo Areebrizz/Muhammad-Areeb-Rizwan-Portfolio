@@ -244,107 +244,6 @@
         </div>
     </section>
 
-    <!-- The rest of your code remains unchanged -->
-    <!-- Work Section -->
-    <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-        <!-- Your work section content -->
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16">
-        <!-- Your about section content -->
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-        <!-- Your contact section content -->
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Muhammad Areeb Rizwan. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Interactions -->
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // 1. Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-
-        const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && isSystemDark);
-
-        function updateTheme() {
-            if (isDarkMode) {
-                body.classList.add('dark');
-                themeIcon.innerHTML = '<i data-lucide="sun" class="w-6 h-6 text-yellow-400"></i>';
-            } else {
-                body.classList.remove('dark');
-                themeIcon.innerHTML = '<i data-lucide="moon" class="w-6 h-6 text-blue-600"></i>';
-            }
-            lucide.createIcons();
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            updateTheme();
-        });
-
-        // Initialize theme on load
-        updateTheme();
-
-        // 2. Navbar Scroll Effect Logic
-        const mainNav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                mainNav.classList.add('nav-scrolled');
-                mainNav.classList.remove('bg-transparent', 'border-b', 'border-transparent');
-            } else {
-                mainNav.classList.remove('nav-scrolled');
-                mainNav.classList.add('bg-transparent', 'border-b', 'border-transparent');
-            }
-        });
-
-        // 3. Scroll Reveal Animation Logic
-        const revealElements = document.querySelectorAll('.reveal');
-
-        function revealOnScroll() {
-            const windowHeight = window.innerHeight;
-            for (let i = 0; i < revealElements.length; i++) {
-                const elementTop = revealElements[i].getBoundingClientRect().top;
-                const revealPoint = 100; // Offset from bottom of viewport
-
-                if (elementTop < windowHeight - revealPoint) {
-                    revealElements[i].classList.add('active');
-                } else {
-                    // Optional: remove 'active' class if scrolling back up
-                    // revealElements[i].classList.remove('active');
-                }
-            }
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-        // Run once on load to show elements already in view
-        window.addEventListener('load', revealOnScroll);
-
-        // 4. Text animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
-            animatedElements.forEach(el => {
-                el.style.animationPlayState = 'running';
-            });
-        });
-    </script>
-</body>
-</html>
-
     <!-- Work Section - Horizontal Scroll Carousel -->
     <section id="work" class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
         <div class="container mx-auto px-6">
@@ -732,6 +631,14 @@
                 projectsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             });
         }
+
+        // 5. Text animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'running';
+            });
+        });
     </script>
 </body>
 </html>
