@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.animation-container {
+    position: relative;
+    width: 600px;  /* Adjust based on your image size */
+    height: 400px; /* Adjust based on your image size */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1); /* Subtle glow */
+}
+
+.face-half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation-duration: 3s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* Smoother easing */
+    animation-fill-mode: both;
+}
+
+.face-left {
+    left: 0;
+    background-image: url('assets/images/Gemini_Generated_Image_34i0cf34i0cf34i0.png');
+    filter: grayscale(100%) contrast(110%); /* Enhanced grayscale */
+    animation-name: fadeInLeft;
+}
+
+.face-right {
+    right: 0;
+    background-image: url('assets/images/Gemini_Generated_Image_rw7vtbrw7vtbrw7v.png');
+    animation-name: slideInRight;
+}
+
+/* Animation for left face - fade in */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Animation for right face - slide in from right */
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%) scale(0.95);
+        opacity: 0;
+    }
+    20% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Continuous looping (optional) */
+.animation-container {
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
+
+.animation-container:hover .face-left,
+.animation-container:hover .face-right {
+    animation-play-state: paused; /* Pause on hover instead of infinite */
+}
+
+/* Auto-restart animation */
+.face-left, .face-right {
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+/* Add a subtle pulse effect to make it more dynamic */
+@keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.animation-container {
+    animation: subtlePulse 6s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .animation-container {
+        width: 95vw;
+        height: 63.33vw; /* Maintain 3:2 aspect ratio */
+        max-height: 70vh;
+    }
+    
+    .face-half {
+        animation-duration: 2.5s; /* Slightly faster on mobile */
+    }
+}
+
+/* Loading state */
+.animation-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 2s infinite;
+    z-index: 2;
+    opacity: 0;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+}
