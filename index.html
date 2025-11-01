@@ -173,6 +173,75 @@
         </div>
     </section>
     
+    <!-- Placeholder Work Section (Added back with scroll reveal) -->
+    <section id="work" class="min-h-screen pt-24 pb-16 bg-white dark:bg-gray-800 flex items-center">
+        <div class="container mx-auto px-6 py-12 reveal">
+            <h2 class="text-5xl font-extrabold text-blue-600 dark:text-blue-400 mb-8 text-center">My Work & Projects</h2>
+            <p class="text-xl text-gray-700 dark:text-gray-300 text-center max-w-3xl mx-auto">
+                This is the placeholder for your engineering projects, case studies, and technical achievements. The content will reveal on scroll.
+            </p>
+            <div class="mt-12 grid md:grid-cols-3 gap-8">
+                <!-- Project Card Placeholder 1 (Uses original floating-card animation class for demonstration) -->
+                <div class="p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 transition-shadow hover:shadow-xl floating-card reveal" style="animation-delay: 0.1s;">
+                    <i data-lucide="wrench" class="w-8 h-8 text-blue-500 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">CAD Design</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Detailed component modeling.</p>
+                </div>
+                <!-- Project Card Placeholder 2 -->
+                <div class="p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 transition-shadow hover:shadow-xl reveal" style="animation-delay: 0.2s;">
+                    <i data-lucide="line-chart" class="w-8 h-8 text-green-500 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">FEA Analysis</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Structural and thermal analysis reports.</p>
+                </div>
+                <!-- Project Card Placeholder 3 -->
+                <div class="p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 transition-shadow hover:shadow-xl reveal" style="animation-delay: 0.3s;">
+                    <i data-lucide="hard-hat" class="w-8 h-8 text-yellow-500 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Prototyping</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Hands-on fabrication experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placeholder About Section (Added back with scroll reveal) -->
+    <section id="about" class="min-h-screen pt-24 pb-16 flex items-center">
+        <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-12 items-center reveal">
+            <div class="md:col-span-2">
+                <h2 class="text-5xl font-extrabold text-blue-600 dark:text-blue-400 mb-4">About Muhammad Areeb Rizwan</h2>
+                <p class="text-xl text-gray-700 dark:text-gray-300 mb-6">
+                    I am a dedicated Mechanical Engineer specializing in design optimization and advanced material science. My approach blends foundational engineering principles with modern computational tools to deliver efficient and reliable solutions.
+                </p>
+                <p class="text-gray-600 dark:text-gray-400">
+                    This section serves as a placeholder to detail my career history, educational background, and core philosophies.
+                </p>
+            </div>
+            <div class="md:col-span-1 flex justify-center">
+                <!-- Placeholder for skills chart/visual -->
+                <div class="w-48 h-48 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center reveal" style="animation-delay: 0.4s;">
+                    <i data-lucide="layers-3" class="w-12 h-12 text-gray-500 dark:text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placeholder Contact Section (Added back with scroll reveal) -->
+    <section id="contact" class="min-h-screen pt-24 pb-16 bg-white dark:bg-gray-800 flex items-center">
+        <div class="container mx-auto px-6 py-12 reveal">
+            <h2 class="text-5xl font-extrabold text-blue-600 dark:text-blue-400 mb-8 text-center">Get In Touch</h2>
+            <div class="max-w-xl mx-auto p-8 rounded-xl shadow-2xl bg-gray-50 dark:bg-gray-700">
+                <p class="text-gray-700 dark:text-gray-300 mb-6 text-center">
+                    I am currently open to new project collaborations and full-time opportunities.
+                </p>
+                <form onsubmit="event.preventDefault(); alert('Form submission simulated! Check the console for details.');">
+                    <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 rounded-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-100">
+                    <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 rounded-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-100">
+                    <textarea placeholder="Your Message" rows="4" class="w-full p-3 mb-6 rounded-lg bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-100"></textarea>
+                    <button type="submit" class="w-full px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
     <!-- JavaScript for Interactions -->
     <script>
         // Initialize Lucide icons
