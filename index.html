@@ -122,15 +122,15 @@
             transition: transform 0.3s ease;
         }
 
-        /* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
+        /* Straight Alignment: All GIFs aligned to the far right (flex-end) with no offsets */
         .center-left-gifs img:nth-child(odd) {
-            align-self: flex-start; 
-            margin-right: 120px; /* Increased offset to push odd GIFs further right */
+            align-self: flex-end; 
+            margin-right: 0; /* Removed offset */
         }
 
         .center-left-gifs img:nth-child(even) {
             align-self: flex-end; 
-            margin-left: 60px; /* Retained offset for even GIFs */
+            margin-left: 0; /* Removed offset */
         }
 
         .center-left-gifs img:hover {
