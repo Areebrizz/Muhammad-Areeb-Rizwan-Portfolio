@@ -107,16 +107,16 @@
         .center-left-gifs {
             display: flex; 
             flex-direction: column; 
-            gap: 20px; 
+            gap: 30px; /* Increased gap for larger GIFs */
             width: 45%; 
-            max-width: 350px; 
+            max-width: 450px; /* Increased max-width to prevent cutting */
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
         /* Individual GIF styling - Removed border-radius and box-shadow */
         .center-left-gifs img {
             width: 100%;
-            max-width: 150px; 
+            max-width: 200px; /* Increased individual GIF size */
             height: auto;
             aspect-ratio: 1 / 1; 
             object-fit: cover;
@@ -148,15 +148,26 @@
 
         /* Further reduced font size for the main title */
         .center-title-main { 
-            font-size: 2.75rem; /* Reduced from 3rem */
+            font-size: 2.5rem; /* Slightly reduced again for better balance */
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Reduced margin to bring slogan closer */
         }
         
         .center-title-main strong {
             color: #4CAF50; /* Highlight Mechanical Engineer */
             font-weight: 900;
+        }
+
+        /* NEW: Slogan Styling */
+        .center-slogan {
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic; /* Different font style */
+            color: #ADD8E6; /* Lighter, subtle color */
+            margin-bottom: 25px;
+            display: block;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
 
         /* Styling for the large text block */
@@ -324,9 +335,12 @@
 
             /* Reduced font size for mobile */
             .center-title-main {
-                font-size: 2.25rem; 
+                font-size: 2rem; 
                 text-align: center;
                 margin-top: 0; 
+            }
+            .center-slogan {
+                font-size: 1.2rem;
             }
             .center-text-statement {
                 font-size: 1.2rem;
@@ -343,10 +357,13 @@
         @media (max-width: 500px) {
             /* Further reduced font size for small phones */
             .center-title-main {
-                font-size: 1.75rem; 
+                font-size: 1.5rem; 
+            }
+            .center-slogan {
+                font-size: 1rem;
             }
             .center-text-statement {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -359,20 +376,17 @@
             <div class="center-image"></div>
             <div class="center-content">
                 
-                <!-- REVERSED TWO-COLUMN LAYOUT -->
-                <div class="center-layout">
+                <!-- REVERSED TWO-COLUMN LAYOUT --><div class="center-layout">
                     
-                    <!-- FIRST: Text (now on far left) -->
-                    <div class="center-right-text">
+                    <!-- FIRST: Text (now on far left) --><div class="center-right-text">
                         <h1 class="center-title-main">I’m Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
+                        <p class="center-slogan">Discipline. Integrity. Innovation.</p>
                         <p class="center-text-statement">
                             ready to create global impact.
                         </p>
-                        <!-- CTA button has been removed -->
                     </div>
                     
-                    <!-- SECOND: GIFs (now on far right) -->
-                    <div class="center-left-gifs">
+                    <!-- SECOND: GIFs (now on far right) --><div class="center-left-gifs">
                         <img src="assets/images/drone.gif" alt="Drone Mechanical GIF">
                         <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF">
                         <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF">
@@ -381,8 +395,7 @@
                     
                 </div>
             </div>
-            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children -->
-        </div>
+            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children --></div>
 
         <div class="state-left" id="stateLeft">
             <div class="side-wrapper">
