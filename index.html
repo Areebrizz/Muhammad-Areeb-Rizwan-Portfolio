@@ -108,15 +108,15 @@
             display: flex; 
             flex-direction: column; 
             gap: 30px; /* Increased gap for larger GIFs */
-            width: 50%; /* Increased from 45% to take up more space */
+            width: 40%; /* Adjusted to 40% to push it further right and tighten the zig-zag */
             max-width: none; /* Removed restrictive max-width */
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
-        /* Individual GIF styling - Removed border-radius and box-shadow */
+        /* Individual GIF styling - Reduced size for smaller appearance */
         .center-left-gifs img {
             width: 100%;
-            max-width: 220px; /* Increased individual GIF size */
+            max-width: 160px; /* REDUCED SIZE: Was 220px */
             height: auto;
             aspect-ratio: 1 / 1; 
             object-fit: cover;
@@ -126,11 +126,11 @@
 
         /* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
         .center-left-gifs img:nth-child(odd) {
-            align-self: flex-start; 
+            align-self: flex-start; /* Aligns to the left side of the GIF container */
         }
 
         .center-left-gifs img:nth-child(even) {
-            align-self: flex-end; 
+            align-self: flex-end; /* Aligns to the right side of the GIF container (far right of screen) */
         }
 
         .center-left-gifs img:hover {
@@ -139,8 +139,8 @@
 
         /* NEW LAYOUT: Text Block (Now on Far Left) */
         .center-right-text {
-            width: 50%; /* Increased from 45% to equally share space */
-            max-width: 500px; /* Cap width for desktop view */
+            width: 60%; /* Increased from 50% to give the GIF column more room */
+            max-width: 600px; /* Cap width for desktop view */
             color: white;
             text-align: left; /* ALIGNED TO THE FAR LEFT */
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
@@ -350,7 +350,7 @@
             .center-left-gifs img:nth-child(odd),
             .center-left-gifs img:nth-child(even) {
                 align-self: center; 
-                width: 180px; /* Increased mobile GIF size */
+                width: 130px; /* REDUCED SIZE: Was 180px */
             }
         }
         
@@ -367,7 +367,7 @@
             }
             .center-left-gifs img:nth-child(odd),
             .center-left-gifs img:nth-child(even) {
-                width: 150px; /* Slightly smaller on smallest phones */
+                width: 100px; /* REDUCED SIZE: Was 150px */
             }
         }
 
