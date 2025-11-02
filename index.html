@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
+    <!-- Removed viewport meta tag to prevent mobile scaling and ensure desktop-only styling --><title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -109,14 +108,14 @@
             flex-direction: column; 
             gap: 20px; 
             width: 45%; 
-            max-width: 450px; /* Increased from 350px */
+            max-width: 675px; /* Increased by 1.5x (450 * 1.5 = 675) for desktop */
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
         /* Individual GIF styling - Removed border-radius and box-shadow */
         .center-left-gifs img {
             width: 100%;
-            max-width: 200px; /* Increased from 150px */
+            max-width: 300px; /* Increased by 1.5x (200 * 1.5 = 300) for desktop */
             height: auto;
             object-fit: contain;
             /* Removed: border-radius and box-shadow */
@@ -147,7 +146,7 @@
 
         /* Further reduced font size for the main title */
         .center-title-main { 
-            font-size: 2.75rem; /* Reduced from 3rem */
+            font-size: 2.75rem; /* Text size kept as is */
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -160,7 +159,7 @@
 
         /* Styling for the large text block */
         .center-text-statement {
-            font-size: 1.8rem;
+            font-size: 1.8rem; /* Text size kept as is */
             font-weight: 500;
             line-height: 1.4;
             margin-bottom: 25px;
@@ -287,70 +286,7 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Responsive adjustments */
-        @media (max-width: 900px) {
-            .center-content {
-                /* On mobile, revert to centered content */
-                left: 50%;
-                transform: translate(-50%, -50%);
-                padding: 20px;
-            }
-            .center-layout {
-                flex-direction: column; /* Stack vertically on tablets/mobiles */
-                gap: 30px;
-            }
-            
-            .center-left-gifs, .center-right-text {
-                width: 100%; /* Full width for stacked content */
-                padding: 0 20px;
-                max-width: none; /* Remove desktop max-width cap */
-            }
-
-            .center-left-gifs {
-                /* Ensure vertical stacking and centering on mobile */
-                display: flex;
-                flex-direction: column;
-                align-items: center; /* Center the whole GIF block */
-                max-width: 400px; /* Adjusted for mobile as well */
-                margin: 0 auto;
-                padding: 0; /* Also remove padding on mobile */
-            }
-            
-            /* Center text on small screens */
-            .center-right-text {
-                text-align: center;
-            }
-
-            /* Reduced font size for mobile */
-            .center-title-main {
-                font-size: 2.25rem; 
-                text-align: center;
-                margin-top: 0; 
-            }
-            .center-text-statement {
-                font-size: 1.2rem;
-            }
-            
-            /* Simplify mobile zig-zag by just centering the block */
-            .center-left-gifs img:nth-child(odd),
-            .center-left-gifs img:nth-child(even) {
-                align-self: center; 
-                width: 300px; /* Adjusted for mobile as well */
-            }
-        }
-        
-        @media (max-width: 700px) {
-            /* Further reduced font size for small phones */
-            .center-title-main {
-                font-size: 1.75rem; 
-            }
-            .center-text-statement {
-                font-size: 1rem;
-            }
-            .center-left-gifs img {
-                max-width: 200px; /* Slightly reduce for very small screens */
-            }
-        }
+        /* Removed all @media queries to ensure desktop-only styling without mobile adjustments */
 
     </style>
 </head>
