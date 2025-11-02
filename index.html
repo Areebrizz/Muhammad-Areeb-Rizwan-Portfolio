@@ -107,16 +107,16 @@
         .center-left-gifs {
             display: flex; 
             flex-direction: column; 
-            gap: 20px; 
-            width: 45%; 
-            max-width: 350px; 
+            gap: 30px; /* Increased gap for larger GIFs */
+            width: 50%; /* Increased from 45% to take up more space */
+            max-width: none; /* Removed restrictive max-width */
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
         /* Individual GIF styling - Removed border-radius and box-shadow */
         .center-left-gifs img {
             width: 100%;
-            max-width: 150px; 
+            max-width: 220px; /* Increased individual GIF size */
             height: auto;
             aspect-ratio: 1 / 1; 
             object-fit: cover;
@@ -139,7 +139,7 @@
 
         /* NEW LAYOUT: Text Block (Now on Far Left) */
         .center-right-text {
-            width: 45%; /* Slightly less than 50% to prevent overlap */
+            width: 50%; /* Increased from 45% to equally share space */
             max-width: 500px; /* Cap width for desktop view */
             color: white;
             text-align: left; /* ALIGNED TO THE FAR LEFT */
@@ -148,15 +148,26 @@
 
         /* Further reduced font size for the main title */
         .center-title-main { 
-            font-size: 2.75rem; /* Reduced from 3rem */
+            font-size: 2.5rem; 
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Reduced margin to bring slogan closer */
         }
         
         .center-title-main strong {
             color: #4CAF50; /* Highlight Mechanical Engineer */
             font-weight: 900;
+        }
+
+        /* NEW: Slogan Styling */
+        .center-slogan {
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic; /* Different font style */
+            color: #ADD8E6; /* Lighter, subtle color */
+            margin-bottom: 25px;
+            display: block;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
 
         /* Styling for the large text block */
@@ -312,7 +323,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center; /* Center the whole GIF block */
-                max-width: 300px;
+                max-width: 350px; /* Keep a max width on the block for mobile readability */
                 margin: 0 auto;
                 padding: 0; /* Also remove padding on mobile */
             }
@@ -324,9 +335,12 @@
 
             /* Reduced font size for mobile */
             .center-title-main {
-                font-size: 2.25rem; 
+                font-size: 2rem; 
                 text-align: center;
                 margin-top: 0; 
+            }
+            .center-slogan {
+                font-size: 1.2rem;
             }
             .center-text-statement {
                 font-size: 1.2rem;
@@ -336,17 +350,24 @@
             .center-left-gifs img:nth-child(odd),
             .center-left-gifs img:nth-child(even) {
                 align-self: center; 
-                width: 150px;
+                width: 180px; /* Increased mobile GIF size */
             }
         }
         
         @media (max-width: 500px) {
             /* Further reduced font size for small phones */
             .center-title-main {
-                font-size: 1.75rem; 
+                font-size: 1.5rem; 
+            }
+            .center-slogan {
+                font-size: 1rem;
             }
             .center-text-statement {
-                font-size: 1rem;
+                font-size: 0.9rem;
+            }
+            .center-left-gifs img:nth-child(odd),
+            .center-left-gifs img:nth-child(even) {
+                width: 150px; /* Slightly smaller on smallest phones */
             }
         }
 
@@ -365,14 +386,16 @@
                     <!-- FIRST: Text (now on far left) -->
                     <div class="center-right-text">
                         <h1 class="center-title-main">I’m Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
+                        <!-- Slogan added here -->
+                        <p class="center-slogan">Discipline. Integrity. Innovation.</p>
                         <p class="center-text-statement">
                             ready to create global impact.
                         </p>
-                        <!-- CTA button has been removed -->
                     </div>
                     
                     <!-- SECOND: GIFs (now on far right) -->
                     <div class="center-left-gifs">
+                        <!-- Reverting to generic GIF names based on project context, please ensure your local asset names match -->
                         <img src="assets/images/drone1.gif" alt="Drone Mechanical GIF">
                         <img src="assets/images/chevr1.gif" alt="Chevron Mechanical GIF">
                         <img src="assets/images/helii1.gif" alt="Helicopter Mechanical GIF">
@@ -411,7 +434,8 @@
         const right = document.getElementById('stateRight');
         
         // Define the center buffer size (e.g., 20% of the screen width/height)
-        const CENTER_BUFFER = 0.20; 
+        // INCREASED BUFFER to 35% for a larger central resting zone.
+        const CENTER_BUFFER = 0.35; 
 
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
@@ -425,13 +449,13 @@
             let currentState = 'center';
 
             if (x < centerX - bufferX) {
-                // Mouse is far left
+                // Mouse is far left, outside the left buffer zone
                 currentState = 'left';
             } else if (x > centerX + bufferX) {
-                // Mouse is far right
+                // Mouse is far right, outside the right buffer zone
                 currentState = 'right';
             } else {
-                // Mouse is near the center
+                // Mouse is near the center, inside the buffer zone
                 currentState = 'center';
             }
 
