@@ -155,17 +155,25 @@
             font-weight: 900;
         }
 
-        .center-text-statement {
-            font-size: 1.8rem;
-            font-weight: 500;
-            line-height: 1.4;
+        /* Motto/Slogan Styling */
+        .moto-container {
             margin-bottom: 25px;
-            display: block;
+            padding: 15px 0;
+            border-top: 2px solid #4CAF50;
+            border-bottom: 2px solid #4CAF50;
         }
 
-        /* FIXED: Removed the problematic CSS rule that was hiding the text */
-        /* This rule was causing the issue: */
-        /* .center-content h1.center-title, .center-content p[class] { display: none !important; } */
+        .moto-slogan {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #4CAF50;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin: 0;
+            display: block;
+            text-align: center;
+        }
 
         .center-image {
             position: absolute;
@@ -291,9 +299,14 @@
                 margin-bottom: 10px;
             }
 
-            .center-text-statement {
-                font-size: 1.2rem;
+            .moto-container {
+                padding: 10px 0;
                 margin-bottom: 15px;
+            }
+
+            .moto-slogan {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
             }
 
             .side-wrapper h1 {
@@ -319,9 +332,9 @@
                     <!-- Text (Visually on Left) -->
                     <div class="center-right-text">
                         <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
-                        <p class="center-text-statement">
-                            ready to create global impact.
-                        </p>
+                        <div class="moto-container">
+                            <p class="moto-slogan">Discipline. Integrity. Innovation.</p>
+                        </div>
                     </div>
                     
                     <!-- GIFs (Visually on Right) -->
