@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Re-added for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -35,7 +35,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/images/background 1.png'); /* Center Background */
+            background-image: url('assets/images/background 1.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -43,10 +43,10 @@
             justify-content: center;
             z-index: 30;
             transition: opacity 0.5s ease-in-out;
-            opacity: 1; /* Default state is visible */
+            opacity: 1;
         }
         
-        /* 2. Left State (Formal) & 3. Right State (Creative) - These expand */
+        /* 2. Left State (Formal) & 3. Right State (Creative) */
         .state-left, .state-right {
             position: absolute;
             top: 0;
@@ -55,15 +55,14 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            z-index: 40; /* Above center state */
-            opacity: 0; /* Hidden by default */
+            z-index: 40;
+            opacity: 0;
         }
 
-        /* Initial sizes for Left/Right states (visible only when center state fades) */
         .state-left {
             left: 0;
             width: 50%;
-            background-image: url('assets/images/background 2.png'); /* Left Background */
+            background-image: url('assets/images/background 2.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-start;
@@ -72,7 +71,7 @@
         .state-right {
             right: 0;
             width: 50%;
-            background-image: url('assets/images/background 3.png'); /* Right Background */
+            background-image: url('assets/images/background 3.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-end;
@@ -92,7 +91,7 @@
             box-sizing: border-box; 
         }
         
-        /* NEW LAYOUT: Flex container for the Text (Left) and GIFs (Right) */
+        /* LAYOUT: Flex container for Text and GIFs */
         .center-layout {
             display: flex;
             align-items: center; 
@@ -101,7 +100,7 @@
             width: 100%;
         }
 
-        /* GIF Container (Visually on the Right) */
+        /* GIF Container */
         .center-left-gifs {
             display: flex; 
             flex-direction: column; 
@@ -110,26 +109,23 @@
             max-width: 675px; 
         }
 
-        /* Individual GIF styling - Reduced size */
+        /* Individual GIF styling */
         .center-left-gifs img {
             width: 100%;
             max-width: 220px; 
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            /* New: Ensure all images default to right alignment in the column */
             align-self: flex-end; 
         }
 
         /* Right-Aligned Staggered Effect */
         .center-left-gifs img:nth-child(odd) {
-            /* Pushes odd images slightly inward from the far right edge of the column */
             margin-right: 30px; 
             margin-left: 0; 
         }
 
         .center-left-gifs img:nth-child(even) {
-            /* Aligned exactly to the far right edge of the column */
             margin-right: 0; 
             margin-left: 0;
         }
@@ -138,7 +134,7 @@
             transform: scale(1.05);
         }
 
-        /* Text Block (Visually on the Left) */
+        /* Text Block */
         .center-right-text {
             width: 40%;
             max-width: 500px;
@@ -147,7 +143,6 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* UPDATED: Font size decreased from 2.75rem to 2.5rem */
         .center-title-main { 
             font-size: 2.5rem; 
             font-weight: 900;
@@ -156,11 +151,10 @@
         }
         
         .center-title-main strong {
-            color: #4CAF50; /* Highlight Mechanical Engineer */
+            color: #4CAF50;
             font-weight: 900;
         }
 
-        /* Styling for the large text block */
         .center-text-statement {
             font-size: 1.8rem;
             font-weight: 500;
@@ -169,10 +163,9 @@
             display: block;
         }
 
-        /* Hiding the original single-line title/subtitle elements */
-        .center-content h1.center-title, .center-content p[class] {
-            display: none !important; 
-        }
+        /* FIXED: Removed the problematic CSS rule that was hiding the text */
+        /* This rule was causing the issue: */
+        /* .center-content h1.center-title, .center-content p[class] { display: none !important; } */
 
         .center-image {
             position: absolute;
@@ -184,31 +177,10 @@
             background-size: cover; 
             background-repeat: no-repeat;
             background-position: center;
-            z-index: 34; /* Below the text */
+            z-index: 34;
         }
 
-        /* CTA Button styling (Kept for reference, though element is removed) */
-        .cta-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-        }
-
-        .cta-button:hover {
-            background-color: #388E3C;
-            transform: translateY(-2px);
-        }
-
-
-        /* --- LEFT/RIGHT STATE CONTENT (FIXED) --- */
+        /* LEFT/RIGHT STATE CONTENT */
         .side-wrapper {
             width: 80%;
             padding: 0 5%;
@@ -235,7 +207,7 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
-        /* Image Placeholder on the opposite side (FIXED) */
+        /* Image Placeholder */
         .side-image-placeholder {
             position: absolute;
             top: 0;
@@ -245,7 +217,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 39; /* Below the text wrapper */
+            z-index: 39;
         }
         
         .state-left .side-image-placeholder {
@@ -258,8 +230,7 @@
             background-image: url('assets/images/new8.png'); 
         }
 
-        /* --- ACTIVE STATE STYLES (FIXED) --- */
-
+        /* ACTIVE STATE STYLES */
         .state-center.hidden {
             opacity: 0;
             z-index: 20; 
@@ -288,7 +259,7 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Ensuring mobile is considered (even if design is desktop focused) */
+        /* Mobile Responsive */
         @media (max-width: 1024px) {
             .center-layout {
                 flex-direction: column;
@@ -302,17 +273,16 @@
                 text-align: center;
             }
             .center-left-gifs {
-                padding-bottom: 50px; /* Give some space at the bottom */
+                padding-bottom: 50px;
             }
 
             .center-left-gifs img {
                 max-width: 180px;
-                align-self: center; /* Center them for mobile */
+                align-self: center;
                 margin: 5px 0 !important;
             }
 
             .center-right-text {
-                 /* Push the text content down a bit to clear the top edge */
                 padding-top: 50px; 
             }
             
@@ -364,7 +334,6 @@
                     
                 </div>
             </div>
-            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children -->
         </div>
 
         <div class="state-left" id="stateLeft">
@@ -393,32 +362,24 @@
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         
-        // Define the center buffer size (e.g., 20% of the screen width/height)
         const CENTER_BUFFER = 0.20; 
 
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within the element
-            // const y = e.clientY - rect.top; // y position within the element
+            const x = e.clientX - rect.left;
             const centerX = rect.width / 2;
-            // const centerY = rect.height / 2;
             const bufferX = rect.width * CENTER_BUFFER;
-            // const bufferY = rect.height * CENTER_BUFFER; // Unused in original logic
 
             let currentState = 'center';
 
             if (x < centerX - bufferX) {
-                // Mouse is far left
                 currentState = 'left';
             } else if (x > centerX + bufferX) {
-                // Mouse is far right
                 currentState = 'right';
             } else {
-                // Mouse is near the center
                 currentState = 'center';
             }
 
-            // Apply State Transitions
             if (currentState === 'center') {
                 center.classList.remove('hidden');
                 left.classList.remove('active');
@@ -434,14 +395,12 @@
             }
         }
         
-        // Optional: Reset to center if the mouse leaves the hero section
         function handleMouseLeave() {
             center.classList.remove('hidden');
             left.classList.remove('active');
             right.classList.remove('active');
         }
 
-        // Add event listeners
         hero.addEventListener('mousemove', handleMouseMove);
         hero.addEventListener('mouseleave', handleMouseLeave);
         
