@@ -160,13 +160,14 @@
             padding: 8px 0;
         }
 
-        /* Image Placeholder */
+        /* Image Placeholder - FIXED FOR MOBILE */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
             width: 50%; 
-            background-size: cover;
+            background-size: contain; /* Changed from cover to contain */
+            background-repeat: no-repeat;
             background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -240,7 +241,7 @@
             100% { opacity: 0.7; }
         }
 
-        /* Mobile layout - stack sections vertically */
+        /* Mobile layout - FIXED IMAGE DISPLAY */
         @media (max-width: 768px) {
             body {
                 overflow: auto;
@@ -276,18 +277,64 @@
                 padding: 20px;
             }
             
+            /* FIXED: Mobile image display */
             .side-image-placeholder {
-                display: none;
+                position: relative !important;
+                width: 100% !important;
+                height: 40% !important;
+                margin-top: 20px;
+                background-size: contain;
+                background-position: center;
+                opacity: 1;
+                display: none; /* Hidden by default on mobile */
+            }
+            
+            .state-left.active .side-image-placeholder,
+            .state-right.active .side-image-placeholder {
+                display: block;
             }
             
             .mobile-tap-hint {
                 display: block;
             }
             
+            /* Mobile layout adjustments */
+            .state-left,
+            .state-right {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .state-right .side-wrapper {
+                text-align: center;
+            }
+            
             /* Hide hover states on mobile */
             .state-left:not(.mobile-active),
             .state-right:not(.mobile-active) {
                 display: none;
+            }
+            
+            /* Back button for mobile */
+            .mobile-back-btn {
+                display: none;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background: rgba(0,0,0,0.7);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-size: 1rem;
+                z-index: 70;
+                cursor: pointer;
+            }
+            
+            .state-left.active .mobile-back-btn,
+            .state-right.active .mobile-back-btn {
+                display: block;
             }
         }
 
@@ -312,6 +359,17 @@
                 border-radius: 5px;
                 text-decoration: none;
             }
+            
+            .side-image-placeholder {
+                height: 35% !important;
+            }
+        }
+
+        /* Very small devices */
+        @media (max-width: 360px) {
+            .side-image-placeholder {
+                height: 30% !important;
+            }
         }
 
     </style>
@@ -329,6 +387,7 @@
         </div>
 
         <div class="state-left" id="stateLeft">
+            <button class="mobile-back-btn" id="backBtnLeft">← Back</button>
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1>
                 <p class="moto">Discipline. Integrity. Innovation.</p>
@@ -338,6 +397,7 @@
         </div>
 
         <div class="state-right" id="stateRight">
+            <button class="mobile-back-btn" id="backBtnRight">← Back</button>
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 ENGINEER</h1>
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
@@ -353,6 +413,8 @@
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         const mobileHint = document.getElementById('mobileHint');
+        const backBtnLeft = document.getElementById('backBtnLeft');
+        const backBtnRight = document.getElementById('backBtnRight');
         
         const CENTER_BUFFER = 0.20;
         let isMobile = false;
@@ -367,11 +429,21 @@
                 center.classList.remove('hidden');
                 left.classList.add('mobile-active');
                 right.classList.add('mobile-active');
+                
+                // Hide side images by default on mobile
+                document.querySelectorAll('.side-image-placeholder').forEach(img => {
+                    img.style.display = 'none';
+                });
             } else {
                 // Reset for desktop
                 left.classList.remove('mobile-active');
                 right.classList.remove('mobile-active');
                 resetToCenter();
+                
+                // Show side images on desktop
+                document.querySelectorAll('.side-image-placeholder').forEach(img => {
+                    img.style.display = 'block';
+                });
             }
         }
 
@@ -407,32 +479,42 @@
             const centerX = rect.width / 2;
 
             if (x < centerX) {
-                // Left side tapped
+                // Left side tapped - show Mechanical Engineer
                 center.style.display = 'none';
                 right.style.display = 'none';
                 left.style.display = 'flex';
+                left.classList.add('active');
                 mobileHint.style.display = 'none';
+                
+                // Show the image for this section
+                document.querySelector('.state-left .side-image-placeholder').style.display = 'block';
             } else {
-                // Right side tapped
+                // Right side tapped - show Industry 4.0 Engineer
                 center.style.display = 'none';
                 left.style.display = 'none';
                 right.style.display = 'flex';
+                right.classList.add('active');
                 mobileHint.style.display = 'none';
+                
+                // Show the image for this section
+                document.querySelector('.state-right .side-image-placeholder').style.display = 'block';
             }
-            
-            // Add back button functionality
-            setTimeout(() => {
-                hero.addEventListener('touchend', handleBackTap, { once: true });
-            }, 100);
         }
 
-        function handleBackTap() {
+        function handleBackToCenter() {
             if (!isMobile) return;
             
             center.style.display = 'flex';
             left.style.display = 'flex';
             right.style.display = 'flex';
+            left.classList.remove('active');
+            right.classList.remove('active');
             mobileHint.style.display = 'block';
+            
+            // Hide side images when returning to center
+            document.querySelectorAll('.side-image-placeholder').forEach(img => {
+                img.style.display = 'none';
+            });
         }
 
         function applyState(state) {
@@ -470,6 +552,8 @@
         hero.addEventListener('mousemove', handleMouseMove);
         hero.addEventListener('mouseleave', handleMouseLeave);
         hero.addEventListener('touchstart', handleTouchStart);
+        backBtnLeft.addEventListener('click', handleBackToCenter);
+        backBtnRight.addEventListener('click', handleBackToCenter);
         window.addEventListener('resize', checkMobile);
         
     </script>
