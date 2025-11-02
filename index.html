@@ -113,13 +113,13 @@
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
-        /* Individual GIF styling - Reduced size for smaller appearance */
+        /* Individual GIF styling - Fixed cropping */
         .center-left-gifs img {
             width: 100%;
-            max-width: 160px; /* REDUCED SIZE: Was 220px */
+            max-width: 160px; /* Max size for desktop */
             height: auto;
-            aspect-ratio: 1 / 1; 
-            object-fit: cover;
+            /* Removed aspect-ratio: 1 / 1; to prevent forcing square shape */
+            object-fit: contain; /* CHANGED FROM 'cover' to 'contain' to prevent cropping */
             /* Removed: border-radius and box-shadow */
             transition: transform 0.3s ease;
         }
@@ -396,10 +396,10 @@
                     <!-- SECOND: GIFs (now on far right) -->
                     <div class="center-left-gifs">
                         <!-- Reverting to generic GIF names based on project context, please ensure your local asset names match -->
-                        <img src="assets/images/drone1.gif" alt="Drone Mechanical GIF">
-                        <img src="assets/images/chevr1.gif" alt="Chevron Mechanical GIF">
-                        <img src="assets/images/helii1.gif" alt="Helicopter Mechanical GIF">
-                        <img src="assets/images/buggy1.gif" alt="Buggy Mechanical GIF">
+                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF">
+                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF">
+                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF">
+                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF">
                     </div>
                     
                 </div>
