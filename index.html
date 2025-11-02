@@ -1,421 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden; 
-        }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; 
+        }
 
-        /* Hero Section Container */
-        .hero-section {
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-            background-color: #333;
-            overflow: hidden;
-        }
+        /* Hero Section Container */
+        .hero-section {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            background-color: #333;
+            overflow: hidden;
+        }
 
-        /* --- STATE-BASED CONTAINERS --- */
+        /* --- STATE-BASED CONTAINERS --- */
 
-        /* 1. Center/Default State */
-        .state-center {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('assets/images/background 1.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 30;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
-        }
-        
-        /* 2. Left State (Formal) & 3. Right State (Creative) */
-        .state-left, .state-right {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            z-index: 40;
-            opacity: 0;
-        }
+        /* 1. Center/Default State */
+        .state-center {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/background 1.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 30;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        
+        /* 2. Left State (Formal) & 3. Right State (Creative) */
+        .state-left, .state-right {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            z-index: 40;
+            opacity: 0;
+        }
 
-        .state-left {
-            left: 0;
-            width: 50%;
-            background-image: url('assets/images/background 2.png');
-            background-size: cover;
-            background-position: center;
-            justify-content: flex-start;
-        }
+        .state-left {
+            left: 0;
+            width: 50%;
+            background-image: url('assets/images/background 2.png');
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-start;
+        }
 
-        .state-right {
-            right: 0;
-            width: 50%;
-            background-image: url('assets/images/background 3.png');
-            background-size: cover;
-            background-position: center;
-            justify-content: flex-end;
-        }
-        
-        /* --- CENTER STATE CONTENT --- */
-        .center-content {
-            z-index: 35;
-            position: absolute; 
-            top: 50%;
-            left: 0; 
-            transform: translateY(-50%); 
-            width: 100%; 
-            max-width: 100vw;
-            padding: 0 5vw; 
-            text-align: left; /* Changed from initial for consistency */
-            box-sizing: border-box; 
-        }
-        
-        /* LAYOUT: Flex container for Text and GIFs */
-        .center-layout {
-            display: flex;
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 30px; 
-            width: 100%;
-        }
+        .state-right {
+            right: 0;
+            width: 50%;
+            background-image: url('assets/images/background 3.png');
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-end;
+        }
+        
+        /* --- CENTER STATE CONTENT --- */
+        .center-content {
+            z-index: 35;
+            position: absolute; 
+            top: 50%;
+            left: 0; 
+            transform: translateY(-50%); 
+            width: 100%; 
+            max-width: 100vw;
+            padding: 0 5vw; 
+            text-align: initial;
+            box-sizing: border-box; 
+        }
+        
+        /* LAYOUT: Flex container for Text and GIFs */
+        .center-layout {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 30px; 
+            width: 100%;
+        }
 
-        /* GIF Container */
-        .center-left-gifs {
-            display: flex; 
-            flex-direction: column; 
-            gap: 10px; 
-            width: 50%; 
-            max-width: 675px; 
-        }
+        /* GIF Container */
+        .center-left-gifs {
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            width: 50%; 
+            max-width: 675px; 
+        }
 
-        /* Individual GIF styling */
-        .center-left-gifs img {
-            width: 100%;
-            max-width: 220px; 
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-            align-self: flex-end; 
-        }
+        /* Individual GIF styling */
+        .center-left-gifs img {
+            width: 100%;
+            max-width: 220px; 
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            align-self: flex-end; 
+        }
 
-        /* Right-Aligned Staggered Effect */
-        .center-left-gifs img:nth-child(odd) {
-            margin-right: 30px; 
-            margin-left: 0; 
-        }
+        /* Right-Aligned Staggered Effect */
+        .center-left-gifs img:nth-child(odd) {
+            margin-right: 30px; 
+            margin-left: 0; 
+        }
 
-        .center-left-gifs img:nth-child(even) {
-            margin-right: 0; 
-            margin-left: 0;
-        }
+        .center-left-gifs img:nth-child(even) {
+            margin-right: 0; 
+            margin-left: 0;
+        }
 
-        .center-left-gifs img:hover {
-            transform: scale(1.05);
-        }
+        .center-left-gifs img:hover {
+            transform: scale(1.05);
+        }
 
-        /* Text Block */
-        .center-right-text {
-            width: 40%;
-            max-width: 500px;
-            color: white;
-            text-align: left; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-        }
+        /* Text Block */
+        .center-right-text {
+            width: 40%;
+            max-width: 500px;
+            color: white;
+            text-align: left; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
 
-        .center-title-main { 
-            font-size: 2.5rem; 
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-        
-        .center-title-main strong {
-            color: #4CAF50;
-            font-weight: 900;
-        }
+        .center-title-main { 
+            font-size: 2.5rem; 
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+        
+        .center-title-main strong {
+            color: #4CAF50;
+            font-weight: 900;
+        }
 
-        /* Motto/Slogan Styling - MODIFIED FOR SUBTLETY */
-        .moto-container {
-            /* Removed green borders for subtle look */
-            margin-top: 5px; 
-            margin-bottom: 30px;
-            padding: 5px 0;
-            border: none; /* Explicitly remove borders */
-        }
+        /* Updated Motto/Slogan Styling - Subtle and Classic */
+        .moto-container {
+            margin-bottom: 25px;
+        }
 
-        .moto-slogan {
-            /* Reduced size, lighter color, subtle style */
-            font-size: 1.2rem; /* Reduced from 1.6rem */
-            font-weight: 500; /* Medium weight */
-            color: rgba(255, 255, 255, 0.85); /* Subtle white/light gray */
-            text-transform: none; /* Removed uppercase */
-            letter-spacing: 1px; /* Reduced spacing */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Softer shadow */
-            margin: 0;
-            display: block;
-            text-align: left; /* Aligned with the title in desktop view */
-            font-style: italic; /* Added slight style */
-        }
+        .moto-slogan {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #e0e0e0; /* Soft light gray */
+            font-style: italic;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            margin: 0;
+            display: block;
+            text-align: left;
+            line-height: 1.5;
+        }
 
-        .center-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 99%;
-            background-image: url('assets/images/new15.png'); 
-            background-size: cover; 
-            background-repeat: no-repeat;
-            background-position: center;
-            z-index: 34;
-        }
+        .center-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 99%;
+            background-image: url('assets/images/new15.png'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 34;
+        }
 
-        /* LEFT/RIGHT STATE CONTENT */
-        .side-wrapper {
-            width: 80%;
-            padding: 0 5%;
-            text-align: left;
-            position: relative;
-            z-index: 45; 
-        }
-        .state-right .side-wrapper {
-            text-align: right;
-        }
+        /* LEFT/RIGHT STATE CONTENT */
+        .side-wrapper {
+            width: 80%;
+            padding: 0 5%;
+            text-align: left;
+            position: relative;
+            z-index: 45; 
+        }
+        .state-right .side-wrapper {
+            text-align: right;
+        }
 
-        .side-wrapper h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
-        }
+        .side-wrapper h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+        }
 
-        .side-wrapper p.moto {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #ccc;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-        }
+        .side-wrapper p.moto {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ccc;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
 
-        /* Image Placeholder */
-        .side-image-placeholder {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 50%; 
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 39;
-        }
-        
-        .state-left .side-image-placeholder {
-            right: 0;
-            background-image: url('assets/images/formal1.png'); 
-        }
+        /* Image Placeholder */
+        .side-image-placeholder {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%; 
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 39;
+        }
+        
+        .state-left .side-image-placeholder {
+            right: 0;
+            background-image: url('assets/images/formal1.png'); 
+        }
 
-        .state-right .side-image-placeholder {
-            left: 0;
-            background-image: url('assets/images/new8.png'); 
-        }
+        .state-right .side-image-placeholder {
+            left: 0;
+            background-image: url('assets/images/new8.png'); 
+        }
 
-        /* ACTIVE STATE STYLES */
-        .state-center.hidden {
-            opacity: 0;
-            z-index: 20; 
-        }
+        /* ACTIVE STATE STYLES */
+        .state-center.hidden {
+            opacity: 0;
+            z-index: 20; 
+        }
 
-        .state-left.active {
-            width: 100%; 
-            opacity: 1;
-            z-index: 50;
-            justify-content: flex-start; 
-        }
-        .state-left.active .side-image-placeholder {
-            opacity: 1; 
-        }
-        
-        .state-right.active {
-            width: 100%; 
-            opacity: 1;
-            z-index: 50;
-            justify-content: flex-end; 
-        }
-        .state-right.active .side-image-placeholder {
-            opacity: 1; 
-        }
+        .state-left.active {
+            width: 100%; 
+            opacity: 1;
+            z-index: 50;
+            justify-content: flex-start; 
+        }
+        .state-left.active .side-image-placeholder {
+            opacity: 1; 
+        }
+        
+        .state-right.active {
+            width: 100%; 
+            opacity: 1;
+            z-index: 50;
+            justify-content: flex-end; 
+        }
+        .state-right.active .side-image-placeholder {
+            opacity: 1; 
+        }
 
-        .state-left:not(.active) { opacity: 0; z-index: 40; }
-        .state-right:not(.active) { opacity: 0; z-index: 40; }
+        .state-left:not(.active) { opacity: 0; z-index: 40; }
+        .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .center-layout {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                gap: 15px;
-            }
-            .center-right-text, .center-left-gifs {
-                width: 100%;
-                max-width: 100%;
-                text-align: center;
-            }
-            .center-left-gifs {
-                padding-bottom: 50px;
-            }
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .center-layout {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+            .center-right-text, .center-left-gifs {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            .center-left-gifs {
+                padding-bottom: 50px;
+            }
 
-            .center-left-gifs img {
-                max-width: 180px;
-                align-self: center;
-                margin: 5px 0 !important;
-            }
+            .center-left-gifs img {
+                max-width: 180px;
+                align-self: center;
+                margin: 5px 0 !important;
+            }
 
-            .center-right-text {
-                padding-top: 50px; 
-            }
-            
-            .moto-container {
-                padding: 10px 0;
-                margin-bottom: 15px;
-            }
+            .center-right-text {
+                padding-top: 50px; 
+            }
+            
+            .center-title-main {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
 
-            .moto-slogan {
-                font-size: 1rem; /* Adjusted for mobile */
-                text-align: center; /* Center motto on mobile */
-                letter-spacing: 1px;
-            }
+            .moto-container {
+                margin-bottom: 15px;
+            }
 
-            .side-wrapper h1 {
-                font-size: 3rem;
-            }
-            .side-wrapper p.moto {
-                font-size: 1.2rem;
-            }
-        }
+            .moto-slogan {
+                font-size: 1.1rem;
+                text-align: center;
+            }
 
-    </style>
+            .side-wrapper h1 {
+                font-size: 3rem;
+            }
+            .side-wrapper p.moto {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <section class="hero-section" id="heroSection">
-        
-        <div class="state-center" id="stateCenter">
-            <div class="center-image"></div>
-            <div class="center-content">
-                
-                <!-- LAYOUT: Text on Left, GIFs on Right -->
-                <div class="center-layout">
-                    
-                    <!-- Text (Visually on Left) -->
-                    <div class="center-right-text">
-                        <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
-                        <div class="moto-container">
-                            <p class="moto-slogan">Discipline. Integrity. Innovation.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- GIFs (Visually on Right) -->
-                    <div class="center-left-gifs">
-                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Drone+GIF+Missing'">
-                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Chevron+GIF+Missing'">
-                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Heli+GIF+Missing'">
-                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Buggy+GIF+Missing'">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+    <section class="hero-section" id="heroSection">
+        
+        <div class="state-center" id="stateCenter">
+            <div class="center-image"></div>
+            <div class="center-content">
+                
+                <!-- LAYOUT: Text on Left, GIFs on Right -->
+                <div class="center-layout">
+                    
+                    <!-- Text (Visually on Left) -->
+                    <div class="center-right-text">
+                        <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
+                        <div class="moto-container">
+                            <p class="moto-slogan">Discipline. Integrity. Innovation.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- GIFs (Visually on Right) -->
+                    <div class="center-left-gifs">
+                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Drone+GIF+Missing'">
+                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Chevron+GIF+Missing'">
+                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Heli+GIF+Missing'">
+                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Buggy+GIF+Missing'">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
-        <div class="state-left" id="stateLeft">
-            <div class="side-wrapper">
-                <h1>MECHANICAL ENGINEER</h1>
-                <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
-            </div>
-            <div class="side-image-placeholder"></div>
-        </div>
+        <div class="state-left" id="stateLeft">
+            <div class="side-wrapper">
+                <h1>MECHANICAL ENGINEER</h1>
+                <p class="moto">Building efficiency from precision and discipline.</p>
+                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
+            </div>
+            <div class="side-image-placeholder"></div>
+        </div>
 
-        <div class="state-right" id="stateRight">
-            <div class="side-wrapper">
-                <h1>INDUSTRY 4.0 EXPERT</h1>
-                <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio></a>
-            </div>
-            <div class="side-image-placeholder"></div>
-        </div>
+        <div class="state-right" id="stateRight">
+            <div class="side-wrapper">
+                <h1>INDUSTRY 4.0 EXPERT</h1>
+                <p class="moto">Automating the future of intelligent manufacturing.</p>
+                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio></a>
+            </div>
+            <div class="side-image-placeholder"></div>
+        </div>
 
-    </section>
+    </section>
 
-    <script>
-        const hero = document.getElementById('heroSection');
-        const center = document.getElementById('stateCenter');
-        const left = document.getElementById('stateLeft');
-        const right = document.getElementById('stateRight');
-        
-        const CENTER_BUFFER = 0.20; 
+    <script>
+        const hero = document.getElementById('heroSection');
+        const center = document.getElementById('stateCenter');
+        const left = document.getElementById('stateLeft');
+        const right = document.getElementById('stateRight');
+        
+        const CENTER_BUFFER = 0.20; 
 
-        function handleMouseMove(e) {
-            const rect = hero.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const centerX = rect.width / 2;
-            const bufferX = rect.width * CENTER_BUFFER;
+        function handleMouseMove(e) {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const centerX = rect.width / 2;
+            const bufferX = rect.width * CENTER_BUFFER;
 
-            let currentState = 'center';
+            let currentState = 'center';
 
-            if (x < centerX - bufferX) {
-                currentState = 'left';
-            } else if (x > centerX + bufferX) {
-                currentState = 'right';
-            } else {
-                currentState = 'center';
-            }
+            if (x < centerX - bufferX) {
+                currentState = 'left';
+            } else if (x > centerX + bufferX) {
+                currentState = 'right';
+            } else {
+                currentState = 'center';
+            }
 
-            if (currentState === 'center') {
-                center.classList.remove('hidden');
-                left.classList.remove('active');
-                right.classList.remove('active');
-            } else if (currentState === 'left') {
-                center.classList.add('hidden');
-                left.classList.add('active');
-                right.classList.remove('active');
-            } else if (currentState === 'right') {
-                center.classList.add('hidden');
-                left.classList.remove('active');
-                right.classList.add('active');
-            }
-        }
-        
-        function handleMouseLeave() {
-            center.classList.remove('hidden');
-            left.classList.remove('active');
-            right.classList.remove('active');
-        }
+            if (currentState === 'center') {
+                center.classList.remove('hidden');
+                left.classList.remove('active');
+                right.classList.remove('active');
+            } else if (currentState === 'left') {
+                center.classList.add('hidden');
+                left.classList.add('active');
+                right.classList.remove('active');
+            } else if (currentState === 'right') {
+                center.classList.add('hidden');
+                left.classList.remove('active');
+                right.classList.add('active');
+            }
+        }
+        
+        function handleMouseLeave() {
+            center.classList.remove('hidden');
+            left.classList.remove('active');
+            right.classList.remove('active');
+        }
 
-        hero.addEventListener('mousemove', handleMouseMove);
-        hero.addEventListener('mouseleave', handleMouseLeave);
-        
-    </script>
+        hero.addEventListener('mousemove', handleMouseMove);
+        hero.addEventListener('mouseleave', handleMouseLeave);
+        
+    </script>
 </body>
 </html>
