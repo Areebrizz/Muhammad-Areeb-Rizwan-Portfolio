@@ -107,7 +107,7 @@
         .center-left-gifs {
             display: flex; 
             flex-direction: column; 
-            gap: 30px; /* Increased gap for larger GIFs */
+            gap: 15px; /* DECREASED GAP: Brought GIFs closer together (from 30px to 15px) */
             width: 40%; /* Adjusted to 40% to push it further right and tighten the zig-zag */
             max-width: none; /* Removed restrictive max-width */
             /* Removed: background, padding, border-radius, and box-shadow */
@@ -116,10 +116,10 @@
         /* Individual GIF styling - Fixed cropping */
         .center-left-gifs img {
             width: 100%;
-            max-width: 160px; /* Max size for desktop */
+            max-width: 200px; /* INCREASED SIZE: Max size for desktop (from 160px to 200px) */
             height: auto;
             /* Removed aspect-ratio: 1 / 1; to prevent forcing square shape */
-            object-fit: contain; /* CHANGED FROM 'cover' to 'contain' to prevent cropping */
+            object-fit: contain; /* CONFIRMED: Ensures entire GIF is visible */
             /* Removed: border-radius and box-shadow */
             transition: transform 0.3s ease;
         }
@@ -350,7 +350,7 @@
             .center-left-gifs img:nth-child(odd),
             .center-left-gifs img:nth-child(even) {
                 align-self: center; 
-                width: 130px; /* REDUCED SIZE: Was 180px */
+                width: 160px; /* INCREASED SIZE: Adjusted to match old desktop size */
             }
         }
         
@@ -367,7 +367,7 @@
             }
             .center-left-gifs img:nth-child(odd),
             .center-left-gifs img:nth-child(even) {
-                width: 100px; /* REDUCED SIZE: Was 150px */
+                width: 130px; /* INCREASED SIZE: Adjusted to match old tablet size */
             }
         }
 
