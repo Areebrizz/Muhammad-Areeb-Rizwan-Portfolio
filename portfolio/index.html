@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product design portfolio - Product design case studies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .clearfix:before, .clearfix:after {
+            content: "";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        
+        /* Header */
+        header {
+            background: #111;
+            height: 62px;
+            padding: 0 5%;
+            width: 90%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: lowercase;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: #757575;
+        }
+        
+        .icon-nav {
+            display: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .content {
+            margin-top: 62px;
+        }
+        
+        section.main {
+            padding: 6.4rem 3.2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .row {
+            max-width: 1040px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .col-5 {
+            width: 41.66667%;
+            padding: 0 15px;
+        }
+        
+        .col-7 {
+            width: 58.33333%;
+            padding: 0 15px;
+        }
+        
+        .col-12 {
+            width: 100%;
+            padding: 0 15px;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        p.intro {
+            font-size: 1.5rem;
+            color: #757575;
+            margin-bottom: 1.5rem;
+        }
+        
+        p.description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        img.major {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .align-c {
+            text-align: center;
+        }
+        
+        /* Portfolio Grid */
+        section.dark {
+            background: #fafafa;
+            padding: 6.4rem 3.2rem;
+        }
+        
+        .thumbs {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .thumbs li {
+            width: 33.33333%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        
+        .thumbs a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            transition: box-shadow 0.3s;
+        }
+        
+        .thumbs a:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .thumbs img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .thumbs .description {
+            padding: 1.6rem;
+        }
+        
+        .thumbs h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .thumbs p {
+            color: #757575;
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: #f5f5f5;
+            padding: 40px 5% 0;
+            color: #757575;
+            font-size: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer .left {
+            margin-bottom: 1rem;
+        }
+        
+        footer a {
+            color: #757575;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: #333;
+        }
+        
+        #nav-footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        #nav-footer li {
+            margin: 0 1rem;
+        }
+        
+        .gradient-white {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            top: -50px;
+            left: 0;
+            background: linear-gradient(to top, #fff, transparent);
+        }
+        
+        .top {
+            display: block;
+            width: 118px;
+            height: 90px;
+            position: absolute;
+            left: 50%;
+            margin-left: -59px;
+            bottom: -40px;
+            text-indent: -9999px;
+            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 90"><path d="M59 0l59 90H0z" fill="%23757575"/></svg>') no-repeat;
+        }
+        
+        .top:hover {
+            bottom: -35px;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 5%;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 62px;
+                left: 0;
+                width: 100%;
+                background: #222;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            nav li {
+                margin: 0;
+                border-top: 1px solid #333;
+            }
+            
+            nav a {
+                display: block;
+                padding: 1rem;
+            }
+            
+            .icon-nav {
+                display: block;
+            }
+            
+            .col-5, .col-7 {
+                width: 100%;
+            }
+            
+            .thumbs li {
+                width: 50%;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            p.intro {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .thumbs li {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <a id="logo" class="logo" href="#">Adham Dannaway</a>
+        <div class="icon-nav">☰</div>
+        <nav>
+            <ul id="nav">
+                <li><a href="#">about</a></li>
+                <li><a href="#">learn</a></li>
+                <li><a href="#" class="current">portfolio</a></li>
+                <li><a href="#">blog</a></li>
+                <li><a href="#">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content portfolio-main clearfix">
+        <section class="main nopad-b">
+            <div class="row">
+                <div id="text-main" class="col-5 text-main">
+                    <h1>portfolio.</h1>
+                    <p class="intro">Check out some of my latest product design case studies.</p>
+                    <p class="description">I've worked for startups, agencies, corporations, and government and have led projects to design products used by millions of people.</p>
+                </div>
+                <div id="img-main" class="col-7 align-c">
+                    <img class="major" src="https://via.placeholder.com/600x400" alt="adham dannaway design portfolio">
+                </div>
+            </div>
+        </section>
+
+        <div id="content-detail">
+            <section class="dark">
+                <div class="row">
+                    <div class="col-12">
+                        <ul id="thumbs" class="thumbs clearfix">
+                            <li>
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/300x200" alt="Figma design system">
+                                    <div class="description">
+                                        <h4>My Figma design system</h4>
+                                        <p>Design system</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/300x200" alt="UI design book">
+                                    <div class="description">
+                                        <h4>My UI design book</h4>
+                                        <p>Book</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/300x200" alt="Creating a lean design system">
+                                    <div class="description">
+                                        <h4>Creating a lean design system</h4>
+                                        <p>Design system</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/300x200" alt="Interior design news feed">
+                                    <div class="description">
+                                        <h4>Interior design news feed</h4>
+                                        <p>Side project</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/300x200" alt="Qantas map search">
+                                    <div class="description">
+                                        <h4>Qantas map search</h4>
+                                        <p>Product design</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/300x200" alt="Qantas homepage">
+                                    <div class="description">
+                                        <h4>Qantas homepage refresh</h4>
+                                        <p>Website design</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer id="footer" role="contentinfo">
+        <div class="row">
+            <div class="col-12">
+                <div class="left"><a href="#">© 2025 Adham Dannaway</a></div>
+                <nav id="nav-footer">
+                    <ul>
+                        <li><a href="#">about</a></li>
+                        <li><a href="#">learn</a></li>
+                        <li><a href="#" class="current">portfolio</a></li>
+                        <li><a href="#">blog</a></li>
+                        <li><a href="#">contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="gradient-white">
+            <a class="top" href="#header">Back to top</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        document.querySelector('.icon-nav').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            this.textContent = this.textContent === '☰' ? '✕' : '☰';
+        });
+
+        // Smooth scrolling for back to top
+        document.querySelector('.top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').style.display = 'none';
+                    document.querySelector('.icon-nav').textContent = '☰';
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.querySelector('nav').style.display = 'block';
+            } else {
+                document.querySelector('nav').style.display = 'none';
+                document.querySelector('.icon-nav').textContent = '☰';
+            }
+        });
+    </script>
+</body>
+</html>
