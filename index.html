@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            overflow: hidden; /* Prevent scroll on the single-page hero */
+            overflow: hidden;
         }
 
         /* Hero Section Container */
@@ -22,21 +22,18 @@
             height: 100vh;
             width: 100vw;
             position: relative;
-            background-color: #333; /* Default fallback */
+            background-color: #333;
             overflow: hidden;
         }
 
         /* --- STATE-BASED CONTAINERS --- */
-
-        /* 1. Center/Default State - This sits behind everything initially */
         .state-center {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* NOTE: This background will be obscured by the full-screen .center-image */
-            background-image: url('assets/images/background 1.png'); /* Center Background */
+            background-image: url('assets/images/background 1.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -44,10 +41,9 @@
             justify-content: center;
             z-index: 30;
             transition: opacity 0.5s ease-in-out;
-            opacity: 1; /* Default state is visible */
+            opacity: 1;
         }
         
-        /* 2. Left State (Formal) & 3. Right State (Creative) - These expand */
         .state-left, .state-right {
             position: absolute;
             top: 0;
@@ -56,15 +52,14 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            z-index: 40; /* Above center state */
-            opacity: 0; /* Hidden by default */
+            z-index: 40;
+            opacity: 0;
         }
 
-        /* Initial sizes for Left/Right states (visible only when center state fades) */
         .state-left {
             left: 0;
             width: 50%;
-            background-image: url('assets/images/background 2.png'); /* Left Background */
+            background-image: url('assets/images/background 2.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-start;
@@ -73,7 +68,7 @@
         .state-right {
             right: 0;
             width: 50%;
-            background-image: url('assets/images/background 3.png'); /* Right Background */
+            background-image: url('assets/images/background 3.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-end;
@@ -84,11 +79,12 @@
             text-align: center;
             color: white;
             z-index: 35;
-            position: absolute; /* Position relative to state-center */
+            position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Center the content overlay */
-            width: 80%; /* Ensure content isn't too wide */
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
         }
 
         .center-image {
@@ -97,62 +93,83 @@
             left: 0;
             width: 100%;
             height: 99%;
-            /* Make collage2.png fill the entire state-center area */
-            background-image: url('assets/images/new15.png'); 
-            background-size: cover; /* This makes the image fill the space */
+            background-image: url('assets/images/new15.png');
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            z-index: 34; /* Below the text */
+            z-index: 34;
         }
 
         .center-title {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            line-height: 1.2;
         }
 
         .center-subtitle {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 500;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            display: inline-block;
-            border-radius: 5px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            margin-bottom: 15px;
         }
 
-        /* We remove .center-text-group h2 as it's no longer used */
+        .center-moto {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 24px;
+            display: inline-block;
+            border-radius: 5px;
+            line-height: 1.4;
+        }
 
-        /* --- LEFT/RIGHT STATE CONTENT (FIXED) --- */
+        /* --- LEFT/RIGHT STATE CONTENT --- */
         .side-wrapper {
             width: 80%;
             padding: 0 5%;
             text-align: left;
             position: relative;
-            z-index: 45; /* Ensure text is above the image placeholder */
+            z-index: 45;
         }
+        
         .state-right .side-wrapper {
             text-align: right;
         }
 
         .side-wrapper h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 900;
             color: white;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
 
         .side-wrapper p.moto {
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
             font-style: italic;
             color: #ccc;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
-        /* Image Placeholder on the opposite side (FIXED) */
+        .side-wrapper a {
+            color: white;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            padding: 8px 0;
+        }
+
+        /* Image Placeholder */
         .side-image-placeholder {
             position: absolute;
             top: 0;
@@ -162,62 +179,204 @@
             background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 39; /* Below the text wrapper */
+            z-index: 39;
         }
         
         .state-left .side-image-placeholder {
             right: 0;
-            background-image: url('assets/images/formal1.png'); 
+            background-image: url('assets/images/formal1.png');
         }
 
         .state-right .side-image-placeholder {
             left: 0;
-            background-image: url('assets/images/new8.png'); 
+            background-image: url('assets/images/new8.png');
         }
 
-        /* --- ACTIVE STATE STYLES (FIXED) --- */
-
+        /* --- ACTIVE STATE STYLES --- */
         .state-center.hidden {
             opacity: 0;
-            z-index: 20; 
+            z-index: 20;
         }
 
         .state-left.active {
-            width: 100%; 
+            width: 100%;
             opacity: 1;
             z-index: 50;
-            justify-content: flex-start; /* Changed from center to flex-start */
+            justify-content: flex-start;
         }
+        
         .state-left.active .side-image-placeholder {
-            opacity: 1; 
+            opacity: 1;
         }
         
         .state-right.active {
-            width: 100%; 
+            width: 100%;
             opacity: 1;
             z-index: 50;
-            justify-content: flex-end; /* Changed from center to flex-end */
+            justify-content: flex-end;
         }
+        
         .state-right.active .side-image-placeholder {
-            opacity: 1; 
+            opacity: 1;
         }
 
-        .state-left:not(.active) { opacity: 0; z-index: 40; }
-        .state-right:not(.active) { opacity: 0; z-index: 40; }
+        .state-left:not(.active), 
+        .state-right:not(.active) { 
+            opacity: 0; 
+            z-index: 40; 
+        }
 
-        /* Responsive adjustments */
+        /* --- MOBILE-SPECIFIC STYLES --- */
+        .mobile-tap-hint {
+            display: none;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            z-index: 60;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Mobile layout */
         @media (max-width: 768px) {
-            .center-title {
-                font-size: 2rem;
+            body {
+                overflow: auto;
             }
-            .center-subtitle {
-                font-size: 1.1rem;
+            
+            .hero-section {
+                height: auto;
+                min-height: 100vh;
+                overflow: auto;
             }
-            .side-wrapper h1 {
-                font-size: 2.5rem;
+            
+            /* Reset all states for mobile */
+            .state-center,
+            .state-left,
+            .state-right {
+                position: relative;
+                width: 100% !important;
+                height: 100vh;
+                min-height: 600px;
+                opacity: 1;
+                z-index: 10;
+                justify-content: center;
             }
-            .side-wrapper p.moto {
-                font-size: 1.2rem;
+            
+            .state-center.hidden {
+                opacity: 1;
+            }
+            
+            .center-content,
+            .side-wrapper {
+                width: 90%;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            /* Mobile image display */
+            .side-image-placeholder {
+                position: relative !important;
+                width: 100% !important;
+                height: 40% !important;
+                margin-top: 20px;
+                background-size: contain;
+                background-position: center;
+                opacity: 1;
+                display: none; /* Hidden by default on mobile */
+            }
+            
+            .state-left.active .side-image-placeholder,
+            .state-right.active .side-image-placeholder {
+                display: block;
+            }
+            
+            .mobile-tap-hint {
+                display: block;
+            }
+            
+            /* Mobile layout adjustments */
+            .state-left,
+            .state-right {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .state-right .side-wrapper {
+                text-align: center;
+            }
+            
+            /* Hide hover states on mobile */
+            .state-left:not(.mobile-active),
+            .state-right:not(.mobile-active) {
+                display: none;
+            }
+            
+            /* Back button for mobile */
+            .mobile-back-btn {
+                display: none;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background: rgba(0,0,0,0.7);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-size: 1rem;
+                z-index: 70;
+                cursor: pointer;
+            }
+            
+            .state-left.active .mobile-back-btn,
+            .state-right.active .mobile-back-btn {
+                display: block;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .state-center,
+            .state-left,
+            .state-right {
+                min-height: 500px;
+                height: 100vh;
+            }
+            
+            .center-content,
+            .side-wrapper {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .side-wrapper a {
+                padding: 12px 24px;
+                background: rgba(255,255,255,0.2);
+                border-radius: 5px;
+                text-decoration: none;
+            }
+            
+            .side-image-placeholder {
+                height: 35% !important;
+            }
+        }
+
+        /* Very small devices */
+        @media (max-width: 360px) {
+            .side-image-placeholder {
+                height: 30% !important;
             }
         }
 
@@ -225,33 +384,36 @@
 </head>
 <body>
     <section class="hero-section" id="heroSection">
+        <div class="mobile-tap-hint" id="mobileHint">Tap on sides to explore</div>
         
         <div class="state-center" id="stateCenter">
             <div class="center-image"></div>
             <div class="center-content">
                 <h1 class="center-title">MUHAMMAD AREEB RIZWAN SIDDIQUI</h1>
-                <p class="center-subtitle">MECHANICAL ENGINEER. DISCIPLINE. INTEGRITY. INNOVATION.</p>
+                <p class="center-subtitle">Mechanical Engineer and Automation Specialist, love to solve real world problems with smart solutions.</p>
+                <p class="center-moto">Discipline. Integrity. Innovation.</p>
             </div>
         </div>
 
         <div class="state-left" id="stateLeft">
+            <button class="mobile-back-btn" id="backBtnLeft">← Back</button>
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1>
-                <p class="moto">Discipline. Integrity. Innovation.</p>
-                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
+                <p class="moto">Specializing in automation, robotics, and innovative engineering solutions.</p>
+                <a href="/about">View Formal Profile ></a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
 
         <div class="state-right" id="stateRight">
+            <button class="mobile-back-btn" id="backBtnRight">← Back</button>
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1>
-                <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio ></a>
+                <p class="moto">Creating efficient and smart automated systems for real-world challenges.</p>
+                <a href="/portfolio">View Creative Portfolio ></a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
-
     </section>
 
     <script>
@@ -259,58 +421,149 @@
         const center = document.getElementById('stateCenter');
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
+        const mobileHint = document.getElementById('mobileHint');
+        const backBtnLeft = document.getElementById('backBtnLeft');
+        const backBtnRight = document.getElementById('backBtnRight');
         
-        // Define the center buffer size (e.g., 20% of the screen width/height)
-        const CENTER_BUFFER = 0.20; 
+        const CENTER_BUFFER = 0.20;
+        let isMobile = false;
 
+        // Check if mobile device
+        function checkMobile() {
+            isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                // Initialize mobile layout
+                left.classList.remove('active');
+                right.classList.remove('active');
+                center.classList.remove('hidden');
+                left.classList.add('mobile-active');
+                right.classList.add('mobile-active');
+                
+                // Hide side images by default on mobile
+                document.querySelectorAll('.side-image-placeholder').forEach(img => {
+                    img.style.display = 'none';
+                });
+            } else {
+                // Reset for desktop
+                left.classList.remove('mobile-active');
+                right.classList.remove('mobile-active');
+                resetToCenter();
+                
+                // Show side images on desktop
+                document.querySelectorAll('.side-image-placeholder').forEach(img => {
+                    img.style.display = 'block';
+                });
+            }
+        }
+
+        // Desktop mouse interaction
         function handleMouseMove(e) {
+            if (isMobile) return;
+            
             const rect = hero.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within the element
-            const y = e.clientY - rect.top;  // y position within the element
+            const x = e.clientX - rect.left;
             const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
             const bufferX = rect.width * CENTER_BUFFER;
-            const bufferY = rect.height * CENTER_BUFFER;
 
             let currentState = 'center';
 
             if (x < centerX - bufferX) {
-                // Mouse is far left
                 currentState = 'left';
             } else if (x > centerX + bufferX) {
-                // Mouse is far right
                 currentState = 'right';
             } else {
-                // Mouse is near the center
                 currentState = 'center';
             }
 
-            // Apply State Transitions
-            if (currentState === 'center') {
+            applyState(currentState);
+        }
+
+        // Mobile touch interaction
+        function handleTouchStart(e) {
+            if (!isMobile) return;
+            
+            const touch = e.touches[0];
+            const rect = hero.getBoundingClientRect();
+            const x = touch.clientX - rect.left;
+            const centerX = rect.width / 2;
+
+            if (x < centerX) {
+                // Left side tapped - show Mechanical Engineer
+                center.style.display = 'none';
+                right.style.display = 'none';
+                left.style.display = 'flex';
+                left.classList.add('active');
+                mobileHint.style.display = 'none';
+                
+                // Show the image for this section
+                document.querySelector('.state-left .side-image-placeholder').style.display = 'block';
+            } else {
+                // Right side tapped - show Industry 4.0 Expert
+                center.style.display = 'none';
+                left.style.display = 'none';
+                right.style.display = 'flex';
+                right.classList.add('active');
+                mobileHint.style.display = 'none';
+                
+                // Show the image for this section
+                document.querySelector('.state-right .side-image-placeholder').style.display = 'block';
+            }
+        }
+
+        function handleBackToCenter() {
+            if (!isMobile) return;
+            
+            center.style.display = 'flex';
+            left.style.display = 'flex';
+            right.style.display = 'flex';
+            left.classList.remove('active');
+            right.classList.remove('active');
+            mobileHint.style.display = 'block';
+            
+            // Hide side images when returning to center
+            document.querySelectorAll('.side-image-placeholder').forEach(img => {
+                img.style.display = 'none';
+            });
+        }
+
+        function applyState(state) {
+            if (state === 'center') {
                 center.classList.remove('hidden');
                 left.classList.remove('active');
                 right.classList.remove('active');
-            } else if (currentState === 'left') {
+            } else if (state === 'left') {
                 center.classList.add('hidden');
                 left.classList.add('active');
                 right.classList.remove('active');
-            } else if (currentState === 'right') {
+            } else if (state === 'right') {
                 center.classList.add('hidden');
                 left.classList.remove('active');
                 right.classList.add('active');
             }
         }
-        
-        // Optional: Reset to center if the mouse leaves the hero section
-        function handleMouseLeave() {
+
+        function resetToCenter() {
             center.classList.remove('hidden');
             left.classList.remove('active');
             right.classList.remove('active');
         }
 
-        // Add event listeners
+        function handleMouseLeave() {
+            if (!isMobile) {
+                resetToCenter();
+            }
+        }
+
+        // Initialize
+        checkMobile();
+        
+        // Event listeners
         hero.addEventListener('mousemove', handleMouseMove);
         hero.addEventListener('mouseleave', handleMouseLeave);
+        hero.addEventListener('touchstart', handleTouchStart);
+        backBtnLeft.addEventListener('click', handleBackToCenter);
+        backBtnRight.addEventListener('click', handleBackToCenter);
+        window.addEventListener('resize', checkMobile);
         
     </script>
 </body>
