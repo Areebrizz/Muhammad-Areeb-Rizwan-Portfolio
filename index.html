@@ -109,17 +109,16 @@
             flex-direction: column; 
             gap: 20px; 
             width: 45%; 
-            max-width: 350px; 
+            max-width: 450px; /* Increased from 350px */
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
         /* Individual GIF styling - Removed border-radius and box-shadow */
         .center-left-gifs img {
             width: 100%;
-            max-width: 150px; 
+            max-width: 200px; /* Increased from 150px */
             height: auto;
-            /* aspect-ratio: 1 / 1; <- REMOVED */ 
-            object-fit: contain; /* <- CHANGED from 'cover' */
+            object-fit: contain;
             /* Removed: border-radius and box-shadow */
             transition: transform 0.3s ease;
         }
@@ -312,7 +311,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center; /* Center the whole GIF block */
-                max-width: 300px;
+                max-width: 400px; /* Adjusted for mobile as well */
                 margin: 0 auto;
                 padding: 0; /* Also remove padding on mobile */
             }
@@ -336,7 +335,7 @@
             .center-left-gifs img:nth-child(odd),
             .center-left-gifs img:nth-child(even) {
                 align-self: center; 
-                width: 150px;
+                width: 200px; /* Adjusted for mobile as well */
             }
         }
         
@@ -347,6 +346,9 @@
             }
             .center-text-statement {
                 font-size: 1rem;
+            }
+            .center-left-gifs img {
+                max-width: 150px; /* Slightly reduce for very small screens */
             }
         }
 
@@ -359,20 +361,16 @@
             <div class="center-image"></div>
             <div class="center-content">
                 
-                <!-- REVERSED TWO-COLUMN LAYOUT -->
-                <div class="center-layout">
+                <!-- REVERSED TWO-COLUMN LAYOUT --><div class="center-layout">
                     
-                    <!-- FIRST: Text (now on far left) -->
-                    <div class="center-right-text">
+                    <!-- FIRST: Text (now on far left) --><div class="center-right-text">
                         <h1 class="center-title-main">I’m Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
                         <p class="center-text-statement">
                             ready to create global impact.
                         </p>
-                        <!-- CTA button has been removed -->
-                    </div>
+                        <!-- CTA button has been removed --></div>
                     
-                    <!-- SECOND: GIFs (now on far right) -->
-                    <div class="center-left-gifs">
+                    <!-- SECOND: GIFs (now on far right) --><div class="center-left-gifs">
                         <img src="assets/images/drone.gif" alt="Drone Mechanical GIF">
                         <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF">
                         <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF">
@@ -381,8 +379,7 @@
                     
                 </div>
             </div>
-            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children -->
-        </div>
+            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children --></div>
 
         <div class="state-left" id="stateLeft">
             <div class="side-wrapper">
