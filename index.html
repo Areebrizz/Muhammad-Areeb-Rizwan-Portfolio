@@ -94,48 +94,48 @@
         }
         
         /* NEW LAYOUT: Flex container for the Text (Left) and GIFs (Right) */
-.center-layout {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; /* Pushes content blocks to the far left and right */
-    gap: 30px; /* Reduced from 45px */
-    width: 100%;
-}
+        .center-layout {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; /* Pushes content blocks to the far left and right */
+            gap: 30px; /* Reduced gap between text and GIF column */
+            width: 100%;
+        }
 
-/* NEW LAYOUT: GIF Container - Bounding Box Removed */
-.center-left-gifs {
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; /* Reduced from 25px - controls VERTICAL spacing */
-    width: 50%; 
-    max-width: 675px; /* Increased by 1.5x (450 * 1.5 = 675) for desktop */
-    /* Removed: background, padding, border-radius, and box-shadow */
-}
+        /* NEW LAYOUT: GIF Container - Bounding Box Removed */
+        .center-left-gifs {
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; /* Reduced vertical gap between GIFs */
+            width: 45%; 
+            max-width: 675px; 
+            /* Removed: background, padding, border-radius, and box-shadow */
+        }
 
-/* Individual GIF styling - Removed border-radius and box-shadow */
-.center-left-gifs img {
-    width: 100%;
-    max-width: 300px; /* Increased by 1.5x (200 * 1.5 = 300) for desktop */
-    height: auto;
-    object-fit: contain;
-    /* Removed: border-radius and box-shadow */
-    transition: transform 0.3s ease;
-}
+        /* Individual GIF styling - Removed border-radius and box-shadow */
+        .center-left-gifs img {
+            width: 100%;
+            max-width: 300px; /* Increased by 1.5x (200 * 1.5 = 300) for desktop */
+            height: auto;
+            object-fit: contain;
+            /* Removed: border-radius and box-shadow */
+            transition: transform 0.3s ease;
+        }
 
-/* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
-.center-left-gifs img:nth-child(odd) {
-    align-self: flex-start; 
-    margin-right: 20px; /* Added to bring odd GIFs closer to center */
-}
+        /* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
+        .center-left-gifs img:nth-child(odd) {
+            align-self: flex-start; 
+            margin-right: 20px; /* Pulls odd GIFs 20px closer to the column center */
+        }
 
-.center-left-gifs img:nth-child(even) {
-    align-self: flex-end; 
-    margin-left: 20px; /* Added to bring even GIFs closer to center */
-}
+        .center-left-gifs img:nth-child(even) {
+            align-self: flex-end; 
+            margin-left: 20px; /* Pulls even GIFs 20px closer to the column center */
+        }
 
-.center-left-gifs img:hover {
-    transform: scale(1.05);
-}
+        .center-left-gifs img:hover {
+            transform: scale(1.05);
+        }
 
         /* NEW LAYOUT: Text Block (Now on Far Left) */
         .center-right-text {
