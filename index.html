@@ -125,12 +125,12 @@
         /* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
         .center-left-gifs img:nth-child(odd) {
             align-self: flex-start; 
-            margin-right: 60px; /* Increased offset to pull odd GIFs further in/left */
+            margin-right: 120px; /* Increased offset to push odd GIFs further right */
         }
 
         .center-left-gifs img:nth-child(even) {
             align-self: flex-end; 
-            margin-left: 60px; /* Increased offset to pull even GIFs further in/right */
+            margin-left: 60px; /* Retained offset for even GIFs */
         }
 
         .center-left-gifs img:hover {
