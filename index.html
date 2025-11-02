@@ -81,14 +81,99 @@
         
         /* --- CENTER STATE CONTENT --- */
         .center-content {
-            text-align: center;
-            color: white;
+            /* Positioning for full-width span */
             z-index: 35;
-            position: absolute; /* Position relative to state-center */
+            position: absolute; 
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Center the content overlay */
-            width: 80%; /* Ensure content isn't too wide */
+            left: 0; /* Align content container to the far left of the viewport */
+            transform: translateY(-50%); /* Only vertical centering needed */
+            width: 100%; /* Span the whole width */
+            max-width: 100vw; /* Ensure it respects viewport width */
+            padding: 0 5vw; /* Add horizontal padding to create space from edges */
+            text-align: initial;
+            box-sizing: border-box; /* Crucial for padding/width calculation */
+        }
+        
+        /* NEW LAYOUT: Flex container for the Text (Left) and GIFs (Right) */
+        .center-layout {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; /* Pushes content blocks to the far left and right */
+            gap: 40px; 
+            width: 100%;
+        }
+
+        /* NEW LAYOUT: Left side (GIFs) - Vertical Zig-Zag */
+        .center-left-gifs {
+            display: flex; /* Changed to flex */
+            flex-direction: column; /* Stack vertically */
+            gap: 20px; /* Spacing between GIFs */
+            width: 45%; 
+            max-width: 350px; /* Reduced overall max-width */
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px; /* Increased padding slightly for better framing */
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .center-left-gifs img {
+            width: 100%;
+            max-width: 150px; /* Reduced individual GIF size */
+            height: auto;
+            aspect-ratio: 1 / 1; /* Keep GIFs square */
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        /* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
+        .center-left-gifs img:nth-child(odd) {
+            align-self: flex-start; 
+        }
+
+        .center-left-gifs img:nth-child(even) {
+            align-self: flex-end; 
+        }
+
+        .center-left-gifs img:hover {
+            transform: scale(1.05);
+        }
+
+        /* NEW LAYOUT: Text Block (Now on Far Left) */
+        .center-right-text {
+            width: 45%; /* Slightly less than 50% to prevent overlap */
+            max-width: 500px; /* Cap width for desktop view */
+            color: white;
+            text-align: left; /* ALIGNED TO THE FAR LEFT */
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
+
+        /* Further reduced font size for the main title */
+        .center-title-main { 
+            font-size: 2.75rem; /* Reduced from 3rem */
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .center-title-main strong {
+            color: #4CAF50; /* Highlight Mechanical Engineer */
+            font-weight: 900;
+        }
+
+        /* Styling for the large text block */
+        .center-text-statement {
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        /* Hiding the original single-line title/subtitle elements */
+        .center-content h1.center-title, .center-content p[class] {
+            display: none !important; 
         }
 
         .center-image {
@@ -105,27 +190,28 @@
             z-index: 34; /* Below the text */
         }
 
-        .center-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-        }
-
-        .center-subtitle {
-            font-size: 1.8rem;
-            font-weight: 500;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
+        /* CTA Button styling (Kept, but the element will be removed from HTML) */
+        .cta-button {
             display: inline-block;
-            border-radius: 5px;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #4CAF50; /* Green CTA button */
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
 
-        /* We remove .center-text-group h2 as it's no longer used */
+        .cta-button:hover {
+            background-color: #388E3C;
+            transform: translateY(-2px);
+        }
 
-        /* --- LEFT/RIGHT STATE CONTENT (FIXED) --- */
+
+        /* --- LEFT/RIGHT STATE CONTENT (FIXED) - No changes here --- */
         .side-wrapper {
             width: 80%;
             padding: 0 5%;
@@ -206,18 +292,64 @@
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
         /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .center-title {
-                font-size: 2rem;
+        @media (max-width: 900px) {
+            .center-content {
+                /* On mobile, revert to centered content */
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px;
             }
-            .center-subtitle {
-                font-size: 1.1rem;
+            .center-layout {
+                flex-direction: column; /* Stack vertically on tablets/mobiles */
+                gap: 30px;
             }
-            .side-wrapper h1 {
-                font-size: 2.5rem;
+            
+            .center-left-gifs, .center-right-text {
+                width: 100%; /* Full width for stacked content */
+                padding: 0 20px;
+                max-width: none; /* Remove desktop max-width cap */
             }
-            .side-wrapper p.moto {
+
+            .center-left-gifs {
+                /* Ensure vertical stacking and centering on mobile */
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center the whole GIF block */
+                max-width: 300px;
+                margin: 0 auto;
+                padding: 15px;
+            }
+            
+            /* Center text on small screens */
+            .center-right-text {
+                text-align: center;
+            }
+
+            /* Reduced font size for mobile */
+            .center-title-main {
+                font-size: 2.25rem; 
+                text-align: center;
+                margin-top: 0; 
+            }
+            .center-text-statement {
                 font-size: 1.2rem;
+            }
+            
+            /* Simplify mobile zig-zag by just centering the block */
+            .center-left-gifs img:nth-child(odd),
+            .center-left-gifs img:nth-child(even) {
+                align-self: center; 
+                width: 150px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            /* Further reduced font size for small phones */
+            .center-title-main {
+                font-size: 1.75rem; 
+            }
+            .center-text-statement {
+                font-size: 1rem;
             }
         }
 
@@ -229,9 +361,30 @@
         <div class="state-center" id="stateCenter">
             <div class="center-image"></div>
             <div class="center-content">
-                <h1 class="center-title">MUHAMMAD AREEB RIZWAN SIDDIQUI</h1>
-                <p class>Discipline. Integrity. Innovation.</p>
+                
+                <!-- REVERSED TWO-COLUMN LAYOUT -->
+                <div class="center-layout">
+                    
+                    <!-- FIRST: Text (now on far left) -->
+                    <div class="center-right-text">
+                        <h1 class="center-title-main">I’m Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
+                        <p class="center-text-statement">
+                            ready to create global impact.
+                        </p>
+                        <!-- CTA button has been removed -->
+                    </div>
+                    
+                    <!-- SECOND: GIFs (now on far right) -->
+                    <div class="center-left-gifs">
+                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF">
+                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF">
+                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF">
+                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF">
+                    </div>
+                    
+                </div>
             </div>
+            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children -->
         </div>
 
         <div class="state-left" id="stateLeft">
@@ -266,7 +419,7 @@
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
             const x = e.clientX - rect.left; // x position within the element
-            const y = e.clientY - rect.top;  // y position within the element
+            const y = e.clientY - rect.top; // y position within the element
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             const bufferX = rect.width * CENTER_BUFFER;
