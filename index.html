@@ -100,40 +100,6 @@
             width: 100%;
         }
 
-        /* GIF Container */
-        .center-left-gifs {
-            display: flex; 
-            flex-direction: column; 
-            gap: 10px; 
-            width: 50%; 
-            max-width: 675px; 
-        }
-
-        /* Individual GIF styling */
-        .center-left-gifs img {
-            width: 100%;
-            max-width: 220px; 
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-            align-self: flex-end; 
-        }
-
-        /* Right-Aligned Staggered Effect */
-        .center-left-gifs img:nth-child(odd) {
-            margin-right: 30px; 
-            margin-left: 0; 
-        }
-
-        .center-left-gifs img:nth-child(even) {
-            margin-right: 0; 
-            margin-left: 0;
-        }
-
-        .center-left-gifs img:hover {
-            transform: scale(1.05);
-        }
-
         /* Text Block */
         .center-right-text {
             width: 40%;
@@ -184,6 +150,42 @@
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34;
+        }
+
+        /* CENTRAL GIFS POSITIONED OVER HANDS */
+        .central-gifs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 36; /* Above the center image but below text */
+            pointer-events: none; /* Allow clicks to pass through to underlying elements */
+        }
+
+        .central-gif {
+            position: absolute;
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            pointer-events: auto; /* Re-enable hover effects */
+        }
+
+        .central-gif:hover {
+            transform: scale(1.05);
+        }
+
+        /* POSITION THE GIFS OVER YOUR HANDS */
+        /* Adjust these coordinates to position over your hands */
+        .gif-left-hand {
+            top: 45%;   /* Adjust vertical position */
+            left: 35%;  /* Adjust horizontal position - left hand */
+        }
+
+        .gif-right-hand {
+            top: 45%;   /* Adjust vertical position */
+            right: 35%; /* Adjust horizontal position - right hand */
         }
 
         /* LEFT/RIGHT STATE CONTENT */
@@ -273,22 +275,10 @@
                 text-align: center;
                 gap: 15px;
             }
-            .center-right-text, .center-left-gifs {
+            .center-right-text {
                 width: 100%;
                 max-width: 100%;
                 text-align: center;
-            }
-            .center-left-gifs {
-                padding-bottom: 50px;
-            }
-
-            .center-left-gifs img {
-                max-width: 180px;
-                align-self: center;
-                margin: 5px 0 !important;
-            }
-
-            .center-right-text {
                 padding-top: 50px; 
             }
             
@@ -306,6 +296,21 @@
                 text-align: center;
             }
 
+            /* Adjust central GIFs for mobile */
+            .central-gif {
+                width: 150px; /* Smaller on mobile */
+            }
+
+            .gif-left-hand {
+                top: 40%;
+                left: 20%;
+            }
+
+            .gif-right-hand {
+                top: 40%;
+                right: 20%;
+            }
+
             .side-wrapper h1 {
                 font-size: 3rem;
             }
@@ -321,9 +326,16 @@
         
         <div class="state-center" id="stateCenter">
             <div class="center-image"></div>
+            
+            <!-- CENTRAL GIFS POSITIONED OVER HANDS -->
+            <div class="central-gifs-container">
+                <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
+                <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+            </div>
+            
             <div class="center-content">
                 
-                <!-- LAYOUT: Text on Left, GIFs on Right -->
+                <!-- LAYOUT: Text on Left -->
                 <div class="center-layout">
                     
                     <!-- Text (Visually on Left) -->
@@ -334,13 +346,8 @@
                         </div>
                     </div>
                     
-                    <!-- GIFs (Visually on Right) -->
-                    <div class="center-left-gifs">
-                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Drone+GIF+Missing'">
-                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Chevron+GIF+Missing'">
-                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Heli+GIF+Missing'">
-                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Buggy+GIF+Missing'">
-                    </div>
+                    <!-- Empty div to maintain layout balance -->
+                    <div style="width: 50%;"></div>
                     
                 </div>
             </div>
