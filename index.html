@@ -125,11 +125,13 @@
 
         /* We remove .center-text-group h2 as it's no longer used */
 
-        /* --- LEFT/RIGHT STATE CONTENT (Unchanged) --- */
+        /* --- LEFT/RIGHT STATE CONTENT (FIXED) --- */
         .side-wrapper {
             width: 80%;
             padding: 0 5%;
             text-align: left;
+            position: relative;
+            z-index: 45; /* Ensure text is above the image placeholder */
         }
         .state-right .side-wrapper {
             text-align: right;
@@ -150,7 +152,7 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
-        /* Image Placeholder on the opposite side (Unchanged) */
+        /* Image Placeholder on the opposite side (FIXED) */
         .side-image-placeholder {
             position: absolute;
             top: 0;
@@ -160,7 +162,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 39;
+            z-index: 39; /* Below the text wrapper */
         }
         
         .state-left .side-image-placeholder {
@@ -173,7 +175,7 @@
             background-image: url('assets/images/new8.png'); 
         }
 
-        /* --- ACTIVE STATE STYLES (Unchanged) --- */
+        /* --- ACTIVE STATE STYLES (FIXED) --- */
 
         .state-center.hidden {
             opacity: 0;
@@ -184,7 +186,7 @@
             width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: center; 
+            justify-content: flex-start; /* Changed from center to flex-start */
         }
         .state-left.active .side-image-placeholder {
             opacity: 1; 
@@ -194,7 +196,7 @@
             width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: center; 
+            justify-content: flex-end; /* Changed from center to flex-end */
         }
         .state-right.active .side-image-placeholder {
             opacity: 1; 
