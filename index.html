@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Removed viewport meta tag to prevent mobile scaling and ensure desktop-only styling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Re-added for responsiveness -->
     <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            overflow: hidden; /* Prevent scroll on the single-page hero */
+            overflow: hidden; 
         }
 
         /* Hero Section Container */
@@ -22,20 +22,19 @@
             height: 100vh;
             width: 100vw;
             position: relative;
-            background-color: #333; /* Default fallback */
+            background-color: #333;
             overflow: hidden;
         }
 
         /* --- STATE-BASED CONTAINERS --- */
 
-        /* 1. Center/Default State - This sits behind everything initially */
+        /* 1. Center/Default State */
         .state-center {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* NOTE: This background will be obscured by the full-screen .center-image */
             background-image: url('assets/images/background 1.png'); /* Center Background */
             background-size: cover;
             background-position: center;
@@ -81,69 +80,70 @@
         
         /* --- CENTER STATE CONTENT --- */
         .center-content {
-            /* Positioning for full-width span */
             z-index: 35;
             position: absolute; 
             top: 50%;
-            left: 0; /* Align content container to the far left of the viewport */
-            transform: translateY(-50%); /* Only vertical centering needed */
-            width: 100%; /* Span the whole width */
-            max-width: 100vw; /* Ensure it respects viewport width */
-            padding: 0 5vw; /* Add horizontal padding to create space from edges */
+            left: 0; 
+            transform: translateY(-50%); 
+            width: 100%; 
+            max-width: 100vw;
+            padding: 0 5vw; 
             text-align: initial;
-            box-sizing: border-box; /* Crucial for padding/width calculation */
+            box-sizing: border-box; 
         }
         
         /* NEW LAYOUT: Flex container for the Text (Left) and GIFs (Right) */
         .center-layout {
             display: flex;
             align-items: center; 
-            justify-content: space-between; /* Pushes content blocks to the far left and right */
-            gap: 30px; /* Gap between text and GIF column */
+            justify-content: space-between; 
+            gap: 30px; 
             width: 100%;
         }
 
-        /* NEW LAYOUT: GIF Container - Zig-zag pattern */
+        /* GIF Container (Visually on the Right) */
         .center-left-gifs {
             display: flex; 
             flex-direction: column; 
-            gap: 10px; /* Tighter vertical gap for GIFs */
+            gap: 10px; 
             width: 50%; 
             max-width: 675px; 
-            /* Removed: background, padding, border-radius, and box-shadow */
         }
 
         /* Individual GIF styling - Reduced size */
         .center-left-gifs img {
             width: 100%;
-            max-width: 220px; /* Reduced from 250px */
+            max-width: 220px; 
             height: auto;
             object-fit: contain;
-            /* Removed: border-radius and box-shadow */
             transition: transform 0.3s ease;
+            /* New: Ensure all images default to right alignment in the column */
+            align-self: flex-end; 
         }
 
-        /* Zig-Zag Effect: Minimal horizontal distance */
+        /* Right-Aligned Staggered Effect */
         .center-left-gifs img:nth-child(odd) {
-            align-self: flex-start; 
-            margin-right: 15px; /* Minimal offset to the right */
+            /* Pushes odd images slightly inward from the far right edge of the column */
+            margin-right: 30px; 
+            margin-left: 0; 
         }
 
         .center-left-gifs img:nth-child(even) {
-            align-self: flex-end; 
-            margin-left: 15px; /* Minimal offset to the left */
+            /* Aligned exactly to the far right edge of the column */
+            margin-right: 0; 
+            margin-left: 0;
         }
 
         .center-left-gifs img:hover {
             transform: scale(1.05);
         }
 
-        /* NEW LAYOUT: Text Block (Now on Far Left) */
+        /* Text Block (Visually on the Left) */
         .center-right-text {
-            width: 40%; /* Reduced width to give more space to the GIF column */
-            max-width: 500px; /* Cap width for desktop view */
+            width: 40%;
+            max-width: 500px;
             color: white;
-            text-align: left; /* ALIGNED TO THE FAR LEFT */
+            text-align: left; 
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
         }
 
@@ -162,7 +162,7 @@
 
         /* Styling for the large text block */
         .center-text-statement {
-            font-size: 1.8rem; /* Text size kept as is */
+            font-size: 1.8rem;
             font-weight: 500;
             line-height: 1.4;
             margin-bottom: 25px;
@@ -180,20 +180,19 @@
             left: 0;
             width: 100%;
             height: 99%;
-            /* Make collage2.png fill the entire state-center area */
             background-image: url('assets/images/new15.png'); 
-            background-size: cover; /* This makes the image fill the space */
+            background-size: cover; 
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34; /* Below the text */
         }
 
-        /* CTA Button styling (Kept, but the element will be removed from HTML) */
+        /* CTA Button styling (Kept for reference, though element is removed) */
         .cta-button {
             display: inline-block;
             margin-top: 20px;
             padding: 12px 30px;
-            background-color: #4CAF50; /* Green CTA button */
+            background-color: #4CAF50;
             color: white;
             text-decoration: none;
             font-weight: 700;
@@ -209,13 +208,13 @@
         }
 
 
-        /* --- LEFT/RIGHT STATE CONTENT (FIXED) - No changes here --- */
+        /* --- LEFT/RIGHT STATE CONTENT (FIXED) --- */
         .side-wrapper {
             width: 80%;
             padding: 0 5%;
             text-align: left;
             position: relative;
-            z-index: 45; /* Ensure text is above the image placeholder */
+            z-index: 45; 
         }
         .state-right .side-wrapper {
             text-align: right;
@@ -270,7 +269,7 @@
             width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: flex-start; /* Changed from center to flex-start */
+            justify-content: flex-start; 
         }
         .state-left.active .side-image-placeholder {
             opacity: 1; 
@@ -280,7 +279,7 @@
             width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: flex-end; /* Changed from center to flex-end */
+            justify-content: flex-end; 
         }
         .state-right.active .side-image-placeholder {
             opacity: 1; 
@@ -289,7 +288,51 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Removed all @media queries to ensure desktop-only styling without mobile adjustments */
+        /* Ensuring mobile is considered (even if design is desktop focused) */
+        @media (max-width: 1024px) {
+            .center-layout {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+            .center-right-text, .center-left-gifs {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            .center-left-gifs {
+                padding-bottom: 50px; /* Give some space at the bottom */
+            }
+
+            .center-left-gifs img {
+                max-width: 180px;
+                align-self: center; /* Center them for mobile */
+                margin: 5px 0 !important;
+            }
+
+            .center-right-text {
+                 /* Push the text content down a bit to clear the top edge */
+                padding-top: 50px; 
+            }
+            
+            .center-title-main {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .center-text-statement {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+
+            .side-wrapper h1 {
+                font-size: 3rem;
+            }
+            .side-wrapper p.moto {
+                font-size: 1.2rem;
+            }
+        }
 
     </style>
 </head>
@@ -300,24 +343,23 @@
             <div class="center-image"></div>
             <div class="center-content">
                 
-                <!-- REVERSED TWO-COLUMN LAYOUT -->
+                <!-- LAYOUT: Text on Left, GIFs on Right -->
                 <div class="center-layout">
                     
-                    <!-- FIRST: Text (now on far left) -->
+                    <!-- Text (Visually on Left) -->
                     <div class="center-right-text">
                         <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
                         <p class="center-text-statement">
                             ready to create global impact.
                         </p>
-                        <!-- CTA button has been removed -->
                     </div>
                     
-                    <!-- SECOND: GIFs (now on far right) -->
+                    <!-- GIFs (Visually on Right) -->
                     <div class="center-left-gifs">
-                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF">
-                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF">
-                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF">
-                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF">
+                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Drone+GIF+Missing'">
+                        <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Chevron+GIF+Missing'">
+                        <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Heli+GIF+Missing'">
+                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" onerror="this.onerror=null; this.src='https://placehold.co/220x160/282c34/ffffff?text=Buggy+GIF+Missing'">
                     </div>
                     
                 </div>
@@ -357,11 +399,11 @@
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
             const x = e.clientX - rect.left; // x position within the element
-            const y = e.clientY - rect.top; // y position within the element
+            // const y = e.clientY - rect.top; // y position within the element
             const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+            // const centerY = rect.height / 2;
             const bufferX = rect.width * CENTER_BUFFER;
-            const bufferY = rect.height * CENTER_BUFFER;
+            // const bufferY = rect.height * CENTER_BUFFER; // Unused in original logic
 
             let currentState = 'center';
 
