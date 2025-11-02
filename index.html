@@ -103,27 +103,24 @@
             width: 100%;
         }
 
-        /* NEW LAYOUT: Left side (GIFs) - Vertical Zig-Zag */
+        /* NEW LAYOUT: GIF Container - Bounding Box Removed */
         .center-left-gifs {
-            display: flex; /* Changed to flex */
-            flex-direction: column; /* Stack vertically */
-            gap: 20px; /* Spacing between GIFs */
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
             width: 45%; 
-            max-width: 350px; /* Reduced overall max-width */
-            background: rgba(0, 0, 0, 0.5);
-            padding: 30px; /* Increased padding slightly for better framing */
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            max-width: 350px; 
+            /* Removed: background, padding, border-radius, and box-shadow */
         }
 
+        /* Individual GIF styling - Removed border-radius and box-shadow */
         .center-left-gifs img {
             width: 100%;
-            max-width: 150px; /* Reduced individual GIF size */
+            max-width: 150px; 
             height: auto;
-            aspect-ratio: 1 / 1; /* Keep GIFs square */
+            aspect-ratio: 1 / 1; 
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            /* Removed: border-radius and box-shadow */
             transition: transform 0.3s ease;
         }
 
@@ -317,7 +314,7 @@
                 align-items: center; /* Center the whole GIF block */
                 max-width: 300px;
                 margin: 0 auto;
-                padding: 15px;
+                padding: 0; /* Also remove padding on mobile */
             }
             
             /* Center text on small screens */
