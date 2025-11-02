@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Removed viewport meta tag to prevent mobile scaling and ensure desktop-only styling -->
-    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
+    <!-- Removed viewport meta tag to prevent mobile scaling and ensure desktop-only styling --><title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -99,7 +98,7 @@
             display: flex;
             align-items: center; 
             justify-content: space-between; /* Pushes content blocks to the far left and right */
-            gap: 20px; /* Reduced from 30px */
+            gap: 30px; /* Gap between text and GIF column */
             width: 100%;
         }
 
@@ -107,16 +106,16 @@
         .center-left-gifs {
             display: flex; 
             flex-direction: column; 
-            gap: 8px; /* Reduced from 15px - controls VERTICAL spacing */
-            width: 50%; 
-            max-width: 675px; /* Increased by 1.5x (450 * 1.5 = 675) for desktop */
+            gap: 10px; /* Tighter vertical gap for GIFs */
+            width: 50%; /* Increased to push content further right */
+            max-width: 675px; 
             /* Removed: background, padding, border-radius, and box-shadow */
         }
 
         /* Individual GIF styling - Removed border-radius and box-shadow */
         .center-left-gifs img {
             width: 100%;
-            max-width: 300px; /* Increased by 1.5x (200 * 1.5 = 300) for desktop */
+            max-width: 250px; /* Reduced max-width to emphasize the zig-zag stagger */
             height: auto;
             object-fit: contain;
             /* Removed: border-radius and box-shadow */
@@ -126,12 +125,12 @@
         /* Zig-Zag Effect: Align odd GIFs to the start (left) and even GIFs to the end (right) */
         .center-left-gifs img:nth-child(odd) {
             align-self: flex-start; 
-            margin-right: 10px; /* Reduced from 20px */
+            margin-right: 60px; /* Increased offset to pull odd GIFs further in/left */
         }
 
         .center-left-gifs img:nth-child(even) {
             align-self: flex-end; 
-            margin-left: 10px; /* Reduced from 20px */
+            margin-left: 60px; /* Increased offset to pull even GIFs further in/right */
         }
 
         .center-left-gifs img:hover {
@@ -140,7 +139,7 @@
 
         /* NEW LAYOUT: Text Block (Now on Far Left) */
         .center-right-text {
-            width: 45%; /* Slightly less than 50% to prevent overlap */
+            width: 40%; /* Reduced width to give more space to the GIF column */
             max-width: 500px; /* Cap width for desktop view */
             color: white;
             text-align: left; /* ALIGNED TO THE FAR LEFT */
@@ -300,20 +299,16 @@
             <div class="center-image"></div>
             <div class="center-content">
                 
-                <!-- REVERSED TWO-COLUMN LAYOUT -->
-                <div class="center-layout">
+                <!-- REVERSED TWO-COLUMN LAYOUT --><div class="center-layout">
                     
-                    <!-- FIRST: Text (now on far left) -->
-                    <div class="center-right-text">
-                        <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
+                    <!-- FIRST: Text (now on far left) --><div class="center-right-text">
+                        <h1 class="center-title-main">I’m Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
                         <p class="center-text-statement">
                             ready to create global impact.
                         </p>
-                        <!-- CTA button has been removed -->
-                    </div>
+                        <!-- CTA button has been removed --></div>
                     
-                    <!-- SECOND: GIFs (now on far right) -->
-                    <div class="center-left-gifs">
+                    <!-- SECOND: GIFs (now on far right) --><div class="center-left-gifs">
                         <img src="assets/images/drone.gif" alt="Drone Mechanical GIF">
                         <img src="assets/images/chevr.gif" alt="Chevron Mechanical GIF">
                         <img src="assets/images/helii.gif" alt="Helicopter Mechanical GIF">
@@ -322,8 +317,7 @@
                     
                 </div>
             </div>
-            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children -->
-        </div>
+            <!-- The original single-line h1 and p are now effectively hidden by CSS rules applied to .center-content children --></div>
 
         <div class="state-left" id="stateLeft">
             <div class="side-wrapper">
