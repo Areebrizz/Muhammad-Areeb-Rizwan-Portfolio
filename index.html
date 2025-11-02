@@ -103,30 +103,24 @@
         .center-title {
             font-size: clamp(2.2rem, 5vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 30px; /* Increased space between name and motto */
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-            line-height: 1.2;
-        }
-
-        .center-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 500;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-            letter-spacing: 1px;
-            line-height: 1.4;
-            margin-bottom: 15px;
+            line-height: 1.1; /* Tighter line height for single line */
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden; /* Hide overflow if needed */
         }
 
         .center-moto {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.2rem, 2.8vw, 1.8rem);
             font-weight: 600;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
             letter-spacing: 1px;
             background: rgba(0, 0, 0, 0.5);
-            padding: 12px 24px;
+            padding: 15px 30px;
             display: inline-block;
             border-radius: 5px;
-            line-height: 1.4;
+            line-height: 1.3;
+            margin-top: 0;
         }
 
         /* --- LEFT/RIGHT STATE CONTENT --- */
@@ -253,12 +247,27 @@
         @media (max-width: 768px) {
             body {
                 overflow: auto;
-            }
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: none;
+            touch-action: pan-y;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #333;
+            display: block;
+        }
             
             .hero-section {
                 height: auto;
                 min-height: 100vh;
                 overflow: auto;
+                position: relative;
+                width: 100%;
+                display: block;
             }
             
             /* Reset all states for mobile */
@@ -272,6 +281,7 @@
                 opacity: 1;
                 z-index: 10;
                 justify-content: center;
+                display: flex !important;
             }
             
             .state-center.hidden {
@@ -283,6 +293,13 @@
                 width: 90%;
                 text-align: center;
                 padding: 20px;
+            }
+            
+            /* Adjust center title for mobile */
+            .center-title {
+                white-space: normal; /* Allow wrapping on mobile */
+                line-height: 1.2;
+                margin-bottom: 20px;
             }
             
             /* Mobile image display */
@@ -371,12 +388,26 @@
             .side-image-placeholder {
                 height: 35% !important;
             }
+            
+            .center-title {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+                margin-bottom: 15px;
+            }
+            
+            .center-moto {
+                font-size: clamp(1rem, 3vw, 1.4rem);
+                padding: 10px 20px;
+            }
         }
 
         /* Very small devices */
         @media (max-width: 360px) {
             .side-image-placeholder {
                 height: 30% !important;
+            }
+            
+            .center-title {
+                font-size: clamp(1.6rem, 7vw, 2.2rem);
             }
         }
 
@@ -395,7 +426,7 @@
         </div>
 
         <div class="state-left" id="stateLeft">
-            <button class="mobile-back-btn" id="backBtnLeft"></button>
+            <button class="mobile-back-btn" id="backBtnLeft">← Back</button>
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1>
                 <p class="moto">Building efficiency from precision and discipline.</p>
@@ -405,7 +436,7 @@
         </div>
 
         <div class="state-right" id="stateRight">
-            <button class="mobile-back-btn" id="backBtnRight"></button>
+            <button class="mobile-back-btn" id="backBtnRight">← Back</button>
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1>
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
