@@ -52,8 +52,9 @@
             top: 0;
             height: 100%;
             transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            /* CHANGE: Align-items must be flex-start/end when active to position the text */
             display: flex;
-            align-items: center;
+            align-items: center; 
             justify-content: flex-start;
             z-index: 40;
             opacity: 0;
@@ -179,7 +180,6 @@
         }
 
         /* POSITION THE GIFS OVER YOUR HANDS */
-        /* You may need to fine-tune these percentages slightly after the change! */
         .gif-left-hand {
             top: 63%; 
             left: 57%; 
@@ -190,9 +190,10 @@
             right: 59%; 
         }
 
-        /* LEFT/RIGHT STATE CONTENT (No changes needed) */
+        /* LEFT/RIGHT STATE CONTENT */
+        /* === UPDATED WIDTHS HERE === */
         .side-wrapper {
-            width: 80%;
+            width: 40%; /* Reduced from 80% to allow more space for the image */
             padding: 0 5%;
             text-align: left;
             position: relative;
@@ -218,11 +219,12 @@
         }
 
         /* Image Placeholder */
+        /* === UPDATED WIDTH HERE === */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
-            width: 50%; 
+            width: 60%; /* Increased from 50% to visually dominate the space */
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -231,16 +233,16 @@
         }
         
         .state-left .side-image-placeholder {
-            right: 0;
+            right: 0; /* Positions image on the right when state-left is active */
             background-image: url('assets/images/formal1.png'); 
         }
 
         .state-right .side-image-placeholder {
-            left: 0;
+            left: 0; /* Positions image on the left when state-right is active */
             background-image: url('assets/images/new8.png'); 
         }
 
-        /* ACTIVE STATE STYLES (No changes needed) */
+        /* ACTIVE STATE STYLES */
         .state-center.hidden {
             opacity: 0;
             z-index: 20; 
@@ -269,7 +271,7 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Mobile Responsive (No changes needed, but note that the GIF positions may need separate fine-tuning for phones) */
+        /* Mobile Responsive */
         @media (max-width: 1024px) {
             .center-layout {
                 flex-direction: column;
@@ -318,6 +320,31 @@
             }
             .side-wrapper p.moto {
                 font-size: 1.2rem;
+            }
+            
+            /* Add Mobile specific fixes for side states */
+            .state-left.active, .state-right.active {
+                flex-direction: column; /* Stack image and text */
+                justify-content: center;
+            }
+
+            .side-wrapper {
+                width: 100%; /* Text takes full width */
+                padding: 10px 5%;
+                text-align: center;
+                order: 2; /* Put text below image */
+                margin-top: 50vh; /* Push text down past the placeholder */
+                position: absolute;
+                top: 0;
+            }
+
+            .side-image-placeholder {
+                width: 100%; /* Image takes full width */
+                height: 50%; /* Image takes top half */
+                left: 0 !important;
+                right: 0 !important;
+                top: 0;
+                order: 1;
             }
         }
 
