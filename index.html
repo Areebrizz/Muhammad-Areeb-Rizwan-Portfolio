@@ -52,7 +52,6 @@
             top: 0;
             height: 100%;
             transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
-            /* CHANGE: Align-items must be flex-start/end when active to position the text */
             display: flex;
             align-items: center; 
             justify-content: flex-start;
@@ -96,7 +95,7 @@
         .center-layout {
             display: flex;
             align-items: center; 
-            justify-content: flex-start; /* Aligns content to the left */
+            justify-content: flex-start;
             gap: 30px; 
             width: 100%;
         }
@@ -111,7 +110,7 @@
         }
 
         .center-title-main { 
-            font-size: 2.5rem; 
+            font-size: clamp(1.8rem, 2.5vw, 3rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 15px;
@@ -128,9 +127,9 @@
         }
 
         .moto-slogan {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 1.3vw, 1.5rem);
             font-weight: 400;
-            color: #e0e0e0; /* Soft light gray */
+            color: #e0e0e0;
             font-style: italic;
             letter-spacing: 0.5px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
@@ -151,7 +150,6 @@
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34;
-            /* *** FIX: Set positioning context for GIFs *** */
             position: relative; 
         }
 
@@ -162,17 +160,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 36; /* Above the center image but below text */
-            pointer-events: none; /* Allow clicks to pass through to underlying elements */
+            z-index: 36;
+            pointer-events: none;
         }
 
         .central-gif {
             position: absolute;
-            width: 260px; /* Adjust size as needed */
+            width: clamp(200px, 16vw, 300px);
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            pointer-events: auto; /* Re-enable hover effects */
+            pointer-events: auto;
         }
 
         .central-gif:hover {
@@ -191,9 +189,8 @@
         }
 
         /* LEFT/RIGHT STATE CONTENT */
-        /* === UPDATED WIDTHS HERE === */
         .side-wrapper {
-            width: 40%; /* Reduced from 80% to allow more space for the image */
+            width: 40%;
             padding: 0 5%;
             text-align: left;
             position: relative;
@@ -204,27 +201,36 @@
         }
 
         .side-wrapper h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 4vw, 5rem);
             font-weight: 900;
             color: white;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
             margin-bottom: 10px;
+            line-height: 1.1;
         }
 
         .side-wrapper p.moto {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
             font-style: italic;
             color: #ccc;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+        }
+
+        .side-link {
+            color: white;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
         /* Image Placeholder */
-        /* === UPDATED WIDTH HERE === */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
-            width: 60%; /* Increased from 50% to visually dominate the space */
+            width: 60%;
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -233,12 +239,12 @@
         }
         
         .state-left .side-image-placeholder {
-            right: 0; /* Positions image on the right when state-left is active */
+            right: 0;
             background-image: url('assets/images/formal1.png'); 
         }
 
         .state-right .side-image-placeholder {
-            left: 0; /* Positions image on the left when state-right is active */
+            left: 0;
             background-image: url('assets/images/new8.png'); 
         }
 
@@ -271,8 +277,132 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
+        /* 1024px Optimizations */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+            .center-right-text {
+                width: 45%;
+                max-width: 450px;
+            }
+            
+            .side-wrapper {
+                width: 45%;
+            }
+            
+            .side-image-placeholder {
+                width: 55%;
+            }
+            
+            .central-gif {
+                width: clamp(180px, 15vw, 220px);
+            }
+            
+            .gif-left-hand {
+                top: 62%;
+                left: 56%;
+            }
+
+            .gif-right-hand {
+                top: 63%;
+                right: 58%;
+            }
+        }
+
+        /* 1440px Optimizations */
+        @media (min-width: 1440px) and (max-width: 1919px) {
+            .center-right-text {
+                width: 40%;
+                max-width: 500px;
+            }
+            
+            .side-wrapper {
+                width: 40%;
+            }
+            
+            .side-image-placeholder {
+                width: 60%;
+            }
+            
+            .central-gif {
+                width: clamp(220px, 16vw, 260px);
+            }
+            
+            .gif-left-hand {
+                top: 63%;
+                left: 57%;
+            }
+
+            .gif-right-hand {
+                top: 64%;
+                right: 59%;
+            }
+        }
+
+        /* 1920px+ Optimizations */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .center-right-text {
+                width: 35%;
+                max-width: 550px;
+            }
+            
+            .side-wrapper {
+                width: 35%;
+            }
+            
+            .side-image-placeholder {
+                width: 65%;
+            }
+            
+            .central-gif {
+                width: clamp(240px, 17vw, 280px);
+            }
+            
+            .gif-left-hand {
+                top: 63%;
+                left: 57%;
+            }
+
+            .gif-right-hand {
+                top: 64%;
+                right: 59%;
+            }
+        }
+
+        /* 2560px Optimizations */
+        @media (min-width: 2560px) {
+            .center-right-text {
+                width: 30%;
+                max-width: 600px;
+            }
+            
+            .side-wrapper {
+                width: 30%;
+            }
+            
+            .side-image-placeholder {
+                width: 70%;
+            }
+            
+            .central-gif {
+                width: clamp(260px, 18vw, 320px);
+            }
+            
+            .gif-left-hand {
+                top: 64%;
+                left: 58%;
+            }
+
+            .gif-right-hand {
+                top: 65%;
+                right: 60%;
+            }
+            
+            .center-content {
+                padding: 0 8vw;
+            }
+        }
+
         /* Mobile Responsive */
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
             .center-layout {
                 flex-direction: column;
                 justify-content: center;
@@ -302,7 +432,7 @@
 
             /* Adjust central GIFs for mobile */
             .central-gif {
-                width: 150px; /* Smaller on mobile */
+                width: 150px;
             }
 
             .gif-left-hand {
@@ -324,23 +454,23 @@
             
             /* Add Mobile specific fixes for side states */
             .state-left.active, .state-right.active {
-                flex-direction: column; /* Stack image and text */
+                flex-direction: column;
                 justify-content: center;
             }
 
             .side-wrapper {
-                width: 100%; /* Text takes full width */
+                width: 100%;
                 padding: 10px 5%;
                 text-align: center;
-                order: 2; /* Put text below image */
-                margin-top: 50vh; /* Push text down past the placeholder */
+                order: 2;
+                margin-top: 50vh;
                 position: absolute;
                 top: 0;
             }
 
             .side-image-placeholder {
-                width: 100%; /* Image takes full width */
-                height: 50%; /* Image takes top half */
+                width: 100%;
+                height: 50%;
                 left: 0 !important;
                 right: 0 !important;
                 top: 0;
@@ -382,7 +512,7 @@
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1>
                 <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
+                <a href="/about" class="side-link">View Formal Profile ></a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -391,7 +521,7 @@
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1>
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio></a>
+                <a href="/portfolio" class="side-link">View Creative Portfolio></a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
