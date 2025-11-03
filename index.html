@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            overflow: hidden; 
+            overflow-x: hidden; /* Prevents horizontal scroll from transitions */
         }
 
         /* Hero Section Container */
@@ -52,7 +52,6 @@
             top: 0;
             height: 100%;
             transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
-            /* CHANGE: Align-items must be flex-start/end when active to position the text */
             display: flex;
             align-items: center; 
             justify-content: flex-start;
@@ -151,7 +150,6 @@
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34;
-            /* *** FIX: Set positioning context for GIFs *** */
             position: relative; 
         }
 
@@ -162,38 +160,40 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 36; /* Above the center image but below text */
-            pointer-events: none; /* Allow clicks to pass through to underlying elements */
+            z-index: 36;
+            pointer-events: none;
         }
 
         .central-gif {
             position: absolute;
-            width: 280px; /* Adjust size as needed */
+            width: 280px;
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            pointer-events: auto; /* Re-enable hover effects */
+            pointer-events: auto;
+            /* CRITICAL FIX: Center the GIF itself on its coordinates */
+            transform: translate(-50%, -50%); 
         }
 
         .central-gif:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translate(-50%, -50%); /* Scale and maintain center */
         }
 
-        /* POSITION THE GIFS OVER YOUR HANDS */
+        /* ADJUSTED: POSITION THE GIFS OVER YOUR HANDS */
+        /* These new percentages should offer better consistency across aspect ratios */
         .gif-left-hand {
-            top: 63%; 
-            left: 57%; 
+            top: 65%; /* Vertical position adjusted */
+            left: 40%; /* Horizontal position adjusted to be slightly more central */
         }
 
         .gif-right-hand {
-            top: 64%; 
-            right: 59%; 
+            top: 65%; /* Vertical position adjusted */
+            left: 60%; /* Using left for symmetry and adjusted position */
         }
 
         /* LEFT/RIGHT STATE CONTENT */
-        /* === UPDATED WIDTHS HERE === */
         .side-wrapper {
-            width: 40%; /* Reduced from 80% to allow more space for the image */
+            width: 40%;
             padding: 0 5%;
             text-align: left;
             position: relative;
@@ -219,27 +219,28 @@
         }
 
         /* Image Placeholder */
-        /* === UPDATED WIDTH HERE === */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
-            width: 60%; /* Increased from 50% to visually dominate the space */
+            width: 60%;
             background-size: cover;
-            background-position: center;
-            opacity: 0;
             transition: opacity 0.5s ease;
             z-index: 39;
         }
         
         .state-left .side-image-placeholder {
-            right: 0; /* Positions image on the right when state-left is active */
+            right: 0; 
             background-image: url('assets/images/formal1.png'); 
+            /* FIX: Ensure the image focal point (head) is visible */
+            background-position: center top; 
         }
 
         .state-right .side-image-placeholder {
-            left: 0; /* Positions image on the left when state-right is active */
+            left: 0; 
             background-image: url('assets/images/new8.png'); 
+            /* FIX: Ensure the image focal point is visible */
+            background-position: center center; 
         }
 
         /* ACTIVE STATE STYLES */
@@ -271,8 +272,10 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Mobile Responsive */
+        /* Mobile Responsive (max-width: 1024px) */
         @media (max-width: 1024px) {
+            
+            /* Center State Adjustments */
             .center-layout {
                 flex-direction: column;
                 justify-content: center;
@@ -285,16 +288,13 @@
                 text-align: center;
                 padding-top: 50px; 
             }
-            
             .center-title-main {
                 font-size: 2rem;
                 margin-bottom: 10px;
             }
-
             .moto-container {
                 margin-bottom: 15px;
             }
-
             .moto-slogan {
                 font-size: 1.1rem;
                 text-align: center;
@@ -302,17 +302,15 @@
 
             /* Adjust central GIFs for mobile */
             .central-gif {
-                width: 150px; /* Smaller on mobile */
+                width: 150px;
             }
-
             .gif-left-hand {
                 top: 40%;
-                left: 20%;
+                left: 25%; /* Moved slightly in */
             }
-
             .gif-right-hand {
                 top: 40%;
-                right: 20%;
+                left: 75%; /* Changed from right to left for consistency */
             }
 
             .side-wrapper h1 {
@@ -322,29 +320,36 @@
                 font-size: 1.2rem;
             }
             
-            /* Add Mobile specific fixes for side states */
+            /* REFACTORED: Mobile specific fixes for side states */
             .state-left.active, .state-right.active {
                 flex-direction: column; /* Stack image and text */
-                justify-content: center;
-            }
-
-            .side-wrapper {
-                width: 100%; /* Text takes full width */
-                padding: 10px 5%;
-                text-align: center;
-                order: 2; /* Put text below image */
-                margin-top: 50vh; /* Push text down past the placeholder */
-                position: absolute;
-                top: 0;
+                justify-content: flex-start; /* Start stacking from the top */
+                align-items: center;
             }
 
             .side-image-placeholder {
+                position: relative; /* CRITICAL: Use flow layout, not absolute */
                 width: 100%; /* Image takes full width */
-                height: 50%; /* Image takes top half */
+                height: 50vh; /* Image takes top half viewport height */
                 left: 0 !important;
                 right: 0 !important;
                 top: 0;
                 order: 1;
+            }
+            
+            .side-wrapper {
+                position: relative; /* CRITICAL: Use flow layout, not absolute */
+                width: 100%; /* Text takes full width */
+                height: 50vh; /* Text takes bottom half viewport height */
+                padding: 20px 5%;
+                text-align: center;
+                order: 2; /* Put text below image */
+                margin-top: 0; /* Remove problematic margin */
+                /* Use flex to center text content vertically in its new 50vh space */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
 
@@ -358,8 +363,9 @@
             <div class="center-image">
                 
                 <div class="central-gifs-container">
-                    <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
-                    <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+                    <!-- Added placeholder image fallback on error -->
+                    <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/280x280/282c34/ffffff?text=BUGGY+GIF+MISSING'">
+                    <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/280x280/282c34/ffffff?text=DRONE+GIF+MISSING'">
                 </div>
                 
             </div>
@@ -382,7 +388,7 @@
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1>
                 <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
+                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile &gt;</a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -391,7 +397,7 @@
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1>
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio></a>
+                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio&gt;</a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -404,7 +410,8 @@
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         
-        const CENTER_BUFFER = 0.20; 
+        // Increased buffer slightly for a more forgiving center area
+        const CENTER_BUFFER = 0.25; 
 
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
@@ -442,9 +449,28 @@
             left.classList.remove('active');
             right.classList.remove('active');
         }
+        
+        // Added touch event listeners for mobile/tablet interaction
+        function handleTouchMove(e) {
+             if (e.touches.length > 0) {
+                // Prevent scrolling while interacting with the hero section
+                e.preventDefault(); 
+                // Treat the first touch point as the cursor
+                const touch = e.touches[0];
+                handleMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+            }
+        }
+
+        function handleTouchEnd() {
+            handleMouseLeave();
+        }
 
         hero.addEventListener('mousemove', handleMouseMove);
         hero.addEventListener('mouseleave', handleMouseLeave);
+        
+        // Add touch listeners
+        hero.addEventListener('touchmove', handleTouchMove, { passive: false });
+        hero.addEventListener('touchend', handleTouchEnd);
         
     </script>
 </body>
