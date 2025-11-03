@@ -91,11 +91,11 @@
             box-sizing: border-box; 
         }
         
-        /* LAYOUT: Flex container for Text and GIFs */
+        /* LAYOUT: Flex container for Text */
         .center-layout {
             display: flex;
             align-items: center; 
-            justify-content: space-between; 
+            justify-content: flex-start; /* Aligns content to the left */
             gap: 30px; 
             width: 100%;
         }
@@ -150,6 +150,8 @@
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34;
+            /* *** FIX: Set positioning context for GIFs *** */
+            position: relative; 
         }
 
         /* CENTRAL GIFS POSITIONED OVER HANDS */
@@ -177,18 +179,18 @@
         }
 
         /* POSITION THE GIFS OVER YOUR HANDS */
-        /* Adjust these coordinates to position over your hands */
+        /* You may need to fine-tune these percentages slightly after the change! */
         .gif-left-hand {
-            top: 69%;   /* Adjust vertical position */
-            left: 58%;  /* Adjust horizontal position - left hand */
+            top: 69%; 
+            left: 58%; 
         }
 
         .gif-right-hand {
-            top: 69%;   /* Adjust vertical position */
-            right: 59%; /* Adjust horizontal position - right hand */
+            top: 69%; 
+            right: 59%; 
         }
 
-        /* LEFT/RIGHT STATE CONTENT */
+        /* LEFT/RIGHT STATE CONTENT (No changes needed) */
         .side-wrapper {
             width: 80%;
             padding: 0 5%;
@@ -238,7 +240,7 @@
             background-image: url('assets/images/new8.png'); 
         }
 
-        /* ACTIVE STATE STYLES */
+        /* ACTIVE STATE STYLES (No changes needed) */
         .state-center.hidden {
             opacity: 0;
             z-index: 20; 
@@ -267,7 +269,7 @@
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* Mobile Responsive */
+        /* Mobile Responsive (No changes needed, but note that the GIF positions may need separate fine-tuning for phones) */
         @media (max-width: 1024px) {
             .center-layout {
                 flex-direction: column;
@@ -325,20 +327,19 @@
     <section class="hero-section" id="heroSection">
         
         <div class="state-center" id="stateCenter">
-            <div class="center-image"></div>
             
-            <!-- CENTRAL GIFS POSITIONED OVER HANDS -->
-            <div class="central-gifs-container">
-                <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
-                <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+            <div class="center-image">
+                
+                <div class="central-gifs-container">
+                    <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
+                    <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+                </div>
+                
             </div>
-            
             <div class="center-content">
                 
-                <!-- LAYOUT: Text on Left -->
                 <div class="center-layout">
                     
-                    <!-- Text (Visually on Left) -->
                     <div class="center-right-text">
                         <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
                         <div class="moto-container">
@@ -346,10 +347,7 @@
                         </div>
                     </div>
                     
-                    <!-- Empty div to maintain layout balance -->
-                    <div style="width: 50%;"></div>
-                    
-                </div>
+                    </div>
             </div>
         </div>
 
