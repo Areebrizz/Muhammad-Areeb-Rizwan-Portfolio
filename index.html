@@ -188,7 +188,7 @@
             right: 59%; 
         }
 
-        /* LEFT/RIGHT STATE CONTENT - COMPLETELY RESTRUCTURED */
+        /* LEFT/RIGHT STATE CONTENT */
         .side-wrapper {
             width: 40%;
             padding: 0 5%;
@@ -225,7 +225,7 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-        /* Image Placeholder - COMPLETELY RESTRUCTURED */
+        /* Image Placeholder */
         .side-image-placeholder {
             position: absolute;
             top: 0;
@@ -241,7 +241,6 @@
         .state-left .side-image-placeholder {
             right: 0;
             background-image: url('assets/images/formal1.png'); 
-            background-position: right center; /* Changed to show complete image */
         }
 
         .state-right .side-image-placeholder {
@@ -249,7 +248,7 @@
             background-image: url('assets/images/new8.png'); 
         }
 
-        /* ACTIVE STATE STYLES - UPDATED FOR NEW LAYOUT */
+        /* ACTIVE STATE STYLES */
         .state-center.hidden {
             opacity: 0;
             z-index: 20; 
@@ -306,11 +305,6 @@
                 top: 63%;
                 right: 58%;
             }
-            
-            /* Ensure formal image shows complete right side */
-            .state-left .side-image-placeholder {
-                background-position: right center;
-            }
         }
 
         /* 1440px Optimizations */
@@ -341,11 +335,6 @@
                 top: 64%;
                 right: 59%;
             }
-            
-            /* Ensure formal image shows complete right side */
-            .state-left .side-image-placeholder {
-                background-position: right center;
-            }
         }
 
         /* 1920px+ Optimizations */
@@ -375,11 +364,6 @@
             .gif-right-hand {
                 top: 64%;
                 right: 59%;
-            }
-            
-            /* Ensure formal image shows complete right side */
-            .state-left .side-image-placeholder {
-                background-position: right center;
             }
         }
 
@@ -414,11 +398,6 @@
             
             .center-content {
                 padding: 0 8vw;
-            }
-            
-            /* Ensure formal image shows complete right side */
-            .state-left .side-image-placeholder {
-                background-position: right center;
             }
         }
 
@@ -496,7 +475,6 @@
                 right: 0 !important;
                 top: 0;
                 order: 1;
-                background-position: center !important; /* Center both images on mobile */
             }
         }
 
