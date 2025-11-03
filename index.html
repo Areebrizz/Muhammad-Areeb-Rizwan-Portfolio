@@ -12,20 +12,9 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-green: #4CAF50;
-            --text-white: #ffffff;
-            --text-light: #e0e0e0;
-            --text-gray: #cccccc;
-            --shadow-dark: rgba(0,0,0,0.9);
-            --shadow-medium: rgba(0,0,0,0.8);
-            --shadow-light: rgba(0,0,0,0.7);
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            overflow: hidden;
-            background-color: #333;
+            overflow: hidden; 
         }
 
         /* Hero Section Container */
@@ -46,8 +35,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
+            background-image: url('assets/images/background 11.png.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -64,8 +52,9 @@
             top: 0;
             height: 100%;
             transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            /* CHANGE: Align-items must be flex-start/end when active to position the text */
             display: flex;
-            align-items: center;
+            align-items: center; 
             justify-content: flex-start;
             z-index: 40;
             opacity: 0;
@@ -74,8 +63,7 @@
         .state-left {
             left: 0;
             width: 50%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
+            background-image: url('assets/images/background 22.png.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-start;
@@ -84,8 +72,7 @@
         .state-right {
             right: 0;
             width: 50%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
+            background-image: url('assets/images/background 3.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-end;
@@ -94,23 +81,23 @@
         /* --- CENTER STATE CONTENT --- */
         .center-content {
             z-index: 35;
-            position: absolute;
+            position: absolute; 
             top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            width: 100%;
+            left: 0; 
+            transform: translateY(-50%); 
+            width: 100%; 
             max-width: 100vw;
-            padding: 0 5vw;
+            padding: 0 5vw; 
             text-align: initial;
-            box-sizing: border-box;
+            box-sizing: border-box; 
         }
         
         /* LAYOUT: Flex container for Text */
         .center-layout {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 30px;
+            align-items: center; 
+            justify-content: flex-start; /* Aligns content to the left */
+            gap: 30px; 
             width: 100%;
         }
 
@@ -118,20 +105,20 @@
         .center-right-text {
             width: 40%;
             max-width: 500px;
-            color: var(--text-white);
-            text-align: left;
-            text-shadow: 2px 2px 8px var(--shadow-dark);
+            color: white;
+            text-align: left; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
         }
 
-        .center-title-main {
-            font-size: clamp(2rem, 3.5vw, 3.5rem);
+        .center-title-main { 
+            font-size: 2.5rem; 
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 15px;
         }
         
         .center-title-main strong {
-            color: var(--primary-green);
+            color: #4CAF50;
             font-weight: 900;
         }
 
@@ -141,12 +128,12 @@
         }
 
         .moto-slogan {
-            font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+            font-size: 1.3rem;
             font-weight: 400;
-            color: var(--text-light);
+            color: #e0e0e0; /* Soft light gray */
             font-style: italic;
             letter-spacing: 0.5px;
-            text-shadow: 1px 1px 3px var(--shadow-light);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
             margin: 0;
             display: block;
             text-align: left;
@@ -159,12 +146,13 @@
             left: 0;
             width: 100%;
             height: 99%;
-            background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
-            background-size: cover;
+            background-image: url('assets/images/new15.png'); 
+            background-size: cover; 
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34;
-            position: relative;
+            /* *** FIX: Set positioning context for GIFs *** */
+            position: relative; 
         }
 
         /* CENTRAL GIFS POSITIONED OVER HANDS */
@@ -174,89 +162,69 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 36;
-            pointer-events: none;
+            z-index: 36; /* Above the center image but below text */
+            pointer-events: none; /* Allow clicks to pass through to underlying elements */
         }
 
         .central-gif {
             position: absolute;
-            width: clamp(180px, 18vw, 320px);
+            width: 260px; /* Adjust size as needed */
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            pointer-events: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            pointer-events: auto; /* Re-enable hover effects */
         }
 
         .central-gif:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
 
         /* POSITION THE GIFS OVER YOUR HANDS */
         .gif-left-hand {
-            top: 63%;
-            left: 57%;
+            top: 63%; 
+            left: 57%; 
         }
 
         .gif-right-hand {
-            top: 64%;
-            right: 59%;
+            top: 64%; 
+            right: 59%; 
         }
 
         /* LEFT/RIGHT STATE CONTENT */
+        /* === UPDATED WIDTHS HERE === */
         .side-wrapper {
-            width: 40%;
+            width: 40%; /* Reduced from 80% to allow more space for the image */
             padding: 0 5%;
             text-align: left;
             position: relative;
-            z-index: 45;
+            z-index: 45; 
         }
         .state-right .side-wrapper {
             text-align: right;
         }
 
         .side-wrapper h1 {
-            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-size: 4rem;
             font-weight: 900;
-            color: var(--text-white);
-            text-shadow: 2px 2px 5px var(--shadow-medium);
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
             margin-bottom: 10px;
-            line-height: 1.1;
         }
 
         .side-wrapper p.moto {
-            font-size: clamp(1.2rem, 2vw, 2rem);
+            font-size: 1.5rem;
             font-style: italic;
-            color: var(--text-gray);
-            text-shadow: 1px 1px 3px var(--shadow-light);
-            margin-bottom: 20px;
-        }
-
-        .side-link {
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: clamp(0.9rem, 1.2vw, 1.2rem);
-            padding: 10px 20px;
-            border: 2px solid var(--text-white);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .side-link:hover {
-            background-color: var(--text-white);
-            color: #333;
+            color: #ccc;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
         /* Image Placeholder */
+        /* === UPDATED WIDTH HERE === */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
-            width: 60%;
+            width: 60%; /* Increased from 50% to visually dominate the space */
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -265,140 +233,46 @@
         }
         
         .state-left .side-image-placeholder {
-            right: 0;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
+            right: 0; /* Positions image on the right when state-left is active */
+            background-image: url('assets/images/formal1.png'); 
         }
 
         .state-right .side-image-placeholder {
-            left: 0;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
+            left: 0; /* Positions image on the left when state-right is active */
+            background-image: url('assets/images/new8.png'); 
         }
 
         /* ACTIVE STATE STYLES */
         .state-center.hidden {
             opacity: 0;
-            z-index: 20;
+            z-index: 20; 
         }
 
         .state-left.active {
-            width: 100%;
+            width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: flex-start;
+            justify-content: flex-start; 
         }
         .state-left.active .side-image-placeholder {
-            opacity: 1;
+            opacity: 1; 
         }
         
         .state-right.active {
-            width: 100%;
+            width: 100%; 
             opacity: 1;
             z-index: 50;
-            justify-content: flex-end;
+            justify-content: flex-end; 
         }
         .state-right.active .side-image-placeholder {
-            opacity: 1;
+            opacity: 1; 
         }
 
         .state-left:not(.active) { opacity: 0; z-index: 40; }
         .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* 1024px Optimizations */
-        @media (min-width: 1024px) and (max-width: 1439px) {
-            .center-right-text {
-                width: 45%;
-            }
-            
-            .side-wrapper {
-                width: 45%;
-            }
-            
-            .side-image-placeholder {
-                width: 55%;
-            }
-            
-            .central-gif {
-                width: clamp(160px, 16vw, 280px);
-            }
-            
-            .gif-left-hand {
-                top: 62%;
-                left: 56%;
-            }
-
-            .gif-right-hand {
-                top: 63%;
-                right: 58%;
-            }
-        }
-
-        /* 1440px Optimizations */
-        @media (min-width: 1440px) and (max-width: 2559px) {
-            .center-right-text {
-                width: 40%;
-            }
-            
-            .side-wrapper {
-                width: 40%;
-            }
-            
-            .side-image-placeholder {
-                width: 60%;
-            }
-            
-            .central-gif {
-                width: clamp(200px, 18vw, 300px);
-            }
-            
-            .gif-left-hand {
-                top: 63%;
-                left: 57%;
-            }
-
-            .gif-right-hand {
-                top: 64%;
-                right: 59%;
-            }
-        }
-
-        /* 2560px Optimizations */
-        @media (min-width: 2560px) {
-            .center-right-text {
-                width: 35%;
-                max-width: 600px;
-            }
-            
-            .side-wrapper {
-                width: 35%;
-            }
-            
-            .side-image-placeholder {
-                width: 65%;
-            }
-            
-            .central-gif {
-                width: clamp(240px, 20vw, 360px);
-            }
-            
-            .gif-left-hand {
-                top: 64%;
-                left: 58%;
-            }
-
-            .gif-right-hand {
-                top: 65%;
-                right: 60%;
-            }
-            
-            .center-content {
-                padding: 0 8vw;
-            }
-        }
-
         /* Mobile Responsive */
-        @media (max-width: 1023px) {
+        @media (max-width: 1024px) {
             .center-layout {
                 flex-direction: column;
                 justify-content: center;
@@ -409,7 +283,7 @@
                 width: 100%;
                 max-width: 100%;
                 text-align: center;
-                padding-top: 50px;
+                padding-top: 50px; 
             }
             
             .center-title-main {
@@ -428,7 +302,7 @@
 
             /* Adjust central GIFs for mobile */
             .central-gif {
-                width: 150px;
+                width: 150px; /* Smaller on mobile */
             }
 
             .gif-left-hand {
@@ -450,23 +324,23 @@
             
             /* Add Mobile specific fixes for side states */
             .state-left.active, .state-right.active {
-                flex-direction: column;
+                flex-direction: column; /* Stack image and text */
                 justify-content: center;
             }
 
             .side-wrapper {
-                width: 100%;
+                width: 100%; /* Text takes full width */
                 padding: 10px 5%;
                 text-align: center;
-                order: 2;
-                margin-top: 50vh;
+                order: 2; /* Put text below image */
+                margin-top: 50vh; /* Push text down past the placeholder */
                 position: absolute;
                 top: 0;
             }
 
             .side-image-placeholder {
-                width: 100%;
-                height: 50%;
+                width: 100%; /* Image takes full width */
+                height: 50%; /* Image takes top half */
                 left: 0 !important;
                 right: 0 !important;
                 top: 0;
@@ -484,8 +358,8 @@
             <div class="center-image">
                 
                 <div class="central-gifs-container">
-                    <img src="https://media.giphy.com/media/l0HlGSDhF2J8G5K2A/giphy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
-                    <img src="https://media.giphy.com/media/3o72FfM5HJydzafgUE/giphy.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+                    <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
+                    <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
                 </div>
                 
             </div>
@@ -508,7 +382,7 @@
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1>
                 <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="/about" class="side-link">View Formal Profile →</a>
+                <a href="/about" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Formal Profile ></a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -517,7 +391,7 @@
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1>
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="/portfolio" class="side-link">View Creative Portfolio →</a>
+                <a href="/portfolio" style="color: white; text-decoration: underline; margin-top: 20px; display: inline-block;">View Creative Portfolio></a>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -530,7 +404,7 @@
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         
-        const CENTER_BUFFER = 0.20;
+        const CENTER_BUFFER = 0.20; 
 
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
