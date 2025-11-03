@@ -225,7 +225,7 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-        /* Image Placeholder */
+        /* Image Placeholder - FIXED FORMAL IMAGE POSITIONING */
         .side-image-placeholder {
             position: absolute;
             top: 0;
@@ -238,14 +238,17 @@
             z-index: 39;
         }
         
+        /* FIX: Changed background-position for formal image to show full image */
         .state-left .side-image-placeholder {
             right: 0;
             background-image: url('assets/images/formal1.png'); 
+            background-position: left center; /* Changed from center to left center */
         }
 
         .state-right .side-image-placeholder {
             left: 0;
             background-image: url('assets/images/new8.png'); 
+            background-position: center; /* Keep creative image centered */
         }
 
         /* ACTIVE STATE STYLES */
@@ -305,6 +308,11 @@
                 top: 63%;
                 right: 58%;
             }
+            
+            /* Ensure formal image shows full left edge on 1024px */
+            .state-left .side-image-placeholder {
+                background-position: left center;
+            }
         }
 
         /* 1440px Optimizations */
@@ -335,6 +343,11 @@
                 top: 64%;
                 right: 59%;
             }
+            
+            /* Ensure formal image shows full left edge on 1440px */
+            .state-left .side-image-placeholder {
+                background-position: left center;
+            }
         }
 
         /* 1920px+ Optimizations */
@@ -364,6 +377,11 @@
             .gif-right-hand {
                 top: 64%;
                 right: 59%;
+            }
+            
+            /* Ensure formal image shows full left edge on 1920px+ */
+            .state-left .side-image-placeholder {
+                background-position: left center;
             }
         }
 
@@ -398,6 +416,11 @@
             
             .center-content {
                 padding: 0 8vw;
+            }
+            
+            /* Ensure formal image shows full left edge on 2560px */
+            .state-left .side-image-placeholder {
+                background-position: left center;
             }
         }
 
@@ -475,6 +498,7 @@
                 right: 0 !important;
                 top: 0;
                 order: 1;
+                background-position: center !important; /* Center both images on mobile */
             }
         }
 
