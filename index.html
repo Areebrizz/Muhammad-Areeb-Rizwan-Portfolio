@@ -1,583 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden; 
-        }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; 
+        }
 
-        /* Hero Section Container */
-        .hero-section {
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-            background-color: #333;
-            overflow: hidden;
-        }
+        /* Hero Section Container */
+        .hero-section {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            background-color: #333;
+            overflow: hidden;
+        }
 
-        /* --- STATE-BASED CONTAINERS --- */
+        /* --- STATE-BASED CONTAINERS --- */
 
-        /* 1. Center/Default State */
-        .state-center {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('assets/images/background 11.png.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 30;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
-        }
-        
-        /* 2. Left State (Formal) & 3. Right State (Creative) */
-        .state-left, .state-right {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
-            display: flex;
-            align-items: center; 
-            justify-content: flex-start;
-            z-index: 40;
-            opacity: 0;
-        }
+        /* 1. Center/Default State */
+        .state-center {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/background 11.png.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 30;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        
+        /* 2. Left State (Formal) & 3. Right State (Creative) */
+        .state-left, .state-right {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start;
+            z-index: 40;
+            opacity: 0;
+        }
 
-        .state-left {
-            left: 0;
-            width: 50%;
-            background-image: url('assets/images/background 22.png.png');
-            background-size: cover;
-            background-position: center;
-            justify-content: flex-start;
-        }
+        .state-left {
+            left: 0;
+            width: 50%;
+            background-image: url('assets/images/background 22.png.png');
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-start;
+        }
 
-        .state-right {
-            right: 0;
-            width: 50%;
-            background-image: url('assets/images/background 3.png');
-            background-size: cover;
-            background-position: center;
-            justify-content: flex-end;
-        }
-        
-        /* --- CENTER STATE CONTENT --- */
-        .center-content {
-            z-index: 35;
-            position: absolute; 
-            top: 50%;
-            left: 0; 
-            transform: translateY(-50%); 
-            width: 100%; 
-            max-width: 100vw;
-            padding: 0 5vw; 
-            text-align: initial;
-            box-sizing: border-box; 
-        }
-        
-        /* LAYOUT: Flex container for Text */
-        .center-layout {
-            display: flex;
-            align-items: center; 
-            justify-content: flex-start;
-            gap: 30px; 
-            width: 100%;
-        }
+        .state-right {
+            right: 0;
+            width: 50%;
+            background-image: url('assets/images/background 3.png');
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-end;
+        }
+        
+        /* --- CENTER STATE CONTENT --- */
+        .center-content {
+            z-index: 35;
+            position: absolute; 
+            top: 50%;
+            left: 0; 
+            transform: translateY(-50%); 
+            width: 100%; 
+            max-width: 100vw;
+            padding: 0 5vw; 
+            text-align: initial;
+            box-sizing: border-box; 
+        }
+        
+        /* LAYOUT: Flex container for Text */
+        .center-layout {
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start;
+            gap: 30px; 
+            width: 100%;
+        }
 
-        /* Text Block */
-        .center-right-text {
-            width: 40%;
-            max-width: 500px;
-            color: white;
-            text-align: left; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-        }
+        /* Text Block */
+        .center-right-text {
+            width: 40%;
+            max-width: 500px;
+            color: white;
+            text-align: left; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
 
-        .center-title-main { 
-            font-size: clamp(1.8rem, 2.5vw, 3rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 15px;
-        }
-        
-        .center-title-main strong {
-            color: #4CAF50;
-            font-weight: 900;
-        }
+        .center-title-main { 
+            font-size: clamp(1.8rem, 2.5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+        
+        .center-title-main strong {
+            color: #4CAF50;
+            font-weight: 900;
+        }
 
-        /* Updated Motto/Slogan Styling - Subtle and Classic */
-        .moto-container {
-            margin-bottom: 25px;
-        }
+        /* Updated Motto/Slogan Styling - Subtle and Classic */
+        .moto-container {
+            margin-bottom: 25px;
+        }
 
-        .moto-slogan {
-            font-size: clamp(1rem, 1.3vw, 1.5rem);
-            font-weight: 400;
-            color: #e0e0e0;
-            font-style: italic;
-            letter-spacing: 0.5px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            margin: 0;
-            display: block;
-            text-align: left;
-            line-height: 1.5;
-        }
+        .moto-slogan {
+            font-size: clamp(1rem, 1.3vw, 1.5rem);
+            font-weight: 400;
+            color: #e0e0e0;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            margin: 0;
+            display: block;
+            text-align: left;
+            line-height: 1.5;
+        }
 
-        .center-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 99%;
-            background-image: url('assets/images/new15.png'); 
-            background-size: cover; 
-            background-repeat: no-repeat;
-            background-position: center;
-            z-index: 34;
-            position: relative; 
-        }
+        .center-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 99%;
+            background-image: url('assets/images/new15.png'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 34;
+            position: relative; 
+        }
 
-        /* CENTRAL GIFS POSITIONED OVER HANDS */
-        .central-gifs-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 36;
-            pointer-events: none;
-        }
+        /* CENTRAL GIFS POSITIONED OVER HANDS */
+        .central-gifs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 36;
+            pointer-events: none;
+        }
 
-        .central-gif {
-            position: absolute;
-            width: clamp(200px, 16vw, 300px);
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-            pointer-events: auto;
-        }
+        .central-gif {
+            position: absolute;
+            width: clamp(200px, 16vw, 300px);
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            pointer-events: auto;
+        }
 
-        .central-gif:hover {
-            transform: scale(1.05);
-        }
+        .central-gif:hover {
+            transform: scale(1.05);
+        }
 
-        /* POSITION THE GIFS OVER YOUR HANDS */
-        .gif-left-hand {
-            top: 63%; 
-            left: 57%; 
-        }
+        /* POSITION THE GIFS OVER YOUR HANDS */
+        .gif-left-hand {
+            top: 63%; 
+            left: 57%; 
+        }
 
-        .gif-right-hand {
-            top: 64%; 
-            right: 59%; 
-        }
+        .gif-right-hand {
+            top: 64%; 
+            right: 59%; 
+        }
 
-        /* LEFT/RIGHT STATE CONTENT */
-        .side-wrapper {
-            width: 40%;
-            padding: 0 5%;
-            text-align: left;
-            position: relative;
-            z-index: 45; 
-        }
-        .state-right .side-wrapper {
-            text-align: right;
-        }
+        /* LEFT/RIGHT STATE CONTENT */
+        .side-wrapper {
+            width: 40%;
+            padding: 0 5%;
+            text-align: left;
+            position: relative;
+            z-index: 45; 
+        }
+        .state-right .side-wrapper {
+            text-align: right;
+        }
 
-        .side-wrapper h1 {
-            font-size: clamp(2.5rem, 4vw, 5rem);
-            font-weight: 900;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
+        .side-wrapper h1 {
+            font-size: clamp(2.5rem, 4vw, 5rem);
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
 
-        .side-wrapper p.moto {
-            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
-            font-style: italic;
-            color: #ccc;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            margin-bottom: 20px;
-        }
+        .side-wrapper p.moto {
+            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+            font-style: italic;
+            color: #ccc;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+        }
 
-        .side-link {
-            color: white;
-            text-decoration: underline;
-            margin-top: 20px;
-            display: inline-block;
-            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
-        }
+        .side-link {
+            color: white;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+        }
 
-       /* Image Placeholder */
+       /* Image Placeholder */
 .side-image-placeholder {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 39; /* Change this to higher value */
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-size: contain; /* FIX: Changed from 'cover' to 'contain' */
+    background-repeat: no-repeat; /* FIX: Added to support 'contain' behavior */
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 39; 
 }
 
 .state-left .side-image-placeholder {
-    right: 0;
-    background-image: url('assets/images/formal1.png'); 
-    z-index: 20; /* Add this line to bring formal image to front */
+    right: 0;
+    background-image: url('assets/images/formal1.png'); 
+    z-index: 20; 
 }
 
 .state-right .side-image-placeholder {
-    left: 0;
-    background-image: url('assets/images/new8.png'); 
-    /* Keep creative image at default z-index */
+    left: 0;
+    background-image: url('assets/images/new8.png'); 
+    /* Keep creative image at default z-index */
 }
 
-        /* ACTIVE STATE STYLES */
-        .state-center.hidden {
-            opacity: 0;
-            z-index: 20; 
-        }
+        /* ACTIVE STATE STYLES */
+        .state-center.hidden {
+            opacity: 0;
+            z-index: 20; 
+        }
 
-        .state-left.active {
-            width: 100%; 
-            opacity: 1;
-            z-index: 50;
-            justify-content: flex-start; 
-        }
-        .state-left.active .side-image-placeholder {
-            opacity: 1; 
-        }
-        
-        .state-right.active {
-            width: 100%; 
-            opacity: 1;
-            z-index: 50;
-            justify-content: flex-end; 
-        }
-        .state-right.active .side-image-placeholder {
-            opacity: 1; 
-        }
+        .state-left.active {
+            width: 100%; 
+            opacity: 1;
+            z-index: 50;
+            justify-content: flex-start; 
+        }
+        .state-left.active .side-image-placeholder {
+            opacity: 1; 
+        }
+        
+        .state-right.active {
+            width: 100%; 
+            opacity: 1;
+            z-index: 50;
+            justify-content: flex-end; 
+        }
+        .state-right.active .side-image-placeholder {
+            opacity: 1; 
+        }
 
-        .state-left:not(.active) { opacity: 0; z-index: 40; }
-        .state-right:not(.active) { opacity: 0; z-index: 40; }
+        .state-left:not(.active) { opacity: 0; z-index: 40; }
+        .state-right:not(.active) { opacity: 0; z-index: 40; }
 
-        /* 1024px Optimizations */
-        @media (min-width: 1024px) and (max-width: 1439px) {
-            .center-right-text {
-                width: 45%;
-                max-width: 450px;
-            }
-            
-            .side-wrapper {
-                width: 45%;
-            }
-            
-            .side-image-placeholder {
-                width: 55%;
-            }
-            
-            .central-gif {
-                width: clamp(180px, 15vw, 220px);
-            }
-            
-            .gif-left-hand {
-                top: 62%;
-                left: 56%;
-            }
+        /* 1024px Optimizations */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+            .center-right-text {
+                width: 45%;
+                max-width: 450px;
+            }
+            
+            .side-wrapper {
+                width: 45%;
+            }
+            
+            .side-image-placeholder {
+                width: 55%;
+            }
+            
+            .central-gif {
+                width: clamp(180px, 15vw, 220px);
+            }
+            
+            .gif-left-hand {
+                top: 62%;
+                left: 56%;
+            }
 
-            .gif-right-hand {
-                top: 63%;
-                right: 58%;
-            }
-        }
+            .gif-right-hand {
+                top: 63%;
+                right: 58%;
+            }
+        }
 
-        /* 1440px Optimizations */
-        @media (min-width: 1440px) and (max-width: 1919px) {
-            .center-right-text {
-                width: 40%;
-                max-width: 500px;
-            }
-            
-            .side-wrapper {
-                width: 40%;
-            }
-            
-            .side-image-placeholder {
-                width: 60%;
-            }
-            
-            .central-gif {
-                width: clamp(220px, 16vw, 260px);
-            }
-            
-            .gif-left-hand {
-                top: 63%;
-                left: 57%;
-            }
+        /* 1440px Optimizations */
+        @media (min-width: 1440px) and (max-width: 1919px) {
+            .center-right-text {
+                width: 40%;
+                max-width: 500px;
+            }
+            
+            .side-wrapper {
+                width: 40%;
+            }
+            
+            .side-image-placeholder {
+                width: 60%;
+            }
+            
+            .central-gif {
+                width: clamp(220px, 16vw, 260px);
+            }
+            
+            .gif-left-hand {
+                top: 63%;
+                left: 57%;
+            }
 
-            .gif-right-hand {
-                top: 64%;
-                right: 59%;
-            }
-        }
+            .gif-right-hand {
+                top: 64%;
+                right: 59%;
+            }
+        }
 
-        /* 1920px+ Optimizations */
-        @media (min-width: 1920px) and (max-width: 2559px) {
-            .center-right-text {
-                width: 35%;
-                max-width: 550px;
-            }
-            
-            .side-wrapper {
-                width: 35%;
-            }
-            
-            .side-image-placeholder {
-                width: 65%;
-            }
-            
-            .central-gif {
-                width: clamp(240px, 17vw, 280px);
-            }
-            
-            .gif-left-hand {
-                top: 63%;
-                left: 57%;
-            }
+        /* 1920px+ Optimizations */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .center-right-text {
+                width: 35%;
+                max-width: 550px;
+            }
+            
+            .side-wrapper {
+                width: 35%;
+            }
+            
+            .side-image-placeholder {
+                width: 65%;
+            }
+            
+            .central-gif {
+                width: clamp(240px, 17vw, 280px);
+            }
+            
+            .gif-left-hand {
+                top: 63%;
+                left: 57%;
+            }
 
-            .gif-right-hand {
-                top: 64%;
-                right: 59%;
-            }
-        }
+            .gif-right-hand {
+                top: 64%;
+                right: 59%;
+            }
+        }
 
-        /* 2560px Optimizations */
-        @media (min-width: 2560px) {
-            .center-right-text {
-                width: 30%;
-                max-width: 600px;
-            }
-            
-            .side-wrapper {
-                width: 30%;
-            }
-            
-            .side-image-placeholder {
-                width: 70%;
-            }
-            
-            .central-gif {
-                width: clamp(260px, 18vw, 320px);
-            }
-            
-            .gif-left-hand {
-                top: 64%;
-                left: 58%;
-            }
+        /* 2560px Optimizations */
+        @media (min-width: 2560px) {
+            .center-right-text {
+                width: 30%;
+                max-width: 600px;
+            }
+            
+            .side-wrapper {
+                width: 30%;
+            }
+            
+            .side-image-placeholder {
+                width: 70%;
+            }
+            
+            .central-gif {
+                width: clamp(260px, 18vw, 320px);
+            }
+            
+            .gif-left-hand {
+                top: 64%;
+                left: 58%;
+            }
 
-            .gif-right-hand {
-                top: 65%;
-                right: 60%;
-            }
-            
-            .center-content {
-                padding: 0 8vw;
-            }
-        }
+            .gif-right-hand {
+                top: 65%;
+                right: 60%;
+            }
+            
+            .center-content {
+                padding: 0 8vw;
+            }
+        }
 
-        /* Mobile Responsive */
-        @media (max-width: 1023px) {
-            .center-layout {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                gap: 15px;
-            }
-            .center-right-text {
-                width: 100%;
-                max-width: 100%;
-                text-align: center;
-                padding-top: 50px; 
-            }
-            
-            .center-title-main {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
+        /* Mobile Responsive */
+        @media (max-width: 1023px) {
+            .center-layout {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+            .center-right-text {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+                padding-top: 50px; 
+            }
+            
+            .center-title-main {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
 
-            .moto-container {
-                margin-bottom: 15px;
-            }
+            .moto-container {
+                margin-bottom: 15px;
+            }
 
-            .moto-slogan {
-                font-size: 1.1rem;
-                text-align: center;
-            }
+            .moto-slogan {
+                font-size: 1.1rem;
+                text-align: center;
+            }
 
-            /* Adjust central GIFs for mobile */
-            .central-gif {
-                width: 150px;
-            }
+            /* Adjust central GIFs for mobile */
+            .central-gif {
+                width: 150px;
+            }
 
-            .gif-left-hand {
-                top: 40%;
-                left: 20%;
-            }
+            .gif-left-hand {
+                top: 40%;
+                left: 20%;
+            }
 
-            .gif-right-hand {
-                top: 40%;
-                right: 20%;
-            }
+            .gif-right-hand {
+                top: 40%;
+                right: 20%;
+            }
 
-            .side-wrapper h1 {
-                font-size: 3rem;
-            }
-            .side-wrapper p.moto {
-                font-size: 1.2rem;
-            }
-            
-            /* Add Mobile specific fixes for side states */
-            .state-left.active, .state-right.active {
-                flex-direction: column;
-                justify-content: center;
-            }
+            .side-wrapper h1 {
+                font-size: 3rem;
+            }
+            .side-wrapper p.moto {
+                font-size: 1.2rem;
+            }
+            
+            /* Add Mobile specific fixes for side states */
+            .state-left.active, .state-right.active {
+                flex-direction: column;
+                justify-content: center;
+            }
 
-            .side-wrapper {
-                width: 100%;
-                padding: 10px 5%;
-                text-align: center;
-                order: 2;
-                margin-top: 50vh;
-                position: absolute;
-                top: 0;
-            }
+            .side-wrapper {
+                width: 100%;
+                padding: 10px 5%;
+                text-align: center;
+                order: 2;
+                margin-top: 50vh;
+                position: absolute;
+                top: 0;
+            }
 
-            .side-image-placeholder {
-                width: 100%;
-                height: 50%;
-                left: 0 !important;
-                right: 0 !important;
-                top: 0;
-                order: 1;
-            }
-        }
+            .side-image-placeholder {
+                width: 100%;
+                height: 50%;
+                left: 0 !important;
+                right: 0 !important;
+                top: 0;
+                order: 1;
+            }
+        }
 
-    </style>
+    </style>
 </head>
 <body>
-    <section class="hero-section" id="heroSection">
-        
-        <div class="state-center" id="stateCenter">
-            
-            <div class="center-image">
-                
-                <div class="central-gifs-container">
-                    <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
-                    <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
-                </div>
-                
-            </div>
-            <div class="center-content">
-                
-                <div class="center-layout">
-                    
-                    <div class="center-right-text">
-                        <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
-                        <div class="moto-container">
-                            <p class="moto-slogan">Discipline. Integrity. Innovation.</p>
-                        </div>
-                    </div>
-                    
-                    </div>
-            </div>
-        </div>
+    <section class="hero-section" id="heroSection">
+        
+        <div class="state-center" id="stateCenter">
+            
+            <div class="center-image">
+                
+                <div class="central-gifs-container">
+                    <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
+                    <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+                </div>
+                
+            </div>
+            <div class="center-content">
+                
+                <div class="center-layout">
+                    
+                    <div class="center-right-text">
+                        <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
+                        <div class="moto-container">
+                            <p class="moto-slogan">Discipline. Integrity. Innovation.</p>
+                        </div>
+                    </div>
+                    
+                    </div>
+            </div>
+        </div>
 
-        <div class="state-left" id="stateLeft">
-            <div class="side-wrapper">
-                <h1>MECHANICAL ENGINEER</h1>
-                <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="/about" class="side-link">View Formal Profile ></a>
-            </div>
-            <div class="side-image-placeholder"></div>
-        </div>
+        <div class="state-left" id="stateLeft">
+            <div class="side-wrapper">
+                <h1>MECHANICAL ENGINEER</h1>
+                <p class="moto">Building efficiency from precision and discipline.</p>
+                <a href="/about" class="side-link">View Formal Profile ></a>
+            </div>
+            <div class="side-image-placeholder"></div>
+        </div>
 
-        <div class="state-right" id="stateRight">
-            <div class="side-wrapper">
-                <h1>INDUSTRY 4.0 EXPERT</h1>
-                <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="/portfolio" class="side-link">View Creative Portfolio></a>
-            </div>
-            <div class="side-image-placeholder"></div>
-        </div>
+        <div class="state-right" id="stateRight">
+            <div class="side-wrapper">
+                <h1>INDUSTRY 4.0 EXPERT</h1>
+                <p class="moto">Automating the future of intelligent manufacturing.</p>
+                <a href="/portfolio" class="side-link">View Creative Portfolio></a>
+            </div>
+            <div class="side-image-placeholder"></div>
+        </div>
 
-    </section>
+    </section>
 
-    <script>
-        const hero = document.getElementById('heroSection');
-        const center = document.getElementById('stateCenter');
-        const left = document.getElementById('stateLeft');
-        const right = document.getElementById('stateRight');
-        
-        const CENTER_BUFFER = 0.20; 
+    <script>
+        const hero = document.getElementById('heroSection');
+        const center = document.getElementById('stateCenter');
+        const left = document.getElementById('stateLeft');
+        const right = document.getElementById('stateRight');
+        
+        const CENTER_BUFFER = 0.20; 
 
-        function handleMouseMove(e) {
-            const rect = hero.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const centerX = rect.width / 2;
-            const bufferX = rect.width * CENTER_BUFFER;
+        function handleMouseMove(e) {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const centerX = rect.width / 2;
+            const bufferX = rect.width * CENTER_BUFFER;
 
-            let currentState = 'center';
+            let currentState = 'center';
 
-            if (x < centerX - bufferX) {
-                currentState = 'left';
-            } else if (x > centerX + bufferX) {
-                currentState = 'right';
-            } else {
-                currentState = 'center';
-            }
+            if (x < centerX - bufferX) {
+                currentState = 'left';
+            } else if (x > centerX + bufferX) {
+                currentState = 'right';
+            } else {
+                currentState = 'center';
+            }
 
-            if (currentState === 'center') {
-                center.classList.remove('hidden');
-                left.classList.remove('active');
-                right.classList.remove('active');
-            } else if (currentState === 'left') {
-                center.classList.add('hidden');
-                left.classList.add('active');
-                right.classList.remove('active');
-            } else if (currentState === 'right') {
-                center.classList.add('hidden');
-                left.classList.remove('active');
-                right.classList.add('active');
-            }
-        }
-        
-        function handleMouseLeave() {
-            center.classList.remove('hidden');
-            left.classList.remove('active');
-            right.classList.remove('active');
-        }
+            if (currentState === 'center') {
+                center.classList.remove('hidden');
+                left.classList.remove('active');
+                right.classList.remove('active');
+            } else if (currentState === 'left') {
+                center.classList.add('hidden');
+                left.classList.add('active');
+                right.classList.remove('active');
+            } else if (currentState === 'right') {
+                center.classList.add('hidden');
+                left.classList.remove('active');
+                right.classList.add('active');
+            }
+        }
+        
+        function handleMouseLeave() {
+            center.classList.remove('hidden');
+            left.classList.remove('active');
+            right.classList.remove('active');
+        }
 
-        hero.addEventListener('mousemove', handleMouseMove);
-        hero.addEventListener('mouseleave', handleMouseLeave);
-        
-    </script>
+        hero.addEventListener('mousemove', handleMouseMove);
+        hero.addEventListener('mouseleave', handleMouseLeave);
+        
+    </script>
 </body>
 </html>
