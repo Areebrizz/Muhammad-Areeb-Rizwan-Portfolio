@@ -225,29 +225,32 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-       /* Image Placeholder - UPDATED TO FIX CLIPPING/CROPPING */
+       /* Image Placeholder */
 .side-image-placeholder {
     position: absolute;
     top: 0;
     height: 100%;
     width: 100%;
-    background-size: contain; /* CHANGED FROM 'cover' TO 'contain' */
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; /* ADDED TO PREVENT TILING */
     opacity: 0;
     transition: opacity 0.5s ease;
-    z-index: 39;
+    z-index: 39; /* Change this to higher value */
 }
 
 .state-left .side-image-placeholder {
     right: 0;
     background-image: url('assets/images/formal1.png'); 
-    z-index: 20;
+    z-index: 20; /* Add this line to bring formal image to front */
+     background-size: cover; /* or contain, or custom % values */
+    background-position: left; /* or left, right, top, bottom */
+    width: 100%; /* adjust this to control horizontal coverage */
 }
 
 .state-right .side-image-placeholder {
     left: 0;
     background-image: url('assets/images/new8.png'); 
+    /* Keep creative image at default z-index */
 }
 
         /* ACTIVE STATE STYLES */
