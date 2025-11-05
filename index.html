@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
+    <!-- Using Inter font for clean modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,6 +16,7 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow: hidden; 
+            background-color: #1a1a1a; /* Dark base color */
         }
 
         /* --- HEADER STYLES --- */
@@ -25,8 +27,9 @@
             width: 100%;
             z-index: 100;
             background-color: rgba(17, 17, 17, 0.95);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.3); /* Subtle green line */
         }
 
         .nav-content {
@@ -43,7 +46,7 @@
             font-weight: 800;
             color: white;
             letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
         }
 
         .nav-links a {
@@ -54,11 +57,23 @@
             font-weight: 500;
             padding: 5px 0;
             transition: color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover, .nav-links a.active-link {
             color: #4CAF50;
-            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+            text-shadow: 0 0 8px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Active line indicator */
+        .nav-links a.active-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #4CAF50;
         }
 
         /* Hero Section Container - The fixed container for all states */
@@ -81,8 +96,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Fixed Background */
-            background-image: url('assets/images/background 11.png.png');
+            /* Fallback/Primary dark background if image fails or is unavailable */
+            background-color: #1a1a1a;
+            /* Using a fallback placeholder for the background */
+            background-image: url('assets/images/background 11.png.png'), linear-gradient(to bottom, #1a1a1a, #0d0d0d); 
             background-size: cover;
             background-position: center;
             z-index: 30; /* Stays beneath side panels */
@@ -108,10 +125,7 @@
             top: 0;
             height: 100%;
             width: 0%; /* START WIDTH AT 0% */
-            
-            /* Reduced transition duration for snappier feedback */
             transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
             display: flex;
             align-items: center; 
             z-index: 40;
@@ -125,22 +139,22 @@
             justify-content: flex-end;
         }
 
-        /* Side panel background images */
+        /* Side panel backgrounds replaced with reliable gradients */
         .state-left {
-            background-image: url('assets/images/background 22.png.png');
-            background-size: cover;
-            background-position: center;
+            /* Professional/Formal Gradient */
+            background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(50, 60, 70, 0.95) 100%);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             justify-content: flex-start;
         }
 
         .state-right {
-            background-image: url('assets/images/background 3.png');
-            background-size: cover;
-            background-position: center;
+            /* Tech/Industry 4.0 Gradient */
+            background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(76, 175, 80, 0.3) 100%);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             justify-content: flex-end;
         }
         
-        /* --- CENTER STATE CONTENT (No changes to layout/animation) --- */
+        /* --- CENTER STATE CONTENT --- */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -175,6 +189,9 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
             animation: fadeInUp 0.8s ease-out 0.5s forwards; 
             opacity: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
         }
 
         .center-title-main { 
@@ -210,6 +227,8 @@
             left: 0;
             width: 100%;
             height: 99%;
+            /* Using a fallback color/gradient for the main image area */
+            background-color: #1e1e1e; 
             background-image: url('assets/images/new15.png'); 
             background-size: cover; 
             background-repeat: no-repeat;
@@ -232,17 +251,22 @@
         
         .central-gif {
             position: absolute;
-            width: clamp(200px, 16vw, 300px);
+            width: clamp(150px, 12vw, 250px); /* Slightly smaller for better fit */
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
             pointer-events: auto;
             cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
         }
 
-        .central-gif:hover { transform: scale(1.05); }
-        .gif-left-hand { top: 63%; left: 57%; }
-        .gif-right-hand { top: 64%; right: 59%; }
+        .central-gif:hover { 
+            transform: scale(1.1); 
+            box-shadow: 0 0 25px rgba(76, 175, 80, 1);
+        }
+        .gif-left-hand { top: 60%; left: 55%; }
+        .gif-right-hand { top: 62%; right: 55%; }
 
         /* LEFT/RIGHT STATE CONTENT */
         .side-wrapper {
@@ -263,7 +287,7 @@
             font-size: clamp(2.5rem, 4vw, 5rem);
             font-weight: 900;
             color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
             margin-bottom: 10px;
             line-height: 1.1;
         }
@@ -273,15 +297,21 @@
             font-style: italic;
             color: #ccc;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .side-link {
-            color: white;
+            color: #4CAF50;
             text-decoration: underline;
             margin-top: 20px;
             display: inline-block;
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .side-link:hover {
+            color: #76ff7a;
         }
 
         /* --- FIX: ANCHORING SIDE IMAGE TO FAR EDGES --- */
@@ -291,20 +321,21 @@
             height: 100%;
             width: 100%; 
             background-size: cover;
+            background-repeat: no-repeat;
             opacity: 0;
             transition: opacity 0.5s ease;
             z-index: 39; 
+            /* Added background blur for a softer transition */
+            filter: brightness(0.9);
         }
         
         .state-left .side-image-placeholder {
-            background-image: url('assets/images/formal1.png'); 
-            left: 0; 
+            background-image: url('assets/images/formal1.png'), linear-gradient(to right, rgba(30, 30, 30, 0.5), transparent 50%); 
             background-position: 0% center; 
         }
 
         .state-right .side-image-placeholder {
-            background-image: url('assets/images/new8.png'); 
-            right: 0; 
+            background-image: url('assets/images/new8.png'), linear-gradient(to left, rgba(30, 30, 30, 0.5), transparent 50%); 
             background-position: 100% center; 
         }
         
@@ -346,25 +377,23 @@
             }
 
             .nav-links a {
-                margin: 0 8px; /* Space links horizontally */
+                margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
             
-            /* MAIN HERO ADJUSTMENTS */
             .hero-section {
-                /* New header is taller, adjust margin */
                 margin-top: 90px; 
                 height: calc(100vh - 90px); 
+                overflow-y: auto; /* Allow scrolling on mobile */
             }
 
             /* CENTER STATE */
             .center-content {
-                /* Remove absolute positioning and center translation */
                 position: relative;
                 top: auto;
                 transform: none;
-                padding: 40px 5vw 0 5vw; 
+                padding: 20px 5vw 0 5vw; /* Adjusted top padding */
                 text-align: center;
             }
 
@@ -374,34 +403,33 @@
                 justify-content: center;
             }
             
-            /* Text block: full width, center aligned */
             .center-right-text {
                 width: 100%;
                 max-width: none;
                 text-align: center;
                 padding-bottom: 20px;
-                animation: none; /* Disable initial fade-in animation on mobile */
-                opacity: 1; /* Always visible */
+                animation: none;
+                opacity: 1; 
+                padding: 15px; /* Smaller padding on mobile */
             }
             
             .moto-slogan {
                 text-align: center;
             }
             
-            /* Main image: must occupy less vertical space, and be relative to flow */
             .center-image {
                 position: relative;
                 width: 100%;
-                height: 40vh; /* Set a fixed height for visual */
+                height: 40vh; 
                 min-height: 200px;
-                background-position: center bottom; /* Adjust to better frame the image subject */
-                opacity: 0.7; /* Make background image slightly dimmer */
-                margin-top: -30px; /* Pull it up slightly */
+                background-position: center bottom;
+                opacity: 0.7; 
+                margin-top: -10px; /* Reduced negative margin */
             }
             
             /* CENTRAL GIFS */
             .central-gifs-container {
-                position: relative; /* Make it flow with the document */
+                position: relative; 
                 top: auto;
                 left: auto;
                 width: 100%;
@@ -411,24 +439,22 @@
                 align-items: center;
                 padding: 20px 10px;
                 z-index: 50; 
-                margin-top: -50px; /* Pull it slightly up over the image */
-                pointer-events: auto; /* Enable touch on GIFs */
+                margin-top: -50px; 
+                pointer-events: auto; 
             }
 
             .central-gif {
-                position: relative; /* Not absolute anymore */
-                width: 100px; /* Fixed size for mobile tapping */
+                position: relative; 
+                width: 100px; 
                 height: 100px;
                 object-fit: contain;
                 top: auto !important;
                 left: auto !important;
                 right: auto !important;
-                transform: none !important; /* Remove hover scaling for touch devices */
-                cursor: pointer;
+                transform: none !important; 
             }
             
             .gif-left-hand, .gif-right-hand {
-                /* Remove specific desktop absolute positioning */
                 top: auto;
                 left: auto;
                 right: auto;
@@ -436,24 +462,51 @@
             
             /* SIDE PANELS (LEFT/RIGHT STATES) */
             .state-left, .state-right {
-                /* The 100% width on click is fine, but the content needs centering */
-                align-items: flex-start; /* Start content near the top */
+                align-items: flex-start;
                 justify-content: center;
-                padding-top: 15vh; /* Push content down slightly from the top */
-            }
-
-            .side-wrapper {
-                width: 90%; /* Near full width for content */
-                max-width: 400px;
-                text-align: center; /* Center text */
-                padding: 20px;
-                background-color: rgba(0, 0, 0, 0.7); /* Add dark background for contrast */
-                border-radius: 10px;
+                padding-top: 15vh;
+                width: 100% !important; /* Ensure 100% width when clicked */
             }
             
+            .side-wrapper {
+                width: 90%; 
+                max-width: 400px;
+                text-align: center; 
+                padding: 25px;
+                background-color: rgba(0, 0, 0, 0.9); /* Darker overlay for text clarity */
+                border-radius: 10px;
+                border: 2px solid #4CAF50;
+                box-shadow: 0 8px 30px rgba(76, 175, 80, 0.5);
+            }
+            
+            /* FIX: SIDE IMAGES - REPLACE FULL-SCREEN WITH SMALLER IMAGES AT EDGES */
             .side-image-placeholder {
-                /* Ensure the full background image is visible */
-                background-position: center center !important;
+                width: 100px; /* Standard size for mobile */
+                height: 100px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                opacity: 0.8;
+                top: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+                filter: none; /* Remove filter */
+            }
+            
+            .state-left .side-image-placeholder {
+                left: 20px;
+                right: auto;
+                background-position: center;
+            }
+            
+            .state-right .side-image-placeholder {
+                right: 20px;
+                left: auto;
+                background-position: center;
+            }
+            
+            /* Ensure the background images don't interfere */
+            .state-left, .state-right {
+                background-image: none; /* Rely on the solid/gradient background set earlier */
             }
         }
 
@@ -512,7 +565,7 @@
             <div class="side-image-placeholder"></div>
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1> 
-                <p class="moto">Building efficiency from precision and discipline.</p>
+                <p class="moto">Building efficiency from precision and discipline. From complex CAD designs to thermal dynamics, my work centers on engineering reliable and efficient physical systems.</p>
                 <a href="#" onclick="setState('center'); return false;" class="side-link">View Mechanical Engineering ></a> 
             </div>
         </div>
@@ -521,7 +574,7 @@
             <div class="side-image-placeholder"></div>
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1> 
-                <p class="moto">Automating the future of intelligent manufacturing.</p>
+                <p class="moto">Automating the future of intelligent manufacturing. I focus on integrating IoT, Robotics, and AI to create smart, interconnected, and adaptive industrial processes.</p>
                 <a href="#" onclick="setState('center'); return false;" class="side-link">View Industry 4.0 ></a> 
             </div>
         </div>
@@ -535,12 +588,12 @@
         const centerContentWrapper = document.getElementById('centerContentWrapper'); 
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        // --- CONSTANTS FOR 10% TO 20% TRANSITION ---
-        const PASSIVE_START_L = 0.40; 
-        const ACTIVE_END_L = 0.20;    
+        // --- CONSTANTS FOR TRANSITION ZONES ---
+        const PASSIVE_START_L = 0.40; // Starts expanding left panel when mouse is at 40%
+        const ACTIVE_END_L = 0.20; // Left panel is 100% when mouse is at 20%
         const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; 
-        const PASSIVE_START_R = 0.60;
-        const ACTIVE_END_R = 0.80; 
+        const PASSIVE_START_R = 0.60; // Starts expanding right panel when mouse is at 60%
+        const ACTIVE_END_R = 0.80; // Right panel is 100% when mouse is at 80%
 
         // Helper function to check if the screen is mobile size
         function isMobileScreen() {
@@ -554,11 +607,11 @@
             left.classList.remove('active-click', 'active-visual');
             right.classList.remove('active-click', 'active-visual');
             
-            // Reset side widths
+            // Reset side widths to default (0% for non-click states)
             left.style.width = '0%';
             right.style.width = '0%';
-            left.style.zIndex = 20; 
-            right.style.zIndex = 20;
+            left.style.zIndex = 40; // Reset to base Z-index
+            right.style.zIndex = 40;
             
             // 2. Control the center content wrapper's opacity
             centerContentWrapper.style.opacity = 1; 
@@ -613,7 +666,7 @@
                 return;
             }
 
-            // --- 1. LEFT SIDE LOGIC (x moves from 40% to 20% from left edge) ---
+            // --- 1. LEFT SIDE LOGIC ---
             if (x < PASSIVE_START_L * W) {
                 if (x <= ACTIVE_END_L * W) {
                     L_width = 100;
@@ -622,6 +675,7 @@
                     const distance_traveled = PASSIVE_START_L * W - x;
                     const range_width = TRANSITION_RANGE * W;
                     const ratio = distance_traveled / range_width; 
+                    // Clamp ratio between 0 and 1
                     L_width = Math.min(100, Math.max(0, ratio * 100));
                 }
                 
@@ -630,7 +684,7 @@
                 left.classList.add('active-visual'); 
                 right.classList.remove('active-visual'); 
             } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 60% to 80% from left edge) ---
+            // --- 2. RIGHT SIDE LOGIC ---
             else if (x > PASSIVE_START_R * W) {
                 if (x >= ACTIVE_END_R * W) {
                     R_width = 100;
@@ -639,6 +693,7 @@
                     const distance_traveled = x - PASSIVE_START_R * W;
                     const range_width = TRANSITION_RANGE * W;
                     const ratio = distance_traveled / range_width; 
+                    // Clamp ratio between 0 and 1
                     R_width = Math.min(100, Math.max(0, ratio * 100));
                 }
                 
@@ -661,13 +716,13 @@
             // Manage Z-index to ensure the currently expanding panel is on top
             if (L_width > 0) {
                 left.style.zIndex = 45;
-                right.style.zIndex = 20;
+                right.style.zIndex = 40;
             } else if (R_width > 0) {
                 right.style.zIndex = 45;
-                left.style.zIndex = 20;
+                left.style.zIndex = 40;
             } else {
-                left.style.zIndex = 20;
-                right.style.zIndex = 20;
+                left.style.zIndex = 40;
+                right.style.zIndex = 40;
             }
         }
         
@@ -687,6 +742,10 @@
             if (!isMobileScreen()) {
                 hero.addEventListener('mousemove', handleMouseMove);
                 hero.addEventListener('mouseleave', handleMouseLeave);
+                // Also ensure the click state is reset when resizing to desktop from a mobile 'click' state
+                if (left.classList.contains('active-click') || right.classList.contains('active-click')) {
+                     setState('center');
+                }
             } else {
                 // Ensure panels are reset if they were half-open when resizing to mobile
                 if (!left.classList.contains('active-click') && !right.classList.contains('active-click')) {
@@ -700,10 +759,6 @@
         // Initial setup and listener for resizing
         setupMouseListeners(); 
         window.addEventListener('resize', setupMouseListeners);
-        
-        // Ensure GIF clicks use the updated setState (already present in the body)
-        // document.querySelector('.gif-left-hand').addEventListener('click', () => setState('left'));
-        // document.querySelector('.gif-right-hand').addEventListener('click', () => setState('right'));
         
     </script>
 </body>
