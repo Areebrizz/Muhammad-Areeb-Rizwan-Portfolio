@@ -283,8 +283,7 @@
             display: inline-block;
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
-
-      /* Image Placeholder - Alternative Solution */
+/* Image Placeholder - CORRECT VERSION */
 .side-image-placeholder {
     position: absolute;
     top: 0;
@@ -300,18 +299,18 @@
     background-image: url('assets/images/formal1.png'); 
     /* Position on far right */
     right: 0;
-    left: auto;
-    width: 80%; /* Adjust width as needed */
-    background-position: right center;
+    left: auto; /* Clear left positioning */
+    width: 80%; 
+    background-position: right center; /* Pin to right edge */
 }
 
 .state-right .side-image-placeholder {
     background-image: url('assets/images/new8.png'); 
     /* Position on far left */
     left: 0;
-    right: auto;
-    width: 80%; /* Adjust width as needed */
-    background-position: left center;
+    right: auto; /* Clear right positioning */
+    width: 80%; 
+    background-position: left center; /* Pin to left edge */
 }
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
