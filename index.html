@@ -304,14 +304,14 @@
             background-image: url('assets/images/formal1.png'); 
             left: 0; 
             background-position: 100% center; /* Anchored to FAR RIGHT */
-            background-size: auto 90%; /* Fixed, non-filling height (consistent scale) */
+            background-size: auto 100%; /* Fixed, non-filling height (consistent scale) */
         }
 
         .state-right .side-image-placeholder {
             background-image: url('assets/images/new8.png'); 
             right: 0; 
             background-position: 0% center; /* Anchored to FAR LEFT */
-            background-size: auto 90%; /* Fixed, non-filling height (consistent scale) */
+            background-size: auto 100%; /* Fixed, non-filling height (consistent scale) */
         }
         
         /* Show content when EITHER visual (mouse) or click state is active */
@@ -536,12 +536,12 @@
         const navLinks = document.querySelectorAll('.nav-links a');
         
         // --- CONSTANTS FOR TRANSITION ---
-        // UPDATED LOGIC: Start at 14% from center (36% / 64%) and finish at 22% from center (28% / 72%)
-        const PASSIVE_START_L = 0.36; // Start expanding left panel when mouse is at 36%
-        const ACTIVE_END_L = 0.28; // Panel is 100% wide when mouse reaches 28%
-        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; // 0.08 (The distance over which the panel transitions)
-        const PASSIVE_START_R = 0.64; // Start expanding right panel when mouse is at 64%
-        const ACTIVE_END_R = 0.72; // Panel is 100% wide when mouse reaches 72%
+        // UPDATED LOGIC: Start at 20% from center (30% / 70%) and finish at 25% from center (25% / 75%)
+        const PASSIVE_START_L = 0.30; // Start expanding left panel when mouse is at 30%
+        const ACTIVE_END_L = 0.25; // Panel is 100% wide when mouse reaches 25%
+        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; // 0.05 (The distance over which the panel transitions)
+        const PASSIVE_START_R = 0.70; // Start expanding right panel when mouse is at 70%
+        const ACTIVE_END_R = 0.75; // Panel is 100% wide when mouse reaches 75%
 
         // Helper function to check if the screen is mobile size
         function isMobileScreen() {
@@ -613,7 +613,7 @@
                 return;
             }
 
-            // --- 1. LEFT SIDE LOGIC (x moves from 36% to 28% from left edge) ---
+            // --- 1. LEFT SIDE LOGIC (x moves from 30% to 25% from left edge) ---
             if (x < PASSIVE_START_L * W) {
                 if (x <= ACTIVE_END_L * W) {
                     L_width = 100;
@@ -630,7 +630,7 @@
                 left.classList.add('active-visual'); 
                 right.classList.remove('active-visual'); 
             } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 64% to 72% from left edge) ---
+            // --- 2. RIGHT SIDE LOGIC (x moves from 70% to 75% from left edge) ---
             else if (x > PASSIVE_START_R * W) {
                 if (x >= ACTIVE_END_R * W) {
                     R_width = 100;
@@ -647,7 +647,7 @@
                 right.classList.add('active-visual'); 
                 left.classList.remove('active-visual'); 
             } 
-            // --- 3. CENTER LOGIC (Passive Zone: 36% to 64%) ---
+            // --- 3. CENTER LOGIC (Passive Zone: 30% to 70%) ---
             else {
                 left.classList.remove('active-visual');
                 right.classList.remove('active-visual');
