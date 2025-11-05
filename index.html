@@ -233,27 +233,23 @@
             transition: opacity 0.5s ease 0.3s;
         }
         
-        /* UPDATED: Added subtle glow and enhanced hover effect */
+        /* UPDATED: Removed glow, kept only scale and transform transition */
         .central-gif {
             position: absolute;
             width: clamp(200px, 16vw, 300px);
             height: auto;
             object-fit: contain;
-            /* Added transitions for visual effects */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            /* Transition only for smooth scaling */
+            transition: transform 0.3s ease; 
             pointer-events: auto;
             cursor: pointer;
             border-radius: 10px;
-            /* Subtle, constant glow */
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.4); 
-            filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.6));
+            /* Removed subtle, constant glow */
         }
 
         .central-gif:hover {
             transform: scale(1.08); /* Scale up more on hover */
-            /* Enhanced, brighter glow on hover */
-            box-shadow: 0 0 20px rgba(76, 175, 80, 0.9), 0 0 30px rgba(76, 175, 80, 0.6);
-            filter: drop-shadow(0 0 10px #4CAF50);
+            /* Removed glow effects */
         }
         
         .gif-left-hand { top: 63%; left: 57%; }
@@ -446,8 +442,6 @@
                 transform: none !important;
                 cursor: pointer;
                 /* Reset glow for mobile layout consistency if needed, but keeping for click targets */
-                box-shadow: 0 0 5px rgba(76, 175, 80, 0.4); 
-                filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.6));
             }
             
             .gif-left-hand, .gif-right-hand {
