@@ -287,28 +287,31 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-        /* --- SWAPPED ANCHORING FOR SIDE IMAGES --- */
+        /* --- SWAPPED ANCHORING AND FIXED SIZE FOR SIDE IMAGES --- */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
             width: 100%; 
-            background-size: cover;
+            /* background-size: cover; REMOVED to allow specific sizing below */
             opacity: 0;
             transition: opacity 0.5s ease;
             z-index: 39; 
+            background-repeat: no-repeat; /* Ensure fixed size images don't tile */
         }
         
         .state-left .side-image-placeholder {
             background-image: url('assets/images/formal1.png'); 
-            left: 100; 
-            background-position: 60% center; /* CHANGED: Now far right */
+            left: 0; 
+            background-position: 100% center; /* Anchored to FAR RIGHT */
+            background-size: auto 90%; /* NEW: Fixed, non-filling height (consistent scale) */
         }
 
         .state-right .side-image-placeholder {
             background-image: url('assets/images/new8.png'); 
-            right: 100; 
-            background-position: 60% center; /* CHANGED: Now far left */
+            right: 0; 
+            background-position: 0% center; /* Anchored to FAR LEFT */
+            background-size: auto 90%; /* NEW: Fixed, non-filling height (consistent scale) */
         }
         
         /* Show content when EITHER visual (mouse) or click state is active */
@@ -456,6 +459,7 @@
             
             .side-image-placeholder {
                 background-position: center center !important;
+                background-size: contain !important; /* Use contain on mobile for visibility */
             }
         }
 
