@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,12 @@
     <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables for Header Height (makes responsiveness clearer) */
+        :root {
+            --header-height-desktop: 60px;
+            --header-height-mobile: 90px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,6 +33,7 @@
             background-color: rgba(17, 17, 17, 0.95);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
+            height: var(--header-height-desktop); /* Explicit height for desktop */
         }
 
         .nav-content {
@@ -62,15 +68,17 @@
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
 
-        /* Hero Section Container - The fixed container for all states */
+        /* Hero Section Container - CRITICAL FIX: Use fixed positioning to lock content below the header */
         .hero-section {
-            height: 100vh;
+            /* REMOVED: margin-top: 60px; height: calc(100vh - 60px); */
+            position: fixed; /* Ensures it stays in the viewport */
+            top: var(--header-height-desktop); /* Starts exactly 60px down */
+            bottom: 0; /* Extends to the bottom of the screen */
+            left: 0;
             width: 100vw;
-            position: relative;
             background-color: #333;
             overflow: hidden;
-            margin-top: 60px; 
-            height: calc(100vh - 60px); 
+            z-index: 1; /* Keep it below the header (z-index: 100) */
         }
         
         /* --- STATE-BASED CONTAINERS --- */
@@ -81,12 +89,11 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            /* Fixed Background */
+            height: 100%; /* Now 100% of the newly constrained .hero-section */
             background-image: url('assets/images/background 11.png.png');
             background-size: cover;
             background-position: center;
-            z-index: 30; /* Stays beneath side panels */
+            z-index: 30;
         }
         
         /* 1b. Wrapper for internal content that FADES OUT/IN */
@@ -99,7 +106,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.3s ease; /* Only opacity is controlled */
+            transition: opacity 0.3s ease;
             opacity: 1;
         }
         
@@ -107,12 +114,9 @@
         .state-left, .state-right {
             position: absolute;
             top: 0;
-            height: 100%;
-            width: 0%; /* START WIDTH AT 0% */
-            
-            /* Reduced transition duration for snappier feedback */
+            height: 100%; /* Now 100% of the newly constrained .hero-section */
+            width: 0%;
             transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
             display: flex;
             align-items: center; 
             z-index: 40;
@@ -330,9 +334,13 @@
         @media (max-width: 480px) {
             
             /* HEADER / NAVIGATION */
+            .main-header {
+                height: var(--header-height-mobile); /* Increase height for better tap targets */
+            }
+
             .nav-content {
                 flex-direction: column;
-                padding: 10px 15px;
+                padding: 10px 15px 5px 15px; /* Adjusted padding to accommodate taller header */
             }
 
             .logo {
@@ -347,21 +355,19 @@
             }
 
             .nav-links a {
-                margin: 0 8px; /* Space links horizontally */
+                margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
             
-            /* MAIN HERO ADJUSTMENTS */
+            /* MAIN HERO ADJUSTMENTS: Adjust fixed top position to mobile header height */
             .hero-section {
-                /* New header is taller, adjust margin */
-                margin-top: 90px; 
-                height: calc(100vh - 90px); 
+                top: var(--header-height-mobile); /* Starts exactly 90px down on mobile */
             }
 
             /* CENTER STATE */
             .center-content {
-                /* Remove absolute positioning and center translation */
+                /* Remove absolute positioning and center translation to allow scrolling on mobile */
                 position: relative;
                 top: auto;
                 transform: none;
@@ -381,8 +387,8 @@
                 max-width: none;
                 text-align: center;
                 padding-bottom: 20px;
-                animation: none; /* Disable initial fade-in animation on mobile */
-                opacity: 1; /* Always visible */
+                animation: none;
+                opacity: 1;
             }
             
             .moto-slogan {
@@ -393,16 +399,16 @@
             .center-image {
                 position: relative;
                 width: 100%;
-                height: 40vh; /* Set a fixed height for visual */
+                height: 40vh;
                 min-height: 200px;
-                background-position: center bottom; /* Adjust to better frame the image subject */
-                opacity: 0.7; /* Make background image slightly dimmer */
-                margin-top: -30px; /* Pull it up slightly */
+                background-position: center bottom;
+                opacity: 0.7;
+                margin-top: -30px;
             }
             
             /* CENTRAL GIFS */
             .central-gifs-container {
-                position: relative; /* Make it flow with the document */
+                position: relative;
                 top: auto;
                 left: auto;
                 width: 100%;
@@ -412,24 +418,23 @@
                 align-items: center;
                 padding: 20px 10px;
                 z-index: 50; 
-                margin-top: -50px; /* Pull it slightly up over the image */
-                pointer-events: auto; /* Enable touch on GIFs */
+                margin-top: -50px;
+                pointer-events: auto;
             }
 
             .central-gif {
-                position: relative; /* Not absolute anymore */
-                width: 100px; /* Fixed size for mobile tapping */
+                position: relative;
+                width: 100px;
                 height: 100px;
                 object-fit: contain;
                 top: auto !important;
                 left: auto !important;
                 right: auto !important;
-                transform: none !important; /* Remove hover scaling for touch devices */
+                transform: none !important;
                 cursor: pointer;
             }
             
             .gif-left-hand, .gif-right-hand {
-                /* Remove specific desktop absolute positioning */
                 top: auto;
                 left: auto;
                 right: auto;
@@ -437,23 +442,21 @@
             
             /* SIDE PANELS (LEFT/RIGHT STATES) */
             .state-left, .state-right {
-                /* The 100% width on click is fine, but the content needs centering */
-                align-items: flex-start; /* Start content near the top */
+                align-items: flex-start;
                 justify-content: center;
-                padding-top: 15vh; /* Push content down slightly from the top */
+                padding-top: 15vh;
             }
 
             .side-wrapper {
-                width: 90%; /* Near full width for content */
+                width: 90%;
                 max-width: 400px;
-                text-align: center; /* Center text */
+                text-align: center;
                 padding: 20px;
-                background-color: rgba(0, 0, 0, 0.7); /* Add dark background for contrast */
+                background-color: rgba(0, 0, 0, 0.7);
                 border-radius: 10px;
             }
             
             .side-image-placeholder {
-                /* Ensure the full background image is visible */
                 background-position: center center !important;
             }
         }
@@ -538,14 +541,13 @@
         
         // --- CONSTANTS FOR 10% TO 20% TRANSITION ---
         const PASSIVE_START_L = 0.40; 
-        const ACTIVE_END_L = 0.20;    
+        const ACTIVE_END_L = 0.20; 
         const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; 
         const PASSIVE_START_R = 0.60;
         const ACTIVE_END_R = 0.80; 
 
         // Helper function to check if the screen is mobile size
         function isMobileScreen() {
-            // Using 480px as the breakpoint as requested
             return window.innerWidth <= 480; 
         }
 
@@ -691,9 +693,9 @@
             } else {
                 // Ensure panels are reset if they were half-open when resizing to mobile
                 if (!left.classList.contains('active-click') && !right.classList.contains('active-click')) {
-                     left.style.width = '0%';
-                     right.style.width = '0%';
-                     centerContentWrapper.style.opacity = 1;
+                    left.style.width = '0%';
+                    right.style.width = '0%';
+                    centerContentWrapper.style.opacity = 1;
                 }
             }
         }
@@ -701,10 +703,6 @@
         // Initial setup and listener for resizing
         setupMouseListeners(); 
         window.addEventListener('resize', setupMouseListeners);
-        
-        // Ensure GIF clicks use the updated setState (already present in the body)
-        // document.querySelector('.gif-left-hand').addEventListener('click', () => setState('left'));
-        // document.querySelector('.gif-right-hand').addEventListener('click', () => setState('right'));
         
     </script>
 </body>
