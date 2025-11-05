@@ -98,17 +98,45 @@
             position: absolute;
             top: 0;
             height: 100%;
-            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            width: 50%; /* Base width for proportional movement */
+            /* REDUCED TRANSITION DURATION from 1.2s to 0.3s for proportional movement feedback */
+            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
             display: flex;
             align-items: center; 
-            justify-content: flex-start;
             z-index: 40;
-            opacity: 0;
+            opacity: 0; /* Initially invisible */
+            /* Fallback to ensure correct positioning */
+            left: 0; 
+        }
+        
+        .state-right {
+            right: 0;
+            left: auto; /* Ensure it stays on the right */
+            justify-content: flex-end;
         }
 
+        /* VISUAL/PROPORTIONAL ACTIVE STATE (via mousemove) */
+        .state-left.active-visual, .state-right.active-visual {
+            opacity: 1; /* Make side visible when proportional movement starts */
+        }
+        
+        /* CLICK ACTIVE STATE (fixed 100% width) */
+        .state-left.active-click {
+            width: 100% !important; 
+            opacity: 1;
+            z-index: 50;
+            justify-content: flex-start; 
+        }
+        
+        .state-right.active-click {
+            width: 100% !important; 
+            opacity: 1;
+            z-index: 50;
+            justify-content: flex-end; 
+        }
+        
+        /* Background Images (Set on base classes) */
         .state-left {
-            left: 0;
-            width: 50%;
             background-image: url('assets/images/background 22.png.png');
             background-size: cover;
             background-position: center;
@@ -116,15 +144,24 @@
         }
 
         .state-right {
-            right: 0;
-            width: 50%;
             background-image: url('assets/images/background 3.png');
             background-size: cover;
             background-position: center;
             justify-content: flex-end;
         }
         
-        /* --- CENTER STATE CONTENT --- */
+        /* --- CENTER STATE CONTENT ANIMATION --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .center-content {
             z-index: 35;
             position: absolute; 
@@ -147,13 +184,17 @@
             width: 100%;
         }
 
-        /* Text Block */
+        /* Text Block - APPLY DELAYED ANIMATION HERE */
         .center-right-text {
             width: 40%;
             max-width: 500px;
             color: white;
             text-align: left; 
             text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            
+            /* Animation for delayed appearance of text */
+            animation: fadeInUp 0.8s ease-out 0.5s forwards; 
+            opacity: 0; /* Starts invisible */
         }
 
         .center-title-main { 
@@ -209,6 +250,13 @@
             height: 100%;
             z-index: 36;
             pointer-events: none;
+            /* Added a short fade-in for the GIFs */
+            opacity: 0;
+            transition: opacity 0.5s ease 0.3s;
+        }
+        
+        .state-center:not(.hidden) .central-gifs-container {
+            opacity: 1;
         }
 
         .central-gif {
@@ -243,7 +291,20 @@
             text-align: left;
             position: relative;
             z-index: 45; 
+            
+            /* Content fade-in: delayed slightly after width change starts */
+            opacity: 0;
+            transition: opacity 0.4s ease 0.3s;
         }
+        
+        /* Show content when EITHER visual (mouse) or click state is active */
+        .state-left.active-visual .side-wrapper,
+        .state-right.active-visual .side-wrapper,
+        .state-left.active-click .side-wrapper,
+        .state-right.active-click .side-wrapper {
+            opacity: 1;
+        }
+        
         .state-right .side-wrapper {
             text-align: right;
         }
@@ -285,7 +346,7 @@
             transition: opacity 0.5s ease;
             z-index: 39; 
         }
-
+        
         .state-left .side-image-placeholder {
             right: 0;
             background-image: url('assets/images/formal1.png'); 
@@ -306,28 +367,17 @@
             z-index: 20; 
         }
 
-        .state-left.active {
-            width: 100%; 
-            opacity: 1;
-            z-index: 50;
-            justify-content: flex-start; 
-        }
-        .state-left.active .side-image-placeholder {
-            opacity: 1; 
-        }
-        
-        .state-right.active {
-            width: 100%; 
-            opacity: 1;
-            z-index: 50;
-            justify-content: flex-end; 
-        }
-        .state-right.active .side-image-placeholder {
+        /* Show image placeholder when EITHER visual (mouse) or click state is active */
+        .state-left.active-visual .side-image-placeholder,
+        .state-right.active-visual .side-image-placeholder,
+        .state-left.active-click .side-image-placeholder,
+        .state-right.active-click .side-image-placeholder {
             opacity: 1; 
         }
 
-        .state-left:not(.active) { opacity: 0; z-index: 40; }
-        .state-right:not(.active) { opacity: 0; z-index: 40; }
+        .state-left:not(.active-visual):not(.active-click) { opacity: 0; z-index: 40; }
+        .state-right:not(.active-visual):not(.active-click) { opacity: 0; z-index: 40; }
+
 
         /* 1024px Optimizations */
         @media (min-width: 1024px) and (max-width: 1439px) {
@@ -488,11 +538,14 @@
                 text-align: center;
                 gap: 15px;
             }
+            /* Remove center state text animation on mobile for better visibility when screen orientation changes */
             .center-right-text {
                 width: 100%;
                 max-width: 100%;
                 text-align: center;
                 padding-top: 50px; 
+                animation: none; /* Disable keyframe animation */
+                opacity: 1; /* Ensure visible */
             }
             
             .center-title-main {
@@ -545,6 +598,10 @@
                 margin-top: 55vh; /* Push text down */
                 position: absolute;
                 top: 0;
+                
+                /* Reset content transition for mobile to avoid complexity */
+                opacity: 1;
+                transition: none;
             }
 
             .side-image-placeholder {
@@ -567,8 +624,9 @@
             <div class="logo">M. Areeb Rizwan</div>
             <nav class="nav-links">
                 <a href="#" onclick="setState('center'); return false;">Home</a>
-                <a href="#" onclick="setState('left'); return false;">About</a>
-                <a href="#" onclick="setState('right'); return false;">Portfolio</a>
+                <!-- UPDATED LINKS -->
+                <a href="#" onclick="setState('left'); return false;">Mechanical Engineer</a>
+                <a href="#" onclick="setState('right'); return false;">Industry 4.0 Expert</a>
                 <a href="#contact" onclick="return false;">Contact</a> <!-- Contact link placeholder -->
             </nav>
         </div>
@@ -604,18 +662,22 @@
 
         <div class="state-left" id="stateLeft">
             <div class="side-wrapper">
-                <h1>ABOUT ME</h1> <!-- Updated Title -->
+                <!-- UPDATED TITLE -->
+                <h1>MECHANICAL ENGINEER</h1> 
                 <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link">View About ></a> <!-- Updated Link Text -->
+                <!-- UPDATED LINK TEXT -->
+                <a href="#" onclick="setState('center'); return false;" class="side-link">View Mechanical Engineering ></a> 
             </div>
             <div class="side-image-placeholder"></div>
         </div>
 
         <div class="state-right" id="stateRight">
             <div class="side-wrapper">
-                <h1>PORTFOLIO</h1> <!-- Updated Title -->
+                <!-- UPDATED TITLE -->
+                <h1>INDUSTRY 4.0 EXPERT</h1> 
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link">View Portfolio ></a> <!-- Updated Link Text -->
+                <!-- UPDATED LINK TEXT -->
+                <a href="#" onclick="setState('center'); return false;" class="side-link">View Industry 4.0 ></a> 
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -629,28 +691,33 @@
         const right = document.getElementById('stateRight');
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        const CENTER_BUFFER = 0.20; 
+        // --- NEW CONSTANTS FOR PROPORTIONAL MOVEMENT ---
+        // Side movement starts when cursor is outside the +/- 10% center buffer
+        const CENTER_BUFFER_START = 0.10; 
+        // Side movement is complete (100% width) when cursor is outside the +/- 20% center buffer
+        const CENTER_BUFFER_END = 0.20; 
 
-        // Refactored state setting into a single function
+        // Refactored state setting into a single function for CLICKS/LINKS
         function setState(targetState) {
-            // Remove active classes from all states/links
+            // 1. Reset all visual states
             center.classList.add('hidden');
-            left.classList.remove('active');
-            right.classList.remove('active');
+            left.classList.remove('active-click', 'active-visual');
+            right.classList.remove('active-click', 'active-visual');
+            left.style.width = '50%'; // Reset proportional width
+            right.style.width = '50%';
+            
+            // 2. Reset link active states
             navLinks.forEach(link => link.classList.remove('active-link'));
 
-            // Set the new active state/link
+            // 3. Set the new active state/link
             if (targetState === 'center') {
                 center.classList.remove('hidden');
-                // Set the active link in the navigation
                 document.querySelector('.nav-links a[onclick*="setState(\'center\')"]').classList.add('active-link');
             } else if (targetState === 'left') {
-                left.classList.add('active');
-                // Set the active link in the navigation (now "About")
+                left.classList.add('active-click'); // Use active-click for permanent state
                 document.querySelector('.nav-links a[onclick*="setState(\'left\')"]').classList.add('active-link');
             } else if (targetState === 'right') {
-                right.classList.add('active');
-                // Set the active link in the navigation (now "Portfolio")
+                right.classList.add('active-click'); // Use active-click for permanent state
                 document.querySelector('.nav-links a[onclick*="setState(\'right\')"]').classList.add('active-link');
             }
         }
@@ -660,41 +727,73 @@
 
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
+            const W = rect.width;
             const x = e.clientX - rect.left;
-            const centerX = rect.width / 2;
-            const bufferX = rect.width * CENTER_BUFFER;
+            const W_half = W / 2;
 
+            // Calculate buffer values (e.g., 0.10W is the transition distance)
+            const T_START_L = W_half * (1 - CENTER_BUFFER_START * 2); // 0.40W
+            const T_END_L = W_half * (1 - CENTER_BUFFER_END * 2);   // 0.30W
+            const T_RANGE = T_START_L - T_END_L; // 0.10W
+
+            const T_START_R = W_half * (1 + CENTER_BUFFER_START * 2); // 0.60W
+            const T_END_R = W_half * (1 + CENTER_BUFFER_END * 2);   // 0.70W
+
+            let L_width = 50;
+            let R_width = 50;
             let currentState = 'center';
+            
+            // If we are in a 'clicked' fixed state, ignore mousemove width calculation
+            if (left.classList.contains('active-click') || right.classList.contains('active-click')) {
+                return;
+            }
 
-            if (x < centerX - bufferX) {
+            // --- LEFT SIDE LOGIC ---
+            if (x < T_START_L) {
                 currentState = 'left';
-            } else if (x > centerX + bufferX) {
-                currentState = 'right';
-            } else {
-                currentState = 'center';
-            }
+                center.classList.add('hidden');
+                left.classList.add('active-visual'); 
+                right.classList.remove('active-visual'); 
 
-            // Only switch state if it's different to prevent constant DOM manipulation
-            if (
-                (currentState === 'center' && center.classList.contains('hidden')) ||
-                (currentState === 'left' && !left.classList.contains('active')) ||
-                (currentState === 'right' && !right.classList.contains('active'))
-            ) {
-                 // Mouse events only affect the visual state, they don't change the link active state
-                if (currentState === 'center') {
-                    center.classList.remove('hidden');
-                    left.classList.remove('active');
-                    right.classList.remove('active');
-                } else if (currentState === 'left') {
-                    center.classList.add('hidden');
-                    left.classList.add('active');
-                    right.classList.remove('active');
-                } else if (currentState === 'right') {
-                    center.classList.add('hidden');
-                    left.classList.remove('active');
-                    right.classList.add('active');
+                if (x < T_END_L) {
+                    // Mouse is past 20% buffer -> Fully extended
+                    L_width = 100;
+                } else {
+                    // Proportional transition zone (Mouse between 10% and 20% buffer)
+                    const D = T_START_L - x; 
+                    const ratio = D / T_RANGE; // Ratio (0 to 1)
+                    L_width = 50 + (50 * ratio); // Width from 50% to 100%
                 }
+            } 
+            // --- RIGHT SIDE LOGIC ---
+            else if (x > T_START_R) {
+                currentState = 'right';
+                center.classList.add('hidden');
+                right.classList.add('active-visual'); 
+                left.classList.remove('active-visual'); 
+
+                if (x > T_END_R) {
+                    // Mouse is past 20% buffer -> Fully extended
+                    R_width = 100;
+                } else {
+                    // Proportional transition zone (Mouse between 10% and 20% buffer)
+                    const D = x - T_START_R; 
+                    const ratio = D / T_RANGE; // Ratio (0 to 1)
+                    R_width = 50 + (50 * ratio); // Width from 50% to 100%
+                }
+            } 
+            // --- CENTER LOGIC ---
+            else {
+                // Mouse is within the +/- 10% center buffer
+                currentState = 'center';
+                center.classList.remove('hidden');
+                left.classList.remove('active-visual');
+                right.classList.remove('active-visual');
             }
+            
+            // Apply calculated widths
+            left.style.width = L_width + '%';
+            right.style.width = R_width + '%';
         }
         
         function handleMouseLeave() {
@@ -702,14 +801,13 @@
             setState('center');
         }
         
-        // Use setState on the GIF clicks as well for consistency
-        document.querySelector('.gif-left-hand').addEventListener('click', () => setState('left'));
-        document.querySelector('.gif-right-hand').addEventListener('click', () => setState('right'));
-
-
         // Add event listeners for mouse interaction
         hero.addEventListener('mousemove', handleMouseMove);
         hero.addEventListener('mouseleave', handleMouseLeave);
+        
+        // Use setState on the GIF clicks as well for consistency
+        document.querySelector('.gif-left-hand').addEventListener('click', () => setState('left'));
+        document.querySelector('.gif-right-hand').addEventListener('click', () => setState('right'));
         
     </script>
 </body>
