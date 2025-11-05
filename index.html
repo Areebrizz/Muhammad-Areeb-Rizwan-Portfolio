@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Base styles integrated with Tailwind for clean resets */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden; 
-        }
+        /* Custom Styles for non-standard Tailwind behaviors and transitions */
 
         /* --- HEADER STYLES --- */
         .main-header {
@@ -29,196 +25,91 @@
             backdrop-filter: blur(5px);
         }
 
-        .nav-content {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: white;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .nav-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 5px 0;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active-link {
-            color: #4CAF50;
-            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
-        }
-
-        /* Hero Section Container - The fixed container for all states */
+        /* Hero Section Container */
         .hero-section {
-            height: 100vh;
+            height: calc(100vh - 64px); /* Adjusted for header height (64px = p-4 h-16) */
             width: 100vw;
             position: relative;
             background-color: #333;
             overflow: hidden;
-            margin-top: 60px; 
-            height: calc(100vh - 60px); 
+            margin-top: 64px;
         }
-        
-        /* --- STATE-BASED CONTAINERS --- */
 
-        /* 1. State Center: Now acts as a fixed backdrop/background */
+        /* State Center: Fixed background/backdrop */
         .state-center {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Fixed Background */
+            z-index: 30; 
+            /* Placeholder for background image */
             background-image: url('assets/images/background 11.png.png');
             background-size: cover;
             background-position: center;
-            z-index: 30; /* Stays beneath side panels */
+        }
+
+        /* State Left/Right: Side panels */
+        .state-left, .state-right {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 0%; /* Start width at 0% */
+            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Snappier transition */
+            z-index: 40;
+            overflow: hidden;
+            display: flex;
+            align-items: center; 
         }
         
-        /* 1b. Wrapper for internal content that FADES OUT/IN */
+        .state-left {
+            left: 0; 
+            justify-content: flex-start;
+            background-image: url('assets/images/background 22.png.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .state-right {
+            right: 0;
+            left: auto;
+            justify-content: flex-end;
+            background-image: url('assets/images/background 3.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Wrapper for content that fades out/in */
         #centerContentWrapper {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s ease; /* Only opacity is controlled */
+            transition: opacity 0.3s ease;
             opacity: 1;
         }
-        
-        /* 2. Left State (Formal) & 3. Right State (Creative) */
-        .state-left, .state-right {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 0%; /* START WIDTH AT 0% */
-            
-            /* Reduced transition duration for snappier feedback */
-            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
-            display: flex;
-            align-items: center; 
-            z-index: 40;
-            left: 0; 
-            overflow: hidden; 
-        }
-        
-        .state-right {
-            right: 0;
-            left: auto;
-            justify-content: flex-end;
-        }
 
-        /* Side panel background images */
-        .state-left {
-            background-image: url('assets/images/background 22.png.png');
-            background-size: cover;
-            background-position: center;
-            justify-content: flex-start;
-        }
-
-        .state-right {
-            background-image: url('assets/images/background 3.png');
-            background-size: cover;
-            background-position: center;
-            justify-content: flex-end;
-        }
-        
-        /* --- CENTER STATE CONTENT (No changes to layout/animation) --- */
+        /* Center Content Styles */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .center-content {
-            z-index: 35;
-            position: absolute; 
-            top: 50%;
-            left: 0; 
-            transform: translateY(-50%); 
-            width: 100%; 
-            max-width: 100vw;
-            padding: 0 5vw; 
-            text-align: initial;
-            box-sizing: border-box; 
-        }
-        
-        .center-layout {
-            display: flex;
-            align-items: center; 
-            justify-content: flex-start;
-            gap: 30px; 
-            width: 100%;
-        }
-
-        .center-right-text {
-            width: 40%;
-            max-width: 500px;
-            color: white;
-            text-align: left; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-            animation: fadeInUp 0.8s ease-out 0.5s forwards; 
-            opacity: 0;
-        }
-
-        .center-title-main { 
-            font-size: clamp(1.8rem, 2.5vw, 3rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 15px;
-        }
-        
-        .center-title-main strong {
-            color: #4CAF50;
-            font-weight: 900;
-        }
-
-        .moto-container { margin-bottom: 25px; }
-
-        .moto-slogan {
-            font-size: clamp(1rem, 1.3vw, 1.5rem);
-            font-weight: 400;
-            color: #e0e0e0;
-            font-style: italic;
-            letter-spacing: 0.5px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            margin: 0;
-            display: block;
-            text-align: left;
-            line-height: 1.5;
-        }
 
         .center-image {
             position: absolute;
-            top: 0;
-            left: 0;
+            /* Using mobile-first approach, setting it up for small screens first */
             width: 100%;
             height: 99%;
             background-image: url('assets/images/new15.png'); 
             background-size: cover; 
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center bottom; /* Adjusted position for mobile visibility */
             z-index: 34;
-            position: relative; 
         }
 
         .central-gifs-container {
+            /* Desktop/Tablet positioning for the GIFs */
             position: absolute;
             top: 0;
             left: 0;
@@ -229,10 +120,11 @@
             opacity: 1; 
             transition: opacity 0.5s ease 0.3s;
         }
-        
+
         .central-gif {
+            /* Desktop/Tablet positioning */
             position: absolute;
-            width: clamp(200px, 16vw, 300px);
+            width: clamp(150px, 12vw, 250px);
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
@@ -241,50 +133,19 @@
         }
 
         .central-gif:hover { transform: scale(1.05); }
-        .gif-left-hand { top: 63%; left: 57%; }
-        .gif-right-hand { top: 64%; right: 59%; }
-
-        /* LEFT/RIGHT STATE CONTENT */
+        .gif-left-hand { top: 60%; left: 55%; }
+        .gif-right-hand { top: 61%; right: 55%; }
+        
+        /* Side Panel Content */
         .side-wrapper {
-            width: 40%;
             padding: 0 5%;
-            text-align: left;
             position: relative;
             z-index: 45; 
             opacity: 0;
             transition: opacity 0.4s ease 0.3s;
         }
-        
-        .state-right .side-wrapper {
-            text-align: right;
-        }
 
-        .side-wrapper h1 {
-            font-size: clamp(2.5rem, 4vw, 5rem);
-            font-weight: 900;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
-
-        .side-wrapper p.moto {
-            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
-            font-style: italic;
-            color: #ccc;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            margin-bottom: 20px;
-        }
-
-        .side-link {
-            color: white;
-            text-decoration: underline;
-            margin-top: 20px;
-            display: inline-block;
-            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
-        }
-
-        /* --- FIX: ANCHORING SIDE IMAGE TO FAR EDGES --- */
+        /* Image Anchoring Fixes */
         .side-image-placeholder {
             position: absolute;
             top: 0;
@@ -298,101 +159,215 @@
         
         .state-left .side-image-placeholder {
             background-image: url('assets/images/formal1.png'); 
-            left: 0; 
-            /* ANCHOR FIX: Positions the image's right edge at the container's right edge (100%), 
-               forcing the visible subject toward the far right of the screen. */
             background-position: 100% center; 
         }
 
         .state-right .side-image-placeholder {
             background-image: url('assets/images/new8.png'); 
-            right: 0; 
-            /* ANCHOR FIX: Positions the image's left edge at the container's left edge (0%), 
-               forcing the visible subject toward the far left of the screen. */
             background-position: 0% center; 
         }
-        
-        /* Show content when EITHER visual (mouse) or click state is active */
+
+        /* Show content when state is active */
         .state-left.active-visual .side-wrapper,
         .state-right.active-visual .side-wrapper,
         .state-left.active-click .side-wrapper,
-        .state-right.active-click .side-wrapper {
-            opacity: 1;
-        }
-        
+        .state-right.active-click .side-wrapper,
         .state-left.active-visual .side-image-placeholder,
         .state-right.active-visual .side-image-placeholder,
         .state-left.active-click .side-image-placeholder,
         .state-right.active-click .side-image-placeholder {
-            opacity: 1; 
+            opacity: 1;
         }
-        
-        /* Media Queries (omitted for brevity) */
+
+        /* --- MOBILE/TABLET STYLES (<md) --- */
+        @media (max-width: 768px) {
+            /* General */
+            .hero-section {
+                height: auto; /* Allow content to dictate height */
+                min-height: calc(100vh - 64px);
+                overflow-y: auto;
+                padding-bottom: 2rem;
+            }
+            
+            /* Center Content - Stacking layout for mobile */
+            .center-content {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 1rem;
+            }
+
+            .center-layout {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .center-right-text {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .center-title-main {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .moto-slogan {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .center-image {
+                position: relative;
+                height: 50vh; /* Fixed height for image area on mobile */
+                background-position: center bottom;
+            }
+
+            .central-gifs-container {
+                /* Hide GIFs on mobile, replaced by buttons */
+                display: none;
+            }
+            
+            /* Side Panels - Full screen on click/tap */
+            .state-left, .state-right {
+                width: 100% !important; /* Forces 100% width on click */
+                transition: none; /* Disable width transition on mobile to prevent layout shift artifacts */
+                z-index: 50;
+            }
+
+            .side-wrapper {
+                width: 100%;
+                text-align: center;
+                padding: 0 10%;
+            }
+        }
+
+        /* Hide desktop nav links on small screens, using the button alternative */
+        @media (max-width: 767px) {
+             .nav-links {
+                display: none;
+            }
+        }
+
+        /* Ensure link text is white on the dark header */
+        .nav-links a {
+            color: #e0e0e0;
+        }
+        .nav-links a:hover, .nav-links a.active-link {
+            color: #4CAF50;
+        }
 
     </style>
 </head>
 <body>
     
-    <!-- NEW HEADER -->
+    <!-- HEADER -->
     <header class="main-header">
-        <div class="nav-content">
+        <div class="nav-content md:max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
             <div class="logo">M. Areeb Rizwan</div>
-            <nav class="nav-links">
+            
+            <!-- DESKTOP NAV LINKS (Hidden below md) -->
+            <nav class="nav-links hidden md:flex space-x-6">
                 <a href="#" onclick="setState('center'); return false;">Home</a>
                 <a href="#" onclick="setState('left'); return false;">Mechanical Engineer</a>
                 <a href="#" onclick="setState('right'); return false;">Industry 4.0 Expert</a>
-                <a href="#contact" onclick="return false;">Contact</a>
+                <a href="#contact" class="hover:text-green-500 transition duration-300">Contact</a>
             </nav>
         </div>
     </header>
-    <!-- END NEW HEADER -->
+    <!-- END HEADER -->
 
     <section class="hero-section" id="heroSection">
         
-        <!-- The state-center now only acts as the fixed background/backdrop -->
+        <!-- FIXED BACKGROUND / BACKDROP -->
         <div class="state-center" id="stateCenter">
             
-            <!-- This inner wrapper contains all the visual content that fades out -->
-            <div id="centerContentWrapper">
+            <!-- CENTER CONTENT WRAPPER (Fades out on transition) -->
+            <div id="centerContentWrapper" class="h-full w-full relative">
+                
+                <!-- PERSON IMAGE -->
                 <div class="center-image">
                     
-                    <div class="central-gifs-container">
-                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onclick="setState('left')" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Buggy+GIF+Missing'">
-                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onclick="setState('right')" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=Drone+GIF+Missing'">
+                    <!-- GIFs (Desktop Only) -->
+                    <div class="central-gifs-container hidden md:block">
+                        <!-- Note: On mobile, these are hidden and replaced by prominent buttons -->
+                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onclick="setState('left')" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=MECH+GIF+Missing'">
+                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onclick="setState('right')" onerror="this.onerror=null; this.src='https://placehold.co/200x150/282c34/ffffff?text=4.0+GIF+Missing'">
                     </div>
                     
                 </div>
-                <div class="center-content">
+                
+                <!-- MAIN TEXT & BUTTONS (OVERLAY) -->
+                <div class="center-content absolute md:top-1/2 left-0 md:transform md:-translate-y-1/2 w-full px-5 md:px-10 flex items-center h-full md:h-auto">
                     
-                    <div class="center-layout">
+                    <div class="center-layout md:flex-row flex-col w-full md:justify-start pt-16 md:pt-0">
                         
-                        <div class="center-right-text">
-                            <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
-                            <div class="moto-container">
-                                <p class="moto-slogan">Faith. Discipline. Excellence.</p>
+                        <div class="center-right-text w-full md:w-1/2 max-w-xl md:text-left text-center">
+                            <h1 class="center-title-main text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4">
+                                I'm Muhammad Areeb Rizwan, a <strong>Mechanical Engineer</strong>
+                            </h1>
+                            <div class="moto-container mb-6 md:mb-10">
+                                <p class="moto-slogan text-lg md:text-xl text-gray-200 italic">Faith. Discipline. Excellence.</p>
+                            </div>
+                            
+                            <!-- MOBILE BUTTONS (Visible below md) -->
+                            <div class="flex flex-col space-y-4 md:hidden mt-8">
+                                <button class="bg-[#4CAF50] hover:bg-[#3e8e41] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300" onclick="setState('left')">
+                                    View Mechanical Engineer Profile
+                                </button>
+                                <button class="bg-[#2196F3] hover:bg-[#1a74b8] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300" onclick="setState('right')">
+                                    View Industry 4.0 Expert Profile
+                                </button>
                             </div>
                         </div>
                         
                     </div>
                 </div>
             </div>
-            
         </div>
 
+        <!-- LEFT STATE PANEL (Mechanical Engineer) -->
         <div class="state-left" id="stateLeft">
-            <div class="side-wrapper">
-                <h1>MECHANICAL ENGINEER</h1> 
-                <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link">View Mechanical Engineering ></a> 
+            <div class="side-wrapper md:w-2/5 w-full">
+                <h1 class="text-white text-5xl md:text-7xl font-black mb-3">MECHANICAL ENGINEER</h1> 
+                <p class="moto text-xl md:text-2xl text-gray-200">Building efficiency from precision and discipline.</p>
+                
+                <div class="mt-8 flex flex-col items-center md:items-start">
+                    <!-- CONTENT SNIPPET -->
+                    <p class="text-white mb-6 text-base md:text-lg">
+                        Specializing in **CAD/CAM, thermodynamics**, and stress analysis. Proven ability to optimize design-to-manufacturing workflows for maximum resource efficiency and structural integrity.
+                    </p>
+                    
+                    <!-- Back/Call-to-Action Link -->
+                    <a href="#" onclick="setState('center'); return false;" class="side-link text-lg md:text-xl font-semibold text-[#4CAF50] hover:text-white transition duration-300">
+                        &#8592; Back to Home / View Portfolio
+                    </a> 
+                </div>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
 
+        <!-- RIGHT STATE PANEL (Industry 4.0 Expert) -->
         <div class="state-right" id="stateRight">
-            <div class="side-wrapper">
-                <h1>INDUSTRY 4.0 EXPERT</h1> 
-                <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link">View Industry 4.0 ></a> 
+            <div class="side-wrapper md:w-2/5 w-full">
+                <h1 class="text-white text-5xl md:text-7xl font-black mb-3">INDUSTRY 4.0 EXPERT</h1> 
+                <p class="moto text-xl md:text-2xl text-gray-200">Automating the future of intelligent manufacturing.</p>
+                
+                <div class="mt-8 flex flex-col items-center md:items-end">
+                    <!-- CONTENT SNIPPET -->
+                    <p class="text-white mb-6 text-base md:text-lg md:text-right">
+                        Expertise in **IoT integration, predictive maintenance**, and digital twin technology. Focused on implementing smart factory solutions to drive operational excellence and real-time data analysis.
+                    </p>
+                    
+                    <!-- Back/Call-to-Action Link -->
+                    <a href="#" onclick="setState('center'); return false;" class="side-link text-lg md:text-xl font-semibold text-[#2196F3] hover:text-white transition duration-300">
+                        &#8592; Back to Home / View Case Studies
+                    </a>
+                </div>
             </div>
             <div class="side-image-placeholder"></div>
         </div>
@@ -406,27 +381,24 @@
         const centerContentWrapper = document.getElementById('centerContentWrapper'); 
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        // --- CONSTANTS FOR 10% TO 20% TRANSITION ---
-        
-        // Passive zone ends, transition starts: 10% center buffer (50% - 10% = 40% from left)
+        // --- CONSTANTS FOR DESKTOP INTERACTION ---
+        // Passive zone ends, transition starts: 40% from left edge
         const PASSIVE_START_L = 0.40; 
-        // Transition ends, 100% width achieved: at 20% from the left edge (i.e., at 20% screen position)
-        const ACTIVE_END_L = 0.20;    
-        
-        // The width of the transition zone (40% - 20% = 20% of screen width)
+        // Transition ends, 100% width achieved: 20% from left edge
+        const ACTIVE_END_L = 0.20; 
         const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; 
 
         // Right side is mirrored
-        const PASSIVE_START_R = 0.60; // 50% + 10% = 60% from left 
-        const ACTIVE_END_R = 0.80;    // Transition ends at 80% from left (20% from right edge)
-
-        // Refactored state setting for CLICKS/LINKS
+        const PASSIVE_START_R = 0.60; 
+        const ACTIVE_END_R = 0.80; 
+        
+        // --- STATE CONTROL (Used by Nav and Mobile Buttons) ---
         function setState(targetState) {
-            // 1. Reset all visual states
+            // 1. Reset all visual and click states
             left.classList.remove('active-click', 'active-visual');
             right.classList.remove('active-click', 'active-visual');
             
-            // Reset side widths
+            // Reset side widths (important for mobile/tablet to avoid flicker)
             left.style.width = '0%';
             right.style.width = '0%';
             left.style.zIndex = 20; 
@@ -435,97 +407,91 @@
             // 2. Control the center content wrapper's opacity
             centerContentWrapper.style.opacity = 1; 
             
-            // 3. Reset link active states
+            // 3. Reset desktop nav link active states
             navLinks.forEach(link => link.classList.remove('active-link'));
 
             // 4. Set the new active state/link
             if (targetState === 'center') {
-                document.querySelector('.nav-links a[onclick*="setState(\'center\')"]').classList.add('active-link');
+                // Set 'Home' as active in the desktop navigation
+                const homeLink = document.querySelector('.nav-links a[onclick*="setState(\'center\')"]');
+                if (homeLink) homeLink.classList.add('active-link');
             } else if (targetState === 'left') {
                 left.classList.add('active-click'); 
                 left.style.width = '100%'; 
                 left.style.zIndex = 50; 
-                centerContentWrapper.style.opacity = 0; // Hide center content on click state
-                document.querySelector('.nav-links a[onclick*="setState(\'left\')"]').classList.add('active-link');
+                centerContentWrapper.style.opacity = 0; // Hide center content
+                const mechLink = document.querySelector('.nav-links a[onclick*="setState(\'left\')"]');
+                if (mechLink) mechLink.classList.add('active-link');
             } else if (targetState === 'right') {
                 right.classList.add('active-click');
                 right.style.width = '100%'; 
                 right.style.zIndex = 50; 
-                centerContentWrapper.style.opacity = 0; // Hide center content on click state
-                document.querySelector('.nav-links a[onclick*="setState(\'right\')"]').classList.add('active-link');
+                centerContentWrapper.style.opacity = 0; // Hide center content
+                const expertLink = document.querySelector('.nav-links a[onclick*="setState(\'right\')"]');
+                if (expertLink) expertLink.classList.add('active-link');
             }
         }
 
         // Initialize with 'Home' active
         setState('center');
 
+        // --- MOUSE MOVE LOGIC (Desktop Only) ---
         function handleMouseMove(e) {
+            // Disable mousemove on screens <= 768px (for responsiveness)
+            if (window.innerWidth <= 768 || left.classList.contains('active-click') || right.classList.contains('active-click')) {
+                return;
+            }
+
             const rect = hero.getBoundingClientRect();
             const W = rect.width;
             const x = e.clientX - rect.left;
             
-            let L_width = 0; // Calculated width of the left panel (0% to 100%)
-            let R_width = 0; // Calculated width of the right panel (0% to 100%)
+            let L_width = 0; 
+            let R_width = 0; 
             let centerOpacity = 1;
 
-            // If we are in a 'clicked' fixed state, ignore mousemove width calculation
-            if (left.classList.contains('active-click') || right.classList.contains('active-click')) {
-                return;
-            }
-
-            // --- 1. LEFT SIDE LOGIC (x moves from 40% to 20% from left edge) ---
+            // 1. LEFT SIDE LOGIC (x moves from 40% to 20% from left edge)
             if (x < PASSIVE_START_L * W) {
-                // If mouse is fully past the 20% edge mark (x <= 20%)
                 if (x <= ACTIVE_END_L * W) {
                     L_width = 100;
-                } 
-                // Mouse is in the transition range (20% to 40% from left)
-                else {
+                } else {
                     const distance_traveled = PASSIVE_START_L * W - x;
                     const range_width = TRANSITION_RANGE * W;
                     const ratio = distance_traveled / range_width; 
-                    L_width = ratio * 100; // 0% to 100%
+                    L_width = ratio * 100;
                 }
                 
-                // Content fades out as panel slides in
                 centerOpacity = 1 - (L_width / 100); 
-                
                 left.classList.add('active-visual'); 
                 right.classList.remove('active-visual'); 
             } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 60% to 80% from left edge) ---
+            // 2. RIGHT SIDE LOGIC (x moves from 60% to 80% from left edge)
             else if (x > PASSIVE_START_R * W) {
-                // If mouse is fully past the 80% edge mark (x >= 80%)
                 if (x >= ACTIVE_END_R * W) {
                     R_width = 100;
-                } 
-                // Mouse is in the transition range (60% to 80% from left)
-                else {
+                } else {
                     const distance_traveled = x - PASSIVE_START_R * W;
                     const range_width = TRANSITION_RANGE * W;
                     const ratio = distance_traveled / range_width; 
-                    R_width = ratio * 100; // 0% to 100%
+                    R_width = ratio * 100;
                 }
                 
-                // Content fades out as panel slides in
                 centerOpacity = 1 - (R_width / 100); 
-                
                 right.classList.add('active-visual'); 
                 left.classList.remove('active-visual'); 
             } 
-            // --- 3. CENTER LOGIC (Passive Zone: 40% to 60%) ---
+            // 3. CENTER LOGIC (Passive Zone: 40% to 60%)
             else {
-                // Mouse is within the +/- 10% center buffer
                 left.classList.remove('active-visual');
                 right.classList.remove('active-visual');
             }
 
-            // Apply calculated widths and center properties
+            // Apply calculated properties
             left.style.width = L_width + '%';
             right.style.width = R_width + '%';
-            centerContentWrapper.style.opacity = centerOpacity; // Only fade the content wrapper
+            centerContentWrapper.style.opacity = centerOpacity;
             
-            // Manage Z-index to ensure the currently expanding panel is on top
+            // Manage Z-index 
             if (L_width > 0) {
                 left.style.zIndex = 45;
                 right.style.zIndex = 20;
@@ -539,17 +505,15 @@
         }
         
         function handleMouseLeave() {
-            // Revert to the default 'center' state when the mouse leaves
-            setState('center');
+            // Only revert if we are not in a 'clicked' fixed state
+            if (!left.classList.contains('active-click') && !right.classList.contains('active-click')) {
+                setState('center');
+            }
         }
         
-        // Add event listeners for mouse interaction
+        // Add event listeners for mouse interaction (only applies to desktop)
         hero.addEventListener('mousemove', handleMouseMove);
         hero.addEventListener('mouseleave', handleMouseLeave);
-        
-        // Ensure GIF clicks use the updated setState
-        document.querySelector('.gif-left-hand').addEventListener('click', () => setState('left'));
-        document.querySelector('.gif-right-hand').addEventListener('click', () => setState('right'));
         
     </script>
 </body>
