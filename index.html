@@ -289,27 +289,33 @@
             position: absolute;
             top: 0;
             height: 100%;
-            width: 100%;
+            /* Make sure it fills the full width of the sliding panel */
+            width: 100%; 
             background-size: cover;
-            background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease;
             z-index: 39; 
         }
         
+        /* --- FIXES START HERE --- */
         .state-left .side-image-placeholder {
             right: 0;
             background-image: url('assets/images/formal1.png'); 
             z-index: 20; 
             background-size: cover; 
-            background-position:30% center; 
-            width: 80%; 
+            /* Pushes the background image to the right edge of its container, 
+               which aligns it with the center of the screen when the panel is 100% */
+            background-position: right center; 
         }
 
         .state-right .side-image-placeholder {
             left: 0;
             background-image: url('assets/images/new8.png'); 
+            /* Pushes the background image to the left edge of its container, 
+               which aligns it with the center of the screen when the panel is 100% */
+            background-position: left center; 
         }
+        /* --- FIXES END HERE --- */
 
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
@@ -338,8 +344,8 @@
             <div class="logo">M. Areeb Rizwan</div>
             <nav class="nav-links">
                 <a href="#" onclick="setState('center'); return false;">Home</a>
-                <a href="#" onclick="setState('left'); return false;">About</a>
-                <a href="#" onclick="setState('right'); return false;">Portfolio</a>
+                <a href="#" onclick="setState('left'); return false;">Mechanical Engineer</a>
+                <a href="#" onclick="setState('right'); return false;">Industry 4.0 Expert</a>
                 <a href="#contact" onclick="return false;">Contact</a>
             </nav>
         </div>
@@ -402,19 +408,22 @@
         const hero = document.getElementById('heroSection');
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
-        const centerContentWrapper = document.getElementById('centerContentWrapper'); // NEW
+        const centerContentWrapper = document.getElementById('centerContentWrapper'); 
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        // Mouse X position percentage from the LEFT edge:
-        // Passive zone ends, transition starts: 40% from left (10% from center)
-        const PASSIVE_START_L = 0.40; 
-        // Transition ends, 100% width achieved: 30% from left (20% from center)
+        // --- UPDATED CONSTANTS FOR 7% TO 20% TRANSITION ---
+        
+        // Passive zone ends, transition starts: 7% center buffer (50% - 7% = 43% from left)
+        const PASSIVE_START_L = 0.43; 
+        // Transition ends, 100% width achieved: 20% center buffer (50% - 20% = 30% from left)
         const ACTIVE_END_L = 0.30;    
-        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; // 0.10 (10% of screen width)
+        
+        // The width of the transition zone (43% - 30% = 13% of screen width)
+        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; 
 
         // Right side is mirrored
-        const PASSIVE_START_R = 0.60; // 60% from left (10% from center)
-        const ACTIVE_END_R = 0.70;    // 70% from left (20% from center)
+        const PASSIVE_START_R = 0.57; // 50% + 7% = 57% from left (7% center buffer)
+        const ACTIVE_END_R = 0.70;    // 50% + 20% = 70% from left (20% center buffer)
 
         // Refactored state setting for CLICKS/LINKS
         function setState(targetState) {
@@ -469,13 +478,13 @@
                 return;
             }
 
-            // --- 1. LEFT SIDE LOGIC (x moves from 40% to 30% from left edge) ---
+            // --- 1. LEFT SIDE LOGIC (x moves from 43% to 30% from left edge) ---
             if (x < PASSIVE_START_L * W) {
-                // If mouse is fully past the 20% center buffer mark
+                // If mouse is fully past the 20% center buffer mark (x <= 30%)
                 if (x <= ACTIVE_END_L * W) {
                     L_width = 100;
                 } 
-                // Mouse is in the transition range (30% to 40% from left)
+                // Mouse is in the transition range (30% to 43% from left)
                 else {
                     const distance_traveled = PASSIVE_START_L * W - x;
                     const range_width = TRANSITION_RANGE * W;
@@ -489,13 +498,13 @@
                 left.classList.add('active-visual'); 
                 right.classList.remove('active-visual'); 
             } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 60% to 70% from left edge) ---
+            // --- 2. RIGHT SIDE LOGIC (x moves from 57% to 70% from left edge) ---
             else if (x > PASSIVE_START_R * W) {
-                // If mouse is fully past the 20% center buffer mark
+                // If mouse is fully past the 20% center buffer mark (x >= 70%)
                 if (x >= ACTIVE_END_R * W) {
                     R_width = 100;
                 } 
-                // Mouse is in the transition range (60% to 70% from left)
+                // Mouse is in the transition range (57% to 70% from left)
                 else {
                     const distance_traveled = x - PASSIVE_START_R * W;
                     const range_width = TRANSITION_RANGE * W;
@@ -509,9 +518,9 @@
                 right.classList.add('active-visual'); 
                 left.classList.remove('active-visual'); 
             } 
-            // --- 3. CENTER LOGIC (Passive Zone) ---
+            // --- 3. CENTER LOGIC (Passive Zone: 43% to 57%) ---
             else {
-                // Mouse is within the +/- 10% center buffer (40% to 60%)
+                // Mouse is within the +/- 7% center buffer
                 left.classList.remove('active-visual');
                 right.classList.remove('active-visual');
             }
