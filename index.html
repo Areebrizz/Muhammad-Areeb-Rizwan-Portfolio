@@ -536,12 +536,12 @@
         const navLinks = document.querySelectorAll('.nav-links a');
         
         // --- CONSTANTS FOR TRANSITION ---
-        // NEW LOGIC: Start at 12% from center (38% / 62%) and finish at 20% from center (30% / 70%)
-        const PASSIVE_START_L = 0.38; // Start expanding left panel when mouse is at 38%
-        const ACTIVE_END_L = 0.30; // Panel is 100% wide when mouse reaches 30%
+        // UPDATED LOGIC: Start at 14% from center (36% / 64%) and finish at 22% from center (28% / 72%)
+        const PASSIVE_START_L = 0.36; // Start expanding left panel when mouse is at 36%
+        const ACTIVE_END_L = 0.28; // Panel is 100% wide when mouse reaches 28%
         const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; // 0.08 (The distance over which the panel transitions)
-        const PASSIVE_START_R = 0.62; // Start expanding right panel when mouse is at 62%
-        const ACTIVE_END_R = 0.70; // Panel is 100% wide when mouse reaches 70%
+        const PASSIVE_START_R = 0.64; // Start expanding right panel when mouse is at 64%
+        const ACTIVE_END_R = 0.72; // Panel is 100% wide when mouse reaches 72%
 
         // Helper function to check if the screen is mobile size
         function isMobileScreen() {
@@ -613,7 +613,7 @@
                 return;
             }
 
-            // --- 1. LEFT SIDE LOGIC (x moves from 38% to 30% from left edge) ---
+            // --- 1. LEFT SIDE LOGIC (x moves from 36% to 28% from left edge) ---
             if (x < PASSIVE_START_L * W) {
                 if (x <= ACTIVE_END_L * W) {
                     L_width = 100;
@@ -630,7 +630,7 @@
                 left.classList.add('active-visual'); 
                 right.classList.remove('active-visual'); 
             } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 62% to 70% from left edge) ---
+            // --- 2. RIGHT SIDE LOGIC (x moves from 64% to 72% from left edge) ---
             else if (x > PASSIVE_START_R * W) {
                 if (x >= ACTIVE_END_R * W) {
                     R_width = 100;
@@ -647,7 +647,7 @@
                 right.classList.add('active-visual'); 
                 left.classList.remove('active-visual'); 
             } 
-            // --- 3. CENTER LOGIC (Passive Zone: 38% to 62%) ---
+            // --- 3. CENTER LOGIC (Passive Zone: 36% to 64%) ---
             else {
                 left.classList.remove('active-visual');
                 right.classList.remove('active-visual');
