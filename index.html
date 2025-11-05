@@ -284,36 +284,37 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-        /* Image Placeholder - General Styles */
-        .side-image-placeholder {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 100%; 
-            background-size: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 39; /* Ensure it is below the text wrapper (z-index: 45) */
-        }
-        
-        /* * FIX: Explicitly using percentage positioning to force the 
-         * background image to the edge, overriding any centering bias 
-         * caused by background-size: cover.
-         */
-        .state-left .side-image-placeholder {
-            background-image: url('assets/images/formal1.png'); 
-            background-size: cover; 
-            /* Pin the image to the far right (100% horizontal offset) of the 100% wide panel */
-            background-position: 100% center; 
-        }
+       /* Image Placeholder */
+.side-image-placeholder {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 39;
+}
 
-        .state-right .side-image-placeholder {
-            background-image: url('assets/images/new8.png'); 
-            background-size: cover;
-            /* Pin the image to the far left (0% horizontal offset) of the 100% wide panel */
-            background-position: 0% center; 
-        }
+.state-left .side-image-placeholder {
+    right: 0;
+    background-image: url('assets/images/formal1.png'); 
+    z-index: 20;
+    background-size: cover;
+    /* Pin to far right */
+    background-position: 100% center;
+    width: 80%;
+}
 
+.state-right .side-image-placeholder {
+    left: 0;
+    background-image: url('assets/images/new8.png'); 
+    background-size: cover;
+    /* Pin to far left */
+    background-position: 0% center;
+    width: 80%;
+}
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
         .state-right.active-visual .side-wrapper,
