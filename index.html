@@ -283,22 +283,31 @@
             display: inline-block;
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
-.side-image-placeholder {
-    width: 100%; /* Takes full width */
-    background-position: center; /* Default centered */
-}
 
-.state-left .side-image-placeholder {
-    right: 0;
-    width: 80%; /* Override to 80% */
-    background-position: 30% center; /* 30% from left */
-}
+        /* --- CORRECTED SIDE IMAGE PLACEHOLDER STYLES --- */
+        .side-image-placeholder {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%; /* Must be 100% of the expanding panel for full coverage */
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 39; /* Below the text wrapper */
+        }
+        
+        .state-left .side-image-placeholder {
+            background-image: url('assets/images/formal1.png'); /* Re-added image URL */
+            /* Pin the image to the far right (100% horizontal offset) of the 100% wide panel */
+            background-position: 100% center; 
+        }
 
-.state-right .side-image-placeholder {
-    left: 0;
-    width: 80%; /* Override to 80% */
-    /* Missing background-position - defaults to center */
-}
+        .state-right .side-image-placeholder {
+            background-image: url('assets/images/new8.png'); /* Re-added image URL */
+            /* Pin the image to the far left (0% horizontal offset) of the 100% wide panel */
+            background-position: 0% center; 
+        }
+        
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
         .state-right.active-visual .side-wrapper,
