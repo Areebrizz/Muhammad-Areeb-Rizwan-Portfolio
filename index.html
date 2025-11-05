@@ -302,18 +302,24 @@
     background-image: url('assets/images/formal1.png'); 
     z-index: 20;
     background-size: cover;
-    /* Pin to far right */
+    /* Force to far right edge */
     background-position: 100% center;
-    width: 80%;
+    /* Make sure it's positioned to the right */
+    left: auto;
+    right: 0;
+    width: 60%; /* Adjust this to control image width */
 }
 
 .state-right .side-image-placeholder {
     left: 0;
     background-image: url('assets/images/new8.png'); 
     background-size: cover;
-    /* Pin to far left */
+    /* Force to far left edge */
     background-position: 0% center;
-    width: 80%;
+    /* Make sure it's positioned to the left */
+    left: 0;
+    right: auto;
+    width: 60%; /* Adjust this to control image width */
 }
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
