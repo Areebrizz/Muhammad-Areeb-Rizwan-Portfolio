@@ -408,19 +408,19 @@
         const centerContentWrapper = document.getElementById('centerContentWrapper'); 
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        // --- CONSTANTS FOR 7% TO 20% TRANSITION ---
+        // --- CONSTANTS FOR 10% TO 20% TRANSITION ---
         
-        // Passive zone ends, transition starts: 7% center buffer (50% - 7% = 43% from left)
-        const PASSIVE_START_L = 0.43; 
-        // Transition ends, 100% width achieved: 20% center buffer (50% - 20% = 30% from left)
-        const ACTIVE_END_L = 0.30;    
+        // Passive zone ends, transition starts: 10% center buffer (50% - 10% = 40% from left)
+        const PASSIVE_START_L = 0.40; 
+        // Transition ends, 100% width achieved: at 20% from the left edge (i.e., at 20% screen position)
+        const ACTIVE_END_L = 0.20;    
         
-        // The width of the transition zone (43% - 30% = 13% of screen width)
+        // The width of the transition zone (40% - 20% = 20% of screen width)
         const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; 
 
         // Right side is mirrored
-        const PASSIVE_START_R = 0.57; // 50% + 7% = 57% from left (7% center buffer)
-        const ACTIVE_END_R = 0.70;    // 50% + 20% = 70% from left (20% center buffer)
+        const PASSIVE_START_R = 0.60; // 50% + 10% = 60% from left 
+        const ACTIVE_END_R = 0.80;    // Transition ends at 80% from left (20% from right edge)
 
         // Refactored state setting for CLICKS/LINKS
         function setState(targetState) {
@@ -475,13 +475,13 @@
                 return;
             }
 
-            // --- 1. LEFT SIDE LOGIC (x moves from 43% to 30% from left edge) ---
+            // --- 1. LEFT SIDE LOGIC (x moves from 40% to 20% from left edge) ---
             if (x < PASSIVE_START_L * W) {
-                // If mouse is fully past the 20% center buffer mark (x <= 30%)
+                // If mouse is fully past the 20% edge mark (x <= 20%)
                 if (x <= ACTIVE_END_L * W) {
                     L_width = 100;
                 } 
-                // Mouse is in the transition range (30% to 43% from left)
+                // Mouse is in the transition range (20% to 40% from left)
                 else {
                     const distance_traveled = PASSIVE_START_L * W - x;
                     const range_width = TRANSITION_RANGE * W;
@@ -495,13 +495,13 @@
                 left.classList.add('active-visual'); 
                 right.classList.remove('active-visual'); 
             } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 57% to 70% from left edge) ---
+            // --- 2. RIGHT SIDE LOGIC (x moves from 60% to 80% from left edge) ---
             else if (x > PASSIVE_START_R * W) {
-                // If mouse is fully past the 20% center buffer mark (x >= 70%)
+                // If mouse is fully past the 80% edge mark (x >= 80%)
                 if (x >= ACTIVE_END_R * W) {
                     R_width = 100;
                 } 
-                // Mouse is in the transition range (57% to 70% from left)
+                // Mouse is in the transition range (60% to 80% from left)
                 else {
                     const distance_traveled = x - PASSIVE_START_R * W;
                     const range_width = TRANSITION_RANGE * W;
@@ -515,9 +515,9 @@
                 right.classList.add('active-visual'); 
                 left.classList.remove('active-visual'); 
             } 
-            // --- 3. CENTER LOGIC (Passive Zone: 43% to 57%) ---
+            // --- 3. CENTER LOGIC (Passive Zone: 40% to 60%) ---
             else {
-                // Mouse is within the +/- 7% center buffer
+                // Mouse is within the +/- 10% center buffer
                 left.classList.remove('active-visual');
                 right.classList.remove('active-visual');
             }
