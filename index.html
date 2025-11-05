@@ -296,19 +296,22 @@
             z-index: 39; /* Ensure it is below the text wrapper (z-index: 45) */
         }
         
-        /* Specific Fixes for Image Positioning */
+        /* * FIX: Explicitly using percentage positioning to force the 
+         * background image to the edge, overriding any centering bias 
+         * caused by background-size: cover.
+         */
         .state-left .side-image-placeholder {
             background-image: url('assets/images/formal1.png'); 
             background-size: cover; 
-            /* Pin the image to the far right of the 100% wide panel */
-            background-position: right center; 
+            /* Pin the image to the far right (100% horizontal offset) of the 100% wide panel */
+            background-position: 100% center; 
         }
 
         .state-right .side-image-placeholder {
             background-image: url('assets/images/new8.png'); 
             background-size: cover;
-            /* Pin the image to the far left of the 100% wide panel */
-            background-position: left center; 
+            /* Pin the image to the far left (0% horizontal offset) of the 100% wide panel */
+            background-position: 0% center; 
         }
 
         /* Show content when EITHER visual (mouse) or click state is active */
