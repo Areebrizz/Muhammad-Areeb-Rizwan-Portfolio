@@ -284,30 +284,32 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-        /* --- CORRECTED SIDE IMAGE PLACEHOLDER STYLES --- */
+        /* --- FIX: ANCHORING SIDE IMAGE TO FAR EDGES --- */
         .side-image-placeholder {
-            position: absolute; /* Explicitly set position */
-            top: 0; /* Anchor to top */
+            position: absolute;
+            top: 0;
             height: 100%;
             width: 100%; 
             background-size: cover;
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 39; /* Below the text wrapper */
+            z-index: 39; 
         }
         
         .state-left .side-image-placeholder {
             background-image: url('assets/images/formal1.png'); 
-            left: 0; /* Anchor to the left side of the expanding container */
-            /* Force the visible subject to appear closer to the right side of the screen (80% from left edge) */
-            background-position: 80% center !important; 
+            left: 0; 
+            /* ANCHOR FIX: Positions the image's right edge at the container's right edge (100%), 
+               forcing the visible subject toward the far right of the screen. */
+            background-position: 100% center; 
         }
 
         .state-right .side-image-placeholder {
             background-image: url('assets/images/new8.png'); 
-            right: 0; /* Anchor to the right side of the expanding container */
-            /* Force the visible subject to appear closer to the left side of the screen (20% from left edge) */
-            background-position: 20% center !important; 
+            right: 0; 
+            /* ANCHOR FIX: Positions the image's left edge at the container's left edge (0%), 
+               forcing the visible subject toward the far left of the screen. */
+            background-position: 0% center; 
         }
         
         /* Show content when EITHER visual (mouse) or click state is active */
