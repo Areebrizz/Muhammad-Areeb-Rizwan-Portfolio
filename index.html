@@ -472,8 +472,8 @@
             <div class="logo">M. Areeb Rizwan</div>
             <nav class="nav-links">
                 <a href="#" onclick="setState('center'); return false;">Home</a>
-                <a href="#" onclick="setState('left'); return false;">Mechanical Engineer</a>
-                <a href="#" onclick="setState('right'); return false;">Industry 4.0 Expert</a>
+                <a href="#" onclick="setState('left'); return false;">About</a>
+                <a href="#" onclick="setState('right'); return false;">Portfolio</a>
                 <a href="#contact" onclick="return false;">Contact</a>
             </nav>
         </div>
@@ -485,9 +485,12 @@
             <!-- This inner wrapper contains all the visual content that fades out --><div id="centerContentWrapper">
                 <div class="center-image">
                     
-                    <!-- GIFs container is now part of the content that fades --><div class="central-gifs-container">
-                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onclick="setState('left')" onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'">
-                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onclick="setState('right')" onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'">
+                    <!-- GIFs container is now part of the content that fades -->
+                    <div class="central-gifs-container">
+                        <!-- BUGGY (LEFT HAND) now links to Industry 4.0 (RIGHT slide) -->
+                        <img src="assets/images/buggy.gif" alt="Buggy Mechanical GIF" class="central-gif gif-left-hand" onclick="setState('right')" onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'">
+                        <!-- DRONE (RIGHT HAND) now links to Mechanical Engineer (LEFT slide) -->
+                        <img src="assets/images/drone.gif" alt="Drone Mechanical GIF" class="central-gif gif-right-hand" onclick="setState('left')" onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'">
                     </div>
                     
                 </div>
@@ -513,7 +516,7 @@
             <div class="side-wrapper">
                 <h1>MECHANICAL ENGINEER</h1> 
                 <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link">View Mechanical Engineering ></a> 
+                <a href="#" onclick="setState('center'); return false;" class="side-link">About Me ></a> 
             </div>
         </div>
 
@@ -522,7 +525,7 @@
             <div class="side-wrapper">
                 <h1>INDUSTRY 4.0 EXPERT</h1> 
                 <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link">View Industry 4.0 ></a> 
+                <a href="#" onclick="setState('center'); return false;" class="side-link">My Portfolio ></a> 
             </div>
         </div>
 
@@ -536,7 +539,7 @@
         const navLinks = document.querySelectorAll('.nav-links a');
         
         // --- CONSTANTS FOR TRANSITION ---
-        // UPDATED LOGIC: Start at 20% from center (30% / 70%) and finish at 25% from center (25% / 75%)
+        // Start at 20% from center (30% / 70%) and finish at 25% from center (25% / 75%)
         const PASSIVE_START_L = 0.30; // Start expanding left panel when mouse is at 30%
         const ACTIVE_END_L = 0.25; // Panel is 100% wide when mouse reaches 25%
         const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L; // 0.05 (The distance over which the panel transitions)
@@ -703,4 +706,4 @@
         
     </script>
 </body>
-</html>
+</html>F
