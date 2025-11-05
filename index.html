@@ -284,38 +284,32 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-        /* Image Placeholder */
+        /* Image Placeholder - General Styles */
         .side-image-placeholder {
             position: absolute;
             top: 0;
             height: 100%;
-            /* Make sure it fills the full width of the sliding panel */
             width: 100%; 
             background-size: cover;
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 39; 
+            z-index: 39; /* Ensure it is below the text wrapper (z-index: 45) */
         }
         
-        /* --- FIXES START HERE --- */
+        /* Specific Fixes for Image Positioning */
         .state-left .side-image-placeholder {
-            right: 0;
             background-image: url('assets/images/formal1.png'); 
-            z-index: 20; 
             background-size: cover; 
-            /* Pushes the background image to the right edge of its container, 
-               which aligns it with the center of the screen when the panel is 100% */
+            /* Pin the image to the far right of the 100% wide panel */
             background-position: right center; 
         }
 
         .state-right .side-image-placeholder {
-            left: 0;
             background-image: url('assets/images/new8.png'); 
-            /* Pushes the background image to the left edge of its container, 
-               which aligns it with the center of the screen when the panel is 100% */
+            background-size: cover;
+            /* Pin the image to the far left of the 100% wide panel */
             background-position: left center; 
         }
-        /* --- FIXES END HERE --- */
 
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
@@ -411,7 +405,7 @@
         const centerContentWrapper = document.getElementById('centerContentWrapper'); 
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        // --- UPDATED CONSTANTS FOR 7% TO 20% TRANSITION ---
+        // --- CONSTANTS FOR 7% TO 20% TRANSITION ---
         
         // Passive zone ends, transition starts: 7% center buffer (50% - 7% = 43% from left)
         const PASSIVE_START_L = 0.43; 
