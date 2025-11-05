@@ -283,34 +283,21 @@
             display: inline-block;
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
-/* Image Placeholder - CORRECT VERSION */
 .side-image-placeholder {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 39;
-    background-size: cover;
-    background-repeat: no-repeat;
+    width: 100%; /* Takes full width */
+    background-position: center; /* Default centered */
 }
 
 .state-left .side-image-placeholder {
-    background-image: url('assets/images/formal1.png'); 
-    /* Position on far right */
     right: 0;
-    left: auto; /* Clear left positioning */
-    width: 80%; 
-    background-position: right center; /* Pin to right edge */
+    width: 80%; /* Override to 80% */
+    background-position: 30% center; /* 30% from left */
 }
 
 .state-right .side-image-placeholder {
-    background-image: url('assets/images/new8.png'); 
-    /* Position on far left */
     left: 0;
-    right: auto; /* Clear right positioning */
-    width: 80%; 
-    background-position: left center; /* Pin to left edge */
+    width: 80%; /* Override to 80% */
+    /* Missing background-position - defaults to center */
 }
         /* Show content when EITHER visual (mouse) or click state is active */
         .state-left.active-visual .side-wrapper,
