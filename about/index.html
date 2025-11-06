@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineer Portfolio - About Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'custom-gray': '#f5f5f5',
+                        'accent-blue': '#1c7ed6',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Load Inter font (optional, Tailwind uses system font by default, but nice to explicitly include) --><style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+</head>
+<body class="bg-white font-sans text-gray-800">
+
+    <!-- Toast Notification Container (Used instead of alert()) --><div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
+        <!-- Toast messages will be injected here --></div>
+
+    <!-- About Section --><section class="py-12 md:py-24 bg-custom-gray">
+        <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                
+                <!-- Text Content --><div class="md:w-5/12 mb-12 md:mb-0 md:pr-10">
+                    <h1 class="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
+                        about.
+                    </h1>
+                    <p class="text-xl md:text-2xl text-accent-blue font-semibold mb-6">
+                        I’m a Mechanical Engineer and Automation Specialist based in Pakistan.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                        I enjoy transforming mechanical precision into smart, efficient systems that shape the future of automation. My work revolves around building solutions that are reliable, innovative, and purposeful.
+                        When I’m not engineering solutions, I’m exploring new technologies, working on personal innovations, or helping others bring their ideas to life. My philosophy is simple: faith, discipline, and excellence.
+                    </p>
+                    <a href="#" class="mt-8 inline-block px-6 py-3 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02]">
+                        View My Work
+                    </a>
+                </div>
+                
+                <!-- Profile Image (No circle, with 3D effect) --><div class="md:w-7/12 flex justify-center md:justify-end relative group">
+                    <img 
+                        src="funky.png" 
+                        alt="Profile picture" 
+                        class="w-full max-w-md rounded-lg shadow-2xl transition-all duration-500 
+                               group-hover:rotate-3 group-hover:scale-105 group-hover:shadow-3xl-accent"
+                        style="transform-style: preserve-3d; transform: perspective(1000px) rotateY(0deg) rotateX(0deg); 
+                               box-shadow: 0 20px 40px rgba(0,0,0,0.3); /* Initial 3D shadow */"
+                        onmousemove="handleTilt(event, this)"
+                        onmouseleave="resetTilt(this)"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/94A3B8/ffffff?text=Profile+Photo';"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery/Carousel --><section class="py-16 md:py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 max-w-7xl">
+             <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                
+                <!-- Carousel Item 1 --><a href="#" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="new8.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=New+8';" >
+                </a>
+                
+                <!-- Carousel Item 2 --><a href="#" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="formal1.png" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+1';">
+                </a>
+                
+                <!-- Carousel Item 3 --><a href="#" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="new15.png" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+15';">
+                </a>
+                
+                <!-- Carousel Item 4 --><a href="#" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="funky4.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Funky+4';">
+                </a>
+                
+                <!-- Carousel Item 5 --><a href="#" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="funky.png" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Funky+PNG';">
+                </a>
+                
+                <!-- Carousel Item 6 --><a href="#" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="background 1.png" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+1';">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Interaction, Toast, and 3D Effect --><script>
+        // Custom Toast Notification implementation (Replaces alert())
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            // Create the toast element
+            const toast = document.createElement('div');
+            toast.className = 'bg-gray-900 text-white px-4 py-3 rounded-xl shadow-xl transition-opacity duration-300 opacity-0 transform translate-y-2 max-w-xs';
+            toast.innerHTML = `<p class="font-medium text-sm">${message}</p>`;
+
+            // Append and show
+            container.appendChild(toast);
+            
+            // Trigger transition (must be in the next frame)
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-2');
+                toast.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-2');
+
+                // Remove from DOM after transition completes
+                toast.addEventListener('transitionend', () => toast.remove());
+            }, 3000);
+        }
+
+        // 3D Tilt Effect for Profile Photo
+        function handleTilt(event, element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const rotateY = (mouseX - centerX) / centerX * 10; // Adjust sensitivity
+            const rotateX = (centerY - mouseY) / centerY * 10; // Adjust sensitivity
+
+            element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            element.style.boxShadow = `
+                ${-rotateY}px ${rotateX}px 30px rgba(0, 0, 0, 0.4),
+                ${-rotateY/2}px ${rotateX/2}px 60px rgba(28, 126, 214, 0.2) /* Accent shadow */
+            `;
+        }
+
+        function resetTilt(element) {
+            element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            element.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)'; // Reset to initial shadow
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselItems = document.querySelectorAll('.gallery-item');
+            
+            // Add click effect to carousel items
+            carouselItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const caption = this.getAttribute('data-caption') || 'Image';
+                    // Using the custom toast notification instead of alert()
+                    showToast(`${caption} clicked! (Details would open here)`);
+                });
+            });
+            
+            // Add keyboard navigation for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    const focused = document.activeElement;
+                    // Check if the focused element is one of the gallery items
+                    if (focused && focused.classList.contains('gallery-item')) {
+                        const itemsArray = Array.from(carouselItems);
+                        const currentIndex = itemsArray.indexOf(focused);
+                        let nextIndex;
+                        
+                        if (e.key === 'ArrowRight') {
+                            nextIndex = (currentIndex + 1) % itemsArray.length;
+                        } else {
+                            nextIndex = (currentIndex - 1 + itemsArray.length) % itemsArray.length;
+                        }
+                        
+                        itemsArray[nextIndex].focus();
+                        e.preventDefault(); // Prevent default scroll behavior
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- Custom Shadow for 3D Effect (Tailwind doesn't have 3xl by default) --><style>
+        .shadow-3xl-accent {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
+                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
+        }
+    </style>
+</body>
+</html>
