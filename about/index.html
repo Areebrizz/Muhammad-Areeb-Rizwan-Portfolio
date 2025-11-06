@@ -6,6 +6,7 @@
     <title>Mechanical Engineer Portfolio - About Me</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // --- Merged Tailwind Configuration ---
         tailwind.config = {
             theme: {
                 extend: {
@@ -13,28 +14,88 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
+                        // Original Colors
                         'custom-gray': '#f5f5f5',
                         'accent-blue': '#1c7ed6',
+                        // New Header Colors
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
                     }
                 }
             }
         }
     </script>
-    <!-- Load Inter font (optional, Tailwind uses system font by default, but nice to explicitly include) --><style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom styles for text shadow (used on hover and active state) */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Mobile responsive header height adaptation */
+        @media (max-width: 480px) {
+            .main-header {
+                height: 90px;
+            }
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+            }
+            .logo {
+                margin-bottom: 5px;
+                font-size: 1.2rem;
+            }
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+        }
+        .shadow-3xl-accent {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
+                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
+        }
     </style>
 </head>
 <body class="bg-white font-sans text-gray-800">
 
-    <!-- Toast Notification Container (Used instead of alert()) --><div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
-        <!-- Toast messages will be injected here --></div>
+    <!-- --- NAVIGATION HEADER START --- -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50 md:h-[60px]">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
+            <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
+            <nav class="nav-links">
+                <!-- Home link uses setState('center') -->
+                <a href="#" onclick="setState('center'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                <!-- About link navigates externally -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="text-custom-green no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green active-link text-shadow-green">About</a>
+                <!-- Portfolio link navigates externally -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                <a href="#contact" onclick="setState('contact'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <!-- --- NAVIGATION HEADER END --- -->
 
-    <!-- About Section --><section class="py-12 md:py-24 bg-custom-gray">
+    <!-- Toast Notification Container (Used instead of alert()) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
+        <!-- Toast messages will be injected here -->
+    </div>
+
+    <!-- About Section (Increased vertical padding for "zoom out" effect) -->
+    <section class="pt-[90px] pb-24 md:pt-[70px] md:pb-32 bg-custom-gray">
         <div class="container mx-auto px-4 md:px-8 max-w-7xl">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 
-                <!-- Text Content --><div class="md:w-5/12 mb-12 md:mb-0 md:pr-10">
-                    <h1 class="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
+                <!-- Text Content -->
+                <div class="md:w-5/12 mb-12 md:mb-0 md:pr-10">
+                    <h1 class="text-6xl sm:text-7xl md:text-7xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
                         about.
                     </h1>
                     <p class="text-xl md:text-2xl text-accent-blue font-semibold mb-6">
@@ -49,9 +110,10 @@
                     </a>
                 </div>
                 
-                <!-- Profile Image (No circle, with 3D effect) --><div class="md:w-7/12 flex justify-center md:justify-end relative group">
+                <!-- Profile Image (No circle, with 3D effect) -->
+                <div class="md:w-7/12 flex justify-center md:justify-end relative group">
                     <img 
-                        src="funky.png" 
+                        src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/funky2.png" 
                         alt="Profile picture" 
                         class="w-full max-w-md rounded-lg shadow-2xl transition-all duration-500 
                                group-hover:rotate-3 group-hover:scale-105 group-hover:shadow-3xl-accent"
@@ -66,39 +128,47 @@
         </div>
     </section>
 
-    <!-- Image Gallery/Carousel --><section class="py-16 md:py-20 bg-white border-t border-gray-100">
+    <!-- Image Gallery/Carousel -->
+    <section class="py-16 md:py-20 bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-7xl">
              <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
                 
-                <!-- Carousel Item 1 --><a href="#" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="new8.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=New+8';" >
+                <!-- Carousel Item 1: new15.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/new15.png" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+15';" >
                 </a>
                 
-                <!-- Carousel Item 2 --><a href="#" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="formal1.png" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+1';">
+                <!-- Carousel Item 2: new8.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/new8.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=New+8';">
                 </a>
                 
-                <!-- Carousel Item 3 --><a href="#" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="new15.png" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+15';">
+                <!-- Carousel Item 3: formal1.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/formal1.png" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+1';">
                 </a>
                 
-                <!-- Carousel Item 4 --><a href="#" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="funky4.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Funky+4';">
+                <!-- Carousel Item 4: background 1.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/background 1.png" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+1';">
                 </a>
                 
-                <!-- Carousel Item 5 --><a href="#" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="funky.png" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Funky+PNG';">
+                <!-- Carousel Item 5: funky.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/funky.png" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Funky+PNG';">
                 </a>
                 
-                <!-- Carousel Item 6 --><a href="#" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="background 1.png" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+1';">
+                <!-- Carousel Item 6: funky4.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/funky4.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Funky+4';">
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- JavaScript for Interaction, Toast, and 3D Effect --><script>
+    <!-- JavaScript for Interaction, Toast, and 3D Effect -->
+    <script>
         // Custom Toast Notification implementation (Replaces alert())
         function showToast(message) {
             const container = document.getElementById('toast-container');
@@ -152,8 +222,50 @@
             element.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)'; // Reset to initial shadow
         }
 
+        // --- Navigation State Logic ---
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        function navigateState(targetState, url) {
+            setState(targetState);
+            setTimeout(() => {
+                // In a real deployed app, you'd use: window.location.href = url;
+                console.log(`Simulating external navigation to: ${url}`);
+            }, 300); 
+        }
+
+        function setState(targetState) {
+            // 1. Reset all link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light');
+            });
+
+            // 2. Set the new active link by matching the click handler or href
+            let activeLinkSelector = '';
+            
+            if (targetState === 'center') {
+                activeLinkSelector = 'a[onclick*="setState(\'center\')"]';
+            } else if (targetState === 'left') {
+                activeLinkSelector = 'a[onclick*="navigateState(\'left\'"]';
+            } else if (targetState === 'right') {
+                activeLinkSelector = 'a[onclick*="navigateState(\'right\'"]';
+            } else if (targetState === 'contact') {
+                activeLinkSelector = 'a[href="#contact"]';
+            }
+
+            const activeLink = document.querySelector(`.nav-links ${activeLinkSelector}`);
+            if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light');
+            }
+        }
+        // --- End Navigation State Logic ---
+
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Set 'About' active on page load
+            setState('left'); 
+            
             const carouselItems = document.querySelectorAll('.gallery-item');
             
             // Add click effect to carousel items
@@ -161,8 +273,7 @@
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
                     const caption = this.getAttribute('data-caption') || 'Image';
-                    // Using the custom toast notification instead of alert()
-                    showToast(`${caption} clicked! (Details would open here)`);
+                    showToast(`${caption} clicked! (Details would open here, or link to the specific image's page)`);
                 });
             });
             
@@ -170,7 +281,6 @@
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
                     const focused = document.activeElement;
-                    // Check if the focused element is one of the gallery items
                     if (focused && focused.classList.contains('gallery-item')) {
                         const itemsArray = Array.from(carouselItems);
                         const currentIndex = itemsArray.indexOf(focused);
@@ -189,11 +299,5 @@
             });
         });
     </script>
-    <!-- Custom Shadow for 3D Effect (Tailwind doesn't have 3xl by default) --><style>
-        .shadow-3xl-accent {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
-                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
-        }
-    </style>
 </body>
 </html>
