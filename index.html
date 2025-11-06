@@ -86,9 +86,12 @@
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
             <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
             <nav class="nav-links">
+                <!-- Home link uses setState('center') to remain on the SPA home page -->
                 <a href="#" onclick="setState('center'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                <a href="#" onclick="setState('left'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                <a href="#" onclick="setState('right'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                <!-- About link navigates externally -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                <!-- Portfolio link navigates externally -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
                 <a href="#contact" onclick="return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
             </nav>
         </div>
@@ -107,20 +110,20 @@
                 
                 <!-- GIFs Container -->
                 <div class="central-gifs-container absolute top-0 left-0 w-full h-full z-36 pointer-events-none opacity-100 transition-opacity duration-500 delay-300">
-                    <!-- Left GIF (links to right state) -->
+                    <!-- Left GIF (Buggy) - Links to Portfolio -->
                     <img 
                         src="assets/images/buggy.gif" 
                         alt="Buggy Mechanical GIF" 
                         class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-left-hand top-[63%] left-[57%] pointer-events-auto hover:scale-105" 
-                        onclick="setState('right')" 
+                        onclick="navigateState('right', 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html')" 
                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
                     >
-                    <!-- Right GIF (links to left state) -->
+                    <!-- Right GIF (Drone) - Links to About -->
                     <img 
                         src="assets/images/drone.gif" 
                         alt="Drone Mechanical GIF" 
                         class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-right-hand top-[64%] right-[59%] pointer-events-auto hover:scale-105" 
-                        onclick="setState('left')" 
+                        onclick="navigateState('left', 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html')" 
                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
                     >
                 </div>
@@ -148,7 +151,8 @@
             <div class="side-wrapper w-2/5 px-[5%] text-left relative z-45 opacity-0 transition-opacity duration-400 delay-300">
                 <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1] drop-shadow-[2px_2px_5px_rgba(0,0,0,0.8)]">MECHANICAL ENGINEER</h1>
                 <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px] drop-shadow-[1px_1px_3px_rgba(0,0,0,0.7)]">Building efficiency from precision and discipline.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">About Me ></a>
+                <!-- About Me > link navigates externally -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">About Me ></a>
             </div>
         </div>
 
@@ -161,7 +165,8 @@
             <div class="side-wrapper w-2/5 px-[5%] text-right relative z-45 opacity-0 transition-opacity duration-400 delay-300">
                 <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1] drop-shadow-[2px_2px_5px_rgba(0,0,0,0.8)]">INDUSTRY 4.0 EXPERT</h1>
                 <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px] drop-shadow-[1px_1px_3px_rgba(0,0,0,0.7)]">Automating the future of intelligent manufacturing.</p>
-                <a href="#" onclick="setState('center'); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">My Portfolio ></a>
+                <!-- My Portfolio > link navigates externally -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">My Portfolio ></a>
             </div>
         </div>
     </section>
@@ -306,28 +311,50 @@
             return window.innerWidth <= 480; 
         }
 
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left' or 'right' to visually expand the panel.
+         * @param {string} url - The external URL to navigate to.
+         */
+        function navigateState(targetState, url) {
+            // 1. Trigger the immediate visual state change (expand side panel)
+            // This is necessary to show the user where they are going before navigation.
+            setState(targetState);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300); // 300ms matches the transition-all duration
+        }
+
         // Refactored state setting for CLICKS/LINKS
         function setState(targetState) {
             // 1. Reset all visual states
             left.classList.remove('active-click', 'active-visual');
             right.classList.remove('active-click', 'active-visual');
             
-            // Reset side widths
+            // Reset side widths and z-index
             left.style.width = '0%';
             right.style.width = '0%';
             left.style.zIndex = 20; 
             right.style.zIndex = 20;
             
-            // 2. Control the center content wrapper's opacity
+            // 2. Hide side panel content for reset
+            const allSideWrappers = document.querySelectorAll('.side-wrapper');
+            const allSideImages = document.querySelectorAll('.side-image-placeholder');
+            allSideWrappers.forEach(el => el.style.opacity = '0');
+            allSideImages.forEach(el => el.style.opacity = '0');
+            
+            // 3. Control the center content wrapper's opacity
             centerContentWrapper.style.opacity = 1; 
             
-            // 3. Reset link active states
+            // 4. Reset link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light');
             });
 
-            // 4. Set the new active state/link
+            // 5. Set the new active state/link
             let activeLinkSelector = '';
             
             if (targetState === 'center') {
@@ -344,7 +371,8 @@
                 if (leftSideWrapper) leftSideWrapper.style.opacity = '1';
                 if (leftSideImage) leftSideImage.style.opacity = '1';
                 
-                activeLinkSelector = 'a[onclick*="setState(\'left\')"]';
+                // When navigating away, we use the nav function, but we still need the link highlight if called directly
+                activeLinkSelector = 'a[onclick*="navigateState(\'left\'"]';
             } else if (targetState === 'right') {
                 right.classList.add('active-click');
                 right.style.width = '100%'; 
@@ -357,7 +385,8 @@
                 if (rightSideWrapper) rightSideWrapper.style.opacity = '1';
                 if (rightSideImage) rightSideImage.style.opacity = '1';
                 
-                activeLinkSelector = 'a[onclick*="setState(\'right\')"]';
+                // When navigating away, we use the nav function, but we still need the link highlight if called directly
+                activeLinkSelector = 'a[onclick*="navigateState(\'right\'"]';
             }
 
             const activeLink = document.querySelector(`.nav-links ${activeLinkSelector}`);
