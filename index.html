@@ -93,43 +93,46 @@
                 <img 
                     src="assets/images/new15.png" 
                     alt="Muhammad Areeb Rizwan" 
-                    class="center-main-image absolute left-1/2 transform -translate-x-1/2 h-[90%] max-h-[700px] w-auto object-contain z-10 opacity-90 md:h-[90%] md:opacity-90 h-[60%] opacity-50 bottom-0 md:bottom-0" 
+                    class="center-main-image absolute left-1/2 transform -translate-x-1/2 h-[95%] max-h-[800px] w-auto object-contain z-10 opacity-90 md:h-[95%] md:opacity-90 h-[60%] opacity-50 bottom-0 md:bottom-0" 
                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/282c34/ffffff?text=Main+Portrait'"
                 >
                 <div class="central-gifs-container absolute inset-0 w-full h-full pointer-events-auto z-50 
 							md:block hidden">
-                    <!-- GIF positioning is purely absolute on desktop (hidden on small screens) -->
+                    <!-- Drone (I4.0) on the LEFT (Triggers Left State - I4.0 Expert) -->
+                    <img 
+                        src="assets/images/drone.gif" 
+                        alt="Drone Industry 4.0 GIF" 
+                        class="central-gif absolute w-[clamp(150px,12vw,220px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 shadow-xl gif-left-hand top-1/2 left-[calc(50%-150px)] -translate-x-full" 
+                        onclick="setState('left')" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
+                    >
+                    <!-- Buggy (Mech) on the RIGHT (Triggers Right State - Mechanical Engineer) -->
                     <img 
                         src="assets/images/buggy.gif" 
                         alt="Buggy Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(150px,12vw,220px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 shadow-xl gif-left-hand top-1/2 left-[calc(50%-150px)] -translate-x-full" 
+                        class="central-gif absolute w-[clamp(150px,12vw,220px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 shadow-xl gif-right-hand top-[55%] left-[calc(50%+150px)]" 
                         onclick="setState('right')" 
                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
-                    >
-                    <img 
-                        src="assets/images/drone.gif" 
-                        alt="Drone Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(150px,12vw,220px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 shadow-xl gif-right-hand top-[55%] left-[calc(50%+150px)]" 
-                        onclick="setState('left')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
                     >
                 </div>
 
-                <!-- Mobile GIF Container (Visible only on small screens) -->
+                <!-- Mobile GIF Container (Visible only on small screens) - SWAPPED -->
                 <div class="mobile-gifs-container z-50 pointer-events-auto absolute w-[90%] mx-auto left-1/2 -translate-x-1/2 top-[15%] h-[150px] flex justify-around items-end md:hidden block">
+                     <!-- Drone (I4.0) - Left Slot (triggers Left State - I4.0 Expert) -->
+                    <img 
+                        src="assets/images/drone.gif" 
+                        alt="Drone Industry 4.0 GIF" 
+                        class="relative w-[90px] h-[90px] object-contain cursor-pointer rounded-lg shadow-md mx-1 transition-transform duration-300 hover:scale-110" 
+                        onclick="setState('left')" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
+                    >
+                    <!-- Buggy (Mech) - Right Slot (triggers Right State - Mechanical Engineer) -->
                     <img 
                         src="assets/images/buggy.gif" 
                         alt="Buggy Mechanical GIF" 
                         class="relative w-[90px] h-[90px] object-contain cursor-pointer rounded-lg shadow-md mx-1 transition-transform duration-300 hover:scale-110" 
                         onclick="setState('right')" 
                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
-                    >
-                    <img 
-                        src="assets/images/drone.gif" 
-                        alt="Drone Mechanical GIF" 
-                        class="relative w-[90px] h-[90px] object-contain cursor-pointer rounded-lg shadow-md mx-1 transition-transform duration-300 hover:scale-110" 
-                        onclick="setState('left')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
                     >
                 </div>
 
@@ -145,27 +148,41 @@
 			</div>
 		</div>
 
-		<!-- Left State (About) -->
+		<!-- Left State (Now INDUSTRY 4.0 EXPERT) -->
 		<!-- Uses custom clip-path in <style> block -->
 		<div class="state-left absolute inset-0 w-full h-full transition-all duration-400 ease-in-out z-20" id="stateLeft">
+			<!-- New image for the left side (new8.png on far left) -->
+            <img 
+                src="assets/images/new8.png" 
+                alt="Industry 4.0 Visual" 
+                class="absolute left-0 bottom-0 h-[80%] max-h-[700px] w-auto object-contain z-30 opacity-70 transition-opacity duration-400 ease-in-out md:block hidden"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x700/282c34/ffffff?text=I4.0+Visual'"
+            >
 			<div class="side-wrapper absolute z-40 transition-opacity duration-400 ease-in-out opacity-0 
 				md:top-1/2 md:transform md:-translate-y-1/2 md:left-[5%] md:p-0 md:text-left 
 				top-auto transform-none left-1/2 -translate-x-1/2 w-full text-center p-5 pt-32">
-				<h1 class="text-[clamp(2rem,4vw,5rem)] font-black mb-3">MECHANICAL ENGINEER</h1>
-				<p class="text-[clamp(1rem,1.5vw,1.8rem)] text-gray-400 mb-5 max-w-xl mx-auto md:mx-0">Building efficiency through precision and discipline.</p>
-				<a href="#" class="text-white no-underline text-base md:text-lg transition-colors duration-300 hover:text-custom-green" onclick="setState('center');return false;">Back to Home &gt;</a>
+				<h1 class="text-[clamp(2rem,4vw,5rem)] font-black mb-3">INDUSTRY 4.0 EXPERT</h1>
+				<p class="text-[clamp(1rem,1.5vw,1.8rem)] text-gray-400 mb-5 max-w-xl mx-auto md:mx-0">Automating the future of intelligent manufacturing.</p>
+				<a href="#" class="text-white no-underline text-base md:text-lg transition-colors duration-300 hover:text-custom-green" onclick="setState('center');return false;">View Creative Portfolio &gt;</a>
 			</div>
 		</div>
 
-		<!-- Right State (Portfolio) -->
+		<!-- Right State (Now MECHANICAL ENGINEER) -->
 		<!-- Uses custom clip-path in <style> block -->
 		<div class="state-right absolute inset-0 w-full h-full transition-all duration-400 ease-in-out z-20" id="stateRight">
+			<!-- New image for the right side (formal1.png on far right) -->
+            <img 
+                src="assets/images/formal1.png" 
+                alt="Formal Profile Visual" 
+                class="absolute right-0 bottom-0 h-[80%] max-h-[700px] w-auto object-contain z-30 opacity-70 transition-opacity duration-400 ease-in-out md:block hidden"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x700/282c34/ffffff?text=Formal+Visual'"
+            >
 			<div class="side-wrapper absolute z-40 transition-opacity duration-400 ease-in-out opacity-0 
 				md:top-1/2 md:transform md:-translate-y-1/2 md:right-[5%] md:p-0 md:text-right 
 				top-auto transform-none left-1/2 -translate-x-1/2 w-full text-center p-5 pt-32">
-				<h1 class="text-[clamp(2rem,4vw,5rem)] font-black mb-3">INDUSTRY 4.0 SPECIALIST</h1>
-				<p class="text-[clamp(1rem,1.5vw,1.8rem)] text-gray-400 mb-5 max-w-xl mx-auto md:mx-0">Automating the future of intelligent manufacturing.</p>
-				<a href="#" class="text-white no-underline text-base md:text-lg transition-colors duration-300 hover:text-custom-green" onclick="setState('center');return false;">View My Work &gt;</a>
+				<h1 class="text-[clamp(2rem,4vw,5rem)] font-black mb-3">MECHANICAL ENGINEER</h1>
+				<p class="text-[clamp(1rem,1.5vw,1.8rem)] text-gray-400 mb-5 max-w-xl mx-auto md:mx-0">Building efficiency through precision and discipline.</p>
+				<a href="#" class="text-white no-underline text-base md:text-lg transition-colors duration-300 hover:text-custom-green" onclick="setState('center');return false;">View Formal Profile &gt;</a>
 			</div>
 		</div>
 	</section>
@@ -184,25 +201,46 @@
 
 		function setState(state) {
 			activeState = state;
-			left.classList.remove("active");
-			right.classList.remove("active");
 			
-			// Remove all active links first
-			navLinks.forEach((l) => l.classList.remove("active-link", "text-custom-green", "text-shadow-green"));
-			l.classList.add("text-text-light"); // Ensure non-active links are gray
-
-			// Set state specific active link
-			let activeLinkSelector = '';
-
+			// Handle side panel visibility and opacity
 			if (state === "left") {
 				left.classList.add("active");
-				activeLinkSelector = '.nav-links a[onclick*="left"]';
+				right.classList.remove("active");
+				left.querySelector('.side-wrapper').classList.remove("opacity-0");
+				right.querySelector('.side-wrapper').classList.add("opacity-0");
+				// Show new image on side state (Desktop only)
+				const sideImage = left.querySelector('img');
+				if (sideImage) sideImage.style.opacity = '1';
 			} else if (state === "right") {
 				right.classList.add("active");
-				activeLinkSelector = '.nav-links a[onclick*="right"]';
+				left.classList.remove("active");
+				right.querySelector('.side-wrapper').classList.remove("opacity-0");
+				left.querySelector('.side-wrapper').classList.add("opacity-0");
+				// Show new image on side state (Desktop only)
+				const sideImage = right.querySelector('img');
+				if (sideImage) sideImage.style.opacity = '1';
 			} else if (state === "center") {
-				activeLinkSelector = '.nav-links a[onclick*="center"]';
+				left.classList.remove("active");
+				right.classList.remove("active");
+				left.querySelector('.side-wrapper').classList.add("opacity-0");
+				right.querySelector('.side-wrapper').classList.add("opacity-0");
+				// Hide new images when back in center
+				const leftImage = left.querySelector('img');
+				if (leftImage) leftImage.style.opacity = '0.7';
+				const rightImage = right.querySelector('img');
+				if (rightImage) rightImage.style.opacity = '0.7';
 			}
+
+			// Navigation link highlighting
+			navLinks.forEach((l) => {
+				l.classList.remove("active-link", "text-custom-green", "text-shadow-green");
+				l.classList.add("text-text-light");
+			});
+
+			let activeLinkSelector = '';
+			if (state === "left") { activeLinkSelector = '.nav-links a[onclick*="left"]'; } 
+			else if (state === "right") { activeLinkSelector = '.nav-links a[onclick*="right"]'; } 
+			else if (state === "center") { activeLinkSelector = '.nav-links a[onclick*="center"]'; }
 			
 			if (activeLinkSelector) {
 				const activeLink = document.querySelector(activeLinkSelector);
@@ -225,12 +263,24 @@
 				
 				if (e.clientX > mid + 100) right.classList.add("active");
 				else right.classList.remove("active");
+
+				// Subtle opacity adjustment on side images when hovering near the center
+				const leftImage = left.querySelector('img');
+				const rightImage = right.querySelector('img');
+
+				if (leftImage) leftImage.style.opacity = e.clientX < mid - 100 ? '1' : '0.7';
+				if (rightImage) rightImage.style.opacity = e.clientX > mid + 100 ? '1' : '0.7';
 			});
 
 			hero.addEventListener("mouseleave", () => {
 				if (activeState === "center") {
 					left.classList.remove("active");
 					right.classList.remove("active");
+					// Reset opacity of side visuals on mouse leave
+					const leftImage = left.querySelector('img');
+					const rightImage = right.querySelector('img');
+					if (leftImage) leftImage.style.opacity = '0.7';
+					if (rightImage) rightImage.style.opacity = '0.7';
 				}
 			});
 		} 
@@ -246,9 +296,12 @@
 				}
 
 				if (activeState === "center") {
+					// Tap left side of the screen goes to left state
 					if (x < mid) setState("left");
+					// Tap right side of the screen goes to right state
 					else setState("right");
 				} else {
+					// Tap anywhere in an expanded state goes back to center
 					setState("center");
 				}
 			});
