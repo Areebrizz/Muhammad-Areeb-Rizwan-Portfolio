@@ -89,7 +89,7 @@
             width: 100%;
             height: 100%; /* Now 100% of the newly constrained .hero-section */
             background-image: url('assets/images/background 11.png.png');
-            background-size: auto 100%;
+            background-size: cover;
             background-position: center;
             z-index: 30;
         }
@@ -295,43 +295,47 @@
             font-size: clamp(0.9rem, 1.1vw, 1.2rem);
         }
 
-       /* --- FIXED SIDE IMAGE PLACEMENT --- */
-.side-image-placeholder {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    z-index: 39;
-}
+        /* --- SWAPPED ANCHORING AND FIXED SIZE FOR SIDE IMAGES --- */
+        .side-image-placeholder {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%; 
+            /* background-size: cover; REMOVED to allow specific sizing below */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 39; 
+            background-repeat: no-repeat; /* Ensure fixed size images don't tile */
+        }
+        
+        .state-left .side-image-placeholder {
+            background-image: url('assets/images/formal1.png'); 
+            left: 0; 
+            background-position: 100% center; /* Anchored to FAR RIGHT */
+            background-size: auto 100%; /* Fixed, non-filling height (consistent scale) */
+        }
 
-/* LEFT SIDE IMAGE (formal1) – push further to the right */
-.state-left .side-image-placeholder {
-    background-image: url('assets/images/formal1.png');
-    left: 0;
-    transform: translateX(8vw); /* pushes the image more right */
-    background-position: right center;
-}
-
-/* RIGHT SIDE IMAGE (new8) – push further to the left */
-.state-right .side-image-placeholder {
-    background-image: url('assets/images/new8.png');
-    right: 0;
-    transform: translateX(-8vw); /* pushes the image more left */
-    background-position: left center;
-}
-
-/* When visible (hover or click state) */
-.state-left.active-visual .side-image-placeholder,
-.state-right.active-visual .side-image-placeholder,
-.state-left.active-click .side-image-placeholder,
-.state-right.active-click .side-image-placeholder {
-    opacity: 1;
-    transform: translateX(0); /* slide back into perfect view when active */
-}
+        .state-right .side-image-placeholder {
+            background-image: url('assets/images/new8.png'); 
+            right: 0; 
+            background-position: 0% center; /* Anchored to FAR LEFT */
+            background-size: auto 100%; /* Fixed, non-filling height (consistent scale) */
+        }
+        
+        /* Show content when EITHER visual (mouse) or click state is active */
+        .state-left.active-visual .side-wrapper,
+        .state-right.active-visual .side-wrapper,
+        .state-left.active-click .side-wrapper,
+        .state-right.active-click .side-wrapper {
+            opacity: 1;
+        }
+        
+        .state-left.active-visual .side-image-placeholder,
+        .state-right.active-visual .side-image-placeholder,
+        .state-left.active-click .side-image-placeholder,
+        .state-right.active-click .side-image-placeholder {
+            opacity: 1; 
+        }
         
         /* ========================================================================= */
         /* --- MOBILE RESPONSIVENESS (<= 480px) --- */
