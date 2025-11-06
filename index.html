@@ -1,554 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Variables for Header Height (makes responsiveness clearer) */
-        :root {
-            --header-height-desktop: 60px;
-            --header-height-mobile: 90px;
-            --green: #4CAF50;
-            --dark-bg: #111;
-            --text-light: #e0e0e0;
-            --transition: 0.4s ease;
-        }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+	<!-- Load Tailwind CSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		// Tailwind Configuration: Define custom colors, animations, and transitions
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						// Custom Green for accents
+						'custom-green': '#4caf50',
+						'dark-bg': '#111',
+						'text-light': '#e0e0e0',
+					},
+					keyframes: {
+						'fade-in': {
+							'0%': { opacity: '0', transform: 'translateY(-40%)' },
+							'100%': { opacity: '1', transform: 'translateY(-50%)' },
+						}
+					},
+					animation: {
+						// Match the 1s ease-in-out from the original CSS
+						'fade-in': 'fade-in 1s ease-in-out forwards',
+					},
+					// Custom transition duration to match the original --transition: 0.4s
+					transitionDuration: {
+						'400': '400ms',
+					}
+				}
+			}
+		}
+	</script>
+	<style>
+		/* Custom style for the subtle green text shadow on hover/active links */
+		.text-shadow-green {
+			text-shadow: 0 0 6px rgba(76, 175, 80, 0.7);
+		}
+		
+		/* --- State Transition Logic (Kept outside Tailwind utilities for complex clip-path control) --- */
+		/* Clip-path for the side states, set to 0 width initially */
+		.state-left {
+			background: url("assets/images/background 22.png.png") center/cover no-repeat;
+			clip-path: inset(0 100% 0 0);
+		}
+		.state-right {
+			background: url("assets/images/background 33.png") center/cover no-repeat;
+			clip-path: inset(0 0 0 100%);
+		}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+		/* Active state: expand clip-path to full width */
+		.state-left.active, .state-right.active {
+			clip-path: inset(0 0 0 0);
+		}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background: #000;
-            color: white;
-        }
-
-        /* ===== HEADER ===== */
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height-desktop);
-            background: var(--dark-bg);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 30px;
-            z-index: 100;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active-link {
-            color: var(--green);
-            text-shadow: 0 0 6px rgba(76, 175, 80, 0.7);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero-section {
-            position: fixed;
-            top: var(--header-height-desktop);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .state-center,
-        .state-left,
-        .state-right {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            transition: all var(--transition);
-        }
-
-        .state-center {
-            background: url('assets/images/background 11.png.png') center/cover no-repeat;
-            z-index: 1;
-        }
-
-        .state-left {
-            background: url('assets/images/background 22.png.png') center/cover no-repeat;
-            /* Use clip-path for smooth horizontal transition */
-            clip-path: inset(0 100% 0 0);
-            z-index: 2;
-        }
-
-        .state-right {
-            background: url('assets/images/background 33.png') center/cover no-repeat;
-            clip-path: inset(0 0 0 100%);
-            z-index: 2;
-        }
-
-        .state-left.active,
-        .state-right.active {
-            clip-path: inset(0 0 0 0);
-            z-index: 3;
-        }
-
-        /* ===== CENTER VISUALS (Image and GIFs) ===== */
-        .center-visual-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%;
-            pointer-events: none;
-            z-index: 4;
-        }
-
-        .center-main-image {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 90%; 
-            max-height: 700px;
-            width: auto;
-            object-fit: contain;
-            z-index: 1;
-            opacity: 0.9;
-        }
-
-        .central-gifs-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: auto; /* Re-enable pointer events for the GIFs */
-            z-index: 5;
-        }
-
-        /* GIF Styling - No Glow, just Scale, No Visible Bounding Box */
-        .central-gif {
-            position: absolute;
-            width: clamp(150px, 12vw, 220px);
-            height: auto;
-            object-fit: contain;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            /* No background, no border, no shadow - completely invisible bounding box */
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-
-        /* Scale effect only */
-        .central-gif:hover {
-            transform: scale(1.1);
-        }
-
-        /* Specific GIF positioning (Desktop) */
-        .gif-left-hand { 
-            top: 50%; 
-            left: calc(50% - 150px); 
-            transform: translate(-100%, 0); /* Pull left GIF fully left */
-        }
-        .gif-right-hand { 
-            top: 55%; 
-            left: calc(50% + 150px); /* Push right GIF fully right */
-        }
-
-        /* ===== CENTER CONTENT (Text) - ALIGNED FAR LEFT ===== */
-        .center-content {
-            position: absolute;
-            top: 40%; /* Adjusted top position */
-            left: 5%;  /* MOVED TO FAR LEFT */
-            right: auto; 
-            transform: translateY(-50%); /* Only translate Y, not X */
-            max-width: 450px; /* Constrain width */
-            text-align: left; /* ALIGNED LEFT */
-            color: white;
-            z-index: 6; /* Higher than visual layer */
-            animation: fadeIn 1s ease forwards;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            padding: 0; 
-        }
-
-        .center-content h1 {
-            font-size: clamp(1.5rem, 2.5vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-
-        .center-content h1 strong {
-            color: var(--green);
-        }
-
-        .center-content p {
-            font-size: clamp(1rem, 1.3vw, 1.5rem);
-            font-style: italic;
-            color: var(--text-light);
-        }
-
-        /* ===== SIDE TEXT AND IMAGES ===== */
-        .side-wrapper {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0 5vw;
-            color: white;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-
-        .state-left.active .side-wrapper,
-        .state-right.active .side-wrapper {
-            opacity: 1;
-        }
-
-        /* MODIFIED: Move text further to the opposite side of images */
-        .state-left .side-wrapper {
-            left: 2%; /* Moved further left */
-            text-align: left;
-        }
-
-        .state-right .side-wrapper {
-            right: 2%; /* Moved further right */
-            text-align: right;
-        }
-
-        /* MODIFIED: Smaller font size for side text */
-        .side-wrapper h1 {
-            font-size: clamp(1.5rem, 3vw, 4rem); /* Reduced from 2rem, 4vw, 5rem */
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-
-        .side-wrapper p {
-            font-size: clamp(0.9rem, 1.3vw, 1.5rem); /* Reduced from 1rem, 1.5vw, 1.8rem */
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .side-link {
-            color: white;
-            text-decoration: underline;
-            font-size: 0.9rem; /* Slightly smaller */
-            transition: color 0.3s;
-        }
-
-        .side-link:hover {
-            color: var(--green);
-        }
-
-        /* ===== SIDE IMAGES - ADDED BACK ===== */
-        .side-image-placeholder {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 9;
-            background-repeat: no-repeat;
-            pointer-events: none;
-        }
-        
-        /* MODIFIED: Move formal1.png further right */
-        .state-left .side-image-placeholder {
-            background-image: url('assets/images/formal1.png'); 
-            right: -5%; /* Moved further right (was 0) */
-            background-position: 100% center; /* Anchored to FAR RIGHT */
-            background-size: auto 100%; /* Fixed, non-filling height */
-        }
-
-        /* MODIFIED: Move new8.png further left */
-        .state-right .side-image-placeholder {
-            background-image: url('assets/images/new8.png'); 
-            left: -5%; /* Moved further left (was 0) */
-            background-position: 0% center; /* Anchored to FAR LEFT */
-            background-size: auto 100%; /* Fixed, non-filling height */
-        }
-        
-        .state-left.active .side-image-placeholder,
-        .state-right.active .side-image-placeholder {
-            opacity: 1; 
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-40%); /* Starts slightly off target Y */
-            }
-            to {
-                opacity: 1;
-                transform: translateY(-50%); /* Final Y position */
-            }
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .main-header {
-                padding: 0 20px;
-            }
-            .nav-links a {
-                margin-left: 15px;
-            }
-            .side-wrapper h1 {
-                font-size: 2rem; /* Adjusted for tablet */
-            }
-            .side-wrapper p {
-                font-size: 1rem; /* Adjusted for tablet */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-header {
-                flex-direction: column;
-                height: var(--header-height-mobile);
-                justify-content: center;
-            }
-
-            .hero-section {
-                top: var(--header-height-mobile);
-            }
-
-            /* MOBILE: Center Content is centered and moved up */
-            .center-content {
-                position: absolute;
-                top: 25%; /* Move it high up */
-                left: 50%;
-                right: auto;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                max-width: 90%;
-                padding: 0;
-            }
-
-            .center-main-image {
-                opacity: 0.5; 
-                height: 60%;
-                bottom: 10%;
-            }
-
-            .central-gifs-container {
-                display: flex;
-                justify-content: space-around;
-                align-items: flex-end;
-                position: relative; 
-                height: 150px;
-                top: 15%; /* Shift down from the header */
-                margin: 0 auto;
-                width: 90%;
-                pointer-events: auto;
-            }
-
-            .central-gif {
-                position: relative; 
-                width: 90px;
-                height: 90px;
-                top: auto;
-                left: auto;
-                transform: none;
-                margin: 0 5px;
-            }
-            
-            .gif-left-hand, .gif-right-hand {
-                left: auto;
-                top: auto;
-                transform: none;
-            }
-
-            .side-wrapper {
-                position: relative;
-                transform: none;
-                top: auto;
-                padding: 20px;
-                text-align: center;
-            }
-
-            .state-left.active,
-            .state-right.active {
-                clip-path: inset(0 0 0 0);
-            }
-
-            .side-wrapper h1 {
-                font-size: 1.8rem; /* Adjusted for mobile */
-            }
-            
-            /* Adjust side images for mobile */
-            .side-image-placeholder {
-                background-position: center center !important;
-                background-size: contain !important;
-                right: 0 !important; /* Reset for mobile */
-                left: 0 !important; /* Reset for mobile */
-            }
-        }
-    </style>
+		/* --- Responsive Header Top Offset --- */
+		/* Desktop Header Height (60px) */
+		@media (min-width: 768px) {
+			.hero-section { top: 60px; }
+		}
+		/* Mobile Header Height (90px) */
+		@media (max-width: 767px) {
+			.hero-section { top: 90px; }
+		}
+	</style>
 </head>
-<body>
-    <header class="main-header">
-        <div class="logo">M. Areeb Rizwan</div>
-        <nav class="nav-links">
-            <a href="#" onclick="setState('center');return false;">Home</a>
-            <a href="#" onclick="setState('left');return false;">About</a>
-            <a href="#" onclick="setState('right');return false;">Portfolio</a>
-            <a href="#contact" onclick="return false;">Contact</a>
-        </nav>
-    </header>
+<body class="font-inter overflow-x-hidden bg-black text-white">
+	
+	<!-- Header -->
+	<header class="main-header fixed top-0 left-0 w-full h-[90px] md:h-[60px] bg-dark-bg flex flex-col md:flex-row items-center justify-center md:justify-between px-4 md:px-10 z-50 shadow-lg shadow-black/40">
+		<div class="logo text-xl font-extrabold text-white tracking-wide mb-1 md:mb-0">M. Areeb Rizwan</div>
+		<nav class="nav-links flex space-x-4 md:space-x-6">
+			<a href="#" onclick="setState('center');return false;" class="text-text-light no-underline font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+			<a href="#" onclick="setState('left');return false;" class="text-text-light no-underline font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+			<a href="#" onclick="setState('right');return false;" class="text-text-light no-underline font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+			<a href="#contact" onclick="return false;" class="text-text-light no-underline font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+		</nav>
+	</header>
 
-    <section class="hero-section" id="heroSection">
-        <div class="state-center" id="stateCenter">
+	<!-- Hero Section (Fixed positioning handled by custom CSS block above) -->
+	<section class="hero-section fixed left-0 right-0 bottom-0 overflow-hidden z-10" id="heroSection">
+		
+		<!-- Center State (Background 11.png) -->
+		<div class="state-center absolute inset-0 w-full h-full transition-all duration-400 ease-in-out z-10 bg-[url('assets/images/background_11.png.png')] bg-center bg-cover" id="stateCenter">
+            
             <!-- Visuals Layer -->
-            <div class="center-visual-layer">
+            <div class="center-visual-layer absolute inset-0 pointer-events-none z-40">
                 <img 
                     src="assets/images/new15.png" 
                     alt="Muhammad Areeb Rizwan" 
-                    class="center-main-image" 
+                    class="center-main-image absolute left-1/2 transform -translate-x-1/2 h-[90%] max-h-[700px] w-auto object-contain z-10 opacity-90 md:h-[90%] md:opacity-90 h-[60%] opacity-50 bottom-0 md:bottom-0" 
                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/282c34/ffffff?text=Main+Portrait'"
                 >
-                <div class="central-gifs-container">
-                    <!-- BUGGY GIF: Links to Industry 4.0 (Right State) -->
+                <div class="central-gifs-container absolute inset-0 w-full h-full pointer-events-auto z-50 
+							md:block hidden">
+                    <!-- GIF positioning is purely absolute on desktop (hidden on small screens) -->
                     <img 
                         src="assets/images/buggy.gif" 
                         alt="Buggy Mechanical GIF" 
-                        class="central-gif gif-left-hand" 
+                        class="central-gif absolute w-[clamp(150px,12vw,220px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 shadow-xl gif-left-hand top-1/2 left-[calc(50%-150px)] -translate-x-full" 
                         onclick="setState('right')" 
                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
                     >
-                    <!-- DRONE GIF: Links to Mechanical Engineer (Left State) -->
                     <img 
                         src="assets/images/drone.gif" 
                         alt="Drone Mechanical GIF" 
-                        class="central-gif gif-right-hand" 
+                        class="central-gif absolute w-[clamp(150px,12vw,220px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 shadow-xl gif-right-hand top-[55%] left-[calc(50%+150px)]" 
                         onclick="setState('left')" 
                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
                     >
                 </div>
+
+                <!-- Mobile GIF Container (Visible only on small screens) -->
+                <div class="mobile-gifs-container z-50 pointer-events-auto absolute w-[90%] mx-auto left-1/2 -translate-x-1/2 top-[15%] h-[150px] flex justify-around items-end md:hidden block">
+                    <img 
+                        src="assets/images/buggy.gif" 
+                        alt="Buggy Mechanical GIF" 
+                        class="relative w-[90px] h-[90px] object-contain cursor-pointer rounded-lg shadow-md mx-1 transition-transform duration-300 hover:scale-110" 
+                        onclick="setState('right')" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
+                    >
+                    <img 
+                        src="assets/images/drone.gif" 
+                        alt="Drone Mechanical GIF" 
+                        class="relative w-[90px] h-[90px] object-contain cursor-pointer rounded-lg shadow-md mx-1 transition-transform duration-300 hover:scale-110" 
+                        onclick="setState('left')" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
+                    >
+                </div>
+
             </div>
             
-            <!-- Text content overlay - Now left aligned -->
-            <div class="center-content" id="centerContent">
-                <h1>I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
-                <p>Faith. Discipline. Excellence.</p>
-            </div>
-        </div>
+            <!-- Text content overlay -->
+			<div class="center-content absolute z-50 text-white drop-shadow-2xl animate-fade-in
+				md:top-1/2 md:left-[5%] md:transform md:-translate-y-1/2 md:text-left md:max-w-md md:p-0 
+				top-[25%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[90%] p-0" 
+				id="centerContent">
+				<h1 class="text-[clamp(1.5rem,2.5vw,3rem)] font-black mb-3 leading-tight">I'm Muhammad Areeb Rizwan Siddiqui, a <strong class="text-custom-green">Mechanical Engineer</strong></h1>
+				<p class="text-[clamp(1rem,1.3vw,1.5rem)] italic text-text-light">Faith. Discipline. Excellence.</p>
+			</div>
+		</div>
 
-        <div class="state-left" id="stateLeft">
-            <!-- ADDED BACK: Side image placeholder -->
-            <div class="side-image-placeholder"></div>
-            <div class="side-wrapper">
-                <h1>MECHANICAL ENGINEER</h1>
-                <p>Building efficiency through precision and discipline.</p>
-                <a href="#" class="side-link" onclick="setState('center');return false;">Back to Home ></a>
-            </div>
-        </div>
+		<!-- Left State (About) -->
+		<!-- Uses custom clip-path in <style> block -->
+		<div class="state-left absolute inset-0 w-full h-full transition-all duration-400 ease-in-out z-20" id="stateLeft">
+			<div class="side-wrapper absolute z-40 transition-opacity duration-400 ease-in-out opacity-0 
+				md:top-1/2 md:transform md:-translate-y-1/2 md:left-[5%] md:p-0 md:text-left 
+				top-auto transform-none left-1/2 -translate-x-1/2 w-full text-center p-5 pt-32">
+				<h1 class="text-[clamp(2rem,4vw,5rem)] font-black mb-3">MECHANICAL ENGINEER</h1>
+				<p class="text-[clamp(1rem,1.5vw,1.8rem)] text-gray-400 mb-5 max-w-xl mx-auto md:mx-0">Building efficiency through precision and discipline.</p>
+				<a href="#" class="text-white no-underline text-base md:text-lg transition-colors duration-300 hover:text-custom-green" onclick="setState('center');return false;">Back to Home &gt;</a>
+			</div>
+		</div>
 
-        <div class="state-right" id="stateRight">
-            <!-- ADDED BACK: Side image placeholder -->
-            <div class="side-image-placeholder"></div>
-            <div class="side-wrapper">
-                <h1>INDUSTRY 4.0 SPECIALIST</h1>
-                <p>Automating the future of intelligent manufacturing.</p>
-                <a href="#" class="side-link" onclick="setState('center');return false;">View My Work ></a>
-            </div>
-        </div>
-    </section>
+		<!-- Right State (Portfolio) -->
+		<!-- Uses custom clip-path in <style> block -->
+		<div class="state-right absolute inset-0 w-full h-full transition-all duration-400 ease-in-out z-20" id="stateRight">
+			<div class="side-wrapper absolute z-40 transition-opacity duration-400 ease-in-out opacity-0 
+				md:top-1/2 md:transform md:-translate-y-1/2 md:right-[5%] md:p-0 md:text-right 
+				top-auto transform-none left-1/2 -translate-x-1/2 w-full text-center p-5 pt-32">
+				<h1 class="text-[clamp(2rem,4vw,5rem)] font-black mb-3">INDUSTRY 4.0 SPECIALIST</h1>
+				<p class="text-[clamp(1rem,1.5vw,1.8rem)] text-gray-400 mb-5 max-w-xl mx-auto md:mx-0">Automating the future of intelligent manufacturing.</p>
+				<a href="#" class="text-white no-underline text-base md:text-lg transition-colors duration-300 hover:text-custom-green" onclick="setState('center');return false;">View My Work &gt;</a>
+			</div>
+		</div>
+	</section>
 
-    <script>
-        const hero = document.getElementById("heroSection");
-        const left = document.getElementById("stateLeft");
-        const right = document.getElementById("stateRight");
-        const center = document.getElementById("stateCenter");
-        const navLinks = document.querySelectorAll(".nav-links a");
-        let activeState = "center";
+	<script>
+		const hero = document.getElementById("heroSection");
+		const left = document.getElementById("stateLeft");
+		const right = document.getElementById("stateRight");
+		const center = document.getElementById("stateCenter");
+		const navLinks = document.querySelectorAll(".nav-links a");
+		let activeState = "center";
 
-        function isTouchDevice() {
-            return "ontouchstart" in window || navigator.maxTouchPoints > 0;
-        }
+		function isTouchDevice() {
+			return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+		}
 
-        function setState(state) {
-            activeState = state;
-            left.classList.remove("active");
-            right.classList.remove("active");
-            
-            // Remove all active links first
-            navLinks.forEach((l) => l.classList.remove("active-link"));
+		function setState(state) {
+			activeState = state;
+			left.classList.remove("active");
+			right.classList.remove("active");
+			
+			// Remove all active links first
+			navLinks.forEach((l) => l.classList.remove("active-link", "text-custom-green", "text-shadow-green"));
+			l.classList.add("text-text-light"); // Ensure non-active links are gray
 
-            // Set state specific active link
-            if (state === "left") {
-                left.classList.add("active");
-                // Use the specific onclick attribute to select the correct nav link
-                document.querySelector('.nav-links a[onclick*="left"]').classList.add("active-link");
-            } else if (state === "right") {
-                right.classList.add("active");
-                document.querySelector('.nav-links a[onclick*="right"]').classList.add("active-link");
-            } else if (state === "center") {
-                document.querySelector('.nav-links a[onclick*="center"]').classList.add("active-link");
-            }
-            // Note: 'Contact' link remains unchecked as it doesn't call setState
-        }
+			// Set state specific active link
+			let activeLinkSelector = '';
 
-        if (!isTouchDevice()) {
-            hero.addEventListener("mousemove", (e) => {
-                const mid = window.innerWidth / 2;
-                if (activeState !== "center") return;
-                
-                // Hover expansion logic: Panels activate when mouse is within 100px of the center line
-                if (e.clientX < mid - 100) left.classList.add("active");
-                else left.classList.remove("active");
-                
-                if (e.clientX > mid + 100) right.classList.add("active");
-                else right.classList.remove("active");
-            });
+			if (state === "left") {
+				left.classList.add("active");
+				activeLinkSelector = '.nav-links a[onclick*="left"]';
+			} else if (state === "right") {
+				right.classList.add("active");
+				activeLinkSelector = '.nav-links a[onclick*="right"]';
+			} else if (state === "center") {
+				activeLinkSelector = '.nav-links a[onclick*="center"]';
+			}
+			
+			if (activeLinkSelector) {
+				const activeLink = document.querySelector(activeLinkSelector);
+				if (activeLink) {
+					activeLink.classList.add("active-link", "text-custom-green", "text-shadow-green");
+					activeLink.classList.remove("text-text-light");
+				}
+			}
+		}
 
-            hero.addEventListener("mouseleave", () => {
-                if (activeState === "center") {
-                    left.classList.remove("active");
-                    right.classList.remove("active");
-                }
-            });
-        } else {
-            // Touch interaction logic: simple tap to toggle states
-            hero.addEventListener("click", (e) => {
-                const x = e.clientX;
-                const mid = window.innerWidth / 2;
-                
-                // Only proceed if the click wasn't on an element that already calls setState (like the GIFs or nav links)
-                if (e.target.closest('.central-gif') || e.target.closest('.nav-links a')) {
-                    return;
-                }
+		// Desktop (Mouse Interaction)
+		if (!isTouchDevice()) {
+			hero.addEventListener("mousemove", (e) => {
+				const mid = window.innerWidth / 2;
+				if (activeState !== "center") return;
+				
+				// Hover expansion logic: Panels activate when mouse is within 100px of the center line
+				if (e.clientX < mid - 100) left.classList.add("active");
+				else left.classList.remove("active");
+				
+				if (e.clientX > mid + 100) right.classList.add("active");
+				else right.classList.remove("active");
+			});
 
-                if (activeState === "center") {
-                    if (x < mid) setState("left");
-                    else setState("right");
-                } else {
-                    setState("center");
-                }
-            });
-        }
+			hero.addEventListener("mouseleave", () => {
+				if (activeState === "center") {
+					left.classList.remove("active");
+					right.classList.remove("active");
+				}
+			});
+		} 
+		// Mobile/Touch (Tap Interaction)
+		else {
+			hero.addEventListener("click", (e) => {
+				const x = e.clientX;
+				const mid = window.innerWidth / 2;
+				
+				// Only proceed if the click wasn't on an element that already calls setState (like the GIFs or nav links)
+				if (e.target.closest('.central-gif') || e.target.closest('.nav-links a') || e.target.closest('.side-link')) {
+					return;
+				}
 
-        setState("center");
-    </script>
+				if (activeState === "center") {
+					if (x < mid) setState("left");
+					else setState("right");
+				} else {
+					setState("center");
+				}
+			});
+		}
+
+		setState("center");
+	</script>
 </body>
 </html>
