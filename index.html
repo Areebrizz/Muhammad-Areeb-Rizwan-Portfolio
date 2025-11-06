@@ -225,24 +225,26 @@
             opacity: 1;
         }
 
+        /* MODIFIED: Move text further to the opposite side of images */
         .state-left .side-wrapper {
-            left: 5%;
+            left: 2%; /* Moved further left */
             text-align: left;
         }
 
         .state-right .side-wrapper {
-            right: 5%;
+            right: 2%; /* Moved further right */
             text-align: right;
         }
 
+        /* MODIFIED: Smaller font size for side text */
         .side-wrapper h1 {
-            font-size: clamp(2rem, 4vw, 5rem);
+            font-size: clamp(1.5rem, 3vw, 4rem); /* Reduced from 2rem, 4vw, 5rem */
             font-weight: 900;
             margin-bottom: 10px;
         }
 
         .side-wrapper p {
-            font-size: clamp(1rem, 1.5vw, 1.8rem);
+            font-size: clamp(0.9rem, 1.3vw, 1.5rem); /* Reduced from 1rem, 1.5vw, 1.8rem */
             color: #ccc;
             margin-bottom: 20px;
         }
@@ -250,7 +252,7 @@
         .side-link {
             color: white;
             text-decoration: underline;
-            font-size: 1rem;
+            font-size: 0.9rem; /* Slightly smaller */
             transition: color 0.3s;
         }
 
@@ -271,16 +273,18 @@
             pointer-events: none;
         }
         
+        /* MODIFIED: Move formal1.png further right */
         .state-left .side-image-placeholder {
             background-image: url('assets/images/formal1.png'); 
-            right: 0; 
+            right: -5%; /* Moved further right (was 0) */
             background-position: 100% center; /* Anchored to FAR RIGHT */
             background-size: auto 100%; /* Fixed, non-filling height */
         }
 
+        /* MODIFIED: Move new8.png further left */
         .state-right .side-image-placeholder {
             background-image: url('assets/images/new8.png'); 
-            left: 0; 
+            left: -5%; /* Moved further left (was 0) */
             background-position: 0% center; /* Anchored to FAR LEFT */
             background-size: auto 100%; /* Fixed, non-filling height */
         }
@@ -311,10 +315,10 @@
                 margin-left: 15px;
             }
             .side-wrapper h1 {
-                font-size: 2.5rem;
+                font-size: 2rem; /* Adjusted for tablet */
             }
             .side-wrapper p {
-                font-size: 1.1rem;
+                font-size: 1rem; /* Adjusted for tablet */
             }
         }
 
@@ -389,13 +393,15 @@
             }
 
             .side-wrapper h1 {
-                font-size: 2rem;
+                font-size: 1.8rem; /* Adjusted for mobile */
             }
             
             /* Adjust side images for mobile */
             .side-image-placeholder {
                 background-position: center center !important;
                 background-size: contain !important;
+                right: 0 !important; /* Reset for mobile */
+                left: 0 !important; /* Reset for mobile */
             }
         }
     </style>
