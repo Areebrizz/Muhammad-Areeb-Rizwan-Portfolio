@@ -1,476 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
-        <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind Configuration
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'custom-green': '#4caf50',
-                        'dark-bg': '#111',
-                        'text-light': '#e0e0e0',
-                    },
-                    keyframes: {
-                        'fadeInUp': {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    },
-                    animation: {
-                        'fadeInUp': 'fadeInUp 0.8s ease-out 0.5s forwards',
-                    },
-                    transitionDuration: {
-                        '300': '300ms',
-                        '400': '400ms',
-                    },
-                    zIndex: {
-                        '35': '35',
-                        '36': '36',
-                        '39': '39',
-                        '40': '40',
-                        '45': '45',
-                        '50': '50',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom styles for complex animations and effects */
-        .text-shadow-green {
-            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
-        }
-        
-        /* Custom transition timing function */
-        .transition-custom {
-            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        /* Ensure proper background images */
-        .state-center-bg {
-            background-image: url('assets/images/background 11.png.png');
-        }
-        
-        .state-left-bg {
-            background-image: url('assets/images/background 22.png.png');
-        }
-        
-        .state-right-bg {
-            background-image: url('assets/images/background 33.png');
-        }
-        
-        /* Mobile responsive header height */
-        @media (max-width: 480px) {
-            .hero-section {
-                top: 90px;
-            }
-        }
-        @media (min-width: 481px) {
-            .hero-section {
-                top: 60px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
+                    },
+                    keyframes: {
+                        'fadeInUp': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'fadeInUp': 'fadeInUp 0.8s ease-out 0.5s forwards',
+                    },
+                    transitionDuration: {
+                        '300': '300ms',
+                        '400': '400ms',
+                    },
+                    zIndex: {
+                        '35': '35',
+                        '36': '36',
+                        '39': '39',
+                        '40': '40',
+                        '45': '45',
+                        '50': '50',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for complex animations and effects */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Custom transition timing function */
+        .transition-custom {
+            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Ensure proper background images */
+        .state-center-bg {
+            background-image: url('assets/images/background 11.png.png');
+        }
+        
+        .state-left-bg {
+            background-image: url('assets/images/background 22.png.png');
+        }
+        
+        .state-right-bg {
+            background-image: url('assets/images/background 33.png');
+        }
+        
+        /* Mobile responsive header height */
+        @media (max-width: 480px) {
+            .hero-section {
+                top: 90px;
+            }
+        }
+        @media (min-width: 481px) {
+            .hero-section {
+                top: 60px;
+            }
+        }
+    </style>
 </head>
 <body class="font-['Inter'] overflow-hidden bg-dark-bg text-white">
-    
-        <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50 md:h-[60px]">
-        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
-            <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
-            <nav class="nav-links">
-                <a href="#" onclick="setState('center'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                <a href="#" onclick="setState('left'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                <a href="#" onclick="setState('right'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                <a href="#contact" onclick="return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
-            </nav>
-        </div>
-    </header>
+    
+    <!-- Header -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50 md:h-[60px]">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
+            <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
+            <nav class="nav-links">
+                <a href="#" onclick="setState('center'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                <a href="#" onclick="setState('left'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                <a href="#" onclick="setState('right'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                <a href="#contact" onclick="return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-        <section class="hero-section fixed left-0 bottom-0 w-full overflow-hidden z-10" id="heroSection">
-        
-                <div class="state-center absolute top-0 left-0 w-full h-full state-center-bg bg-cover bg-center z-30" id="stateCenter">
-            
-                        <div id="centerContentWrapper" class="absolute top-0 left-0 w-full h-full flex items-center justify-center transition-opacity duration-300 opacity-100">
-                                <div class="center-image absolute top-0 left-0 w-full h-[99%] bg-[url('assets/images/new15.png')] bg-cover bg-no-repeat bg-center z-34 relative"></div>
-                
-                                <div class="central-gifs-container absolute top-0 left-0 w-full h-full z-36 pointer-events-none opacity-100 transition-opacity duration-500 delay-300">
-                                        <img 
-                        src="assets/images/buggy.gif" 
-                        alt="Buggy Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-left-hand top-[63%] left-[57%] pointer-events-auto hover:scale-105" 
-                        onclick="setState('right')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
-                    >
-                                        <img 
-                        src="assets/images/drone.gif" 
-                        alt="Drone Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-right-hand top-[64%] right-[59%] pointer-events-auto hover:scale-105" 
-                        onclick="setState('left')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
-                    >
-                </div>
-                
-                                <div class="center-content absolute top-1/2 left-0 w-full max-w-full px-[5vw] -translate-y-1/2 z-35">
-                    <div class="center-layout flex items-center justify-start gap-[30px] w-full">
-                        <div class="center-right-text w-2/5 max-w-[500px] text-white text-left animate-fadeInUp opacity-0">
-                            <h1 class="center-title-main text-[clamp(1.8rem,2.5vw,3rem)] font-black leading-[1.1] mb-[15px]">I'm Muhammad Areeb Rizwan Siddiqui, a <strong class="text-custom-green font-black">Mechanical Engineer</strong></h1>
-                            <div class="moto-container mb-[25px]">
-                                <p class="moto-slogan text-[clamp(1rem,1.3vw,1.5rem)] font-normal italic text-text-light tracking-[0.5px] leading-[1.5]">Faith. Discipline. Excellence.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero-section fixed left-0 bottom-0 w-full overflow-hidden z-10" id="heroSection">
+        
+        <!-- Center State -->
+        <div class="state-center absolute top-0 left-0 w-full h-full state-center-bg bg-cover bg-center z-30" id="stateCenter">
+            
+            <!-- Content Wrapper for fade effect -->
+            <div id="centerContentWrapper" class="absolute top-0 left-0 w-full h-full flex items-center justify-center transition-opacity duration-300 opacity-100">
+                <!-- Main Image -->
+                <div class="center-image absolute top-0 left-0 w-full h-[99%] bg-[url('assets/images/new15.png')] bg-cover bg-no-repeat bg-center z-34 relative"></div>
+                
+                <!-- GIFs Container -->
+                <div class="central-gifs-container absolute top-0 left-0 w-full h-full z-36 pointer-events-none opacity-100 transition-opacity duration-500 delay-300">
+                    <!-- Left GIF (links to right state) -->
+                    <img 
+                        src="assets/images/buggy.gif" 
+                        alt="Buggy Mechanical GIF" 
+                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-left-hand top-[63%] left-[57%] pointer-events-auto hover:scale-105" 
+                        onclick="setState('right')" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
+                    >
+                    <!-- Right GIF (links to left state) -->
+                    <img 
+                        src="assets/images/drone.gif" 
+                        alt="Drone Mechanical GIF" 
+                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-right-hand top-[64%] right-[59%] pointer-events-auto hover:scale-105" 
+                        onclick="setState('left')" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
+                    >
+                </div>
+                
+                <!-- Text Content -->
+                <div class="center-content absolute top-1/2 left-0 w-full max-w-full px-[5vw] -translate-y-1/2 z-35">
+                    <div class="center-layout flex items-center justify-start gap-[30px] w-full">
+                        <div class="center-right-text w-2/5 max-w-[500px] text-white text-left animate-fadeInUp opacity-0">
+                            <h1 class="center-title-main text-[clamp(1.8rem,2.5vw,3rem)] font-black leading-[1.1] mb-[15px]">I'm Muhammad Areeb Rizwan Siddiqui, a <strong class="text-custom-green font-black">Mechanical Engineer</strong></h1>
+                            <div class="moto-container mb-[25px]">
+                                <p class="moto-slogan text-[clamp(1rem,1.3vw,1.5rem)] font-normal italic text-text-light tracking-[0.5px] leading-[1.5]">Faith. Discipline. Excellence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                <div class="state-left absolute top-0 left-0 h-full w-0 transition-all duration-300 transition-custom flex items-center z-40 state-left-bg bg-cover bg-center justify-start overflow-hidden" id="stateLeft">
-                        <div class="side-image-placeholder absolute top-0 h-full w-full opacity-0 transition-opacity duration-500 bg-[url('assets/images/formal1.png')] bg-no-repeat bg-[100%_center] bg-[auto_100%] z-39"></div>
-            
-                        <div class="side-wrapper w-2/5 px-[5%] text-left relative z-45 opacity-0 transition-opacity duration-400 delay-300">
-                <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1]">ABOUT ME <span class="text-custom-green">.</span></h1>
-                <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px]">Building efficiency from precision and discipline.</p>
-                <div class="text-text-light text-base space-y-4 mb-8">
-                    <p class="font-light leading-relaxed">I am a passionate <strong class="text-custom-green">Mechanical Engineer</strong> with a strong foundation in core engineering principles and a keen focus on emerging technologies, particularly <strong class="text-custom-green">Industry 4.0</strong>.</p>
-                    <p class="font-light leading-relaxed">My expertise spans <strong class="text-custom-green">CAD/CAM, Robotics, Automation, and IoT-integrated systems</strong>. I thrive on translating complex problems into practical, optimized, and sustainable engineering solutions.</p>
-                    <p class="font-light leading-relaxed">I am committed to <strong class="text-custom-green">continuous learning</strong> and applying a disciplined approach to achieve excellence in every project.</p>
-                </div>
-                <a href="#" onclick="setState('center'); return false;" class="side-link text-custom-green underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)] font-semibold transition-colors hover:text-white">Go Back to Home ></a>
-            </div>
+        <!-- Left State (About) -->
+        <div class="state-left absolute top-0 left-0 h-full w-0 transition-all duration-300 transition-custom flex items-center z-40 state-left-bg bg-cover bg-center justify-start overflow-hidden" id="stateLeft">
+            <!-- Side Image -->
+            <div class="side-image-placeholder absolute top-0 h-full w-full opacity-0 transition-opacity duration-500 bg-[url('assets/images/formal1.png')] bg-no-repeat bg-[100%_center] bg-[auto_100%] z-39"></div>
+            
+            <!-- Content -->
+            <div class="side-wrapper w-2/5 px-[5%] text-left relative z-45 opacity-0 transition-opacity duration-400 delay-300">
+                <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1] drop-shadow-[2px_2px_5px_rgba(0,0,0,0.8)]">MECHANICAL ENGINEER</h1>
+                <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px] drop-shadow-[1px_1px_3px_rgba(0,0,0,0.7)]">Building efficiency from precision and discipline.</p>
+                <a href="#" onclick="setState('center'); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">About Me ></a>
+            </div>
+        </div>
 
-                    </div>
+        <!-- Right State (Portfolio) -->
+        <div class="state-right absolute top-0 right-0 h-full w-0 transition-all duration-300 transition-custom flex items-center z-40 state-right-bg bg-cover bg-center justify-end overflow-hidden" id="stateRight">
+            <!-- Side Image -->
+            <div class="side-image-placeholder absolute top-0 h-full w-full opacity-0 transition-opacity duration-500 bg-[url('assets/images/new8.png')] bg-no-repeat bg-[0%_center] bg-[auto_100%] z-39"></div>
+            
+            <!-- Content -->
+            <div class="side-wrapper w-2/5 px-[5%] text-right relative z-45 opacity-0 transition-opacity duration-400 delay-300">
+                <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1] drop-shadow-[2px_2px_5px_rgba(0,0,0,0.8)]">INDUSTRY 4.0 EXPERT</h1>
+                <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px] drop-shadow-[1px_1px_3px_rgba(0,0,0,0.7)]">Automating the future of intelligent manufacturing.</p>
+                <a href="#" onclick="setState('center'); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">My Portfolio ></a>
+            </div>
+        </div>
+    </section>
 
-                <div class="state-right absolute top-0 right-0 h-full w-0 transition-all duration-300 transition-custom flex items-center z-40 state-right-bg bg-cover bg-center justify-end overflow-hidden" id="stateRight">
-                        <div class="side-image-placeholder absolute top-0 h-full w-full opacity-0 transition-opacity duration-500 bg-[url('assets/images/new8.png')] bg-no-repeat bg-[0%_center] bg-[auto_100%] z-39"></div>
-            
-                        <div class="side-wrapper w-2/5 px-[5%] text-right relative z-45 opacity-0 transition-opacity duration-400 delay-300">
-                <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1]">MY PORTFOLIO <span class="text-custom-green">.</span></h1>
-                <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px]">Automating the future of intelligent manufacturing.</p>
-                <div class="text-text-light text-base space-y-4 mb-8">
-                    <ul class="list-none space-y-3">
-                        <li class="flex items-center justify-end">
-                            <span class="text-custom-green text-2xl mr-2">✦</span>
-                            <span class="font-normal text-text-light">Advanced <strong class="text-custom-green">3D Modeling & Simulation</strong> (SolidWorks, ANSYS)</span>
-                        </li>
-                        <li class="flex items-center justify-end">
-                            <span class="text-custom-green text-2xl mr-2">✦</span>
-                            <span class="font-normal text-text-light"><strong class="text-custom-green">Robotics & Automation</strong>: Design and Implementation of AGVs</span>
-                        </li>
-                        <li class="flex items-center justify-end">
-                            <span class="text-custom-green text-2xl mr-2">✦</span>
-                            <span class="font-normal text-text-light"><strong class="text-custom-green">IoT Integration</strong> for Predictive Maintenance</span>
-                        </li>
-                        <li class="flex items-center justify-end">
-                            <span class="text-custom-green text-2xl mr-2">✦</span>
-                            <span class="font-normal text-text-light">Experience in <strong class="text-custom-green">Manufacturing Process Optimization</strong></span>
-                        </li>
-                    </ul>
-                </div>
-                <a href="#" onclick="setState('center'); return false;" class="side-link text-custom-green underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)] font-semibold transition-colors hover:text-white">Go Back to Home ></a>
-            </div>
-                    </div>
-    </section>
+    <!-- Mobile Responsive Styles -->
+    <style>
+        @media (max-width: 480px) {
+            .main-header {
+                height: 90px;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+            }
+            
+            .logo {
+                margin-bottom: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+            
+            .center-content {
+                position: relative;
+                top: auto;
+                transform: none;
+                padding: 40px 5vw 0 5vw;
+                text-align: center;
+            }
+            
+            .center-layout {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .center-right-text {
+                width: 100%;
+                max-width: none;
+                text-align: center;
+                padding-bottom: 20px;
+                animation: none;
+                opacity: 1;
+            }
+            
+            .moto-slogan {
+                text-align: center;
+            }
+            
+            .center-image {
+                position: relative;
+                width: 100%;
+                height: 40vh;
+                min-height: 200px;
+                background-position: center bottom;
+                opacity: 0.7;
+                margin-top: -30px;
+            }
+            
+            .central-gifs-container {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 20px 10px;
+                z-index: 50;
+                margin-top: -50px;
+                pointer-events: auto;
+            }
+            
+            .central-gif {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                transform: none !important;
+                cursor: pointer;
+            }
+            
+            .gif-left-hand, .gif-right-hand {
+                top: auto;
+                left: auto;
+                right: auto;
+            }
+            
+            .state-left, .state-right {
+                align-items: flex-start;
+                justify-content: center;
+                padding-top: 15vh;
+            }
+            
+            .side-wrapper {
+                width: 90%;
+                max-width: 400px;
+                text-align: center;
+                padding: 20px;
+                background-color: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+            }
+            
+            .side-image-placeholder {
+                background-position: center center !important;
+                background-size: contain !important;
+            }
+        }
+    </style>
 
-        <style>
-        @media (max-width: 480px) {
-            .main-header {
-                height: 90px;
-            }
-            
-            .nav-content {
-                flex-direction: column;
-                padding: 10px 15px 5px 15px;
-            }
-            
-            .logo {
-                margin-bottom: 5px;
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-            }
-            
-            .nav-links a {
-                margin: 0 8px;
-                font-size: 0.8rem;
-                padding: 3px 0;
-            }
-            
-            .center-content {
-                position: relative;
-                top: auto;
-                transform: none;
-                padding: 40px 5vw 0 5vw;
-                text-align: center;
-            }
-            
-            .center-layout {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .center-right-text {
-                width: 100%;
-                max-width: none;
-                text-align: center;
-                padding-bottom: 20px;
-                animation: none;
-                opacity: 1;
-            }
-            
-            .moto-slogan {
-                text-align: center;
-            }
-            
-            .center-image {
-                position: relative;
-                width: 100%;
-                height: 40vh;
-                min-height: 200px;
-                background-position: center bottom;
-                opacity: 0.7;
-                margin-top: -30px;
-            }
-            
-            .central-gifs-container {
-                position: relative;
-                top: auto;
-                left: auto;
-                width: 100%;
-                height: auto;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                padding: 20px 10px;
-                z-index: 50;
-                margin-top: -50px;
-                pointer-events: auto;
-            }
-            
-            .central-gif {
-                position: relative;
-                width: 100px;
-                height: 100px;
-                object-fit: contain;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                transform: none !important;
-                cursor: pointer;
-            }
-            
-            .gif-left-hand, .gif-right-hand {
-                top: auto;
-                left: auto;
-                right: auto;
-            }
-            
-            .state-left, .state-right {
-                align-items: flex-start;
-                justify-content: center;
-                padding-top: 15vh;
-            }
-            
-            .side-wrapper {
-                width: 90%;
-                max-width: 400px;
-                text-align: center;
-                padding: 20px;
-                background-color: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-            }
-            
-            .side-image-placeholder {
-                background-position: center center !important;
-                background-size: contain !important;
-            }
-        }
-    </style>
+    <script>
+        const hero = document.getElementById('heroSection');
+        const left = document.getElementById('stateLeft');
+        const right = document.getElementById('stateRight');
+        const centerContentWrapper = document.getElementById('centerContentWrapper'); 
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        // --- CONSTANTS FOR TRANSITION ---
+        const PASSIVE_START_L = 0.30;
+        const ACTIVE_END_L = 0.25;
+        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L;
+        const PASSIVE_START_R = 0.70;
+        const ACTIVE_END_R = 0.75;
 
-    <script>
-        const hero = document.getElementById('heroSection');
-        const left = document.getElementById('stateLeft');
-        const right = document.getElementById('stateRight');
-        const centerContentWrapper = document.getElementById('centerContentWrapper'); 
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
-        // --- CONSTANTS FOR TRANSITION ---
-        const PASSIVE_START_L = 0.30;
-        const ACTIVE_END_L = 0.25;
-        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L;
-        const PASSIVE_START_R = 0.70;
-        const ACTIVE_END_R = 0.75;
+        // Helper function to check if the screen is mobile size
+        function isMobileScreen() {
+            return window.innerWidth <= 480; 
+        }
 
-        // Helper function to check if the screen is mobile size
-        function isMobileScreen() {
-            return window.innerWidth <= 480; 
-        }
+        // Refactored state setting for CLICKS/LINKS
+        function setState(targetState) {
+            // 1. Reset all visual states
+            left.classList.remove('active-click', 'active-visual');
+            right.classList.remove('active-click', 'active-visual');
+            
+            // Reset side widths
+            left.style.width = '0%';
+            right.style.width = '0%';
+            left.style.zIndex = 20; 
+            right.style.zIndex = 20;
+            
+            // 2. Control the center content wrapper's opacity
+            centerContentWrapper.style.opacity = 1; 
+            
+            // 3. Reset link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light');
+            });
 
-        // Refactored state setting for CLICKS/LINKS
-        function setState(targetState) {
-            // 1. Reset all visual states
-            left.classList.remove('active-click', 'active-visual');
-            right.classList.remove('active-click', 'active-visual');
-            
-            // Reset side widths
-            left.style.width = '0%';
-            right.style.width = '0%';
-            left.style.zIndex = 20; 
-            right.style.zIndex = 20;
-            
-            // 2. Control the center content wrapper's opacity
-            centerContentWrapper.style.opacity = 1; 
-            
-            // 3. Reset link active states
-            navLinks.forEach(link => {
-                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
-                link.classList.add('text-text-light');
-            });
+            // 4. Set the new active state/link
+            let activeLinkSelector = '';
+            
+            if (targetState === 'center') {
+                activeLinkSelector = 'a[onclick*="setState(\'center\')"]';
+            } else if (targetState === 'left') {
+                left.classList.add('active-click'); 
+                left.style.width = '100%'; 
+                left.style.zIndex = 50; 
+                centerContentWrapper.style.opacity = 0;
+                
+                // Show side panel content
+                const leftSideWrapper = left.querySelector('.side-wrapper');
+                const leftSideImage = left.querySelector('.side-image-placeholder');
+                if (leftSideWrapper) leftSideWrapper.style.opacity = '1';
+                if (leftSideImage) leftSideImage.style.opacity = '1';
+                
+                activeLinkSelector = 'a[onclick*="setState(\'left\')"]';
+            } else if (targetState === 'right') {
+                right.classList.add('active-click');
+                right.style.width = '100%'; 
+                right.style.zIndex = 50; 
+                centerContentWrapper.style.opacity = 0;
+                
+                // Show side panel content
+                const rightSideWrapper = right.querySelector('.side-wrapper');
+                const rightSideImage = right.querySelector('.side-image-placeholder');
+                if (rightSideWrapper) rightSideWrapper.style.opacity = '1';
+                if (rightSideImage) rightSideImage.style.opacity = '1';
+                
+                activeLinkSelector = 'a[onclick*="setState(\'right\')"]';
+            }
 
-            // 4. Set the new active state/link
-            let activeLinkSelector = '';
-            
-            if (targetState === 'center') {
-                activeLinkSelector = 'a[onclick*="setState(\'center\')"]';
-            } else if (targetState === 'left') {
-                left.classList.add('active-click'); 
-                left.style.width = '100%'; 
-                left.style.zIndex = 50; 
-                centerContentWrapper.style.opacity = 0;
-                activeLinkSelector = 'a[onclick*="setState(\'left\')"]';
-            } else if (targetState === 'right') {
-                right.classList.add('active-click');
-                right.style.width = '100%'; 
-                right.style.zIndex = 50; 
-                centerContentWrapper.style.opacity = 0;
-                activeLinkSelector = 'a[onclick*="setState(\'right\')"]';
-            }
+            const activeLink = document.querySelector(`.nav-links ${activeLinkSelector}`);
+            if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light');
+            }
+        }
 
-            const activeLink = document.querySelector(`.nav-links ${activeLinkSelector}`);
-            if (activeLink) {
-                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
-                activeLink.classList.remove('text-text-light');
-            }
-        }
+        // Initialize with 'Home' active
+        setState('center');
 
-        // Initialize with 'Home' active
-        setState('center');
+        function handleMouseMove(e) {
+            // CRITICAL: Disable hover interaction on small screens
+            if (isMobileScreen()) {
+                return;
+            }
 
-        function handleMouseMove(e) {
-            // CRITICAL: Disable hover interaction on small screens
-            if (isMobileScreen()) {
-                return;
-            }
+            const rect = hero.getBoundingClientRect();
+            const W = rect.width;
+            const x = e.clientX - rect.left;
+            
+            let L_width = 0; 
+            let R_width = 0; 
+            let centerOpacity = 1;
 
-            const rect = hero.getBoundingClientRect();
-            const W = rect.width;
-            const x = e.clientX - rect.left;
-            
-            let L_width = 0; 
-            let R_width = 0; 
-            let centerOpacity = 1;
+            // If we are in a 'clicked' fixed state, ignore mousemove width calculation
+            if (left.classList.contains('active-click') || right.classList.contains('active-click')) {
+                return;
+            }
 
-            // If we are in a 'clicked' fixed state, ignore mousemove width calculation
-            if (left.classList.contains('active-click') || right.classList.contains('active-click')) {
-                return;
-            }
+            // --- 1. LEFT SIDE LOGIC (x moves from 30% to 25% from left edge) ---
+            if (x < PASSIVE_START_L * W) {
+                if (x <= ACTIVE_END_L * W) {
+                    L_width = 100;
+                } 
+                else {
+                    const distance_traveled = PASSIVE_START_L * W - x;
+                    const range_width = TRANSITION_RANGE * W;
+                    const ratio = distance_traveled / range_width; 
+                    L_width = Math.min(100, Math.max(0, ratio * 100));
+                }
+                
+                centerOpacity = 1 - (L_width / 100); 
+                
+                left.classList.add('active-visual'); 
+                right.classList.remove('active-visual'); 
+                
+                // Show/hide side panel content based on width
+                const leftSideWrapper = left.querySelector('.side-wrapper');
+                const leftSideImage = left.querySelector('.side-image-placeholder');
+                if (leftSideWrapper && leftSideImage) {
+                    if (L_width > 0) {
+                        leftSideWrapper.style.opacity = '1';
+                        leftSideImage.style.opacity = '1';
+                    } else {
+                        leftSideWrapper.style.opacity = '0';
+                        leftSideImage.style.opacity = '0';
+                    }
+                }
+            } 
+            // --- 2. RIGHT SIDE LOGIC (x moves from 70% to 75% from left edge) ---
+            else if (x > PASSIVE_START_R * W) {
+                if (x >= ACTIVE_END_R * W) {
+                    R_width = 100;
+                } 
+                else {
+                    const distance_traveled = x - PASSIVE_START_R * W;
+                    const range_width = TRANSITION_RANGE * W;
+                    const ratio = distance_traveled / range_width; 
+                    R_width = Math.min(100, Math.max(0, ratio * 100));
+                }
+                
+                centerOpacity = 1 - (R_width / 100); 
+                
+                right.classList.add('active-visual'); 
+                left.classList.remove('active-visual'); 
+                
+                // Show/hide side panel content based on width
+                const rightSideWrapper = right.querySelector('.side-wrapper');
+                const rightSideImage = right.querySelector('.side-image-placeholder');
+                if (rightSideWrapper && rightSideImage) {
+                    if (R_width > 0) {
+                        rightSideWrapper.style.opacity = '1';
+                        rightSideImage.style.opacity = '1';
+                    } else {
+                        rightSideWrapper.style.opacity = '0';
+                        rightSideImage.style.opacity = '0';
+                    }
+                }
+            } 
+            // --- 3. CENTER LOGIC (Passive Zone: 30% to 70%) ---
+            else {
+                left.classList.remove('active-visual');
+                right.classList.remove('active-visual');
+                
+                // Hide side panel content
+                const leftSideWrapper = left.querySelector('.side-wrapper');
+                const leftSideImage = left.querySelector('.side-image-placeholder');
+                const rightSideWrapper = right.querySelector('.side-wrapper');
+                const rightSideImage = right.querySelector('.side-image-placeholder');
+                
+                if (leftSideWrapper) leftSideWrapper.style.opacity = '0';
+                if (leftSideImage) leftSideImage.style.opacity = '0';
+                if (rightSideWrapper) rightSideWrapper.style.opacity = '0';
+                if (rightSideImage) rightSideImage.style.opacity = '0';
+            }
 
-            // --- 1. LEFT SIDE LOGIC (x moves from 30% to 25% from left edge) ---
-            if (x < PASSIVE_START_L * W) {
-                if (x <= ACTIVE_END_L * W) {
-                    L_width = 100;
-                } 
-                else {
-                    const distance_traveled = PASSIVE_START_L * W - x;
-                    const range_width = TRANSITION_RANGE * W;
-                    const ratio = distance_traveled / range_width; 
-                    L_width = Math.min(100, Math.max(0, ratio * 100));
-                }
-                
-                centerOpacity = 1 - (L_width / 100); 
-                
-                left.classList.add('active-visual'); 
-                right.classList.remove('active-visual'); 
-            } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 70% to 75% from left edge) ---
-            else if (x > PASSIVE_START_R * W) {
-                if (x >= ACTIVE_END_R * W) {
-                    R_width = 100;
-                } 
-                else {
-                    const distance_traveled = x - PASSIVE_START_R * W;
-                    const range_width = TRANSITION_RANGE * W;
-                    const ratio = distance_traveled / range_width; 
-                    R_width = Math.min(100, Math.max(0, ratio * 100));
-                }
-                
-                centerOpacity = 1 - (R_width / 100); 
-                
-                right.classList.add('active-visual'); 
-                left.classList.remove('active-visual'); 
-            } 
-            // --- 3. CENTER LOGIC (Passive Zone: 30% to 70%) ---
-            else {
-                left.classList.remove('active-visual');
-                right.classList.remove('active-visual');
-            }
+            // Apply calculated widths and center properties
+            left.style.width = L_width + '%';
+            right.style.width = R_width + '%';
+            centerContentWrapper.style.opacity = centerOpacity; 
+            
+            // Manage Z-index to ensure the currently expanding panel is on top
+            if (L_width > 0) {
+                left.style.zIndex = 45;
+                right.style.zIndex = 20;
+            } else if (R_width > 0) {
+                right.style.zIndex = 45;
+                left.style.zIndex = 20;
+            } else {
+                left.style.zIndex = 20;
+                right.style.zIndex = 20;
+            }
+        }
+        
+        function handleMouseLeave() {
+            if (isMobileScreen() || left.classList.contains('active-click') || right.classList.contains('active-click')) {
+                return; 
+            }
+            // Revert to the default 'center' state when the mouse leaves
+            setState('center');
+        }
+        
+        // Function to dynamically attach/detach mouse events
+        function setupMouseListeners() {
+            hero.removeEventListener('mousemove', handleMouseMove);
+            hero.removeEventListener('mouseleave', handleMouseLeave);
+            
+            if (!isMobileScreen()) {
+                hero.addEventListener('mousemove', handleMouseMove);
+                hero.addEventListener('mouseleave', handleMouseLeave);
+            } else {
+                // Ensure panels are reset if they were half-open when resizing to mobile
+                if (!left.classList.contains('active-click') && !right.classList.contains('active-click')) {
+                    left.style.width = '0%';
+                    right.style.width = '0%';
+                    centerContentWrapper.style.opacity = 1;
+                    
+                    // Hide side panel content
+                    const leftSideWrapper = left.querySelector('.side-wrapper');
+                    const leftSideImage = left.querySelector('.side-image-placeholder');
+                    const rightSideWrapper = right.querySelector('.side-wrapper');
+                    const rightSideImage = right.querySelector('.side-image-placeholder');
+                    
+                    if (leftSideWrapper) leftSideWrapper.style.opacity = '0';
+                    if (leftSideImage) leftSideImage.style.opacity = '0';
+                    if (rightSideWrapper) rightSideWrapper.style.opacity = '0';
+                    if (rightSideImage) rightSideImage.style.opacity = '0';
+                }
+            }
+        }
 
-            // Apply calculated widths and center properties
-            left.style.width = L_width + '%';
-            right.style.width = R_width + '%';
-            centerContentWrapper.style.opacity = centerOpacity; 
-            
-            // Manage Z-index to ensure the currently expanding panel is on top
-            if (L_width > 0) {
-                left.style.zIndex = 45;
-                right.style.zIndex = 20;
-            } else if (R_width > 0) {
-                right.style.zIndex = 45;
-                left.style.zIndex = 20;
-            } else {
-                left.style.zIndex = 20;
-                right.style.zIndex = 20;
-            }
-        }
-        
-        function handleMouseLeave() {
-            if (isMobileScreen() || left.classList.contains('active-click') || right.classList.contains('active-click')) {
-                return; 
-            }
-            // Revert to the default 'center' state when the mouse leaves
-            setState('center');
-        }
-        
-        // Function to dynamically attach/detach mouse events
-        function setupMouseListeners() {
-            hero.removeEventListener('mousemove', handleMouseMove);
-            hero.removeEventListener('mouseleave', handleMouseLeave);
-            
-            if (!isMobileScreen()) {
-                hero.addEventListener('mousemove', handleMouseMove);
-                hero.addEventListener('mouseleave', handleMouseLeave);
-            } else {
-                // Ensure panels are reset if they were half-open when resizing to mobile
-                if (!left.classList.contains('active-click') && !right.classList.contains('active-click')) {
-                    left.style.width = '0%';
-                    right.style.width = '0%';
-                    centerContentWrapper.style.opacity = 1;
-                }
-            }
-        }
-
-        // Initial setup and listener for resizing
-        setupMouseListeners(); 
-        window.addEventListener('resize', setupMouseListeners);
-    </script>
+        // Initial setup and listener for resizing
+        setupMouseListeners(); 
+        window.addEventListener('resize', setupMouseListeners);
+    </script>
 </body>
 </html>
