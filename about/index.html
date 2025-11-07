@@ -229,9 +229,9 @@
         
         function navigateState(targetState, url) {
             setState(targetState);
+            // *** FIX: Perform actual navigation after a small delay to allow link highlighting ***
             setTimeout(() => {
-                // In a real deployed app, you'd use: window.location.href = url;
-                console.log(`Simulating external navigation to: ${url}`);
+                window.location.href = url;
             }, 300); 
         }
 
@@ -274,10 +274,10 @@
             // Add click effect to carousel items
             carouselItems.forEach(item => {
                 item.addEventListener('click', function(e) {
-                    // For external links, do not prevent default, but still show the toast
+                    // This section already allowed navigation (by not calling preventDefault), 
+                    // but I'm keeping the toast for visual feedback before redirect.
                     const caption = this.getAttribute('data-caption') || 'Image';
                     showToast(`Navigating to ${caption}'s journey page...`);
-                    // e.preventDefault(); // allow navigation to proceed
                 });
             });
             
