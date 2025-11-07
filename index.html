@@ -1,392 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammad Areeb Rizwan - Interactive Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
-    <!-- Load Tailwind CSS CDN -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineer Portfolio - About Me</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind Configuration
+        // --- Merged Tailwind Configuration ---
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
+                        // Original Colors
+                        'custom-gray': '#f5f5f5',
+                        'accent-blue': '#1c7ed6',
+                        // New Header Colors
                         'custom-green': '#4caf50',
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
-                    },
-                    keyframes: {
-                        'fadeInUp': {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    },
-                    animation: {
-                        'fadeInUp': 'fadeInUp 0.8s ease-out 0.5s forwards',
-                    },
-                    transitionDuration: {
-                        '300': '300ms',
-                        '400': '400ms',
-                    },
-                    zIndex: {
-                        '35': '35',
-                        '36': '36',
-                        '39': '39',
-                        '40': '40',
-                        '45': '45',
-                        '50': '50',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom styles for complex animations and effects */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom styles for text shadow (used on hover and active state) */
         .text-shadow-green {
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
         
-        /* Custom transition timing function */
-        .transition-custom {
-            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        /* Ensure proper background images */
-        .state-center-bg {
-            background-image: url('assets/images/background 11.png.png');
-        }
-        
-        .state-left-bg {
-            background-image: url('assets/images/background 22.png.png');
-        }
-        
-        .state-right-bg {
-            background-image: url('assets/images/background 33.png');
-        }
-        
-        /* Mobile responsive header height */
-        @media (max-width: 480px) {
-            .hero-section {
-                top: 90px;
-            }
-        }
-        @media (min-width: 481px) {
-            .hero-section {
-                top: 60px;
-            }
-        }
-    </style>
-</head>
-<body class="font-['Inter'] overflow-hidden bg-dark-bg text-white">
-    
-    <!-- Header -->
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50 md:h-[60px]">
-        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
-            <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
-            <nav class="nav-links">
-                <!-- Home link uses setState('center') to remain on the SPA home page -->
-                <a href="#" onclick="setState('center'); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                <!-- About link navigates externally -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                <!-- Portfolio link navigates externally -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                <a href="#contact" onclick="return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-section fixed left-0 bottom-0 w-full overflow-hidden z-10" id="heroSection">
-        
-        <!-- Center State -->
-        <div class="state-center absolute top-0 left-0 w-full h-full state-center-bg bg-cover bg-center z-30" id="stateCenter">
-            
-            <!-- Content Wrapper for fade effect -->
-            <div id="centerContentWrapper" class="absolute top-0 left-0 w-full h-full flex items-center justify-center transition-opacity duration-300 opacity-100">
-                <!-- Main Image -->
-                <div class="center-image absolute top-0 left-0 w-full h-[99%] bg-[url('assets/images/new15.png')] bg-cover bg-no-repeat bg-center z-34 relative"></div>
-                
-                <!-- GIFs Container -->
-                <div class="central-gifs-container absolute top-0 left-0 w-full h-full z-36 pointer-events-none opacity-100 transition-opacity duration-500 delay-300">
-                    <!-- Left GIF (Buggy) - Links to Portfolio -->
-                    <img 
-                        src="assets/images/buggy.gif" 
-                        alt="Buggy Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-left-hand top-[63%] left-[57%] pointer-events-auto hover:scale-105" 
-                        onclick="navigateState('right', 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
-                    >
-                    <!-- Right GIF (Drone) - Links to About -->
-                    <img 
-                        src="assets/images/drone.gif" 
-                        alt="Drone Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-right-hand top-[64%] right-[59%] pointer-events-auto hover:scale-105" 
-                        onclick="navigateState('left', 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
-                    >
-                </div>
-                
-                <!-- Text Content -->
-                <div class="center-content absolute top-1/2 left-0 w-full max-w-full px-[5vw] -translate-y-1/2 z-35">
-                    <div class="center-layout flex items-center justify-start gap-[30px] w-full">
-                        <div class="center-right-text w-2/5 max-w-[500px] text-white text-left animate-fadeInUp opacity-0">
-                            <h1 class="center-title-main text-[clamp(1.8rem,2.5vw,3rem)] font-black leading-[1.1] mb-[15px]">I'm Muhammad Areeb Rizwan Siddiqui, a <strong class="text-custom-green font-black">Mechanical Engineer</strong></h1>
-                            <div class="moto-container mb-[25px]">
-                                <p class="moto-slogan text-[clamp(1rem,1.3vw,1.5rem)] font-normal italic text-text-light tracking-[0.5px] leading-[1.5]">Faith. Discipline. Excellence.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Left State (About) -->
-        <div class="state-left absolute top-0 left-0 h-full w-0 transition-all duration-300 transition-custom flex items-center z-40 state-left-bg bg-cover bg-center justify-start overflow-hidden" id="stateLeft">
-            <!-- Side Image -->
-            <div class="side-image-placeholder absolute top-0 h-full w-full opacity-0 transition-opacity duration-500 bg-[url('assets/images/formal1.png')] bg-no-repeat bg-[100%_center] bg-[auto_100%] z-39"></div>
-            
-            <!-- Content -->
-            <div class="side-wrapper w-2/5 px-[5%] text-left relative z-45 opacity-0 transition-opacity duration-400 delay-300">
-                <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1] drop-shadow-[2px_2px_5px_rgba(0,0,0,0.8)]">MECHANICAL ENGINEER</h1>
-                <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px] drop-shadow-[1px_1px_3px_rgba(0,0,0,0.7)]">Building efficiency from precision and discipline.</p>
-                <!-- About Me > link navigates externally -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">About Me ></a>
-            </div>
-        </div>
-
-        <!-- Right State (Portfolio) -->
-        <div class="state-right absolute top-0 right-0 h-full w-0 transition-all duration-300 transition-custom flex items-center z-40 state-right-bg bg-cover bg-center justify-end overflow-hidden" id="stateRight">
-            <!-- Side Image -->
-            <div class="side-image-placeholder absolute top-0 h-full w-full opacity-0 transition-opacity duration-500 bg-[url('assets/images/new8.png')] bg-no-repeat bg-[0%_center] bg-[auto_100%] z-39"></div>
-            
-            <!-- Content -->
-            <div class="side-wrapper w-2/5 px-[5%] text-right relative z-45 opacity-0 transition-opacity duration-400 delay-300">
-                <h1 class="text-[clamp(2.5rem,4vw,5rem)] font-black text-white mb-[10px] leading-[1.1] drop-shadow-[2px_2px_5px_rgba(0,0,0,0.8)]">INDUSTRY 4.0 EXPERT</h1>
-                <p class="moto text-[clamp(1.2rem,1.5vw,1.8rem)] italic text-gray-300 mb-[20px] drop-shadow-[1px_1px_3px_rgba(0,0,0,0.7)]">Automating the future of intelligent manufacturing.</p>
-                <!-- My Portfolio > link navigates externally -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="side-link text-white underline mt-[20px] inline-block text-[clamp(0.9rem,1.1vw,1.2rem)]">My Portfolio ></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile Responsive Styles -->
-    <style>
+        /* Mobile responsive header height adaptation */
         @media (max-width: 480px) {
             .main-header {
                 height: 90px;
             }
-            
             .nav-content {
                 flex-direction: column;
                 padding: 10px 15px 5px 15px;
             }
-            
             .logo {
                 margin-bottom: 5px;
                 font-size: 1.2rem;
             }
-            
             .nav-links {
                 display: flex;
                 justify-content: center;
                 width: 100%;
             }
-            
             .nav-links a {
                 margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
-            
-            .center-content {
-                position: relative;
-                top: auto;
-                transform: none;
-                padding: 40px 5vw 0 5vw;
-                text-align: center;
-            }
-            
-            .center-layout {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .center-right-text {
-                width: 100%;
-                max-width: none;
-                text-align: center;
-                padding-bottom: 20px;
-                animation: none;
-                opacity: 1;
-            }
-            
-            .moto-slogan {
-                text-align: center;
-            }
-            
-            .center-image {
-                position: relative;
-                width: 100%;
-                height: 40vh;
-                min-height: 200px;
-                background-position: center bottom;
-                opacity: 0.7;
-                margin-top: -30px;
-            }
-            
-            .central-gifs-container {
-                position: relative;
-                top: auto;
-                left: auto;
-                width: 100%;
-                height: auto;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                padding: 20px 10px;
-                z-index: 50;
-                margin-top: -50px;
-                pointer-events: auto;
-            }
-            
-            .central-gif {
-                position: relative;
-                width: 100px;
-                height: 100px;
-                object-fit: contain;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                transform: none !important;
-                cursor: pointer;
-            }
-            
-            .gif-left-hand, .gif-right-hand {
-                top: auto;
-                left: auto;
-                right: auto;
-            }
-            
-            .state-left, .state-right {
-                align-items: flex-start;
-                justify-content: center;
-                padding-top: 15vh;
-            }
-            
-            .side-wrapper {
-                width: 90%;
-                max-width: 400px;
-                text-align: center;
-                padding: 20px;
-                background-color: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-            }
-            
-            .side-image-placeholder {
-                background-position: center center !important;
-                background-size: contain !important;
-            }
+        }
+        .shadow-3xl-accent {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
+                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
         }
     </style>
+</head>
+<body class="bg-white font-sans text-gray-800">
 
+    <!-- --- NAVIGATION HEADER START --- -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50 md:h-[60px]">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
+            <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
+            <nav class="nav-links">
+                <!-- Home link updated to Vercel URL -->
+                <a href="https://muhammad-areeb-rizwan-portfolio.vercel.app/#work" onclick="navigateState('center', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                <!-- About link (URL verified, onclick updated for consistency) -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="text-custom-green no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green active-link text-shadow-green">About</a>
+                <!-- Portfolio link (URL verified) -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                <!-- Contact link updated to new URL -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" onclick="navigateState('contact', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <!-- --- NAVIGATION HEADER END --- -->
+
+    <!-- Toast Notification Container (Used instead of alert()) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
+        <!-- Toast messages will be injected here -->
+    </div>
+
+    <!-- About Section (Increased vertical padding for "zoom out" effect) -->
+    <section class="pt-[90px] pb-24 md:pt-[70px] md:pb-32 bg-custom-gray">
+        <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                
+                <!-- Text Content -->
+                <div class="md:w-5/12 mb-12 md:mb-0 md:pr-10">
+                    <h1 class="text-6xl sm:text-7xl md:text-7xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
+                        about.
+                    </h1>
+                    <p class="text-xl md:text-2xl text-accent-blue font-semibold mb-6">
+                        I’m a Mechanical Engineer and Automation Specialist based in Pakistan.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                        I enjoy transforming mechanical precision into smart, efficient systems that shape the future of automation. My work revolves around building solutions that are reliable, innovative, and purposeful.
+                        When I’m not engineering solutions, I’m exploring new technologies, working on personal innovations, or helping others bring their ideas to life. My philosophy is simple: faith, discipline, and excellence.
+                    </p>
+                    <!-- View My Work button updated to myjourney URL -->
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" class="mt-8 inline-block px-6 py-3 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02]">
+                        View My Work
+                    </a>
+                </div>
+                
+                <!-- Profile Image (No circle, with 3D effect) -->
+                <div class="md:w-7/12 flex justify-center md:justify-end relative group">
+                    <img 
+                        src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/funky2.png" 
+                        alt="Profile picture" 
+                        class="w-full max-w-md rounded-lg shadow-2xl transition-all duration-500 
+                               group-hover:rotate-3 group-hover:scale-105 group-hover:shadow-3xl-accent"
+                        style="transform-style: preserve-3d; transform: perspective(1000px) rotateY(0deg) rotateX(0deg); 
+                               box-shadow: 0 20px 40px rgba(0,0,0,0.3); /* Initial 3D shadow */"
+                        onmousemove="handleTilt(event, this)"
+                        onmouseleave="resetTilt(this)"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/94A3B8/ffffff?text=Profile+Photo';"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery/Carousel -->
+    <section class="py-16 md:py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 max-w-7xl">
+             <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                
+                <!-- Carousel Item 1: new15.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/new15.png" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+15';" >
+                </a>
+                
+                <!-- Carousel Item 2: new8.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/new8.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=New+8';">
+                </a>
+                
+                <!-- Carousel Item 3: formal1.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/formal1.png" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+1';">
+                </a>
+                
+                <!-- Carousel Item 4: background 1.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/background 1.png" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+1';">
+                </a>
+                
+                <!-- Carousel Item 5: funky.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/funky.png" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Funky+PNG';">
+                </a>
+                
+                <!-- Carousel Item 6: funky4.png -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/images/funky4.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Funky+4';">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Interaction, Toast, and 3D Effect -->
     <script>
-        const hero = document.getElementById('heroSection');
-        const left = document.getElementById('stateLeft');
-        const right = document.getElementById('stateRight');
-        const centerContentWrapper = document.getElementById('centerContentWrapper'); 
+        // Custom Toast Notification implementation (Replaces alert())
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            // Create the toast element
+            const toast = document.createElement('div');
+            toast.className = 'bg-gray-900 text-white px-4 py-3 rounded-xl shadow-xl transition-opacity duration-300 opacity-0 transform translate-y-2 max-w-xs';
+            toast.innerHTML = `<p class="font-medium text-sm">${message}</p>`;
+
+            // Append and show
+            container.appendChild(toast);
+            
+            // Trigger transition (must be in the next frame)
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-2');
+                toast.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-2');
+
+                // Remove from DOM after transition completes
+                toast.addEventListener('transitionend', () => toast.remove());
+            }, 3000);
+        }
+
+        // 3D Tilt Effect for Profile Photo
+        function handleTilt(event, element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const rotateY = (mouseX - centerX) / centerX * 10; // Adjust sensitivity
+            const rotateX = (centerY - mouseY) / centerY * 10; // Adjust sensitivity
+
+            element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            element.style.boxShadow = `
+                ${-rotateY}px ${rotateX}px 30px rgba(0, 0, 0, 0.4),
+                ${-rotateY/2}px ${rotateX/2}px 60px rgba(28, 126, 214, 0.2) /* Accent shadow */
+            `;
+        }
+
+        function resetTilt(element) {
+            element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            element.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)'; // Reset to initial shadow
+        }
+
+        // --- Navigation State Logic ---
         const navLinks = document.querySelectorAll('.nav-links a');
         
-        // --- CONSTANTS FOR TRANSITION ---
-        const PASSIVE_START_L = 0.30;
-        const ACTIVE_END_L = 0.25;
-        const TRANSITION_RANGE = PASSIVE_START_L - ACTIVE_END_L;
-        const PASSIVE_START_R = 0.70;
-        const ACTIVE_END_R = 0.75;
-
-        // Helper function to check if the screen is mobile size
-        function isMobileScreen() {
-            return window.innerWidth <= 480; 
-        }
-
-        /**
-         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
-         * @param {string} targetState - 'left' or 'right' to visually expand the panel.
-         * @param {string} url - The external URL to navigate to.
-         */
         function navigateState(targetState, url) {
-            // 1. Trigger the immediate visual state change (expand side panel)
-            // This is necessary to show the user where they are going before navigation.
             setState(targetState);
-
-            // 2. Wait for the transition to start/complete (300ms) and then navigate
             setTimeout(() => {
-                window.location.href = url;
-            }, 300); // 300ms matches the transition-all duration
+                // In a real deployed app, you'd use: window.location.href = url;
+                console.log(`Simulating external navigation to: ${url}`);
+            }, 300); 
         }
 
-        // Refactored state setting for CLICKS/LINKS
         function setState(targetState) {
-            // 1. Reset all visual states
-            left.classList.remove('active-click', 'active-visual');
-            right.classList.remove('active-click', 'active-visual');
-            
-            // Reset side widths and z-index
-            left.style.width = '0%';
-            right.style.width = '0%';
-            left.style.zIndex = 20; 
-            right.style.zIndex = 20;
-            
-            // 2. Hide side panel content for reset
-            const allSideWrappers = document.querySelectorAll('.side-wrapper');
-            const allSideImages = document.querySelectorAll('.side-image-placeholder');
-            allSideWrappers.forEach(el => el.style.opacity = '0');
-            allSideImages.forEach(el => el.style.opacity = '0');
-            
-            // 3. Control the center content wrapper's opacity
-            centerContentWrapper.style.opacity = 1; 
-            
-            // 4. Reset link active states
+            // 1. Reset all link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light');
             });
 
-            // 5. Set the new active state/link
+            // 2. Set the new active link by matching the click handler's target state
             let activeLinkSelector = '';
             
+            // All navigation items now use navigateState and pass their state identifier
             if (targetState === 'center') {
-                activeLinkSelector = 'a[onclick*="setState(\'center\')"]';
+                activeLinkSelector = 'a[onclick*="navigateState(\'center\'"]';
             } else if (targetState === 'left') {
-                left.classList.add('active-click'); 
-                left.style.width = '100%'; 
-                left.style.zIndex = 50; 
-                centerContentWrapper.style.opacity = 0;
-                
-                // Show side panel content
-                const leftSideWrapper = left.querySelector('.side-wrapper');
-                const leftSideImage = left.querySelector('.side-image-placeholder');
-                if (leftSideWrapper) leftSideWrapper.style.opacity = '1';
-                if (leftSideImage) leftSideImage.style.opacity = '1';
-                
-                // When navigating away, we use the nav function, but we still need the link highlight if called directly
                 activeLinkSelector = 'a[onclick*="navigateState(\'left\'"]';
             } else if (targetState === 'right') {
-                right.classList.add('active-click');
-                right.style.width = '100%'; 
-                right.style.zIndex = 50; 
-                centerContentWrapper.style.opacity = 0;
-                
-                // Show side panel content
-                const rightSideWrapper = right.querySelector('.side-wrapper');
-                const rightSideImage = right.querySelector('.side-image-placeholder');
-                if (rightSideWrapper) rightSideWrapper.style.opacity = '1';
-                if (rightSideImage) rightSideImage.style.opacity = '1';
-                
-                // When navigating away, we use the nav function, but we still need the link highlight if called directly
                 activeLinkSelector = 'a[onclick*="navigateState(\'right\'"]';
+            } else if (targetState === 'contact') {
+                activeLinkSelector = 'a[onclick*="navigateState(\'contact\'"]';
             }
 
             const activeLink = document.querySelector(`.nav-links ${activeLinkSelector}`);
@@ -395,164 +262,46 @@
                 activeLink.classList.remove('text-text-light');
             }
         }
+        // --- End Navigation State Logic ---
 
-        // Initialize with 'Home' active
-        setState('center');
 
-        function handleMouseMove(e) {
-            // CRITICAL: Disable hover interaction on small screens
-            if (isMobileScreen()) {
-                return;
-            }
-
-            const rect = hero.getBoundingClientRect();
-            const W = rect.width;
-            const x = e.clientX - rect.left;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set 'About' active on page load
+            setState('left'); 
             
-            let L_width = 0; 
-            let R_width = 0; 
-            let centerOpacity = 1;
-
-            // If we are in a 'clicked' fixed state, ignore mousemove width calculation
-            if (left.classList.contains('active-click') || right.classList.contains('active-click')) {
-                return;
-            }
-
-            // --- 1. LEFT SIDE LOGIC (x moves from 30% to 25% from left edge) ---
-            if (x < PASSIVE_START_L * W) {
-                if (x <= ACTIVE_END_L * W) {
-                    L_width = 100;
-                } 
-                else {
-                    const distance_traveled = PASSIVE_START_L * W - x;
-                    const range_width = TRANSITION_RANGE * W;
-                    const ratio = distance_traveled / range_width; 
-                    L_width = Math.min(100, Math.max(0, ratio * 100));
-                }
-                
-                centerOpacity = 1 - (L_width / 100); 
-                
-                left.classList.add('active-visual'); 
-                right.classList.remove('active-visual'); 
-                
-                // Show/hide side panel content based on width
-                const leftSideWrapper = left.querySelector('.side-wrapper');
-                const leftSideImage = left.querySelector('.side-image-placeholder');
-                if (leftSideWrapper && leftSideImage) {
-                    if (L_width > 0) {
-                        leftSideWrapper.style.opacity = '1';
-                        leftSideImage.style.opacity = '1';
-                    } else {
-                        leftSideWrapper.style.opacity = '0';
-                        leftSideImage.style.opacity = '0';
+            const carouselItems = document.querySelectorAll('.gallery-item');
+            
+            // Add click effect to carousel items
+            carouselItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // For external links, do not prevent default, but still show the toast
+                    const caption = this.getAttribute('data-caption') || 'Image';
+                    showToast(`Navigating to ${caption}'s journey page...`);
+                    // e.preventDefault(); // allow navigation to proceed
+                });
+            });
+            
+            // Add keyboard navigation for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    const focused = document.activeElement;
+                    if (focused && focused.classList.contains('gallery-item')) {
+                        const itemsArray = Array.from(carouselItems);
+                        const currentIndex = itemsArray.indexOf(focused);
+                        let nextIndex;
+                        
+                        if (e.key === 'ArrowRight') {
+                            nextIndex = (currentIndex + 1) % itemsArray.length;
+                        } else {
+                            nextIndex = (currentIndex - 1 + itemsArray.length) % itemsArray.length;
+                        }
+                        
+                        itemsArray[nextIndex].focus();
+                        e.preventDefault(); // Prevent default scroll behavior
                     }
                 }
-            } 
-            // --- 2. RIGHT SIDE LOGIC (x moves from 70% to 75% from left edge) ---
-            else if (x > PASSIVE_START_R * W) {
-                if (x >= ACTIVE_END_R * W) {
-                    R_width = 100;
-                } 
-                else {
-                    const distance_traveled = x - PASSIVE_START_R * W;
-                    const range_width = TRANSITION_RANGE * W;
-                    const ratio = distance_traveled / range_width; 
-                    R_width = Math.min(100, Math.max(0, ratio * 100));
-                }
-                
-                centerOpacity = 1 - (R_width / 100); 
-                
-                right.classList.add('active-visual'); 
-                left.classList.remove('active-visual'); 
-                
-                // Show/hide side panel content based on width
-                const rightSideWrapper = right.querySelector('.side-wrapper');
-                const rightSideImage = right.querySelector('.side-image-placeholder');
-                if (rightSideWrapper && rightSideImage) {
-                    if (R_width > 0) {
-                        rightSideWrapper.style.opacity = '1';
-                        rightSideImage.style.opacity = '1';
-                    } else {
-                        rightSideWrapper.style.opacity = '0';
-                        rightSideImage.style.opacity = '0';
-                    }
-                }
-            } 
-            // --- 3. CENTER LOGIC (Passive Zone: 30% to 70%) ---
-            else {
-                left.classList.remove('active-visual');
-                right.classList.remove('active-visual');
-                
-                // Hide side panel content
-                const leftSideWrapper = left.querySelector('.side-wrapper');
-                const leftSideImage = left.querySelector('.side-image-placeholder');
-                const rightSideWrapper = right.querySelector('.side-wrapper');
-                const rightSideImage = right.querySelector('.side-image-placeholder');
-                
-                if (leftSideWrapper) leftSideWrapper.style.opacity = '0';
-                if (leftSideImage) leftSideImage.style.opacity = '0';
-                if (rightSideWrapper) rightSideWrapper.style.opacity = '0';
-                if (rightSideImage) rightSideImage.style.opacity = '0';
-            }
-
-            // Apply calculated widths and center properties
-            left.style.width = L_width + '%';
-            right.style.width = R_width + '%';
-            centerContentWrapper.style.opacity = centerOpacity; 
-            
-            // Manage Z-index to ensure the currently expanding panel is on top
-            if (L_width > 0) {
-                left.style.zIndex = 45;
-                right.style.zIndex = 20;
-            } else if (R_width > 0) {
-                right.style.zIndex = 45;
-                left.style.zIndex = 20;
-            } else {
-                left.style.zIndex = 20;
-                right.style.zIndex = 20;
-            }
-        }
-        
-        function handleMouseLeave() {
-            if (isMobileScreen() || left.classList.contains('active-click') || right.classList.contains('active-click')) {
-                return; 
-            }
-            // Revert to the default 'center' state when the mouse leaves
-            setState('center');
-        }
-        
-        // Function to dynamically attach/detach mouse events
-        function setupMouseListeners() {
-            hero.removeEventListener('mousemove', handleMouseMove);
-            hero.removeEventListener('mouseleave', handleMouseLeave);
-            
-            if (!isMobileScreen()) {
-                hero.addEventListener('mousemove', handleMouseMove);
-                hero.addEventListener('mouseleave', handleMouseLeave);
-            } else {
-                // Ensure panels are reset if they were half-open when resizing to mobile
-                if (!left.classList.contains('active-click') && !right.classList.contains('active-click')) {
-                    left.style.width = '0%';
-                    right.style.width = '0%';
-                    centerContentWrapper.style.opacity = 1;
-                    
-                    // Hide side panel content
-                    const leftSideWrapper = left.querySelector('.side-wrapper');
-                    const leftSideImage = left.querySelector('.side-image-placeholder');
-                    const rightSideWrapper = right.querySelector('.side-wrapper');
-                    const rightSideImage = right.querySelector('.side-image-placeholder');
-                    
-                    if (leftSideWrapper) leftSideWrapper.style.opacity = '0';
-                    if (leftSideImage) leftSideImage.style.opacity = '0';
-                    if (rightSideWrapper) rightSideWrapper.style.opacity = '0';
-                    if (rightSideImage) rightSideImage.style.opacity = '0';
-                }
-            }
-        }
-
-        // Initial setup and listener for resizing
-        setupMouseListeners(); 
-        window.addEventListener('resize', setupMouseListeners);
+            });
+        });
     </script>
 </body>
 </html>
