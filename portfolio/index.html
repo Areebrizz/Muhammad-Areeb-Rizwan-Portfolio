@@ -25,8 +25,8 @@
                         'text-light': '#e0e0e0', // Used in the Header
 
                         // Body/Portfolio Colors
-                        'gray-50': '#f9fafb', // Lightest gray for main content bg
-                        'gray-100': '#f3f4f6', // Used for Footer bg
+                        'gray-50': '#f9fafb', // Lightest gray for main content bg (Used for Projects & Footer Match)
+                        'gray-100': '#f3f4f6', // Used for Footer bg (Now used for Portfolio Intro)
                         'content-text': '#333', // Dark text for light sections
                         'subtle-text': '#757575', // Subtler dark text
                     }
@@ -89,7 +89,7 @@
             }
         }
 
-        /* --- Footer Styles (from new footer CSS) --- */
+        /* --- Footer Styles --- */
         .footer-bulge {
             position: relative;
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
@@ -105,7 +105,7 @@
             transform: translateX(-50%);
             width: 200px; 
             height: 60px; 
-            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50) */
+            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50: #f9fafb) */
             background-color: #f9fafb; 
             border-radius: 0 0 100px 100px; 
             box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
@@ -148,7 +148,6 @@
                     class="h-8 w-8 rounded-full shadow-lg"
                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/4caf50/ffffff?text=AR'"
                 >
-                <!-- Added: Name next to the logo for desktop/tablet screens -->
                 <span class="ml-3 text-xl font-bold tracking-wider hidden md:inline">Areeb Rizwan</span>
             </div>
             
@@ -181,7 +180,8 @@
         </div>
     </header>
     <div class="content portfolio-main clearfix pt-[60px] sm:pt-[110px] min-h-screen bg-gray-50 text-content-text" id="main-content">
-        <section class="p-16 lg:p-24 border-b border-gray-200">
+        <!-- Portfolio Introduction Section - Now uses bg-gray-100 (Light Gray) -->
+        <section class="bg-gray-100 p-16 lg:p-24 border-b border-gray-200">
             <div class="max-w-[1040px] mx-auto flex flex-wrap -mx-4">
                 <div id="text-main" class="w-full lg:w-5/12 px-4 mb-8 lg:mb-0">
                     <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-none">portfolio.</h1>
@@ -195,7 +195,8 @@
         </section>
 
         <div>
-            <section class="bg-gray-100 p-16 lg:p-24">
+            <!-- Projects Section - Now uses bg-gray-50 (Off-White) to match the footer bulge/cutout -->
+            <section class="bg-gray-50 p-16 lg:p-24">
                 <div class="max-w-[1040px] mx-auto">
                     <div class="w-full">
                         <ul id="thumbs" class="flex flex-wrap -mx-4 list-none p-0 m-0">
