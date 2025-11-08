@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script>
-        // Tailwind Configuration
+        // Tailwind Configuration - Merged from original and new blocks
         tailwind.config = {
             theme: {
                 extend: {
@@ -24,23 +24,24 @@
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0', // Used in the Header
 
-                        // Body/Portfolio Colors
+                        // Body/Portfolio/Footer Colors (Matching for the bulge effect)
                         'gray-50': '#f9fafb', // Lightest gray for main content bg (Used for Projects & Footer Match)
                         'gray-100': '#f3f4f6', // Used for Footer bg (Now used for Portfolio Intro)
                         'content-text': '#333', // Dark text for light sections
                         'subtle-text': '#757575', // Subtler dark text
+                        'brand-primary': '#4caf50', // Alias for custom-green used in the new footer
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom Text Shadow for the green glow effect on the Header */
+        /* Custom Text Shadow for the green glow effect on the Header and links */
         .text-shadow-green {
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
         
-        /* Ensures body uses the Inter font throughout */
+        /* Ensures body uses the Inter font throughout and line height for readability */
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -88,8 +89,27 @@
                 width: 100%;
             }
         }
+        /* End Header Mobile Styles */
+        
+        /* Content Area Padding Adjustment (from new header logic) */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
 
-        /* --- Footer Styles --- */
+        /* --- Card Hover Effect Enhancement --- */
+        .portfolio-card-link {
+            /* Base styling for transition */
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 2px solid transparent; /* Initialize border for smooth hover */
+        }
+
+        .portfolio-card-link:hover {
+            box-shadow: 0 10px 25px -5px rgba(76, 175, 80, 0.4), 0 0 0 2px rgba(76, 175, 80, 0.2); /* Lift and green shadow */
+            transform: translateY(-6px); /* Stronger lift effect */
+            border: 2px solid #4caf50; /* Subtle green border */
+        }
+        
+        /* --- Footer Styles (from new footer CSS) --- */
         .footer-bulge {
             position: relative;
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
@@ -128,6 +148,19 @@
         .top-button-container:hover {
             transform: scale(1.1) translateX(-50%); 
         }
+        
+        /* New: Glow effect for text links on footer hover/focus */
+        .link-glow-hover:hover,
+        .link-glow-hover:focus {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+            transform: translateY(-1px); 
+        }
+
+        /* New: Change the SVG arrow color and add glow on hover */
+        .top-button-container:hover svg {
+            stroke: #4caf50; /* Change arrow color to brand-primary green */
+            filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
+        }
 
         /* Custom scroll behavior for smooth transition */
         html {
@@ -138,27 +171,28 @@
 </head>
 <body class="bg-dark-bg font-sans" id="top">
 
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] sm:h-[110px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
             <div class="logo text-white select-none flex items-center">
+                <!-- Fallback placeholder for the logo image -->
                 <img 
                     src="assets/images/favicon.png" 
                     alt="Areeb Rizwan Logo" 
                     class="h-8 w-8 rounded-full shadow-lg"
                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/4caf50/ffffff?text=AR'"
                 >
-                <span class="ml-3 text-xl font-bold tracking-wider hidden md:inline">Areeb Rizwan</span>
+                <span class="ml-3 text-xl font-bold tracking-wider hidden md:inline">Areeb Rizwan</span> 
             </div>
             
             <div class="nav-right-wrapper flex items-center space-x-16 sm:space-x-4 md:space-x-16">
                 
                 <nav class="nav-links flex">
-                    <a href="#" id="home-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                    <a href="#" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                    <a href="#" id="portfolio-link" class="link-item text-custom-green text-shadow-green no-underline ml-6 text-base font-medium transition-colors duration-300">Portfolio</a>
-                    <a href="#" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
-                    <a href="#" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                    <a href="#main-content" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="#footer" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
                 <div class="social-icons flex items-center space-x-4">
@@ -179,78 +213,90 @@
             </div>
         </div>
     </header>
-    <div class="content portfolio-main clearfix pt-[60px] sm:pt-[110px] min-h-screen bg-gray-50 text-content-text" id="main-content">
-        <!-- Portfolio Introduction Section - Now uses bg-gray-100 (Light Gray) -->
+
+    <div class="content portfolio-main content-area clearfix pt-[60px] sm:pt-[110px] min-h-screen bg-gray-50 text-content-text" id="main-content">
+        
+        <!-- Hero Section -->
         <section class="bg-gray-100 p-16 lg:p-24 border-b border-gray-200">
-            <div class="max-w-[1040px] mx-auto flex flex-wrap -mx-4">
+            <div class="max-w-[1040px] mx-auto flex flex-wrap items-center -mx-4">
                 <div id="text-main" class="w-full lg:w-5/12 px-4 mb-8 lg:mb-0">
-                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-none">portfolio.</h1>
+                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-none text-gray-900">portfolio.</h1>
                     <p class="text-xl lg:text-2xl text-subtle-text mb-6">Check out some of my latest product design case studies.</p>
-                    <p class="text-lg leading-relaxed">I've worked for startups, agencies, corporations, and government and have led projects to design products used by millions of people.</p>
+                    <p class="text-lg leading-relaxed text-gray-700">I've worked for startups, agencies, corporations, and government and have led projects to design products used by millions of people.</p>
+                    <a href="#thumbs" class="mt-6 inline-flex items-center text-brand-primary font-semibold hover:underline transition-colors duration-200">
+                        View Projects <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
                 <div id="img-main" class="w-full lg:w-7/12 px-4 text-center">
-                    <img class="max-w-full h-auto rounded-lg shadow-xl" src="https://via.placeholder.com/600x400/9ca3af/ffffff?text=Product+Design+Mockup" alt="product design portfolio image">
+                    <!-- Updated placeholder image for better portfolio context -->
+                    <img class="max-w-full h-auto rounded-xl shadow-2xl border-2 border-gray-200" src="https://placehold.co/600x400/374151/ffffff?text=Design+System+Mockup" alt="Product design portfolio image mockup">
                 </div>
             </div>
         </section>
 
+        <!-- Portfolio Grid -->
         <div>
-            <!-- Projects Section - Now uses bg-gray-50 (Off-White) to match the footer bulge/cutout -->
             <section class="bg-gray-50 p-16 lg:p-24">
                 <div class="max-w-[1040px] mx-auto">
                     <div class="w-full">
                         <ul id="thumbs" class="flex flex-wrap -mx-4 list-none p-0 m-0">
+                            <!-- Card 1: Added portfolio-card-link class for enhanced hover effect -->
                             <li class="w-full sm:w-1/2 lg:w-1/3 p-4 box-border">
-                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                    <img src="https://via.placeholder.com/300x200/9ca3af/ffffff?text=Figma+Design" alt="Figma design system" class="w-full h-auto block">
+                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md portfolio-card-link transition-all duration-300">
+                                    <img src="https://placehold.co/300x200/5c67f2/ffffff?text=Figma+System" alt="Figma design system" class="w-full h-auto block">
                                     <div class="p-6">
                                         <h4 class="text-xl mb-2 font-semibold">My Figma design system</h4>
                                         <p class="text-subtle-text text-base m-0">Design system</p>
                                     </div>
                                 </a>
                             </li>
+                            <!-- Card 2 -->
                             <li class="w-full sm:w-1/2 lg:w-1/3 p-4 box-border">
-                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                    <img src="https://via.placeholder.com/300x200/9ca3af/ffffff?text=UI+Book" alt="UI design book" class="w-full h-auto block">
+                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md portfolio-card-link transition-all duration-300">
+                                    <img src="https://placehold.co/300x200/9847e3/ffffff?text=UX+Book" alt="UI design book" class="w-full h-auto block">
                                     <div class="p-6">
                                         <h4 class="text-xl mb-2 font-semibold">My UI design book</h4>
                                         <p class="text-subtle-text text-base m-0">Book</p>
                                     </div>
                                 </a>
                             </li>
+                            <!-- Card 3 -->
                             <li class="w-full sm:w-1/2 lg:w-1/3 p-4 box-border">
-                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                    <img src="https://via.placeholder.com/300x200/9ca3af/ffffff?text=Lean+DS" alt="Creating a lean design system" class="w-full h-auto block">
+                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md portfolio-card-link transition-all duration-300">
+                                    <img src="https://placehold.co/300x200/10b981/ffffff?text=Lean+DS" alt="Creating a lean design system" class="w-full h-auto block">
                                     <div class="p-6">
                                         <h4 class="text-xl mb-2 font-semibold">Creating a lean design system</h4>
                                         <p class="text-subtle-text text-base m-0">Design system</p>
                                     </div>
                                 </a>
                             </li>
+                            <!-- Card 4 -->
                             <li class="w-full sm:w-1/2 lg:w-1/3 p-4 box-border">
-                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                    <img src="https://via.placeholder.com/300x200/9ca3af/ffffff?text=News+Feed" alt="Interior design news feed" class="w-full h-auto block">
+                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md portfolio-card-link transition-all duration-300">
+                                    <img src="https://placehold.co/300x200/3b82f6/ffffff?text=News+Feed" alt="Interior design news feed" class="w-full h-auto block">
                                     <div class="p-6">
                                         <h4 class="text-xl mb-2 font-semibold">Interior design news feed</h4>
                                         <p class="text-subtle-text text-base m-0">Side project</p>
                                     </div>
                                 </a>
                             </li>
+                            <!-- Card 5 -->
                             <li class="w-full sm:w-1/2 lg:w-1/3 p-4 box-border">
-                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                    <img src="https://via.placeholder.com/300x200/9ca3af/ffffff?text=Qantas+Map" alt="Qantas map search" class="w-full h-auto block">
+                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md portfolio-card-link transition-all duration-300">
+                                    <img src="https://placehold.co/300x200/ef4444/ffffff?text=Travel+Map" alt="Qantas map search" class="w-full h-auto block">
                                     <div class="p-6">
                                         <h4 class="text-xl mb-2 font-semibold">Qantas map search</h4>
-                                        <p class="text-subtle-text text-base m-0">Product design</p>
+                                        <p class="text-subtle-text text-base m-0">Airlines</p>
                                     </div>
                                 </a>
                             </li>
+                            <!-- Card 6 -->
                             <li class="w-full sm:w-1/2 lg:w-1/3 p-4 box-border">
-                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg">
-                                    <img src="https://via.placeholder.com/300x200/9ca3af/ffffff?text=Qantas+Home" alt="Qantas homepage" class="w-full h-auto block">
+                                <a href="#" class="block no-underline text-inherit bg-white rounded-xl overflow-hidden shadow-md portfolio-card-link transition-all duration-300">
+                                    <img src="https://placehold.co/300x200/f59e0b/ffffff?text=Mobile+Ecom" alt="E-Commerce mobile app" class="w-full h-auto block">
                                     <div class="p-6">
-                                        <h4 class="text-xl mb-2 font-semibold">Qantas homepage refresh</h4>
-                                        <p class="text-subtle-text text-base m-0">Website design</p>
+                                        <h4 class="text-xl mb-2 font-semibold">Mobile E-Commerce App</h4>
+                                        <p class="text-subtle-text text-base m-0">Client Work</p>
                                     </div>
                                 </a>
                             </li>
@@ -259,12 +305,16 @@
                 </div>
             </section>
         </div>
+        
     </div>
+    
+    <!-- Footer with Bulge/Cutout Effect -->
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative">
         <div class="max-w-screen-xl mx-auto px-5">
 
+            <!-- Back to Top Button -->
             <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-gray-800 transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
                     <polyline points="18 15 12 9 6 15"></polyline>
                 </svg>
             </a>
@@ -272,39 +322,78 @@
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
-                    <a href="https://areebrizz.github.io/" class="hover:text-gray-800 transition duration-300">
+                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-brand-primary transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddique
                     </a>
                 </div>
                 
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="#" class="hover:text-gray-800 transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="#" class="hover:text-gray-800 transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="#" class="hover:text-gray-800 transition duration-300 rounded-sm font-bold text-gray-800">Portfolio</a></li>
-                        <li><a href="#" class="hover:text-gray-800 transition duration-300 rounded-sm">Blog</a></li>
-                        <li><a href="#" class="hover:text-gray-800 transition duration-300 rounded-sm">Contact</a></li>
+                        <li><a href="#main-content" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="#footer" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </footer>
-    <script>
-        // Set 'Portfolio' link as active in the header on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const portfolioLink = document.getElementById('portfolio-link');
-            const navLinks = document.querySelectorAll('.nav-links a');
 
+    <script>
+        const navLinks = document.querySelectorAll('.link-item');
+        
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * The external navigation is commented out for demonstration.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url && url !== '#blog' && url !== '#contact' && url !== '#main-content' && url !== '#footer') {
+                setTimeout(() => {
+                    // For demonstration, we prevent actual navigation in the sandbox
+                    console.log(`Simulating navigation to: ${url}`);
+                    // window.location.href = url; // Uncomment this for live usage
+                }, 300); // 300ms matches the transition-all duration
+            }
+        }
+
+        /**
+         * Refactored state setting for CLICKS/LINKS
+         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
+         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
+         */
+        function setState(targetState, linkId) {
+            // Reset all link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             });
-            
-            if (portfolioLink) {
-                portfolioLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
-                portfolioLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+
+            // Set the new active state/link
+            const activeLink = document.getElementById(linkId);
+            if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
-        });
+            
+            // Console log to show state change (e.g., for panel animation)
+            console.log(`Application state changed to: ${targetState}`);
+        }
+
+        // Initialize with 'Portfolio' active on load (matching the page content)
+        window.onload = () => {
+             // Use a slight delay to ensure all DOM elements are registered
+             setTimeout(() => {
+                 setState('right', 'portfolio-link');
+             }, 50);
+        };
     </script>
 </body>
 </html>
