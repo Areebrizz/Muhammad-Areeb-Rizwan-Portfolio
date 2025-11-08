@@ -6,12 +6,35 @@
     <title>Contact | M. Areeb Rizwan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Using Poppins as explicitly defined in the original style block -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Poppins', sans-serif;
+    
+    <!-- Tailwind Configuration and Custom Styles for Bulge Footer --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        // Using 'Inter' as the primary font for consistency and modern look
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Defined colors used in the footer and main content
+                        'gray-50': '#f9fafb',
+                        'gray-100': '#f3f4f6', 
+                    }
+                }
+            }
         }
+    </script>
+    <style>
+        /* Ensures smooth scrolling behavior when clicking the "Back to Top" arrow */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Set the primary font to Inter (or system sans-serif fallback) */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         /* Custom hover effect for the main call to action button */
         .submit-button {
             transition: all 300ms ease;
@@ -21,11 +44,53 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
+
+        /* --- Footer Bulge Styles --- */
+
+        .footer-bulge {
+            position: relative;
+            /* Sets background to gray-100 (subtle contrast) */
+            background-color: #f3f4f6; 
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Creates the curved cutout at the top center of the footer */
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px; /* How far up the curve goes */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Width of the cutout */
+            height: 60px; /* Depth of the curve */
+            
+            /* IMPORTANT: This color MUST match the main content's background color (bg-gray-50) */
+            background-color: #f9fafb; 
+            border-radius: 0 0 100px 100px; /* Creates the semi-circular shape */
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
+            z-index: 10;
+        }
+
+        /* Arrow button positioning and hover effect */
+        .top-button-container {
+            position: absolute;
+            width: 40px; 
+            height: 40px; 
+            left: 50%;
+            top: -20px; /* Places the arrow center on the curve */
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20; 
+        }
+
+        .top-button-container:hover {
+            transform: scale(1.1) translateX(-50%); 
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
-    <!-- Navigation Bar -->
-    <nav class="bg-black text-white sticky top-0 z-10 py-4 px-8 shadow-md">
+<body class="bg-gray-50 text-gray-800 antialiased" id="top">
+    <!-- Navigation Bar --><nav class="bg-black text-white sticky top-0 z-10 py-4 px-8 shadow-md">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="text-xl font-extrabold tracking-wide">M. AREEB RIZWAN</div>
             <div class="flex space-x-6 md:space-x-8">
@@ -37,21 +102,18 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
+    <!-- Main Content --><div class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
         <div class="flex flex-col lg:flex-row gap-16">
-            <!-- Left Side - Contact Information -->
-            <div class="lg:w-1/2">
+            <!-- Left Side - Contact Information --><div class="lg:w-1/2">
                 <h1 class="text-5xl sm:text-6xl font-extrabold mb-4 text-black">Get in Touch</h1>
                 <h2 class="text-4xl font-light text-amber-500 mb-8">Let's build something great.</h2>
                 
                 <p class="text-lg mb-12 text-gray-600">
-                   I'm always interested in new opportunities, collaborations, and conversations. Feel free to reach out if you'd like to discuss a project or say hello. | I aim to respond within one business day!
+                    I'm always interested in new opportunities, collaborations, and conversations. Feel free to reach out if you'd like to discuss a project or say hello. I aim to respond within one business day!
                 </p>
                 
                 <div class="space-y-8">
-                    <!-- Phone -->
-                    <div class="flex items-start">
+                    <!-- Phone --><div class="flex items-start">
                         <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
                             <i class="fas fa-phone text-amber-600 text-xl"></i>
                         </div>
@@ -61,8 +123,7 @@
                         </div>
                     </div>
                     
-                    <!-- Email -->
-                    <div class="flex items-start">
+                    <!-- Email --><div class="flex items-start">
                         <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
                             <i class="fas fa-envelope text-amber-600 text-xl"></i>
                         </div>
@@ -72,8 +133,7 @@
                         </div>
                     </div>
                     
-                    <!-- Location -->
-                    <div class="flex items-start">
+                    <!-- Location --><div class="flex items-start">
                         <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
                             <i class="fas fa-map-marker-alt text-amber-600 text-xl"></i>
                         </div>
@@ -84,9 +144,8 @@
                     </div>
                 </div>
                 
-                <!-- Social Media Links -->
-                <div class="mt-12">
-                    <h3 class="font-bold text-xl mb-5 text-gray-800">Follow My Work</h3>
+                <!-- Social Media Links --><div class="mt-12">
+                    <h3 class="font-bold text-xl mb-5 text-gray-800">Let's <span class="text-amber-500 font-bold">Connect!</span></h3>
                     <div class="flex space-x-4">
                         <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-linkedin-in text-xl"></i>
@@ -104,13 +163,11 @@
                 </div>
             </div>
             
-            <!-- Right Side - Contact Form -->
-            <div class="lg:w-1/2">
+            <!-- Right Side - Contact Form --><div class="lg:w-1/2">
                 <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border border-gray-100">
                     <h2 class="text-3xl font-bold mb-8 text-gray-900">Send Me a Message</h2>
                     <form class="space-y-6">
-                        <!-- Input field styles updated for better focus state -->
-                        <div class="relative">
+                        <!-- Input field styles updated for better focus state --><div class="relative">
                             <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
                             <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
                         </div>
@@ -139,13 +196,34 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center mt-16">
-        <p>&copy; <span id="year">2025</span> M. Areeb Rizwan. All rights reserved.</p>
-        <script>
-            // Automatically set the current year in the footer
-            document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
+    <!-- New Sculpted Footer --><footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
+        <div class="max-w-screen-xl mx-auto px-5">
+
+            <!-- Arrow Container (Integrated into the bulge) --><a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <!-- Modern Arrowhead SVG (Points up) --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-gray-800 transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <!-- Main footer content: Copyright and Nav --><div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Left Section (Copyright) --><div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="https://areebrizz.github.io/" class="hover:text-gray-800 transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <!-- Right Section (Navigation) --><nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-gray-800 transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="hover:text-gray-800 transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="hover:text-gray-800 transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="hover:text-gray-800 transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="hover:text-gray-800 transition duration-300 rounded-sm">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
