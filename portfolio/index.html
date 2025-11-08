@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product design portfolio - Product design case studies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDQ6RzYxZpXMtTrmT0n3TCM6YFvU3R4hQ/1U2b+I8/iA3I02J7H/4h09T4+Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* Configure Tailwind Custom Colors */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1a1a1a', /* Dark background for header */
+                        'text-light': '#ffffff', /* White text for header/links */
+                        'custom-green': '#4caf50', /* The primary accent color */
+                    },
+                    boxShadow: {
+                        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+        
         /* Reset */
         html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
             margin: 0;
@@ -33,56 +54,9 @@
             clear: both;
         }
         
-        /* Header */
-        header {
-            background: #111;
-            height: 62px;
-            padding: 0 5%;
-            width: 90%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .logo {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav li {
-            margin-left: 2rem;
-        }
-        
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: lowercase;
-            font-size: 1rem;
-        }
-        
-        nav a:hover {
-            color: #757575;
-        }
-        
-        .icon-nav {
-            display: none;
-            color: #fff;
-            cursor: pointer;
-        }
-        
-        /* Main Content */
+        /* Main Content Offset for Fixed Header (New header is 60px height) */
         .content {
-            margin-top: 62px;
+            margin-top: 60px; /* Adjust for the new 60px fixed header height */
         }
         
         section.main {
@@ -195,100 +169,109 @@
             font-size: 1rem;
             margin: 0;
         }
-        
-        /* Footer */
-        footer {
-            background: #f5f5f5;
-            padding: 40px 5% 0;
-            color: #757575;
-            font-size: 1rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        footer .left {
-            margin-bottom: 1rem;
-        }
-        
-        footer a {
-            color: #757575;
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            color: #333;
-        }
-        
-        #nav-footer ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        
-        #nav-footer li {
-            margin: 0 1rem;
-        }
-        
-        .gradient-white {
-            position: absolute;
-            width: 100%;
-            height: 50px;
-            top: -50px;
-            left: 0;
-            background: linear-gradient(to top, #fff, transparent);
-        }
-        
-        .top {
-            display: block;
-            width: 118px;
-            height: 90px;
-            position: absolute;
-            left: 50%;
-            margin-left: -59px;
-            bottom: -40px;
-            text-indent: -9999px;
-            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 90"><path d="M59 0l59 90H0z" fill="%23757575"/></svg>') no-repeat;
-        }
-        
-        .top:hover {
-            bottom: -35px;
-        }
-        
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            header {
-                padding: 0 5%;
+
+        /* --- Custom Styles for New Header/Footer --- */
+
+        /* Mobile Responsive Header Styles */
+        /* Targets screen sizes below 'sm' breakpoint (640px in default Tailwind) */
+        @media (max-width: 640px) {
+            .main-header {
+                height: 110px; 
             }
             
-            nav {
-                display: none;
-                position: absolute;
-                top: 62px;
-                left: 0;
-                width: 100%;
-                background: #222;
-            }
-            
-            nav ul {
+            .nav-content {
                 flex-direction: column;
-                padding: 0;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+                /* Overriding default Tailwind space-x-16 */
+                gap: 0;
+                justify-content: space-around;
             }
             
-            nav li {
-                margin: 0;
-                border-top: 1px solid #333;
+            .logo {
+                margin-bottom: 5px;
+                font-size: 1.2rem;
             }
             
-            nav a {
-                display: block;
-                padding: 1rem;
+            .nav-links {
+                display: flex !important; /* Ensure links are visible in mobile layout */
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px;
+                /* Overriding default Tailwind space-x-16 */
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
             
-            .icon-nav {
-                display: block;
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
             }
-            
+
+            .social-icons {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .content {
+                /* Adjust main content offset for taller mobile header */
+                margin-top: 110px;
+            }
+        }
+
+        /* Footer Bulge Styles */
+        .footer-bulge {
+            position: relative;
+            background-color: #f3f4ff;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; 
+            height: 60px; 
+            background-color: #f3f4ff; /* Match footer background to create a seamless look */
+            border-radius: 0 0 100px 100px; 
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
+            z-index: 10;
+        }
+
+        .top-button-container {
+            position: absolute;
+            width: 40px; 
+            height: 40px; 
+            left: 50%;
+            top: -20px; 
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20; 
+        }
+
+        .top-button-container:hover {
+            transform: scale(1.1) translateX(-50%); 
+        }
+
+        /* Text Shadow for green glow effect on hover, needed since custom utilities aren't fully supported in the CDN way */
+        .hover\:text-shadow-green:hover,
+        .text-shadow-green {
+             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Mobile Breakpoints for main content (keeping original responsive classes) */
+        @media (max-width: 768px) {
             .col-5, .col-7 {
                 width: 100%;
             }
@@ -317,19 +300,51 @@
         }
     </style>
 </head>
-<body>
-    <header id="header">
-        <a id="logo" class="logo" href="#">Adham Dannaway</a>
-        <div class="icon-nav">☰</div>
-        <nav>
-            <ul id="nav">
-                <li><a href="#">about</a></li>
-                <li><a href="#">learn</a></li>
-                <li><a href="#" class="current">portfolio</a></li>
-                <li><a href="#">blog</a></li>
-                <li><a href="#">contact</a></li>
-            </ul>
-        </nav>
+<body id="top">
+    <!-- Navigation Header -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Brand Name -->
+            <div class="logo text-white select-none flex items-center">
+                <img 
+                    src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
+                    alt="Areeb Rizwan Logo" 
+                    class="h-8 w-8 rounded-full shadow-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a1a1a/ffffff?text=AR';"
+                >
+            </div>
+            
+            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
+            <div class="nav-right-wrapper flex items-center space-x-16">
+                
+                <!-- Nav Links -->
+                <!-- The 'hidden sm:flex' is overridden in the media query to ensure the links are displayed on small screens too -->
+                <nav class="nav-links hidden sm:flex">
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" id="portfolio-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" id="contact-link" class="link-item text-custom-green text-shadow-green no-underline ml-6 text-base font-medium transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <!-- Social Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <div class="content portfolio-main clearfix">
@@ -341,7 +356,8 @@
                     <p class="description">I've worked for startups, agencies, corporations, and government and have led projects to design products used by millions of people.</p>
                 </div>
                 <div id="img-main" class="col-7 align-c">
-                    <img class="major" src="https://via.placeholder.com/600x400" alt="adham dannaway design portfolio">
+                    <!-- Placeholder image updated for better visual appeal -->
+                    <img class="major" src="https://placehold.co/600x400/1a1a1a/ffffff?text=Design+Mockup" alt="Areeb Rizwan design portfolio">
                 </div>
             </div>
         </section>
@@ -353,7 +369,7 @@
                         <ul id="thumbs" class="thumbs clearfix">
                             <li>
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/300x200" alt="Figma design system">
+                                    <img src="https://placehold.co/300x200/4caf50/ffffff?text=Design+System" alt="Figma design system">
                                     <div class="description">
                                         <h4>My Figma design system</h4>
                                         <p>Design system</p>
@@ -362,7 +378,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/300x200" alt="UI design book">
+                                    <img src="https://placehold.co/300x200/1e88e5/ffffff?text=UI+Book" alt="UI design book">
                                     <div class="description">
                                         <h4>My UI design book</h4>
                                         <p>Book</p>
@@ -371,7 +387,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/300x200" alt="Creating a lean design system">
+                                    <img src="https://placehold.co/300x200/ff9800/ffffff?text=Lean+System" alt="Creating a lean design system">
                                     <div class="description">
                                         <h4>Creating a lean design system</h4>
                                         <p>Design system</p>
@@ -380,7 +396,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/300x200" alt="Interior design news feed">
+                                    <img src="https://placehold.co/300x200/ff5722/ffffff?text=News+Feed" alt="Interior design news feed">
                                     <div class="description">
                                         <h4>Interior design news feed</h4>
                                         <p>Side project</p>
@@ -389,7 +405,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/300x200" alt="Qantas map search">
+                                    <img src="https://placehold.co/300x200/9c27b0/ffffff?text=Map+Search" alt="Qantas map search">
                                     <div class="description">
                                         <h4>Qantas map search</h4>
                                         <p>Product design</p>
@@ -398,7 +414,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/300x200" alt="Qantas homepage">
+                                    <img src="https://placehold.co/300x200/00bcd4/ffffff?text=Qantas+Home" alt="Qantas homepage">
                                     <div class="description">
                                         <h4>Qantas homepage refresh</h4>
                                         <p>Website design</p>
@@ -412,62 +428,58 @@
         </div>
     </div>
 
-    <footer id="footer" role="contentinfo">
-        <div class="row">
-            <div class="col-12">
-                <div class="left"><a href="#">© 2025 Adham Dannaway</a></div>
-                <nav id="nav-footer">
-                    <ul>
-                        <li><a href="#">about</a></li>
-                        <li><a href="#">learn</a></li>
-                        <li><a href="#" class="current">portfolio</a></li>
-                        <li><a href="#">blog</a></li>
-                        <li><a href="#">contact</a></li>
+    <!-- Footer -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
+        <div class="max-w-screen-xl mx-auto px-5">
+            <!-- Arrow Container (Back to top) -->
+            <!-- Note: The anchor href="#top" refers to the body's id="top" added above for smooth scrolling -->
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-custom-green transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <!-- Main footer content: Copyright and Nav -->
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Left Section (Copyright) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="https://areebrizz.github.io/" class="hover:text-custom-green transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <!-- Right Section (Navigation) -->
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="gradient-white">
-            <a class="top" href="#header">Back to top</a>
-        </div>
     </footer>
 
     <script>
-        // Mobile navigation toggle
-        document.querySelector('.icon-nav').addEventListener('click', function() {
-            const nav = document.querySelector('nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-            this.textContent = this.textContent === '☰' ? '✕' : '☰';
-        });
+        // Check if the user is using the new footer structure
+        const topButtonContainer = document.querySelector('.top-button-container');
 
-        // Smooth scrolling for back to top
-        document.querySelector('.top').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (topButtonContainer) {
+            // New smooth scrolling for the top button container
+            topButtonContainer.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Scroll to the top of the page (where id="top" is on the body)
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    document.querySelector('nav').style.display = 'none';
-                    document.querySelector('.icon-nav').textContent = '☰';
-                }
-            });
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                document.querySelector('nav').style.display = 'block';
-            } else {
-                document.querySelector('nav').style.display = 'none';
-                document.querySelector('.icon-nav').textContent = '☰';
-            }
-        });
+        }
+        
+        // The old mobile navigation toggle is removed, as the new header is handled purely by CSS media queries.
     </script>
 </body>
 </html>
