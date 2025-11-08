@@ -93,30 +93,33 @@
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
         }
 
+        /* Pseudo-element to create the curved edge (bulge/cutout) at the top center */
         .footer-bulge::before {
             content: '';
             position: absolute;
-            top: -30px; 
+            top: -10px; 
             left: 50%;
             transform: translateX(-50%);
             width: 200px; 
-            height: 60px; 
-            background-color: #f9fafb;
+            height: 50px; 
+            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50: #f9fafb) */
+            background-color: #f9fafb; 
             border-radius: 0 0 100px 100px; 
             box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
             z-index: 10;
         }
 
+        /* Arrow button positioning and hover effect */
         .top-button-container {
             position: absolute;
             width: 40px; 
             height: 40px; 
             left: 50%;
-            top: -20px; 
+            top: -16px; 
             transform: translateX(-50%);
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
-            z-index: 20; 
+            z-index: 20;
         }
 
         .top-button-container:hover {
