@@ -90,7 +90,8 @@
     </div>
 
     <!-- About Section (Uses bg-custom-gray and wraps content in a white card) -->
-    <section class="pt-[140px] pb-24 md:pt-[120px] md:pb-32 bg-custom-gray">
+    <!-- Reduced bottom padding (pb-24/pb-32 to pb-16/pb-20) to bring the next section up -->
+    <section class="pt-[140px] pb-16 md:pt-[120px] md:pb-20 bg-custom-gray">
         <div class="container mx-auto px-4 md:px-8 max-w-7xl">
             <!-- New White Card Container for UX/Visual Hierarchy -->
             <div class="bg-white p-6 md:p-12 rounded-3xl shadow-2xl">
@@ -109,20 +110,20 @@
                             When I’m not engineering solutions, I’m exploring new technologies, working on personal innovations, or helping others bring their ideas to life.
                         </p>
                         
-                        <!-- Action Buttons Container (Updated) -->
+                        <!-- Action Buttons Container (Updated: Buttons are now px-5 py-2.5) -->
                         <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                            <!-- Resume Button (New) -->
+                            <!-- Resume Button (Updated text and size) -->
                             <a href="https://your-google-drive-link-here" 
                                target="_blank" 
                                rel="noopener noreferrer"
-                               class="flex-1 text-center px-6 py-3 bg-accent-blue text-white font-medium rounded-lg shadow-lg hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
-                                My Resume.
+                               class="flex-1 text-center px-5 py-2.5 bg-accent-blue text-white font-medium rounded-lg shadow-lg hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                My Resume
                             </a>
 
-                            <!-- View My Work button updated to myjourney URL -->
-                            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" 
-                               class="flex-1 text-center px-6 py-3 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
-                                View My Work
+                            <!-- View My Work button (Updated text to 'My Work' and size) -->
+                            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" 
+                               class="flex-1 text-center px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                My Work
                             </a>
                         </div>
                     </div>
@@ -147,7 +148,8 @@
     </section>
 
     <!-- Image Gallery/Carousel -->
-    <section class="py-16 md:py-20 bg-white border-t border-gray-100">
+    <!-- Reduced top padding (pt-12/pt-16) to close the gap with the section above -->
+    <section class="pt-12 pb-16 md:pt-16 md:pb-20 bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-7xl">
              <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
