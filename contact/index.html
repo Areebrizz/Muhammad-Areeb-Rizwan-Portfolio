@@ -111,7 +111,7 @@
 
         .footer-bulge {
             position: relative;
-            background-color: #f3f4f6; 
+            background-color: #f3f4ff; /* bg-gray-100 */ 
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
         }
 
@@ -159,6 +159,7 @@
                     src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
                     alt="Areeb Rizwan Logo" 
                     class="h-8 w-8 rounded-full shadow-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a1a1a/ffffff?text=AR';"
                 >
             </div>
             
@@ -167,12 +168,12 @@
                 
                 <!-- Nav Links -->
                 <nav class="nav-links flex">
-                    <!-- Links use the original hrefs from the first file but the new JS functions for state/transition -->
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <!-- UPDATED: All links now use navigateState and pass this.href -->
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" onclick="navigateState('center', this.href, 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-custom-green text-shadow-green no-underline ml-6 text-base font-medium transition-colors duration-300">Contact</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" id="contact-link" onclick="navigateState('none', this.href, 'contact-link'); return false;" class="link-item text-custom-green text-shadow-green no-underline ml-6 text-base font-medium transition-colors duration-300">Contact</a>
                 </nav>
                 
                 <!-- Social Icons -->
@@ -354,25 +355,25 @@
         /**
          * Triggers the visual transition via setState, then navigates to the external URL after a delay.
          * @param {string} targetState - 'left', 'center', 'right', or 'none'.
-         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} url - The external URL to navigate to.
          * @param {string} linkId - The ID of the link that was clicked.
          */
         function navigateState(targetState, url, linkId) {
-            // 1. Update active link state
+            // 1. Update active link state visually (before navigation)
             setState(targetState, linkId);
 
             // 2. Wait for the transition to start/complete (300ms) and then navigate
-            if (url && url !== '#blog' && url !== '#contact') {
+            if (url) {
                 setTimeout(() => {
-                    // For demonstration, we prevent actual navigation in the sandbox
-                    console.log(`Simulating navigation to: ${url}`);
-                    // window.location.href = url; // Uncomment this for live usage
+                    console.log(`Navigating to: ${url}`);
+                    // --- CRITICAL CHANGE: THIS ENABLES NAVIGATION ---
+                    window.location.href = url; 
                 }, 300); // 300ms matches the transition-all duration
             }
         }
 
         /**
-         * Refactored state setting for CLICKS/LINKS
+         * Refactored state setting for CLICKS/LINKS (Handles only visual state/styling)
          * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
          * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
          */
