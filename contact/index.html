@@ -3,239 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Portfolio</title>
-    <!-- Load Tailwind CSS -->
+    <title>Contact | M. Areeb Rizwan</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        // Proper Tailwind configuration
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'deep-teal': '#0a2a2a',
-                        'dark-turquoise': '#1d4e4f',
-                        'electric-green': '#00ff9d',
-                        'dark-bg': '#1a1a1a',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'spin-slow': 'spin 1.5s linear infinite',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Using Poppins as explicitly defined in the original style block -->
     <style>
-        /* Applying the subtle texture effect */
-        .textured-bg {
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231d4e4f' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-
-        /* Custom focus styles */
-        input:focus, textarea:focus {
-            box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.4);
-            border-color: #00ff9d;
+        /* Custom hover effect for the main call to action button */
+        .submit-button {
+            transition: all 300ms ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .submit-button:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="font-sans min-h-screen text-white antialiased">
-    <!-- Background with proper gradient -->
-    <div class="fixed inset-0 bg-gradient-to-br from-dark-bg to-deep-teal z-0"></div>
-    <div class="fixed inset-0 textured-bg z-0"></div>
+<body class="bg-gray-50 text-gray-800 antialiased">
+    <!-- Navigation Bar -->
+    <nav class="bg-black text-white sticky top-0 z-10 py-4 px-8 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-wide">M. AREEB RIZWAN</div>
+            <div class="flex space-x-6 md:space-x-8">
+                <a href="#" class="hover:text-amber-400 transition-colors duration-200">Home</a>
+                <a href="#" class="hover:text-amber-400 transition-colors duration-200">About</a>
+                <a href="#" class="hover:text-amber-400 transition-colors duration-200">Portfolio</a>
+                <a href="#" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Header & Navigation -->
-        <header class="py-8">
-            <nav class="flex justify-between items-center">
-                <a href="#" class="text-3xl font-extrabold text-white tracking-tight transition duration-300 hover:text-electric-green">
-                    Muhammad Areeb Rizwan
-                </a>
-                <ul class="flex space-x-6">
-                    <li><a href="#" class="text-white hover:text-electric-green transition duration-300 font-medium">Home</a></li>
-                    <li><a href="#" class="text-white hover:text-electric-green transition duration-300 font-medium">About</a></li>
-                    <li><a href="#" class="text-white hover:text-electric-green transition duration-300 font-medium">Portfolio</a></li>
-                    <li><a href="#" class="text-electric-green font-semibold border-b-2 border-electric-green pb-1">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="py-12 md:py-16">
-            <section class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
+        <div class="flex flex-col lg:flex-row gap-16">
+            <!-- Left Side - Contact Information -->
+            <div class="lg:w-1/2">
+                <h1 class="text-5xl sm:text-6xl font-extrabold mb-4 text-black">Get in Touch</h1>
+                <h2 class="text-4xl font-light text-amber-500 mb-8">Let's build something great.</h2>
                 
-                <!-- Contact Information Block -->
-                <div class="contact-info flex-1 min-w-[300px]">
-                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-white">
-                        Let's <span class="text-electric-green">Connect</span>
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8 max-w-lg">
-                        I'm always interested in new opportunities, collaborations, and conversations. Feel free to reach out if you'd like to discuss a project or just say hello.
-                    </p>
-                    
-                    <div class="contact-details mt-8 space-y-4">
-                        <!-- Email -->
-                        <div class="flex items-center p-3 rounded-xl transition duration-500 hover:bg-dark-turquoise/20 group">
-                            <div class="bg-deep-teal w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-xl group-hover:bg-electric-green transition duration-300">
-                                <i class="fas fa-envelope text-electric-green text-xl group-hover:text-dark-bg transition duration-300"></i>
-                            </div>
-                            <div class="pt-1">
-                                <h4 class="text-xl font-semibold text-white group-hover:text-electric-green transition duration-300">Email</h4>
-                                <a href="mailto:help@muhammadareebrizwan.com" class="text-gray-300 group-hover:text-white transition duration-300">help@muhammadareebrizwan.com</a>
-                            </div>
+                <p class="text-lg mb-12 text-gray-600">
+                   I'm always interested in new opportunities, collaborations, and conversations. Feel free to reach out if you'd like to discuss a project or say hello. | I aim to respond within one business day!
+                </p>
+                
+                <div class="space-y-8">
+                    <!-- Phone -->
+                    <div class="flex items-start">
+                        <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
+                            <i class="fas fa-phone text-amber-600 text-xl"></i>
                         </div>
-                        
-                        <!-- Phone -->
-                        <div class="flex items-center p-3 rounded-xl transition duration-500 hover:bg-dark-turquoise/20 group">
-                            <div class="bg-deep-teal w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-xl group-hover:bg-electric-green transition duration-300">
-                                <i class="fas fa-phone-alt text-electric-green text-xl group-hover:text-dark-bg transition duration-300"></i>
-                            </div>
-                            <div class="pt-1">
-                                <h4 class="text-xl font-semibold text-white group-hover:text-electric-green transition duration-300">Phone</h4>
-                                <a href="tel:+923238177564" class="text-gray-300 group-hover:text-white transition duration-300">+92 323 8177564</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Location -->
-                        <div class="flex items-center p-3 rounded-xl transition duration-500 hover:bg-dark-turquoise/20 group">
-                            <div class="bg-deep-teal w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-xl group-hover:bg-electric-green transition duration-300">
-                                <i class="fas fa-map-marker-alt text-electric-green text-xl group-hover:text-dark-bg transition duration-300"></i>
-                            </div>
-                            <div class="pt-1">
-                                <h4 class="text-xl font-semibold text-white group-hover:text-electric-green transition duration-300">Location</h4>
-                                <p class="text-gray-300 group-hover:text-white">Based in Karachi, Pakistan</p>
-                            </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-1">Phone</h3>
+                            <p class="text-gray-600 transition-colors hover:text-amber-600">+92 323 8177564</p>
                         </div>
                     </div>
                     
-                    <!-- Social Links -->
-                    <div class="social-links flex mt-10 space-x-4">
-                        <a href="#" class="w-10 h-10 bg-deep-teal rounded-full flex items-center justify-center transition duration-300 hover:bg-electric-green group shadow-xl hover:shadow-electric-green/40 hover:scale-110">
-                            <i class="fab fa-linkedin-in text-white text-lg group-hover:text-dark-bg transition duration-300"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-deep-teal rounded-full flex items-center justify-center transition duration-300 hover:bg-electric-green group shadow-xl hover:shadow-electric-green/40 hover:scale-110">
-                            <i class="fab fa-twitter text-white text-lg group-hover:text-dark-bg transition duration-300"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-deep-teal rounded-full flex items-center justify-center transition duration-300 hover:bg-electric-green group shadow-xl hover:shadow-electric-green/40 hover:scale-110">
-                            <i class="fab fa-github text-white text-lg group-hover:text-dark-bg transition duration-300"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-deep-teal rounded-full flex items-center justify-center transition duration-300 hover:bg-electric-green group shadow-xl hover:shadow-electric-green/40 hover:scale-110">
-                            <i class="fab fa-dribbble text-white text-lg group-hover:text-dark-bg transition duration-300"></i>
-                        </a>
+                    <!-- Email -->
+                    <div class="flex items-start">
+                        <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
+                            <i class="fas fa-envelope text-amber-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-1">Email</h3>
+                            <p class="text-gray-600 transition-colors hover:text-amber-600">help@muhammadareebrizwan.com</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="flex items-start">
+                        <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
+                            <i class="fas fa-map-marker-alt text-amber-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-1">Location</h3>
+                            <p class="text-gray-600">Based in Karachi, Pakistan</p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Contact Form Block -->
-                <div class="contact-form flex-1 min-w-[300px] w-full bg-dark-bg/80 p-8 md:p-10 rounded-xl shadow-2xl backdrop-blur-sm border border-dark-turquoise hover:shadow-electric-green/40 transition duration-500">
-                    <h2 class="text-3xl font-bold mb-8 text-white">Send a Message</h2>
-                    <form id="contactForm" class="space-y-6">
-                        <div class="form-group">
-                            <label for="name" class="block mb-2 font-medium">Full Name</label>
-                            <input type="text" id="name" name="name" required autocomplete="name" class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white outline-none transition duration-300 focus:border-electric-green">
+                <!-- Social Media Links -->
+                <div class="mt-12">
+                    <h3 class="font-bold text-xl mb-5 text-gray-800">Follow My Work</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Contact Form -->
+            <div class="lg:w-1/2">
+                <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border border-gray-100">
+                    <h2 class="text-3xl font-bold mb-8 text-gray-900">Send Me a Message</h2>
+                    <form class="space-y-6">
+                        <!-- Input field styles updated for better focus state -->
+                        <div class="relative">
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
+                            <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="email" class="block mb-2 font-medium">Email Address</label>
-                            <input type="email" id="email" name="email" required autocomplete="email" class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white outline-none transition duration-300 focus:border-electric-green">
+                        <div class="relative">
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
+                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="subject" class="block mb-2 font-medium">Subject</label>
-                            <input type="text" id="subject" name="subject" required class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white outline-none transition duration-300 focus:border-electric-green">
+                        <div class="relative">
+                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" placeholder="Project Inquiry or Collaboration" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="message" class="block mb-2 font-medium">Your Message</label>
-                            <textarea id="message" name="message" required class="w-full p-3 bg-white/10 border border-white/20 rounded-lg min-h-[150px] resize-y text-white outline-none transition duration-300 focus:border-electric-green"></textarea>
+                        <div class="relative">
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Your Message</label>
+                            <textarea id="message" rows="5" placeholder="Tell me about your project or idea..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200"></textarea>
                         </div>
                         
-                        <button id="submitButton" type="submit" class="w-full bg-electric-green text-dark-bg font-bold py-3 px-6 rounded-lg transition duration-300 hover:bg-[#00e68a] hover:shadow-lg hover:shadow-electric-green/30 transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-electric-green/50 flex items-center justify-center">
-                            Send Message
+                        <button type="submit" class="submit-button w-full bg-black text-white py-4 rounded-xl font-bold tracking-wider hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-lg">
+                            <i class="fas fa-paper-plane mr-3"></i> SEND MESSAGE
                         </button>
                     </form>
-                </div>
-            </section>
-        </main>
-        
-        <!-- Footer -->
-        <footer class="text-center py-8 mt-12 border-t border-white/10">
-            <p class="text-sm text-gray-400">&copy; 2025 Muhammad Areeb Rizwan. All rights reserved. Built with passion.</p>
-        </footer>
-
-        <!-- Success Message Modal -->
-        <div id="successMessage" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none z-50">
-            <div class="bg-dark-bg p-8 md:p-10 rounded-xl shadow-2xl max-w-md w-full border border-electric-green/50 transform translate-y-4 transition-transform duration-300">
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-check-circle text-electric-green text-6xl mb-4"></i>
-                    <h3 class="text-3xl font-bold mb-3 text-white">Message Sent!</h3>
-                    <p class="text-gray-300 text-center mb-6">Thank you for reaching out. I'll review your message and get back to you within 24-48 hours.</p>
-                    <button onclick="hideSuccessMessage()" class="bg-electric-green text-dark-bg font-semibold py-2 px-6 rounded-lg hover:bg-[#00e68a] transition duration-300 focus:outline-none focus:ring-2 focus:ring-electric-green/70">
-                        Close
-                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // DOM element references
-        const submitButton = document.getElementById('submitButton');
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        const successModalContent = successMessage.querySelector('div');
-
-        // Modal visibility functions
-        function showSuccessMessage() {
-            successMessage.classList.remove('opacity-0', 'pointer-events-none');
-            successMessage.classList.add('opacity-100');
-            successModalContent.classList.remove('translate-y-4');
-            successModalContent.classList.add('translate-y-0');
-        }
-
-        function hideSuccessMessage() {
-            successMessage.classList.remove('opacity-100');
-            successMessage.classList.add('opacity-0', 'pointer-events-none');
-            successModalContent.classList.remove('translate-y-0');
-            successModalContent.classList.add('translate-y-4');
-        }
-
-        // Form submission handler
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Enter loading state
-            const originalText = submitButton.textContent;
-            submitButton.disabled = true;
-            // Using inline SVG for spinner for better performance and style control
-            submitButton.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-dark-bg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sending...
-            `;
-            submitButton.classList.add('opacity-70');
-            
-            // Simulate network request
-            setTimeout(() => {
-                // Restore button state
-                submitButton.disabled = false;
-                submitButton.textContent = originalText;
-                submitButton.classList.remove('opacity-70');
-                
-                // Show success message
-                showSuccessMessage();
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Auto-close after 5 seconds
-                setTimeout(hideSuccessMessage, 5000);
-            }, 1500);
-        });
-    </script>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center mt-16">
+        <p>&copy; <span id="year">2025</span> M. Areeb Rizwan. All rights reserved.</p>
+        <script>
+            // Automatically set the current year in the footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </footer>
 </body>
 </html>
