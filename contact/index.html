@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | M. Areeb Rizwan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Tailwind Configuration and Custom Styles for Bulge Footer --><script>
+    <!-- Tailwind Configuration and Custom Styles for Green Theme and Header -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        // Using 'Inter' as the primary font for consistency and modern look
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
                         // Defined colors used in the footer and main content
                         'gray-50': '#f9fafb',
                         'gray-100': '#f3f4f6', 
+                        // New colors from the navigation header
+                        'custom-green': '#4caf50', // Primary accent green
+                        'dark-bg': '#111', // Header background
+                        'text-light': '#e0e0e0', // Header link text
+                        'green-100-light': '#e8f5e9', // Lightest shade for icons
+                        'green-200-light': '#c8e6c9', // For input focus ring
                     }
                 }
             }
@@ -33,6 +40,8 @@
         /* Set the primary font to Inter (or system sans-serif fallback) */
         body {
             font-family: 'Inter', sans-serif;
+            /* Added padding-top to account for the fixed header */
+            padding-top: 60px;
         }
 
         /* Custom hover effect for the main call to action button */
@@ -44,40 +53,88 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
+        
+        /* Custom Text Shadow for the green glow effect (from new header) */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+
+        /* --- Mobile Responsive Header Styles (from new header) --- */
+        @media (max-width: 640px) {
+            .main-header {
+                height: 110px; 
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+            }
+            
+            .logo {
+                margin-bottom: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            .social-icons {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            body {
+                /* Adjust padding for taller mobile header */
+                padding-top: 110px; 
+            }
+        }
 
         /* --- Footer Bulge Styles --- */
 
         .footer-bulge {
             position: relative;
-            /* Sets background to gray-100 (subtle contrast) */
             background-color: #f3f4f6; 
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
         }
 
-        /* Creates the curved cutout at the top center of the footer */
         .footer-bulge::before {
             content: '';
             position: absolute;
-            top: -30px; /* How far up the curve goes */
+            top: -30px; 
             left: 50%;
             transform: translateX(-50%);
-            width: 200px; /* Width of the cutout */
-            height: 60px; /* Depth of the curve */
-            
-            /* IMPORTANT: This color MUST match the main content's background color (bg-gray-50) */
-            background-color: #f9fafb; 
-            border-radius: 0 0 100px 100px; /* Creates the semi-circular shape */
+            width: 200px; 
+            height: 60px; 
+            background-color: #f9fafb; /* Matches bg-gray-50 */
+            border-radius: 0 0 100px 100px; 
             box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
             z-index: 10;
         }
 
-        /* Arrow button positioning and hover effect */
         .top-button-container {
             position: absolute;
             width: 40px; 
             height: 40px; 
             left: 50%;
-            top: -20px; /* Places the arrow center on the curve */
+            top: -20px; 
             transform: translateX(-50%);
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
@@ -89,53 +146,103 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased" id="top">
-    <!-- Navigation Bar --><nav class="bg-black text-white sticky top-0 z-10 py-4 px-8 shadow-md">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="text-xl font-extrabold tracking-wide">M. AREEB RIZWAN</div>
-            <div class="flex space-x-6 md:space-x-8">
-                <a href="#" class="hover:text-amber-400 transition-colors duration-200">Home</a>
-                <a href="#" class="hover:text-amber-400 transition-colors duration-200">About</a>
-                <a href="#" class="hover:text-amber-400 transition-colors duration-200">Portfolio</a>
-                <a href="#" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">Contact</a>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen" id="top">
+
+    <!-- Header (Replaced with new dark, responsive, green-accented header) -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Brand Name -->
+            <div class="logo text-white select-none flex items-center">
+                <!-- Using a placeholder image URL for the favicon -->
+                <img 
+                    src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
+                    alt="Areeb Rizwan Logo" 
+                    class="h-8 w-8 rounded-full shadow-lg"
+                >
+            </div>
+            
+            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
+            <div class="nav-right-wrapper flex items-center space-x-16">
+                
+                <!-- Nav Links -->
+                <nav class="nav-links flex">
+                    <!-- Links use the original hrefs from the first file but the new JS functions for state/transition -->
+                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="#" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="#" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <a href="#" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-custom-green text-shadow-green no-underline ml-6 text-base font-medium transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <!-- Social Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content --><div class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
         <div class="flex flex-col lg:flex-row gap-16">
-            <!-- Left Side - Contact Information --><div class="lg:w-1/2">
-                <h1 class="text-5xl sm:text-6xl font-extrabold mb-4 text-black">Get in Touch</h1>
-                <h2 class="text-4xl font-light text-amber-500 mb-8">Let's build something great.</h2>
+            <!-- Left Side - Contact Information -->
+            <div class="lg:w-1/2">
+                <h1 class="text-5xl sm:text-6xl font-extrabold mb-4 text-gray-900">Get in Touch</h1>
+                <!-- Green Accent Applied -->
+                <h2 class="text-4xl font-light text-custom-green mb-8 text-shadow-green">Let's build something great.</h2>
                 
                 <p class="text-lg mb-12 text-gray-600">
                     I'm always interested in new opportunities, collaborations, and conversations. Feel free to reach out if you'd like to discuss a project or say hello. I aim to respond within one business day!
                 </p>
                 
                 <div class="space-y-8">
-                    <!-- Phone --><div class="flex items-start">
-                        <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
-                            <i class="fas fa-phone text-amber-600 text-xl"></i>
+                    <!-- Phone -->
+                    <div class="flex items-start">
+                        <!-- Green Accent Applied: bg-amber-100 -> bg-green-100-light -->
+                        <div class="bg-green-100-light p-4 rounded-xl mr-5 shadow-inner">
+                            <!-- Green Accent Applied: text-amber-600 -> text-custom-green -->
+                            <i class="fas fa-phone text-custom-green text-xl"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-xl mb-1">Phone</h3>
-                            <p class="text-gray-600 transition-colors hover:text-amber-600">+92 323 8177564</p>
+                            <!-- Green Accent Applied: hover:text-amber-600 -> hover:text-custom-green -->
+                            <p class="text-gray-600 transition-colors hover:text-custom-green">+92 323 8177564</p>
                         </div>
                     </div>
                     
-                    <!-- Email --><div class="flex items-start">
-                        <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
-                            <i class="fas fa-envelope text-amber-600 text-xl"></i>
+                    <!-- Email -->
+                    <div class="flex items-start">
+                        <!-- Green Accent Applied: bg-amber-100 -> bg-green-100-light -->
+                        <div class="bg-green-100-light p-4 rounded-xl mr-5 shadow-inner">
+                            <!-- Green Accent Applied: text-amber-600 -> text-custom-green -->
+                            <i class="fas fa-envelope text-custom-green text-xl"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-xl mb-1">Email</h3>
-                            <p class="text-gray-600 transition-colors hover:text-amber-600">help@muhammadareebrizwan.com</p>
+                            <!-- Green Accent Applied: hover:text-amber-600 -> hover:text-custom-green -->
+                            <p class="text-gray-600 transition-colors hover:text-custom-green">help@muhammadareebrizwan.com</p>
                         </div>
                     </div>
                     
-                    <!-- Location --><div class="flex items-start">
-                        <div class="bg-amber-100 p-4 rounded-xl mr-5 shadow-inner">
-                            <i class="fas fa-map-marker-alt text-amber-600 text-xl"></i>
+                    <!-- Location -->
+                    <div class="flex items-start">
+                        <!-- Green Accent Applied: bg-amber-100 -> bg-green-100-light -->
+                        <div class="bg-green-100-light p-4 rounded-xl mr-5 shadow-inner">
+                            <!-- Green Accent Applied: text-amber-600 -> text-custom-green -->
+                            <i class="fas fa-map-marker-alt text-custom-green text-xl"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-xl mb-1">Location</h3>
@@ -144,47 +251,55 @@
                     </div>
                 </div>
                 
-                <!-- Social Media Links --><div class="mt-12">
-                    <h3 class="font-bold text-xl mb-5 text-gray-800">Let's <span class="text-amber-500 font-bold">Connect!</span></h3>
+                <!-- Social Media Links -->
+                <div class="mt-12">
+                    <h3 class="font-bold text-xl mb-5 text-gray-800">Let's <span class="text-custom-green font-bold text-shadow-green">Connect!</span></h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                        <!-- Green Accent Applied: hover:bg-amber-500 -> hover:bg-custom-green -->
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-linkedin-in text-xl"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-md">
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Right Side - Contact Form --><div class="lg:w-1/2">
+            <!-- Right Side - Contact Form -->
+            <div class="lg:w-1/2">
                 <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border border-gray-100">
                     <h2 class="text-3xl font-bold mb-8 text-gray-900">Send Me a Message</h2>
                     <form class="space-y-6">
-                        <!-- Input field styles updated for better focus state --><div class="relative">
+                        <!-- Input field styles updated for better focus state -->
+                        <div class="relative">
                             <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
-                            <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
+                            <!-- Green Accent Applied: focus:ring-amber-200 -> focus:ring-green-200-light, focus:border-amber-500 -> focus:border-custom-green -->
+                            <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200">
                         </div>
                         
                         <div class="relative">
                             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
-                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
+                            <!-- Green Accent Applied -->
+                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200">
                         </div>
                         
                         <div class="relative">
                             <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
-                            <input type="text" id="subject" placeholder="Project Inquiry or Collaboration" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200">
+                            <!-- Green Accent Applied -->
+                            <input type="text" id="subject" placeholder="Project Inquiry or Collaboration" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200">
                         </div>
                         
                         <div class="relative">
                             <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Your Message</label>
-                            <textarea id="message" rows="5" placeholder="Tell me about your project or idea..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-amber-200 focus:border-amber-500 outline-none transition-all duration-200"></textarea>
+                            <!-- Green Accent Applied -->
+                            <textarea id="message" rows="5" placeholder="Tell me about your project or idea..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200"></textarea>
                         </div>
                         
                         <button type="submit" class="submit-button w-full bg-black text-white py-4 rounded-xl font-bold tracking-wider hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-lg">
@@ -196,34 +311,97 @@
         </div>
     </div>
 
-    <!-- New Sculpted Footer --><footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
+    <!-- Sculpted Footer -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
         <div class="max-w-screen-xl mx-auto px-5">
 
-            <!-- Arrow Container (Integrated into the bulge) --><a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
-                <!-- Modern Arrowhead SVG (Points up) --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-gray-800 transition duration-300">
+            <!-- Arrow Container (Integrated into the bulge) -->
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <!-- SVG stroke color is light gray, but hover is dark gray (standard) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-custom-green transition duration-300">
                     <polyline points="18 15 12 9 6 15"></polyline>
                 </svg>
             </a>
             
-            <!-- Main footer content: Copyright and Nav --><div class="flex flex-col lg:flex-row items-center justify-between">
+            <!-- Main footer content: Copyright and Nav -->
+            <div class="flex flex-col lg:flex-row items-center justify-between">
                 
-                <!-- Left Section (Copyright) --><div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
-                    <a href="https://areebrizz.github.io/" class="hover:text-gray-800 transition duration-300">
+                <!-- Left Section (Copyright) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="https://areebrizz.github.io/" class="hover:text-custom-green transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
                 
-                <!-- Right Section (Navigation) --><nav id="nav-footer" class="order-1 lg:order-2">
+                <!-- Right Section (Navigation) -->
+                <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-gray-800 transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="hover:text-gray-800 transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="hover:text-gray-800 transition duration-300 rounded-sm">Portfolio</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="hover:text-gray-800 transition duration-300 rounded-sm">Blog</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="hover:text-gray-800 transition duration-300 rounded-sm">Contact</a></li>
+                        <!-- Updated footer links to use the custom-green hover -->
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('.link-item');
+        
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url && url !== '#blog' && url !== '#contact') {
+                setTimeout(() => {
+                    // For demonstration, we prevent actual navigation in the sandbox
+                    console.log(`Simulating navigation to: ${url}`);
+                    // window.location.href = url; // Uncomment this for live usage
+                }, 300); // 300ms matches the transition-all duration
+            }
+        }
+
+        /**
+         * Refactored state setting for CLICKS/LINKS
+         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
+         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
+         */
+        function setState(targetState, linkId) {
+            // Reset all link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            });
+
+            // Set the new active state/link
+            const activeLink = document.getElementById(linkId);
+            if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+            
+            // Console log to show state change (e.g., for panel animation)
+            console.log(`Application state changed to: ${targetState}`);
+        }
+
+        // Initialize with 'Contact' active on load
+        window.onload = () => {
+            // Use a slight delay to ensure all DOM elements are registered
+            setTimeout(() => {
+                 // Set 'contact-link' as active since this is the contact page
+                setState('none', 'contact-link'); 
+            }, 50);
+        };
+    </script>
 </body>
 </html>
