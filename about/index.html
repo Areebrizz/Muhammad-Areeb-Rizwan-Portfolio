@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechanical Engineer Portfolio - About Me</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Social Icons (LinkedIn, GitHub, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuMKMZ+o+cGYe7q0xK+fK0t2zDUD3bS41rW+3o2h/a/1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         // --- Merged Tailwind Configuration ---
         tailwind.config = {
@@ -34,55 +36,141 @@
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
         
-        /* Mobile responsive header height adaptation */
-        @media (max-width: 480px) {
+        .shadow-3xl-accent {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
+                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
+        }
+
+        /* --- Custom CSS for New Header/Footer Structure --- */
+
+        /* Mobile Responsive Header Styles */
+        @media (max-width: 640px) {
             .main-header {
-                height: 90px;
+                height: 110px; 
             }
+            
             .nav-content {
                 flex-direction: column;
                 padding: 10px 15px 5px 15px;
+                height: 100%; 
             }
+
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+            }
+            
             .logo {
                 margin-bottom: 5px;
                 font-size: 1.2rem;
             }
+            
             .nav-links {
                 display: flex;
                 justify-content: center;
                 width: 100%;
+                margin-bottom: 5px;
             }
+            
             .nav-links a {
                 margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
+
+            .social-icons {
+                justify-content: center;
+                width: 100%;
+            }
         }
-        .shadow-3xl-accent {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
-                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
+
+        /* Footer Bulge Styles */
+        .footer-bulge {
+            position: relative;
+            background-color: #f3f4ff;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
         }
+
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; 
+            height: 60px; 
+            background-color: #f9fafb;
+            border-radius: 0 0 100px 100px; 
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
+            z-index: 10;
+        }
+
+        .top-button-container {
+            position: absolute;
+            width: 40px; 
+            height: 40px; 
+            left: 50%;
+            top: -20px; 
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20; 
+        }
+
+        .top-button-container:hover {
+            transform: scale(1.1) translateX(-50%); 
+        }
+
     </style>
 </head>
-<body class="bg-white font-sans text-gray-800">
+<body id="top" class="bg-white font-sans text-gray-800">
 
-    <!-- --- NAVIGATION HEADER START --- -->
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50 md:h-[60px]">
-        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-[30px] py-[15px] h-full">
-            <div class="logo text-[1.4rem] font-black text-white tracking-[1px]">M. Areeb Rizwan</div>
-            <nav class="nav-links">
-                <!-- Home link updated to Vercel URL -->
-                <a href="https://muhammad-areeb-rizwan-portfolio.vercel.app/#work" onclick="navigateState('center', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                <!-- About link (URL verified, onclick updated for consistency) -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" onclick="navigateState('left', this.href); return false;" class="text-custom-green no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green active-link text-shadow-green">About</a>
-                <!-- Portfolio link (URL verified) -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" onclick="navigateState('right', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                <!-- Contact link updated to new URL -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" onclick="navigateState('contact', this.href); return false;" class="text-text-light no-underline ml-[30px] text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
-            </nav>
+    <!-- Navigation Header (REPLACED) -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Brand Name -->
+            <div class="logo text-white select-none flex items-center">
+                <img 
+                    src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
+                    alt="Areeb Rizwan Logo" 
+                    class="h-8 w-8 rounded-full shadow-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a1a1a/ffffff?text=AR';"
+                >
+            </div>
+            
+            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
+            <div class="nav-right-wrapper flex items-center space-x-16">
+                
+                <!-- Nav Links -->
+                <nav class="nav-links flex">
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                </nav>
+                
+                <!-- Social Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
-    <!-- --- NAVIGATION HEADER END --- -->
 
     <!-- Toast Notification Container (Used instead of alert()) -->
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
@@ -114,15 +202,15 @@
                         <div class="flex flex-col sm:flex-row gap-4 mt-8">
                             <!-- Resume Button (Updated text and size) -->
                             <a href="https://your-google-drive-link-here" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="flex-1 text-center px-5 py-2.5 bg-accent-blue text-white font-medium rounded-lg shadow-lg hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="flex-1 text-center px-5 py-2.5 bg-accent-blue text-white font-medium rounded-lg shadow-lg hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
                                 My Resume
                             </a>
 
                             <!-- View My Work button (Updated text to 'My Work' and size) -->
                             <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" 
-                               class="flex-1 text-center px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                class="flex-1 text-center px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
                                 My Work
                             </a>
                         </div>
@@ -151,7 +239,7 @@
     <!-- Reduced top padding (pt-12/pt-16) to close the gap with the section above -->
     <section class="pt-12 pb-16 md:pt-16 md:pb-20 bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-7xl">
-             <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
+               <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
                 
                 <!-- Carousel Item 1: new15.png -->
@@ -187,14 +275,40 @@
         </div>
     </section>
 
-    <!-- --- FOOTER START --- -->
-    <footer class="bg-dark-bg text-text-light py-8 mt-12">
-        <div class="container mx-auto px-4 max-w-7xl text-center">
-            <p class="text-sm">&copy; 2025 M. Areeb Rizwan. All rights reserved.</p>
-            <p class="text-xs text-gray-500 mt-1">Mechanical Engineer & Automation Specialist</p>
+    <!-- Footer (REPLACED) -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
+        <div class="max-w-screen-xl mx-auto px-5">
+            <!-- Arrow Container -->
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-custom-green transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <!-- Main footer content: Copyright and Nav -->
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Left Section (Copyright) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <!-- Right Section (Navigation) -->
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </footer>
-    <!-- --- FOOTER END --- -->
+    <!-- End Footer -->
 
     <!-- JavaScript for Interaction, Toast, and 3D Effect -->
     <script>
@@ -262,39 +376,18 @@
             element.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)'; // Reset to initial shadow
         }
 
-        // --- Navigation State Logic ---
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
-        function navigateState(targetState, url) {
-            setState(targetState);
-            // Perform actual navigation after a small delay to allow link highlighting
-            setTimeout(() => {
-                window.location.href = url;
-            }, 300); 
-        }
+        // --- Navigation State Logic (Revised for New Header IDs) ---
+        const navLinks = document.querySelectorAll('.nav-links .link-item');
 
-        function setState(targetState) {
+        function setState(activeId) {
             // 1. Reset all link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light');
             });
 
-            // 2. Set the new active link by matching the click handler's target state
-            let activeLinkSelector = '';
-            
-            // All navigation items now use navigateState and pass their state identifier
-            if (targetState === 'center') {
-                activeLinkSelector = 'a[onclick*="navigateState(\'center\'"]';
-            } else if (targetState === 'left') {
-                activeLinkSelector = 'a[onclick*="navigateState(\'left\'"]';
-            } else if (targetState === 'right') {
-                activeLinkSelector = 'a[onclick*="navigateState(\'right\'"]';
-            } else if (targetState === 'contact') {
-                activeLinkSelector = 'a[onclick*="navigateState(\'contact\'"]';
-            }
-
-            const activeLink = document.querySelector(`.nav-links ${activeLinkSelector}`);
+            // 2. Set the new active link by matching the ID
+            const activeLink = document.getElementById(activeId);
             if (activeLink) {
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
                 activeLink.classList.remove('text-text-light');
@@ -304,12 +397,33 @@
 
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Set 'About' active on page load
-            setState('left'); 
+            // Set 'About' active on page load, as this is the About page.
+            setState('about-link'); 
             
+            // Add click listeners for graceful navigation and state setting to all nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Stop default navigation immediately
+
+                    const targetUrl = this.href;
+                    const targetId = this.id;
+
+                    // Set visual state instantly
+                    setState(targetId); 
+
+                    // Show toast message
+                    showToast(`Navigating to ${this.textContent.trim()}...`);
+
+                    // Perform actual navigation after a small delay for visual feedback
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 300);
+                });
+            });
+
             const carouselItems = document.querySelectorAll('.gallery-item');
             
-            // Add click effect to carousel items
+            // Add click effect and keyboard navigation for accessibility to gallery items
             carouselItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     // Keeping the toast for visual feedback before redirect.
@@ -318,7 +432,6 @@
                 });
             });
             
-            // Add keyboard navigation for accessibility
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
                     const focused = document.activeElement;
