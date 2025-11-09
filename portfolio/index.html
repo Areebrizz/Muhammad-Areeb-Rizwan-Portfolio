@@ -3,45 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product design portfolio - Product design case studies</title>
+    <title>Muhammad Areeb Rizwan - Product Design Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script>
-        // Tailwind Configuration - Merged from original and new blocks
+        // Tailwind Configuration - Using Inter font and defined color palette
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        orbitron: ['Orbitron', 'sans-serif'],
                     },
                     colors: {
-                        // Header Colors
-                        'custom-green': '#4caf50',
+                        'custom-green': '#4caf50', // Brand Green
                         'dark-bg': '#111',
-                        'text-light': '#e0e0e0', // Used in the Header
-
-                        // Body/Portfolio/Footer Colors (Matching for the bulge effect)
-                        'gray-50': '#f9fafb', // Lightest gray for main content bg (Used for Projects & Footer Match)
-                        'gray-100': '#f3f4f6', // Used for Footer bg (Now used for Portfolio Intro)
-                        'content-text': '#333', // Dark text for light sections
-                        'subtle-text': '#757575', // Subtler dark text
-                        'brand-primary': '#4caf50', // Alias for custom-green used in the new footer
-                        
-                        // Cyber Theme Colors
-                        'carbon-medium': '#1e1e1e',
-                        'carbon-dark': '#121212',
-                        'metal-dark': '#444444',
-                        'metal-light': '#666666',
-                        'text-primary': '#ffffff',
-                        'text-secondary': '#aaaaaa',
-                        'accent-purple': '#9945ff',
-                        'accent-blue': '#00b8ff',
+                        'text-light': '#e0e0e0',
+                        'gray-50': '#f9fafb', // Lightest gray for main content bg
+                        'gray-100': '#f3f4f6', 
+                        'content-text': '#333', 
+                        'subtle-text': '#757575', 
+                        'brand-primary': '#4caf50', 
                     }
                 }
             }
@@ -53,91 +38,64 @@
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
         
-        /* Ensures body uses the Inter font throughout and line height for readability */
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
         }
 
-        /* Mobile responsive header height and layout (from new header CSS) */
-        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
-            .main-header {
-                height: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
-            }
-            
-            .nav-content {
-                flex-direction: column;
-                padding: 10px 15px 5px 15px;
-                height: 100%; 
-            }
-
-            .nav-right-wrapper {
-                flex-direction: column; 
-                width: 100%;
-                align-items: center;
-                margin-top: 5px;
-            }
-            
-            .logo {
-                margin-bottom: 5px;
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                margin-bottom: 5px;
-            }
-            
-            .nav-links a {
-                margin: 0 8px;
-                font-size: 0.8rem;
-                padding: 3px 0;
-            }
-
-            .social-icons {
-                justify-content: center;
-                width: 100%;
-            }
+        /* Mobile responsive header layout */
+        @media (max-width: 640px) {
+            .main-header { height: 110px; }
+            .nav-content { flex-direction: column; padding: 10px 15px 5px 15px; height: 100%; }
+            .nav-right-wrapper { flex-direction: column; width: 100%; align-items: center; margin-top: 5px; }
+            .logo { margin-bottom: 5px; font-size: 1.2rem; }
+            .nav-links { display: flex; justify-content: center; width: 100%; margin-bottom: 5px; }
+            .nav-links a { margin: 0 8px; font-size: 0.8rem; padding: 3px 0; }
+            .social-icons { justify-content: center; width: 100%; }
         }
         /* End Header Mobile Styles */
         
-        /* Content Area Padding Adjustment (from new header logic) */
-        .content-area {
-            transition: margin-top 0.3s ease-out;
+        .content-area { transition: margin-top 0.3s ease-out; }
+
+        /* --- Card Hover Effect Enhancement --- */
+        .card-lift {
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid transparent; 
         }
 
-        /* --- Footer Styles (from new footer CSS) --- */
+        .card-lift:hover {
+            box-shadow: 0 10px 25px -5px rgba(76, 175, 80, 0.4), 0 0 0 2px rgba(76, 175, 80, 0.2); 
+            transform: translateY(-6px); 
+            border: 1px solid #4caf50;
+        }
+        
+        /* --- Footer Styles --- */
         .footer-bulge {
             position: relative;
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
-            background-color: #f3f4f6; /* bg-gray-100 */
+            background-color: #f3f4f6;
         }
 
-        /* Pseudo-element to create the curved edge (bulge/cutout) at the top center */
         .footer-bulge::before {
             content: '';
             position: absolute;
-            top: -10px; 
+            top: -30px; 
             left: 50%;
             transform: translateX(-50%);
             width: 200px; 
-            height: 50px; 
-            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50: #f9fafb) */
-            background-color: #f9fafb; 
+            height: 60px; 
+            background-color: #f9fafb; /* Must match main content bg */
             border-radius: 0 0 100px 100px; 
             box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
             z-index: 10;
         }
 
-        /* Arrow button positioning and hover effect */
         .top-button-container {
             position: absolute;
             width: 40px; 
             height: 40px; 
             left: 50%;
-            top: -16px; 
+            top: -20px; 
             transform: translateX(-50%);
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
@@ -148,26 +106,44 @@
             transform: scale(1.1) translateX(-50%); 
         }
         
-        /* New: Glow effect for text links on footer hover/focus */
         .link-glow-hover:hover,
         .link-glow-hover:focus {
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
             transform: translateY(-1px); 
         }
 
-        /* New: Change the SVG arrow color and add glow on hover */
         .top-button-container:hover svg {
-            stroke: #4caf50; /* Change arrow color to brand-primary green */
+            stroke: #4caf50;
             filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
         }
 
-        /* Custom scroll behavior for smooth transition */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         /* End Footer Styles */
-        
-        /* Cyber Carousel Styles */
+
+        /* Custom style for the skill tags */
+        .skill-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            margin-right: 6px;
+            margin-top: 6px;
+            border-radius: 9999px; /* Full rounded corners */
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            line-height: 1;
+        }
+
+        /* 3D Carousel Styles - Adapted to match brand colors */
+        :root {
+            --carbon-dark: #111; /* Darker background */
+            --carbon-medium: #1a1a1a; /* Card background */
+            --metal-dark: #2a2a2a;
+            --metal-light: #4a4a4a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-primary: #4caf50; /* Primary accent - brand green */
+            --accent-secondary: #66bb6a; /* Secondary accent - lighter green */
+        }
+
         .carousel-container {
             width: 100%;
             max-width: 1600px;
@@ -195,13 +171,14 @@
             transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
             cursor: pointer;
             transform-origin: center center;
+            transform: translate(-50%, -50%); 
         }
 
         .carousel-item .card {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #1e1e1e, #121212);
-            border: 2px solid #444444;
+            background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+            border: 2px solid var(--metal-dark);
             border-radius: 20px;
             padding: 30px;
             position: relative;
@@ -240,19 +217,19 @@
             right: 30px;
             font-size: 72px;
             font-weight: 900;
-            color: rgba(153, 69, 255, 0.1);
-            font-family: 'Orbitron', monospace;
+            color: rgba(76, 175, 80, 0.1);
+            font-family: 'Inter', monospace;
         }
 
         .card-image {
             width: 100%;
             height: 200px;
-            background: #121212;
+            background: var(--carbon-dark);
             border-radius: 10px;
             margin-bottom: 20px;
             overflow: hidden;
             position: relative;
-            border: 1px solid #444444;
+            border: 1px solid var(--metal-dark);
         }
 
         .card-image img {
@@ -261,6 +238,7 @@
             object-fit: cover;
             filter: grayscale(50%) contrast(1.2);
             transition: all 0.5s ease;
+            background-color: #333; 
         }
 
         .carousel-item:hover .card-image img {
@@ -274,14 +252,14 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            background: linear-gradient(135deg, #ffffff, #9945ff);
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .card-description {
-            color: #aaaaaa;
+            color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 20px;
             font-size: 14px;
@@ -296,32 +274,32 @@
 
         .tech-badge {
             padding: 5px 12px;
-            background: rgba(153, 69, 255, 0.1);
-            border: 1px solid #9945ff;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--accent-primary);
             border-radius: 20px;
             font-size: 12px;
-            color: #9945ff;
+            color: var(--accent-primary);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .card-cta {
             padding: 12px 30px;
-            background: linear-gradient(135deg, #9945ff, #00b8ff);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             border: none;
             border-radius: 30px;
-            color: #ffffff;
+            color: var(--text-primary);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(153, 69, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
         }
 
         .card-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(153, 69, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
         }
 
         /* Carousel Controls */
@@ -338,10 +316,10 @@
         .carousel-btn {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #1e1e1e, #121212);
-            border: 2px solid #444444;
+            background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+            border: 2px solid var(--metal-dark);
             border-radius: 50%;
-            color: #9945ff;
+            color: var(--accent-primary);
             font-size: 24px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -354,9 +332,9 @@
         }
 
         .carousel-btn:hover {
-            border-color: #9945ff;
+            border-color: var(--accent-primary);
             box-shadow:
-                0 8px 25px rgba(153, 69, 255, 0.3),
+                0 8px 25px rgba(76, 175, 80, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
         }
@@ -374,16 +352,16 @@
         .indicator {
             width: 12px;
             height: 12px;
-            background: #444444;
-            border: 1px solid #666666;
+            background: var(--metal-dark);
+            border: 1px solid var(--metal-light);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .indicator.active {
-            background: linear-gradient(135deg, #9945ff, #00b8ff);
-            box-shadow: 0 0 10px rgba(153, 69, 255, 0.5);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
             transform: scale(1.3);
         }
 
@@ -393,196 +371,353 @@
                 width: 350px;
                 height: 480px;
             }
-
+            
             .carousel-controls {
                 bottom: -60px;
             }
-
+            
             .card-image {
                 height: 170px;
             }
-
+            
             .card-title {
                 font-size: 22px;
             }
-
+            
             .card-description {
                 font-size: 13px;
             }
         }
 
         @media (max-width: 768px) {
-            .carousel-container {
-                height: 550px; /* Reduced height for mobile */
-            }
             .carousel-item {
                 width: 300px;
                 height: 460px;
             }
-
+            
             .carousel-item .card {
                 padding: 20px;
             }
-
+            
             .card-image {
                 height: 150px;
                 margin-bottom: 15px;
             }
-
+            
             .card-title {
                 font-size: 20px;
                 margin-bottom: 12px;
             }
-
+            
             .card-description {
                 font-size: 13px;
                 margin-bottom: 15px;
             }
-
+            
             .card-tech {
                 margin-bottom: 15px;
                 gap: 6px;
             }
-
+            
             .tech-badge {
                 padding: 4px 10px;
                 font-size: 11px;
             }
-
+            
             .card-number {
                 font-size: 50px;
                 top: 15px;
                 right: 20px;
             }
-
+            
             .card-cta {
                 padding: 10px 25px;
                 font-size: 14px;
             }
-
+            
             .carousel-controls {
                 bottom: -60px;
                 gap: 15px;
             }
-
+            
             .carousel-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
             }
-
+            
             .carousel-indicators {
                 top: 20px;
                 gap: 12px;
             }
-
+            
             .indicator {
                 width: 10px;
                 height: 10px;
             }
         }
-        
-        /* Feedback message for project exploration */
-        .feedback-message {
+
+        /* Section Navigation Overlay */
+        .section-nav-overlay {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #9945ff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            z-index: 9999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            animation: fadeInOut 2s ease-in-out forwards;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(20px); }
-            10% { opacity: 1; transform: translateY(0); }
-            90% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(20px); }
+
+        .section-nav-overlay.left {
+            left: 0;
+            background: linear-gradient(to right, rgba(76, 175, 80, 0.1), transparent);
+        }
+
+        .section-nav-overlay.right {
+            right: 0;
+            background: linear-gradient(to left, rgba(76, 175, 80, 0.1), transparent);
+        }
+
+        .section-nav-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav-arrow {
+            width: 60px;
+            height: 60px;
+            background: rgba(76, 175, 80, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(76, 175, 80, 1);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .section-nav-overlay {
+                width: 60px;
+            }
+            
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body class="bg-dark-bg font-sans" id="top">
 
+    <!-- Fixed Navigation Header -->
     <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
             <div class="logo text-white select-none flex items-center">
-                <!-- Fallback placeholder for the logo image -->
                 <img 
                     src="assets/images/favicon.png" 
                     alt="Areeb Rizwan Logo" 
                     class="h-8 w-8 rounded-full shadow-lg"
                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/4caf50/ffffff?text=AR'"
                 >
-                <span class="ml-3 text-xl font-bold tracking-wider hidden md:inline"></span> 
+                <span class="ml-3 text-xl font-bold tracking-wider hidden md:inline">Areeb R.</span> 
             </div>
             
             <div class="nav-right-wrapper flex items-center space-x-16 sm:space-x-4 md:space-x-16">
                 
                 <nav class="nav-links flex">
                     <a href="#main-content" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="#" id="about-link" onclick="navigateState('left', 'about.html', 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="#professional" id="portfolio-link" onclick="setState('right', 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <a href="#" id="blog-link" onclick="navigateState('none', 'blogs.html', 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
                     <a href="#footer" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
                 <div class="social-icons flex items-center space-x-4">
-                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl"><i class="fab fa-twitter"></i></a>
                 </div>
 
             </div>
         </div>
     </header>
 
+    <!-- Section Navigation Overlays -->
+    <div class="section-nav-overlay left" id="left-nav">
+        <div class="nav-arrow" onclick="navigateToPreviousSection()">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+    </div>
+    
+    <div class="section-nav-overlay right" id="right-nav">
+        <div class="nav-arrow" onclick="navigateToNextSection()">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
     <div class="content portfolio-main content-area clearfix pt-[60px] sm:pt-[110px] min-h-screen bg-gray-50 text-content-text" id="main-content">
         
-        <!-- Hero Section -->
-        <section class="bg-gray-100 p-16 lg:p-24 border-b border-gray-200">
+        <!-- SECTION 1: Intro/Hero Section -->
+        <section class="bg-gray-100 p-16 lg:p-24 border-b border-gray-200" id="intro">
             <div class="max-w-[1040px] mx-auto flex flex-wrap items-center -mx-4">
                 <div id="text-main" class="w-full lg:w-5/12 px-4 mb-8 lg:mb-0">
-                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-none text-gray-900">portfolio.</h1>
-                    <p class="text-xl lg:text-2xl text-subtle-text mb-6">Check out some of my latest product design case studies.</p>
-                    <p class="text-lg leading-relaxed text-gray-700">I've worked for startups, agencies, corporations, and government and have led projects to design products used by millions of people.</p>
-                    <a href="#carousel-section" class="mt-6 inline-flex items-center text-brand-primary font-semibold hover:underline transition-colors duration-200">
-                        View Projects <i class="fas fa-arrow-right ml-2"></i>
+                    <p class="text-xl font-medium text-brand-primary mb-3">Product Design Leader</p>
+                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-none text-gray-900">Muhammad Areeb Rizwan.</h1>
+                    <p class="text-xl lg:text-2xl text-subtle-text mb-6">Designing intuitive, high-impact products for global scale.</p>
+                    <p class="text-lg leading-relaxed text-gray-700">I combine **strategic thinking** with **deep UX craft** to solve complex business problems, having led design projects for large corporations, agencies, and my own venture.</p>
+                    <a href="#projects" class="mt-8 inline-flex items-center px-6 py-3 bg-brand-primary text-white font-semibold rounded-lg shadow-lg hover:bg-green-600 transition-all duration-300 card-lift">
+                        Explore My Work <i class="fas fa-arrow-down ml-3"></i>
                     </a>
                 </div>
                 <div id="img-main" class="w-full lg:w-7/12 px-4 text-center">
-                    <!-- Updated placeholder image for better portfolio context -->
-                    <img class="max-w-full h-auto rounded-xl shadow-2xl border-2 border-gray-200" src="https://placehold.co/600x400/374151/ffffff?text=Design+System+Mockup" alt="Product design portfolio image mockup">
+                    <img class="max-w-full h-auto rounded-xl shadow-2xl border-4 border-white mx-auto transform hover:scale-[1.01] transition-transform duration-500" src="https://placehold.co/600x400/4caf50/ffffff?text=Product+Design+Mockup" alt="Product design portfolio image mockup">
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Carousel Section -->
-        <section id="carousel-section" class="bg-gray-50 p-16 lg:p-24">
-            <div class="carousel-container">
-                <div class="carousel" id="carousel">
-                    <!-- Carousel items will be generated by JavaScript -->
+        <!-- SECTION 2: My Projects (3D Carousel) -->
+        <section id="projects" class="py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-[1200px] mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Featured Design Projects</h2>
+                
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel">
+                        <!-- Carousel items will be generated by JavaScript -->
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn">‹</button>
+                        <button class="carousel-btn" id="nextBtn">›</button>
+                    </div>
+                    
+                    <div class="carousel-indicators" id="indicators">
+                        <!-- Indicators will be generated by JavaScript -->
+                    </div>
                 </div>
 
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prevBtn">‹</button>
-                    <button class="carousel-btn" id="nextBtn">›</button>
+                <div class="text-center mt-24">
+                    <button class="px-8 py-4 bg-gray-900 text-white font-bold rounded-lg shadow-xl hover:bg-brand-primary transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                        See All 20+ Projects
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Professional Experience -->
+        <section id="professional" class="py-20 px-8 lg:px-16 bg-gray-100">
+            <div class="max-w-[1200px] mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Professional Experience</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Experience Card 1 -->
+                    <a href="#" class="block bg-white rounded-xl shadow-lg p-6 text-center card-lift group">
+                        <img src="https://placehold.co/100x100/334155/ffffff?text=Comp1" alt="Company 1 Logo" class="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-brand-primary/20 group-hover:border-brand-primary transition-colors">
+                        <h3 class="text-2xl font-semibold mb-1 text-gray-900">Senior Product Designer</h3>
+                        <p class="text-brand-primary font-medium mb-3">Global Tech Corporation</p>
+                        <p class="text-sm text-subtle-text">Led the redesign of internal tools, improving engineer efficiency by 30%.</p>
+                        <span class="mt-4 inline-block text-sm font-semibold text-brand-primary/80 group-hover:text-brand-primary transition-all">
+                            View Case Study <i class="fas fa-long-arrow-alt-right ml-1"></i>
+                        </span>
+                    </a>
+
+                    <!-- Experience Card 2 -->
+                    <a href="#" class="block bg-white rounded-xl shadow-lg p-6 text-center card-lift group">
+                        <img src="https://placehold.co/100x100/5c67f2/ffffff?text=Comp2" alt="Company 2 Logo" class="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-brand-primary/20 group-hover:border-brand-primary transition-colors">
+                        <h3 class="text-2xl font-semibold mb-1 text-gray-900">UX/UI Specialist</h3>
+                        <p class="text-brand-primary font-medium mb-3">Creative Digital Agency</p>
+                        <p class="text-sm text-subtle-text">Managed five concurrent client projects, specializing in mobile-first applications.</p>
+                        <span class="mt-4 inline-block text-sm font-semibold text-brand-primary/80 group-hover:text-brand-primary transition-all">
+                            View Case Study <i class="fas fa-long-arrow-alt-right ml-1"></i>
+                        </span>
+                    </a>
+
+                    <!-- Experience Card 3 -->
+                    <a href="#" class="block bg-white rounded-xl shadow-lg p-6 text-center card-lift group">
+                        <img src="https://placehold.co/100x100/f59e0b/ffffff?text=Comp3" alt="Company 3 Logo" class="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-brand-primary/20 group-hover:border-brand-primary transition-colors">
+                        <h3 class="text-2xl font-semibold mb-1 text-gray-900">Product Designer</h3>
+                        <p class="text-brand-primary font-medium mb-3">Rapid-Growth Startup</p>
+                        <p class="text-sm text-subtle-text">Established the first design system, accelerating feature delivery by 40%.</p>
+                        <span class="mt-4 inline-block text-sm font-semibold text-brand-primary/80 group-hover:text-brand-primary transition-all">
+                            View Case Study <i class="fas fa-long-arrow-alt-right ml-1"></i>
+                        </span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Entrepreneurial Experience -->
+        <section id="entrepreneurial" class="py-20 px-8 lg:px-16 bg-white border-t border-b border-gray-200">
+            <div class="max-w-[1200px] mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Entrepreneurial Journey</h2>
+                
+                <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-2xl overflow-hidden card-lift hover:shadow-brand-primary/30">
+                    <!-- Text/Description Column -->
+                    <div class="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                        <span class="text-sm uppercase tracking-widest text-subtle-text font-bold mb-2">My Startup</span>
+                        <h3 class="text-4xl font-extrabold text-gray-900 mb-4">LaunchPad HQ</h3>
+                        <p class="text-lg text-gray-700 mb-6">**LaunchPad HQ** was my venture into simplified SaaS onboarding. I managed the end-to-end process from **market validation** and **user research** to **product design, branding, and early-stage development**.</p>
+                        <p class="text-base text-subtle-text mb-8">This experience sharpened my ability to make high-stakes product decisions, manage technical constraints, and iterate quickly based on direct customer feedback. It was a masterclass in product ownership.</p>
+                        <a href="#" class="inline-flex items-center text-brand-primary font-semibold hover:underline transition-colors duration-200">
+                            Read the Full Startup Story <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Picture Collage Column -->
+                    <div class="lg:w-1/2 p-4 grid grid-cols-2 gap-3 bg-gray-50">
+                        <img src="https://placehold.co/250x180/4caf50/ffffff?text=Ideation+Sketch" alt="Ideation Sketch" class="w-full h-full object-cover rounded-lg shadow-md">
+                        <img src="https://placehold.co/250x180/00bcd4/ffffff?text=Wireframe+Testing" alt="Wireframe Testing" class="w-full h-full object-cover rounded-lg shadow-md">
+                        <img src="https://placehold.co/250x180/ff9800/ffffff?text=MVP+Launch" alt="MVP Launch" class="w-full h-full object-cover rounded-lg shadow-md">
+                        <img src="https://placehold.co/250x180/795548/ffffff?text=Team+Retreat" alt="Team Photo" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Certificates/Achievements -->
+        <section id="certificates" class="py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-[1040px] mx-auto text-center">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Certificates & Achievements</h2>
+                <p class="text-xl text-subtle-text mb-10 max-w-2xl mx-auto">A selection of my formal education, professional certifications, and recognition.</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
+                        <i class="fas fa-graduation-cap text-3xl text-brand-primary mb-2"></i>
+                        <p class="text-sm font-semibold">Google UX Design Cert.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
+                        <i class="fas fa-medal text-3xl text-brand-primary mb-2"></i>
+                        <p class="text-sm font-semibold">ScrumMaster Certified</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
+                        <i class="fas fa-microchip text-3xl text-brand-primary mb-2"></i>
+                        <p class="text-sm font-semibold">AI in Product Course</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
+                        <i class="fas fa-trophy text-3xl text-brand-primary mb-2"></i>
+                        <p class="text-sm font-semibold">Top Designer Award 2024</p>
+                    </div>
                 </div>
 
-                <div class="carousel-indicators" id="indicators">
-                    <!-- Indicators will be generated by JavaScript -->
-                </div>
+                <button class="px-8 py-4 bg-brand-primary text-white font-bold rounded-lg shadow-xl hover:bg-green-600 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                    View All 15+ Certifications
+                </button>
             </div>
         </section>
         
@@ -602,7 +737,7 @@
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
-                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-brand-primary transition duration-300">
+                    <a href="#" class="link-glow-hover hover:text-brand-primary transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
@@ -610,9 +745,9 @@
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
                         <li><a href="#main-content" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="#" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="#professional" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="#" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
                         <li><a href="#footer" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
@@ -624,23 +759,25 @@
         const navLinks = document.querySelectorAll('.link-item');
         
         /**
-         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
-         * The external navigation is commented out for demonstration.
+         * Triggers the visual transition via setState, then simulates navigation after a delay.
          * @param {string} targetState - 'left', 'center', 'right', or 'none'.
-         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} url - The URL to navigate to (optional).
          * @param {string} linkId - The ID of the link that was clicked.
          */
         function navigateState(targetState, url, linkId) {
             // 1. Update active link state
             setState(targetState, linkId);
 
-            // 2. Wait for the transition to start/complete (300ms) and then navigate
-            if (url && url !== '#blog' && url !== '#contact' && url !== '#main-content' && url !== '#footer') {
+            // 2. Simulate navigation for external links
+            if (url && !url.startsWith('#')) {
                 setTimeout(() => {
                     // For demonstration, we prevent actual navigation in the sandbox
-                    console.log(`Simulating navigation to: ${url}`);
+                    console.log(`Simulating navigation to external page: ${url}`);
                     // window.location.href = url; // Uncomment this for live usage
                 }, 300); // 300ms matches the transition-all duration
+            } else if (url && url.startsWith('#')) {
+                 // For internal anchors like #footer or #projects, just scroll smoothly
+                 document.querySelector(url).scrollIntoView({ behavior: 'smooth' });
             }
         }
 
@@ -663,56 +800,54 @@
                 activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
             
-            // Console log to show state change (e.g., for panel animation)
             console.log(`Application state changed to: ${targetState}`);
         }
 
         // Initialize with 'Portfolio' active on load (matching the page content)
         window.onload = () => {
-             // Use a slight delay to ensure all DOM elements are registered
-             setTimeout(() => {
-                 setState('right', 'portfolio-link');
-                 initCarousel();
-             }, 50);
+            // Use a slight delay to ensure all DOM elements are registered
+            setTimeout(() => {
+                // Since this page is the portfolio, we set the portfolio link as active
+                setState('right', 'portfolio-link');
+            }, 50);
         };
 
-        // Cyber Carousel JavaScript
-        // Placeholder data updated with image URLs that work without local assets
+        // 3D Carousel JavaScript
         const portfolioData = [
             {
                 id: 1,
-                title: '4',
-                description: '4',
-                image: 'https://placehold.co/400x200/5c67f2/ffffff?text=Figma+System',
-                tech: ['Figma', 'Design Tokens', 'Components']
+                title: 'AI Chatbot Redesign',
+                description: 'Modernizing the conversational interface for a banking platform with improved user flows and accessibility.',
+                image: 'https://placehold.co/600x400/1e40af/ffffff?text=AI+Chat+Interface',
+                tech: ['Figma', 'UX Research', 'Prototyping']
             },
             {
                 id: 2,
-                title: '3',
-                description: '3',
-                image: 'https://placehold.co/400x200/9847e3/ffffff?text=UX+Book',
-                tech: ['UI Design', 'Patterns', 'Best Practices']
+                title: 'Enterprise Dashboard',
+                description: 'Creating a unified data visualization platform for executive monitoring with real-time analytics.',
+                image: 'https://placehold.co/600x400/059669/ffffff?text=Dashboard+System',
+                tech: ['Data Viz', 'Design System', 'React']
             },
             {
                 id: 3,
-                title: '3',
-                description: '3',
-                image: 'https://placehold.co/400x200/10b981/ffffff?text=Lean+DS',
-                tech: ['Design Systems', 'Scalability', 'Efficiency']
+                title: 'Travel Booking App',
+                description: 'A complete UX flow for rapid, flexible flight and hotel bookings with intuitive search and filtering.',
+                image: 'https://placehold.co/600x400/eab308/ffffff?text=Mobile+App',
+                tech: ['Mobile UX', 'User Interviews', 'iOS/Android']
             },
             {
                 id: 4,
-                title: '1',
-                description: '1',
-                image: 'https://placehold.co/400x200/3b82f6/ffffff?text=News+Feed',
-                tech: ['UX Research', 'UI Design', 'Prototyping']
+                title: 'Checkout Optimization',
+                description: 'A/B testing and redesign to reduce cart abandonment rates by 15% with streamlined payment flows.',
+                image: 'https://placehold.co/600x400/ef4444/ffffff?text=E-Commerce+Checkout',
+                tech: ['Conversion Rate', 'A/B Testing', 'Analytics']
             },
             {
                 id: 5,
-                title: '2',
-                description: '2',
-                image: 'https://placehold.co/400x200/ef4444/ffffff?text=Travel+Map',
-                tech: ['Map Design', 'User Testing', 'Interaction Design']
+                title: 'Citizen Service Portal',
+                description: 'Simplified the complex application process for a government agency with improved accessibility.',
+                image: 'https://placehold.co/600x400/9333ea/ffffff?text=Government+Portal',
+                tech: ['Accessibility', 'GovTech', 'WCAG']
             }
         ];
 
@@ -720,55 +855,47 @@
         const carousel = document.getElementById('carousel');
         const indicatorsContainer = document.getElementById('indicators');
 
+        /**
+         * Creates the HTML element for a single carousel card.
+         * @param {Object} data - The data object for the card.
+         * @param {number} index - The index of the card.
+         * @returns {HTMLElement} The carousel item div.
+         */
         function createCarouselItem(data, index) {
             const item = document.createElement('div');
             item.className = 'carousel-item';
             item.dataset.index = index;
-
-            // Add a fallback for image loading errors
-            const imageErrorFallback = "this.onerror=null; this.src='https://placehold.co/400x200/555555/ffffff?text=Error';";
-
-            const techBadges = data.tech.map(tech =>
+            
+            // Generate tech badges HTML
+            const techBadges = data.tech.map(tech => 
                 `<span class="tech-badge">${tech}</span>`
             ).join('');
-
+            
             item.innerHTML = `
                 <div class="card">
                     <div class="card-number">0${data.id}</div>
                     <div class="card-image">
-                        <img src="${data.image}" alt="${data.title}" onerror="${imageErrorFallback}">
+                        <img src="${data.image}" alt="${data.title}">
                     </div>
                     <h3 class="card-title">${data.title}</h3>
                     <p class="card-description">${data.description}</p>
                     <div class="card-tech">${techBadges}</div>
-                    <button class="card-cta" onclick="handleExploreClick('${data.title}')">Explore</button>
+                    <button class="card-cta">Explore</button>
                 </div>
             `;
-
+            
             return item;
         }
 
-        function handleExploreClick(title) {
-            // Since we cannot use alert(), this shows a message in the console and potentially in a custom UI element if implemented.
-            console.log(`Exploring project: ${title}`);
-            
-            // Simple visual feedback (non-modal)
-            const feedbackDiv = document.createElement('div');
-            feedbackDiv.className = 'feedback-message';
-            feedbackDiv.textContent = `Exploring "${title}"...`;
-            document.body.appendChild(feedbackDiv);
-            
-            setTimeout(() => {
-                feedbackDiv.remove();
-            }, 2000);
-        }
-
+        /**
+         * Initializes the carousel by creating items and indicators.
+         */
         function initCarousel() {
             // Create carousel items
             portfolioData.forEach((data, index) => {
                 const item = createCarouselItem(data, index);
                 carousel.appendChild(item);
-
+                
                 // Create indicator
                 const indicator = document.createElement('div');
                 indicator.className = 'indicator';
@@ -777,145 +904,145 @@
                 indicator.addEventListener('click', () => goToSlide(index));
                 indicatorsContainer.appendChild(indicator);
             });
-
+            
+            // Initial setup
             updateCarousel();
         }
 
+        /**
+         * Updates the 3D position and rotation of all carousel items based on the current index.
+         */
         function updateCarousel() {
             const items = document.querySelectorAll('.carousel-item');
             const indicators = document.querySelectorAll('.indicator');
             const totalItems = items.length;
             const isMobile = window.innerWidth <= 768;
             const isTablet = window.innerWidth <= 1024;
-
+            
             items.forEach((item, index) => {
-                // Calculate relative position
+                // Calculate relative position to the current slide
                 let offset = index - currentIndex;
-
-                // Wrap around for continuous rotation (handles the 3D 'cylinder' effect)
+                
+                // Wrap around logic for continuous rotation
                 if (offset > totalItems / 2) {
                     offset -= totalItems;
                 } else if (offset < -totalItems / 2) {
                     offset += totalItems;
                 }
-
+                
                 const absOffset = Math.abs(offset);
                 const sign = offset < 0 ? -1 : 1;
-
-                // Reset transform
-                item.style.transform = '';
-                item.style.opacity = '';
-                item.style.zIndex = '';
+                
+                // Reset transform styles
                 item.style.transition = 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)';
-
-                // Adjust spacing based on screen size
-                let spacing1 = 400;
-                let spacing2 = 600;
-                let spacing3 = 750;
+                
+                // Define responsive spacing and rotation values
+                let translateX_1, translateZ_1, rotation_1, scale_1;
+                let translateX_2, translateZ_2, rotation_2, scale_2;
+                let translateX_3, translateZ_3, rotation_3, scale_3;
 
                 if (isMobile) {
-                    spacing1 = 280;
-                    spacing2 = 420;
-                    spacing3 = 550;
+                    translateX_1 = 280; translateZ_1 = -150; rotation_1 = 25; scale_1 = 0.88;
+                    translateX_2 = 420; translateZ_2 = -300; rotation_2 = 35; scale_2 = 0.75;
+                    translateX_3 = 550; translateZ_3 = -400; rotation_3 = 40; scale_3 = 0.65;
                 } else if (isTablet) {
-                    spacing1 = 340;
-                    spacing2 = 520;
-                    spacing3 = 650;
+                    translateX_1 = 340; translateZ_1 = -200; rotation_1 = 30; scale_1 = 0.85;
+                    translateX_2 = 520; translateZ_2 = -350; rotation_2 = 40; scale_2 = 0.70;
+                    translateX_3 = 650; translateZ_3 = -450; rotation_3 = 45; scale_3 = 0.60;
+                } else { // Desktop
+                    translateX_1 = 400; translateZ_1 = -200; rotation_1 = 30; scale_1 = 0.85;
+                    translateX_2 = 600; translateZ_2 = -350; rotation_2 = 40; scale_2 = 0.70;
+                    translateX_3 = 750; translateZ_3 = -450; rotation_3 = 45; scale_3 = 0.60;
                 }
 
                 if (absOffset === 0) {
-                    // Center item
+                    // Center item: Fully visible, scaled 1.0, highest Z-index
                     item.style.transform = 'translate(-50%, -50%) translateZ(0) scale(1)';
                     item.style.opacity = '1';
                     item.style.zIndex = '10';
                 } else if (absOffset === 1) {
-                    // Side items
-                    const translateX = sign * spacing1;
-                    const rotation = isMobile ? 25 : 30;
-                    const scale = isMobile ? 0.88 : 0.85;
-                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(-200px) rotateY(${-sign * rotation}deg) scale(${scale})`;
+                    // Side items (1st layer): Translated horizontally/Z, rotated, slightly smaller
+                    const translateX = sign * translateX_1;
+                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ_1}px) rotateY(${-sign * rotation_1}deg) scale(${scale_1})`;
                     item.style.opacity = '0.8';
                     item.style.zIndex = '5';
                 } else if (absOffset === 2) {
-                    // Further side items
-                    const translateX = sign * spacing2;
-                    const rotation = isMobile ? 35 : 40;
-                    const scale = isMobile ? 0.75 : 0.7;
-                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(-350px) rotateY(${-sign * rotation}deg) scale(${scale})`;
+                    // Further side items (2nd layer): More translation/rotation, smaller, lower opacity
+                    const translateX = sign * translateX_2;
+                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ_2}px) rotateY(${-sign * rotation_2}deg) scale(${scale_2})`;
                     item.style.opacity = '0.5';
                     item.style.zIndex = '3';
-                } else if (absOffset === 3) {
-                    // Even further items
-                    const translateX = sign * spacing3;
-                    const rotation = isMobile ? 40 : 45;
-                    const scale = isMobile ? 0.65 : 0.6;
-                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(-450px) rotateY(${-sign * rotation}deg) scale(${scale})`;
+                } else if (absOffset >= 3) {
+                    // Hidden items (3rd layer and beyond): Further back, low opacity
+                    const translateX = sign * translateX_3;
+                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ_3}px) rotateY(${-sign * rotation_3}deg) scale(${scale_3})`;
                     item.style.opacity = '0.3';
                     item.style.zIndex = '2';
                 } else {
-                    // Hidden items (behind)
-                    item.style.transform = 'translate(-50%, -50%) translateZ(-500px) scale(0.5)';
-                    item.style.opacity = '0';
-                    item.style.zIndex = '1';
+                     // Fallback for items that wrap beyond the display range
+                     item.style.transform = 'translate(-50%, -50%) translateZ(-500px) scale(0.5)';
+                     item.style.opacity = '0';
+                     item.style.zIndex = '1';
                 }
             });
-
+            
             // Update indicators
             indicators.forEach((indicator, index) => {
                 indicator.classList.toggle('active', index === currentIndex);
             });
         }
 
+        /**
+         * Moves the carousel to the next slide (circular).
+         */
         function nextSlide() {
             currentIndex = (currentIndex + 1) % portfolioData.length;
             updateCarousel();
         }
 
+        /**
+         * Moves the carousel to the previous slide (circular).
+         */
         function prevSlide() {
             currentIndex = (currentIndex - 1 + portfolioData.length) % portfolioData.length;
             updateCarousel();
         }
 
+        /**
+         * Navigates directly to a specific slide index.
+         * @param {number} index - The target index.
+         */
         function goToSlide(index) {
             currentIndex = index;
             updateCarousel();
         }
 
-        // Event listeners
+        // Event listeners for carousel
         document.getElementById('nextBtn').addEventListener('click', nextSlide);
         document.getElementById('prevBtn').addEventListener('click', prevSlide);
 
         // Auto-rotate carousel
         let autoRotateInterval = setInterval(nextSlide, 5000);
 
-        // Pause auto-rotation on user interaction
-        const pauseRotation = () => {
-            clearInterval(autoRotateInterval);
-            // Re-start after a brief delay
+        // Pause auto-rotation on mouse hover (to allow interaction)
+        carousel.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
+        carousel.addEventListener('mouseleave', () => {
             autoRotateInterval = setInterval(nextSlide, 5000);
-        };
-
-        document.getElementById('nextBtn').addEventListener('click', pauseRotation);
-        document.getElementById('prevBtn').addEventListener('click', pauseRotation);
-        indicatorsContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('indicator')) {
-                pauseRotation();
-            }
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') {
+                e.preventDefault(); // Prevent page scroll
                 prevSlide();
-                pauseRotation();
             }
             if (e.key === 'ArrowRight') {
+                e.preventDefault(); // Prevent page scroll
                 nextSlide();
-                pauseRotation();
             }
         });
 
-        // Update carousel on window resize
+        // Update carousel on window resize to apply responsive spacing
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -923,6 +1050,90 @@
                 updateCarousel();
             }, 250);
         });
+
+        // Initialize carousel on load
+        document.addEventListener('DOMContentLoaded', initCarousel);
+
+        // Section Navigation Logic
+        const sections = ['intro', 'projects', 'professional', 'entrepreneurial', 'certificates'];
+        let currentSectionIndex = 0;
+
+        // Function to show/hide navigation overlays based on mouse position
+        function handleMouseMove(e) {
+            const windowWidth = window.innerWidth;
+            const mouseX = e.clientX;
+            
+            // Show left nav if mouse is in left 10% of screen
+            if (mouseX < windowWidth * 0.1 && currentSectionIndex > 0) {
+                document.getElementById('left-nav').classList.add('active');
+            } else {
+                document.getElementById('left-nav').classList.remove('active');
+            }
+            
+            // Show right nav if mouse is in right 10% of screen
+            if (mouseX > windowWidth * 0.9 && currentSectionIndex < sections.length - 1) {
+                document.getElementById('right-nav').classList.add('active');
+            } else {
+                document.getElementById('right-nav').classList.remove('active');
+            }
+        }
+
+        // Function to navigate to next section
+        function navigateToNextSection() {
+            if (currentSectionIndex < sections.length - 1) {
+                currentSectionIndex++;
+                document.getElementById(sections[currentSectionIndex]).scrollIntoView({ behavior: 'smooth' });
+                updateNavOverlays();
+            }
+        }
+
+        // Function to navigate to previous section
+        function navigateToPreviousSection() {
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                document.getElementById(sections[currentSectionIndex]).scrollIntoView({ behavior: 'smooth' });
+                updateNavOverlays();
+            }
+        }
+
+        // Function to update navigation overlays based on current section
+        function updateNavOverlays() {
+            // Hide both overlays initially
+            document.getElementById('left-nav').classList.remove('active');
+            document.getElementById('right-nav').classList.remove('active');
+            
+            // Show left nav if not at first section
+            if (currentSectionIndex > 0) {
+                document.getElementById('left-nav').classList.add('active');
+            }
+            
+            // Show right nav if not at last section
+            if (currentSectionIndex < sections.length - 1) {
+                document.getElementById('right-nav').classList.add('active');
+            }
+        }
+
+        // Update current section based on scroll position
+        function updateCurrentSection() {
+            const scrollPosition = window.scrollY + 100; // Offset for header
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i]);
+                if (section.offsetTop <= scrollPosition) {
+                    currentSectionIndex = i;
+                    break;
+                }
+            }
+            
+            updateNavOverlays();
+        }
+
+        // Event listeners for section navigation
+        document.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('scroll', updateCurrentSection);
+        
+        // Initialize section navigation
+        updateCurrentSection();
     </script>
 </body>
 </html>
