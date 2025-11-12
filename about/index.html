@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechanical Engineer Portfolio - About Me</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Social Icons (LinkedIn, GitHub, etc.) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuMKMZ+o+cGYe7q0xK+fK0t2zDUD3bS41rW+3o2h/a/1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuMKMZ+o+cGYe7q0xK+fK0t2zDUD3bS41rW+3o2h/a/1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
     <script>
         // --- Merged Tailwind Configuration ---
         tailwind.config = {
@@ -23,6 +23,7 @@
                         'custom-green': '#4caf50',
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
+                        'text-dark': '#374151', // Added for Mission/Vision text
                     }
                 }
             }
@@ -102,8 +103,8 @@
             transform: translateX(-50%);
             width: 200px; 
             height: 50px; 
-            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50: #f9fafb) */
-            background-color: #f9fafb; 
+            /* IMPORTANT: This background color must match the main content's background color (bg-white: #ffffff or bg-custom-gray) */
+            background-color: #ffffff; /* Adjusted to match the section above it */
             border-radius: 0 0 100px 100px; 
             box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
             z-index: 10;
@@ -126,16 +127,75 @@
             transform: scale(1.1) translateX(-50%); 
         }
 
+        /* --- MISSION/VISION Styles --- */
+
+        /* Flip card container */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            max-width: 450px; 
+            height: 200px; 
+            perspective: 1000px; 
+            margin: 1rem auto; 
+        }
+
+        /* Inner flip card */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s, box-shadow 0.3s; /* Added box-shadow transition */
+            transform-style: preserve-3d;
+            
+            /* UPDATED: Permanent Shadow with subtle custom-green glow */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 
+                        0 0 20px rgba(76, 175, 80, 0.2); /* Soft custom-green glow */
+            border-radius: 12px;
+            border: 1px solid theme('colors.accent-blue');
+        }
+
+        /* Flip card on hover - Applies the intense "Greenglare" */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            /* Intense custom-green glare on hover */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 40px rgba(76, 175, 80, 0.7); 
+        }
+
+        /* Front and back of the flip card */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; 
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 12px;
+            box-sizing: border-box;
+            background-color: theme('colors.white');
+            color: theme('colors.text-dark');
+        }
+
+        /* Back specific styles (Slightly different background) */
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: theme('colors.custom-gray'); 
+        }
+
+        /* --- END MISSION/VISION Styles --- */
     </style>
 </head>
 <body id="top" class="bg-white font-sans text-gray-800">
 
-    <!-- Navigation Header (REPLACED) -->
     <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
-            <!-- Logo/Brand Name -->
             <div class="logo text-white select-none flex items-center">
+                <!-- Using a placeholder for the logo -->
                 <img 
                     src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
                     alt="Areeb Rizwan Logo" 
@@ -144,10 +204,8 @@
                 >
             </div>
             
-            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
             <div class="nav-right-wrapper flex items-center space-x-16">
                 
-                <!-- Nav Links -->
                 <nav class="nav-links flex">
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
@@ -156,7 +214,6 @@
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
-                <!-- Social Icons -->
                 <div class="social-icons flex items-center space-x-4">
                     <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
@@ -175,20 +232,15 @@
         </div>
     </header>
 
-    <!-- Toast Notification Container (Used instead of alert()) -->
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
-        <!-- Toast messages will be injected here -->
     </div>
 
-    <!-- About Section (Uses bg-custom-gray and wraps content in a white card) -->
-    <!-- Reduced bottom padding (pb-24/pb-32 to pb-16/pb-20) to bring the next section up -->
-    <section class="pt-[140px] pb-16 md:pt-[120px] md:pb-20 bg-custom-gray">
+    <!-- About Section -->
+    <section class="pt-[140px] pb-10 md:pt-[120px] md:pb-12 bg-custom-gray">
         <div class="container mx-auto px-4 md:px-8 max-w-7xl">
-            <!-- New White Card Container for UX/Visual Hierarchy -->
             <div class="bg-white p-6 md:p-12 rounded-3xl shadow-2xl">
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     
-                    <!-- Text Content -->
                     <div class="md:w-5/12 mb-12 md:mb-0 md:pr-10">
                         <h1 class="text-6xl sm:text-7xl md:text-7xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
                             about.
@@ -201,9 +253,7 @@
                             When I’m not engineering solutions, I’m exploring new technologies, working on personal innovations, or helping others bring their ideas to life.
                         </p>
                         
-                        <!-- Action Buttons Container (Updated: Buttons are now px-5 py-2.5) -->
                         <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                            <!-- Resume Button (Updated text and size) -->
                             <a href="https://your-google-drive-link-here" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
@@ -211,7 +261,6 @@
                                 My Resume
                             </a>
 
-                            <!-- View My Work button (Updated text to 'My Work' and size) -->
                             <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" 
                                 class="flex-1 text-center px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
                                 My Work
@@ -219,7 +268,6 @@
                         </div>
                     </div>
                     
-                    <!-- Profile Image (No circle, with 3D effect) -->
                     <div class="md:w-7/12 flex justify-center md:justify-end relative group">
                         <img 
                             src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/funky2.png" 
@@ -234,86 +282,146 @@
                         >
                     </div>
                 </div>
-            </div> <!-- End White Card Container -->
+            </div>      
         </div>
     </section>
 
-    <!-- Image Gallery/Carousel -->
-    <!-- Reduced top padding (pt-12/pt-16) to close the gap with the section above -->
-    <section class="pt-12 pb-16 md:pt-16 md:pb-20 bg-white border-t border-gray-100">
+    <!-- Mission / Vision Section -->
+    <section class="bg-white pt-10 pb-10 md:pt-12 md:pb-12">
+        <div class="relative w-full max-w-7xl mx-auto z-10 text-center px-4 md:px-8">
+            <!-- ADDED: New title matching "Life Outside Engineering" style -->
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">What Drives Me</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <!-- UPDATED: Text changed to "My Mission" -->
+                            <h2 class="text-3xl font-bold text-accent-blue">My Mission</h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <!-- UPDATED: Mission statement text -->
+                            <p class="text-md md:text-lg leading-relaxed text-text-dark/90">
+                                Engineering smarter systems and meaningful change, where innovation meets purpose.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <!-- UPDATED: Text changed to "My Vision" -->
+                            <h2 class="text-3xl font-bold text-accent-blue">My Vision</h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <!-- UPDATED: Vision statement text -->
+                            <p class="text-md md:text-lg leading-relaxed text-text-dark/90">
+                                To build a world where technology uplifts people, connects possibilities, and inspires generations to dream bigger.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Life Outside Engineering Section -->
+    <section class="pt-10 pb-16 md:pt-12 md:pb-20 bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-7xl">
                <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
                 
-                <!-- Carousel Item 1: new15.png -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/kid1crop1.jpg" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+15';" >
+                <!-- Gallery Items are now interactive to open the Lightbox -->
+                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/kid1crop1.jpg" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/C4B5FD/ffffff?text=New+Tech';" >
                 </a>
                 
-                <!-- Carousel Item 2: new8.png -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/flagfix1.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=New+8';">
+                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/flagfix1.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/FCA5A5/ffffff?text=Project+Work';">
                 </a>
                 
-                <!-- Carousel Item 3: formal1.png -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/podium.jpg" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+1';">
+                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/podium.jpg" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/7DD3FC/ffffff?text=Formal+Event';">
                 </a>
                 
-                <!-- Carousel Item 4: background 1.png -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/startupaccelerator1.jpg" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+1';">
+                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/startupaccelerator1.jpg" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/F0ABFC/ffffff?text=Background+Exp';">
                 </a>
                 
-                <!-- Carousel Item 5: funky.png -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/naraan.jpg" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Funky+PNG';">
+                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/naraan.jpg" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/A7F3D0/ffffff?text=Innovations';">
                 </a>
                 
-                <!-- Carousel Item 6: funky4.png -->
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/gym1fix3.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Funky+4';">
+                <a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/gym1fix3.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/FDBA74/ffffff?text=Creative+Time';">
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer (REPLACED) -->
+    <!-- Lightbox/Modal Structure -->
+    <div id="lightbox-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[60] flex justify-center items-center p-4" aria-modal="true" role="dialog" tabindex="-1">
+        <div class="bg-white rounded-xl max-w-4xl w-full p-4 md:p-6 shadow-3xl-accent relative">
+            <!-- Close Button -->
+            <button id="lightbox-close" class="absolute top-3 right-3 text-gray-700 hover:text-red-500 text-4xl font-light leading-none transition duration-300" aria-label="Close image viewer">
+                &times;
+            </button>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <!-- Image Area -->
+                <div class="md:w-3/4 flex justify-center items-center">
+                    <img id="lightbox-image" src="" alt="" class="max-h-[80vh] w-full object-contain rounded-lg shadow-xl">
+                </div>
+
+                <!-- Content Area -->
+                <div class="md:w-1/4 flex flex-col justify-between p-2">
+                    <div>
+                        <h3 id="lightbox-caption" class="text-xl font-bold text-gray-900 mb-2 mt-4 md:mt-0"></h3>
+                        <p class="text-sm text-gray-500 mb-4">Click "View Journey" to see related projects and details for this photo.</p>
+                    </div>
+                    
+                    <a id="lightbox-link" href="#" target="_blank" class="w-full text-center mt-4 px-4 py-2 bg-accent-blue text-white font-medium rounded-lg shadow-md hover:bg-gray-900 transition duration-300 transform hover:scale-[1.03]">
+                        <i class="fas fa-route mr-2"></i> View Journey
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Lightbox/Modal Structure -->
+
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
         <div class="max-w-screen-xl mx-auto px-5">
-            <!-- Arrow Container -->
+            
             <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-custom-green transition duration-300">
                     <polyline points="18 15 12 9 6 15"></polyline>
                 </svg>
             </a>
             
-            <!-- Main footer content: Copyright and Nav -->
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 
-                <!-- Left Section (Copyright) -->
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
                 
-                <!-- Right Section (Navigation) -->
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
+                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </footer>
-    <!-- End Footer -->
-
-    <!-- JavaScript for Interaction, Toast, and 3D Effect -->
+    
     <script>
         // Custom Toast Notification implementation (Replaces alert())
         function showToast(message) {
@@ -379,7 +487,7 @@
             element.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)'; // Reset to initial shadow
         }
 
-        // --- Navigation State Logic (Revised for New Header IDs) ---
+        // --- Navigation State Logic ---
         const navLinks = document.querySelectorAll('.nav-links .link-item');
 
         function setState(activeId) {
@@ -397,13 +505,53 @@
             }
         }
         // --- End Navigation State Logic ---
+        
+        // --- Lightbox Logic (New Feature) ---
+        const modal = document.getElementById('lightbox-modal');
+        const modalImage = document.getElementById('lightbox-image');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const modalLink = document.getElementById('lightbox-link');
+        const modalCloseButton = document.getElementById('lightbox-close');
+
+        function openLightbox(imageUrl, caption, linkUrl) {
+            modalImage.src = imageUrl;
+            modalImage.alt = caption;
+            modalCaption.textContent = caption;
+            modalLink.href = linkUrl;
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            modalCloseButton.focus(); // Focus on close button for accessibility
+        }
+
+        function closeLightbox() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            // Re-focus on the element that triggered the modal for better accessibility (omitted for brevity)
+        }
+
+        modalCloseButton.addEventListener('click', closeLightbox);
+        
+        // Close when clicking outside the inner modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeLightbox(); 
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+        // --- End Lightbox Logic ---
 
 
         document.addEventListener('DOMContentLoaded', function() {
             // Set 'About' active on page load, as this is the About page.
             setState('about-link'); 
             
-            // Add click listeners for graceful navigation and state setting to all nav links
+            // Add click listeners for graceful navigation and state setting to main nav links
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault(); // Stop default navigation immediately
@@ -426,33 +574,28 @@
 
             const carouselItems = document.querySelectorAll('.gallery-item');
             
-            // Add click effect and keyboard navigation for accessibility to gallery items
+            // Update gallery item click to open lightbox instead of immediate navigation
             carouselItems.forEach(item => {
                 item.addEventListener('click', function(e) {
-                    // Keeping the toast for visual feedback before redirect.
-                    const caption = this.getAttribute('data-caption') || 'Image';
-                    showToast(`Navigating to ${caption}'s journey page...`);
+                    e.preventDefault(); // STOP default navigation
+                    
+                    const imageUrl = this.querySelector('img').src;
+                    const caption = this.getAttribute('data-caption');
+                    const linkUrl = this.href;
+                    
+                    openLightbox(imageUrl, caption, linkUrl);
                 });
-            });
-            
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                    const focused = document.activeElement;
-                    if (focused && focused.classList.contains('gallery-item')) {
-                        const itemsArray = Array.from(carouselItems);
-                        const currentIndex = itemsArray.indexOf(focused);
-                        let nextIndex;
-                        
-                        if (e.key === 'ArrowRight') {
-                            nextIndex = (currentIndex + 1) % itemsArray.length;
-                        } else {
-                            nextIndex = (currentIndex - 1 + itemsArray.length) % itemsArray.length;
-                        }
-                        
-                        itemsArray[nextIndex].focus();
-                        e.preventDefault(); // Prevent default scroll behavior
+                
+                // Add keyboard handler for 'Enter' key to open modal
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const imageUrl = this.querySelector('img').src;
+                        const caption = this.getAttribute('data-caption');
+                        const linkUrl = this.href;
+                        openLightbox(imageUrl, caption, linkUrl);
                     }
-                }
+                });
             });
         });
     </script>
