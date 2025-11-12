@@ -21,7 +21,7 @@
                         'gray-50': '#f9fafb',
                         'gray-100': '#f3f4f6', 
                         // New colors from the navigation header
-                        'custom-green': '#4caf50', // Primary accent green
+                        'custom-green': '#4caf50', // Primary accent green (Success)
                         'dark-bg': '#111', // Header background
                         'text-light': '#e0e0e0', // Header link text
                         'green-100-light': '#e8f5e9', // Lightest shade for icons
@@ -144,6 +144,25 @@
         .top-button-container:hover {
             transform: scale(1.1) translateX(-50%); 
         }
+
+        /* Custom style for toast animation */
+        .toast-enter {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        .toast-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .toast-exit {
+            opacity: 1;
+        }
+        .toast-exit-active {
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen" id="top">
@@ -168,7 +187,7 @@
                 
                 <!-- Nav Links -->
                 <nav class="nav-links flex">
-                    <!-- UPDATED: All links now use navigateState and pass this.href -->
+                    <!-- Updated links to use navigateState -->
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" onclick="navigateState('center', this.href, 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
@@ -277,30 +296,31 @@
             <div class="lg:w-1/2">
                 <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border border-gray-100">
                     <h2 class="text-3xl font-bold mb-8 text-gray-900">Send Me a Message</h2>
-                    <form class="space-y-6">
+                    <!-- Added id for easy targeting in JavaScript -->
+                    <form id="contact-form" class="space-y-6"> 
                         <!-- Input field styles updated for better focus state -->
                         <div class="relative">
                             <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
                             <!-- Green Accent Applied: focus:ring-amber-200 -> focus:ring-green-200-light, focus:border-amber-500 -> focus:border-custom-green -->
-                            <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200">
+                            <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required>
                         </div>
                         
                         <div class="relative">
                             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
                             <!-- Green Accent Applied -->
-                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200">
+                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required>
                         </div>
                         
                         <div class="relative">
                             <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
                             <!-- Green Accent Applied -->
-                            <input type="text" id="subject" placeholder="Project Inquiry or Collaboration" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200">
+                            <input type="text" id="subject" placeholder="Project Inquiry or Collaboration" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required>
                         </div>
                         
                         <div class="relative">
                             <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Your Message</label>
                             <!-- Green Accent Applied -->
-                            <textarea id="message" rows="5" placeholder="Tell me about your project or idea..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200"></textarea>
+                            <textarea id="message" rows="5" placeholder="Tell me about your project or idea..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-button w-full bg-black text-white py-4 rounded-xl font-bold tracking-wider hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-lg">
@@ -311,6 +331,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Toast Notification Container (Fixed Position) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-[100] max-w-xs space-y-3">
+        <!-- Toasts will be appended here -->
+    </div>
+    <!-- End Toast Notification Container -->
 
     <!-- Sculpted Footer -->
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
@@ -352,32 +378,66 @@
     <script>
         const navLinks = document.querySelectorAll('.link-item');
         
+        // --- Custom Toast Notification implementation (Replaces alert()) ---
         /**
-         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
-         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
-         * @param {string} url - The external URL to navigate to.
-         * @param {string} linkId - The ID of the link that was clicked.
+         * Shows a transient notification message.
+         * @param {string} message - The text content of the toast.
+         * @param {string} type - 'info' (default), 'success', or 'error'.
          */
-        function navigateState(targetState, url, linkId) {
-            // 1. Update active link state visually (before navigation)
-            setState(targetState, linkId);
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
 
-            // 2. Wait for the transition to start/complete (300ms) and then navigate
-            if (url) {
-                setTimeout(() => {
-                    console.log(`Navigating to: ${url}`);
-                    // --- CRITICAL CHANGE: THIS ENABLES NAVIGATION ---
-                    window.location.href = url; 
-                }, 300); // 300ms matches the transition-all duration
+            // Determine styling based on type
+            let baseClasses = "flex items-center p-4 rounded-xl shadow-lg text-white font-semibold transform transition-all duration-300 ease-out toast-enter-active";
+            let iconClass = "fas fa-info-circle";
+            let bgClass = "bg-gray-700";
+
+            if (type === 'success') {
+                iconClass = "fas fa-check-circle";
+                bgClass = "bg-custom-green"; // Use custom-green for success
+            } else if (type === 'error') {
+                iconClass = "fas fa-times-circle";
+                bgClass = "bg-red-500";
             }
+
+            // Create the toast element
+            const toast = document.createElement('div');
+            toast.className = baseClasses + " " + bgClass + " toast-enter";
+            toast.innerHTML = `
+                <i class="${iconClass} mr-3 text-xl"></i>
+                <span>${message}</span>
+            `;
+
+            // Initial state for animation
+            setTimeout(() => {
+                toast.classList.remove('toast-enter');
+            }, 10);
+
+            container.appendChild(toast);
+
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                // Start exit animation
+                toast.classList.add('toast-exit-active');
+                
+                // Remove element after animation
+                toast.addEventListener('transitionend', () => {
+                    if (toast.parentNode === container) {
+                        container.removeChild(toast);
+                    }
+                }, { once: true });
+
+            }, 3000);
         }
+        // --- End Toast Notification implementation ---
+
 
         /**
-         * Refactored state setting for CLICKS/LINKS (Handles only visual state/styling)
-         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
-         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
+         * Sets the visual active state for a given link ID.
+         * @param {string} linkId - The ID of the link that is currently active.
          */
-        function setState(targetState, linkId) {
+        function setState(linkId) {
             // Reset all link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
@@ -390,19 +450,77 @@
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
                 activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
-            
-            // Console log to show state change (e.g., for panel animation)
-            console.log(`Application state changed to: ${targetState}`);
         }
 
-        // Initialize with 'Contact' active on load
-        window.onload = () => {
-            // Use a slight delay to ensure all DOM elements are registered
-            setTimeout(() => {
-                 // Set 'contact-link' as active since this is the contact page
-                setState('none', 'contact-link'); 
-            }, 50);
-        };
+
+        /**
+         * Triggers the visual transition via setState, shows a toast, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'. (For logging/context, not used for visuals here).
+         * @param {string} url - The external URL to navigate to.
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state visually
+            setState(linkId);
+
+            // 2. Show toast notification immediately
+            const linkText = document.getElementById(linkId)?.textContent.trim() || 'another page';
+            showToast(`Navigating to ${linkText}...`);
+            
+            // 3. Wait for the transition/toast to start (300ms) and then navigate
+            if (url) {
+                setTimeout(() => {
+                    console.log(`Redirecting to: ${url}`);
+                    window.location.href = url; 
+                }, 300); // 300ms matches the transition-all duration
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation check
+                    if (!this.checkValidity()) {
+                        showToast('Please fill out all required fields correctly.', 'error');
+                        return;
+                    }
+
+                    // 1. Show processing message (Toast for feedback)
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> SENDING...';
+
+                    showToast('Sending your message, please wait...', 'info');
+                    
+                    // 2. Simulate API call delay (1.5 seconds)
+                    setTimeout(() => {
+                        // In a real application, you would handle the server response here.
+                        
+                        // Simulate success
+                        showToast('Message sent successfully! I will respond soon.', 'success');
+                        
+                        // Reset the form and button state
+                        contactForm.reset();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = '<i class="fas fa-paper-plane mr-3"></i> SEND MESSAGE';
+
+                    }, 1500); // Simulated delay
+                });
+            }
+
+
+            // Initialize with 'Contact' active on load
+            window.onload = () => {
+                // Use a slight delay to ensure all DOM elements are registered
+                setTimeout(() => {
+                    // Set 'contact-link' as active since this is the contact page
+                    setState('contact-link'); 
+                }, 50);
+            };
+        });
     </script>
 </body>
 </html>
