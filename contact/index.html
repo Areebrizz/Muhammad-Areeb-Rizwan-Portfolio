@@ -144,25 +144,6 @@
         .top-button-container:hover {
             transform: scale(1.1) translateX(-50%); 
         }
-
-        /* Custom style for toast animation */
-        .toast-enter {
-            opacity: 0;
-            transform: translateX(100%);
-        }
-        .toast-enter-active {
-            opacity: 1;
-            transform: translateX(0);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .toast-exit {
-            opacity: 1;
-        }
-        .toast-exit-active {
-            opacity: 0;
-            transform: translateX(100%);
-            transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen" id="top">
@@ -332,11 +313,10 @@
         </div>
     </div>
 
-    <!-- Toast Notification Container (Fixed Position) -->
-    <div id="toast-container" class="fixed bottom-5 right-5 z-[100] max-w-xs space-y-3">
-        <!-- Toasts will be appended here -->
+    <!-- Toast Notification Container (Used instead of alert()) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
+        <!-- Toast messages will be injected here -->
     </div>
-    <!-- End Toast Notification Container -->
 
     <!-- Sculpted Footer -->
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
@@ -379,55 +359,31 @@
         const navLinks = document.querySelectorAll('.link-item');
         
         // --- Custom Toast Notification implementation (Replaces alert()) ---
-        /**
-         * Shows a transient notification message.
-         * @param {string} message - The text content of the toast.
-         * @param {string} type - 'info' (default), 'success', or 'error'.
-         */
-        function showToast(message, type = 'info') {
+        function showToast(message) {
             const container = document.getElementById('toast-container');
             if (!container) return;
 
-            // Determine styling based on type
-            let baseClasses = "flex items-center p-4 rounded-xl shadow-lg text-white font-semibold transform transition-all duration-300 ease-out toast-enter-active";
-            let iconClass = "fas fa-info-circle";
-            let bgClass = "bg-gray-700";
-
-            if (type === 'success') {
-                iconClass = "fas fa-check-circle";
-                bgClass = "bg-custom-green"; // Use custom-green for success
-            } else if (type === 'error') {
-                iconClass = "fas fa-times-circle";
-                bgClass = "bg-red-500";
-            }
-
             // Create the toast element
             const toast = document.createElement('div');
-            toast.className = baseClasses + " " + bgClass + " toast-enter";
-            toast.innerHTML = `
-                <i class="${iconClass} mr-3 text-xl"></i>
-                <span>${message}</span>
-            `;
+            toast.className = 'bg-gray-900 text-white px-4 py-3 rounded-xl shadow-xl transition-opacity duration-300 opacity-0 transform translate-y-2 max-w-xs';
+            toast.innerHTML = `<p class="font-medium text-sm">${message}</p>`;
 
-            // Initial state for animation
-            setTimeout(() => {
-                toast.classList.remove('toast-enter');
-            }, 10);
-
+            // Append and show
             container.appendChild(toast);
+            
+            // Trigger transition (must be in the next frame)
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-2');
+                toast.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
 
             // Auto-hide after 3 seconds
             setTimeout(() => {
-                // Start exit animation
-                toast.classList.add('toast-exit-active');
-                
-                // Remove element after animation
-                toast.addEventListener('transitionend', () => {
-                    if (toast.parentNode === container) {
-                        container.removeChild(toast);
-                    }
-                }, { once: true });
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-2');
 
+                // Remove from DOM after transition completes
+                toast.addEventListener('transitionend', () => toast.remove());
             }, 3000);
         }
         // --- End Toast Notification implementation ---
@@ -484,7 +440,7 @@
                     
                     // Basic validation check
                     if (!this.checkValidity()) {
-                        showToast('Please fill out all required fields correctly.', 'error');
+                        showToast('Please fill out all required fields correctly.');
                         return;
                     }
 
@@ -493,14 +449,14 @@
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> SENDING...';
 
-                    showToast('Sending your message, please wait...', 'info');
+                    showToast('Sending your message, please wait...');
                     
                     // 2. Simulate API call delay (1.5 seconds)
                     setTimeout(() => {
                         // In a real application, you would handle the server response here.
                         
                         // Simulate success
-                        showToast('Message sent successfully! I will respond soon.', 'success');
+                        showToast('Message sent successfully! I will respond soon.');
                         
                         // Reset the form and button state
                         contactForm.reset();
