@@ -7,7 +7,7 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDtqc1pS6u5hGhA+nN6Q8Ww14t4c4iT5L44C/O11jF5g5uU/R2o8N/R5b6uP5hGhA+nN6Q8Ww14t4c4iT5L44C/O11jF5g5uU/R2o8N/R5b6uP5q4Q8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Configure Tailwind for custom theme and use of Inter font -->
     <script>
@@ -53,6 +53,65 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom Text Shadow for the green glow effect */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Ensures body uses the Inter font throughout */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
+        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            .main-header {
+                height: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            /* New rule for the right-side wrapper to stack its contents on mobile */
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+            }
+            
+            .logo {
+                margin-bottom: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px; /* Space between nav and social */
+            }
+            
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            .social-icons {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+        
+        /* Add a transition to the main content area for a smoother experience */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
         
         /* Custom scrollbar styling */
         .scrollable-content::-webkit-scrollbar {
@@ -112,7 +171,7 @@
             transform: translateX(2px);
         }
         
-        /* Modal styling - WIDER MODAL */
+        /* Modal styling */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -135,8 +194,8 @@
         .modal-content {
             background: white;
             border-radius: 12px;
-            width: 95%; /* Increased from 90% */
-            max-width: 1000px; /* Increased from 800px */
+            width: 100%;
+            max-width: 1000px;
             max-height: 90vh;
             overflow: hidden;
             transform: scale(0.9);
@@ -190,65 +249,6 @@
             width: var(--grade-percent);
             background-color: rgba(255, 255, 255, 0.2);
             z-index: 0;
-        }
-        
-        /* Custom Text Shadow for the green glow effect */
-        .text-shadow-green {
-            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
-        }
-        
-        /* Ensures body uses the Inter font throughout */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
-        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
-            .main-header {
-                height: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
-            }
-            
-            .nav-content {
-                flex-direction: column;
-                padding: 10px 15px 5px 15px;
-                height: 100%; 
-            }
-
-            /* New rule for the right-side wrapper to stack its contents on mobile */
-            .nav-right-wrapper {
-                flex-direction: column; 
-                width: 100%;
-                align-items: center;
-                margin-top: 5px;
-            }
-            
-            .logo {
-                margin-bottom: 5px;
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                margin-bottom: 5px; /* Space between nav and social */
-            }
-            
-            .nav-links a {
-                margin: 0 8px;
-                font-size: 0.8rem;
-                padding: 3px 0;
-            }
-
-            .social-icons {
-                justify-content: center;
-                width: 100%;
-            }
-        }
-        
-        /* Add a transition to the main content area for a smoother experience */
-        .content-area {
-            transition: margin-top 0.3s ease-out;
         }
         
         /* Custom styles for the footer shadow and bulge effect */
@@ -1018,321 +1018,6 @@
             });
         });
 
-        // Certificate data for all certificate types
-        const certificateData = {
-            // Professional Certifications
-            'six-sigma-black-belt': {
-                title: 'Six Sigma Black Belt',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
-                description: 'Expert-level certification in Six Sigma methodology for process improvement and quality management.'
-            },
-            'six-sigma-green-belt': {
-                title: 'Six Sigma Green Belt',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
-                description: 'Advanced-level certification in Six Sigma methodology for process improvement.'
-            },
-            'six-sigma-yellow-belt': {
-                title: 'Six Sigma Yellow Belt',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
-                description: 'Foundation-level certification in Six Sigma methodology.'
-            },
-            'iso-9001': {
-                title: 'ISO 9001 Quality Management',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
-                description: 'Certification in ISO 9001 Quality Management Systems.'
-            },
-            
-            // Specializations
-            'google-project-management': {
-                title: 'Google Project Management Specialization',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Google Project Management_page-0001.jpg',
-                description: 'Comprehensive project management training covering initiation, planning, execution, and agile methodologies.'
-            },
-            'collaborative-robotics': {
-                title: 'Collaborative Robotics in Industry',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Collaborative Robotics in Industry_page-0001.jpg',
-                description: 'Specialization in collaborative robotics applications in industrial settings.'
-            },
-            'battery-technologies': {
-                title: 'Battery Technologies Specialization',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Technologies_page-0001.jpg',
-                description: 'In-depth study of battery technologies, including lithium-based, Zn and Ni batteries, and applications in electric vehicles.'
-            },
-            'solidworks': {
-                title: 'SOLIDWORKS 3D CAD for Education',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS 3D CAD for Education_page-0001.jpg',
-                description: 'Specialization in SOLIDWORKS 3D CAD software, covering sketching, extrusion, feature patterns, and assemblies.'
-            },
-            'digital-manufacturing': {
-                title: 'Digital Technology in Manufacturing',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Technology in Manufacturing_page-0001.jpg',
-                description: 'Specialization focusing on digital technologies and Industry 4.0 applications in manufacturing.'
-            },
-            'ai-agent-developer': {
-                title: 'AI Agent Developer',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agent Developer_page-0001.jpg',
-                description: 'Specialization in developing AI agents and agentic AI architecture using Python and generative AI.'
-            },
-            'autonomous-vehicle': {
-                title: 'Autonomous Vehicle Engineering',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Vehicle Engineering_page-0001.jpg',
-                description: 'Specialization in autonomous vehicle engineering, covering modeling, simulation, and autonomous systems.'
-            },
-            'systems-engineering': {
-                title: 'Introduction to Systems Engineering',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Introduction to Systems Engineering_page-0001.jpg',
-                description: 'Specialization introducing systems engineering principles and their application to the design process.'
-            },
-            'ai-mechanical': {
-                title: 'AI for Mechanical Engineers',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Mechanical Engineers_page-0001.jpg',
-                description: 'Specialization focusing on AI applications in mechanical engineering, including autonomous vehicles, robotics, and design optimization.'
-            },
-
-            // Individual Courses - Vanderbilt University
-            'prompt-engineering': {
-                title: 'Prompt Engineering for ChatGPT',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Prompt Engineering for ChatGPT_page-0001.jpg',
-                description: 'Course covering advanced prompt engineering techniques for optimizing interactions with ChatGPT and other language models.'
-            },
-            'chatgpt-analysis': {
-                title: 'ChatGPT Advanced Data Analysis',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/ChatGPT Advanced Data Analysis_page-0001.jpg',
-                description: 'Training in using ChatGPT for advanced data analysis and interpretation tasks.'
-            },
-            'openai-gpts': {
-                title: 'OpenAI GPTs: Creating Your Own Custom AI Assistants',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/OpenAI GPTs Creating Your Own Custom AI Assistants_page-0001.jpg',
-                description: 'Course on creating custom AI assistants using OpenAI GPTs platform.'
-            },
-            'trustworthy-ai': {
-                title: 'Trustworthy Generative AI',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Trustworthy Generative AI_page-0001.jpg',
-                description: 'Training in ensuring the reliability and trustworthiness of generative AI systems.'
-            },
-            'ai-agents-python': {
-                title: 'AI Agents and Agentic AI Architecture in Python',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI Architecture in Python_page-0001.jpg',
-                description: 'Course on building AI agents and agentic architectures using Python.'
-            },
-            'ai-agents-genai': {
-                title: 'AI Agents and Agentic AI with Python & Generative AI',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI with Python & Generative AI_page-0001.jpg',
-                description: 'Advanced course on AI agents combining Python programming with generative AI capabilities.'
-            },
-
-            // Individual Courses - Dassault Systèmes
-            'solidworks-foundations': {
-                title: 'SOLIDWORKS Foundations: Sketching and Extrusion',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Foundations Sketching and Extrusion_page-0001.jpg',
-                description: 'Fundamental course covering sketching and extrusion techniques in SOLIDWORKS 3D CAD software.'
-            },
-            'solidworks-patterns': {
-                title: 'SOLIDWORKS Feature Patterns and Sweeps',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Feature Patterns and Sweeps_page-0001.jpg',
-                description: 'Course on advanced feature patterns and sweep operations in SOLIDWORKS.'
-            },
-            'solidworks-advanced': {
-                title: 'SOLIDWORKS Advanced Sketching and Reference Geometry',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Advanced Sketching and Reference Geometry_page-0001.jpg',
-                description: 'Advanced sketching techniques and reference geometry in SOLIDWORKS.'
-            },
-            'solidworks-revolution': {
-                title: 'SOLIDWORKS Revolution and Cut Features',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Revolution and Cut Features_page-0001.jpg',
-                description: 'Course covering revolution and cut features in SOLIDWORKS 3D modeling.'
-            },
-            'solidworks-assemblies': {
-                title: 'SOLIDWORKS Assemblies and Exam Level Part Modeling',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Assemblies and Exam Level Part Modeling_page-0001.jpg',
-                description: 'Advanced course on assemblies and exam-level part modeling in SOLIDWORKS.'
-            },
-
-            // Individual Courses - Google
-            'job-search-ai': {
-                title: 'Accelerate Your Job Search with AI',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Accelerate Your Job Search with AI_page-0001.jpg',
-                description: 'Course on leveraging AI tools to enhance job search strategies and outcomes.'
-            },
-            'project-initiation': {
-                title: 'Project Initiation: Starting a Successful Project',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Initiation Starting a Successful Project_page-0001.jpg',
-                description: 'Course focused on the initial phases of project management, including stakeholder analysis and project charter development.'
-            },
-            'project-planning': {
-                title: 'Project Planning: Putting It All Together',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Planning Putting It All Together_page-0001.jpg',
-                description: 'Comprehensive project planning course covering scheduling, resource allocation, and risk management.'
-            },
-            'project-foundations': {
-                title: 'Foundations of Project Management',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Foundations of Project Management_page-0001.jpg',
-                description: 'The foundational course covering the core concepts, skills, and tools necessary for successful project management.'
-            },
-            'project-capstone': {
-                title: 'Capstone: Applying Project Management in the Real World',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Capstone Applying Project Management in the Real World_page-0001.jpg',
-                description: 'The final course, involving a capstone project where project management principles are applied to simulated real-world scenarios.'
-            },
-            'project-execution': {
-                title: 'Project Execution: Running the Project',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Execution Running the Project_page-0001.jpg',
-                description: 'Focuses on the execution phase, including managing teams, communication, managing conflicts, and stakeholder engagement.'
-            },
-            'agile-pm': {
-                title: 'Agile Project Management',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Agile Project Management_page-0001.jpg',
-                description: 'Specialized course on Agile methodologies, including Scrum, Kanban, and their application in project environments.'
-            },
-
-            // Individual Courses - University of Colorado Boulder
-            'systems-need': {
-                title: 'The Need for Systems Engineering',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/The Need for Systems Engineering_page-0001.jpg',
-                description: 'Fundamental principles and importance of systems engineering in complex project development and management.'
-            },
-            'systems-design': {
-                title: 'Applying Systems Engineering to the Design Process',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Applying Systems Engineering to the Design Process_page-0001.jpg',
-                description: 'Practical application of systems engineering methodologies throughout the product design lifecycle.'
-            },
-            'systems-program': {
-                title: 'Systems Engineering and Program Management',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Systems Engineering and Program Management_page-0001.jpg',
-                description: 'Integration of systems engineering principles with program management for successful project execution.'
-            },
-            'motor-control': {
-                title: 'Motors and Motor Control Circuits',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Motors and Motor Control Circuits_page-0001.jpg',
-                description: 'Comprehensive study of electric motors and control circuit design for industrial applications.'
-            },
-            'sensor-design': {
-                title: 'Sensors and Sensor Circuit Design',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Sensors and Sensor Circuit Design_page-0001.jpg',
-                description: 'Design and implementation of sensor systems and associated electronic circuits for data acquisition.'
-            },
-
-            // Individual Courses - University at Buffalo, SUNY
-            'manufacturing-analysis': {
-                title: 'Advanced Manufacturing Process Analysis',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Advanced Manufacturing Process Analysis_page-0001.jpg',
-                description: 'Advanced techniques for analyzing and optimizing manufacturing processes and systems.'
-            },
-            'mbse': {
-                title: 'MBSE: Model-Based Systems Engineering',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/MBSE Model-Based Systems Engineering_page-0001.jpg',
-                description: 'Model-Based Systems Engineering approaches for complex system design and development.'
-            },
-            'digital-manufacturing': {
-                title: 'Digital Manufacturing & Design',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing & Design_page-0001.jpg',
-                description: 'Digital technologies and methodologies transforming modern manufacturing and design processes.'
-            },
-            'digital-thread-components': {
-                title: 'Digital Thread: Components',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Components_page-0001.jpg',
-                description: 'Fundamental components and architecture of digital thread implementation in manufacturing.'
-            },
-            'digital-thread-implementation': {
-                title: 'Digital Thread: Implementation',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Implementation_page-0001.jpg',
-                description: 'Practical implementation strategies for digital thread in industrial and manufacturing environments.'
-            },
-
-            // Individual Courses - Arizona State University
-            'zn-ni-batteries': {
-                title: 'Zn and Ni Based Batteries',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Zn and Ni Based Batteries_page-0001.jpg',
-                description: 'Comprehensive study of Zinc and Nickel-based battery technologies and their applications.'
-            },
-            'primary-secondary-batteries': {
-                title: 'Primary and Secondary Batteries',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Primary and Secondary Batteries_page-0001.jpg',
-                description: 'Fundamental principles and differences between primary (disposable) and secondary (rechargeable) batteries.'
-            },
-            'batteries-ev': {
-                title: 'Batteries and Electric Vehicles',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Batteries and Electric Vehicles_page-0001.jpg',
-                description: 'Battery technologies and systems specifically designed for electric vehicle applications.'
-            },
-            'battery-manufacturing': {
-                title: 'Battery Comparison, Manufacturing, and Packaging',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Comparison, Manufacturing, and Packaging_page-0001.jpg',
-                description: 'Comparative analysis, manufacturing processes, and packaging solutions for various battery types.'
-            },
-            'lithium-batteries': {
-                title: 'Lithium Based Batteries',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Lithium Based Batteries_page-0001.jpg',
-                description: 'Advanced study of lithium-ion and lithium-polymer battery technologies and their applications.'
-            },
-
-            // Individual Courses - L&T EduTech 
-            'cps-solutions': {
-                title: 'CPS solution for Industries',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/CPS solution for Industries_page-0001.jpg',
-                description: 'Cyber-Physical Systems solutions and their implementation in industrial automation and smart factories.'
-            },
-            'robotics-fundamentals': {
-                title: 'Fundamentals of Robotics & Industrial Automation',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Fundamentals of Robotics & Industrial Automation_page-0001.jpg',
-                description: 'Core principles of robotics systems and their application in industrial automation processes.'
-            },
-            'industry-4': {
-                title: 'Industry 4.0: PLM, Value Chain, and Smart Factory',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industry 4.0 PLM, Value Chain, and Smart Factory_page-0001.jpg',
-                description: 'Industry 4.0 concepts including Product Lifecycle Management, value chain optimization, and smart factory implementation.'
-            },
-            'digital-manufacturing-intro': {
-                title: 'Digital Manufacturing: Introduction and Smart Design',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing Introduction and Smart Design_page-0001.jpg',
-                description: 'Introduction to digital manufacturing technologies and smart design principles for modern production.'
-            },
-            'fluid-systems': {
-                title: 'Industrial Fluid systems & Smart Factory Automation',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industrial Fluid systems & Smart Factory Automation_page-0001.jpg',
-                description: 'Industrial fluid systems integration with smart factory automation and control systems.'
-            },
-            'robotics-engineering': {
-                title: 'Robotics Engineering & Applications',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Robotics Engineering & Applications_page-0001.jpg',
-                description: 'Advanced robotics engineering principles and practical applications in industrial and commercial settings.'
-            },
-
-            // Individual Courses - Università di Napoli Federico II
-            'mechanical-simulation': {
-                title: 'Modelling and simulation of mechanical systems',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Modelling and simulation of mechanical systems_page-0001.jpg',
-                description: 'Computational modeling and simulation techniques for analyzing mechanical systems and components.'
-            },
-            'aerospace-systems': {
-                title: 'Autonomous Aerospace Systems',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Aerospace Systems_page-0001.jpg',
-                description: 'Autonomous systems and control technologies for aerospace applications and unmanned vehicles.'
-            },
-            'big-data-tour': {
-                title: 'A quick tour on Big Data and Business Intelligence',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/A quick tour on Big Data and Business Intelligence_page-0001.jpg',
-                description: 'Overview of big data technologies and business intelligence tools for data-driven decision making.'
-            },
-
-            // Individual Courses - University of Michigan
-            'ai-autonomous': {
-                title: 'AI for Autonomous Vehicles and Robotics',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Autonomous Vehicles and Robotics_page-0001.jpg',
-                description: 'Artificial intelligence applications in autonomous vehicle navigation and robotic systems control.'
-            },
-            'ai-energy': {
-                title: 'AI for Energy and Biomedical Applications',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Energy and Biomedical Applications_page-0001.jpg',
-                description: 'AI technologies applied to energy systems optimization and biomedical engineering solutions.'
-            },
-            'ai-design': {
-                title: 'AI for Design and Optimization',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Design and Optimization_page-0001.jpg',
-                description: 'Artificial intelligence methods for engineering design optimization and performance enhancement.'
-            }
-        };
-
         // Modal functionality
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('certificateModal');
@@ -1342,6 +1027,321 @@
             const modalClose = document.getElementById('modalClose');
             const certificateCards = document.querySelectorAll('.certificate-card');
             
+            // Certificate data for all certificate types
+            const certificateData = {
+                // Professional Certifications
+                'six-sigma-black-belt': {
+                    title: 'Six Sigma Black Belt',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    description: 'Expert-level certification in Six Sigma methodology for process improvement and quality management.'
+                },
+                'six-sigma-green-belt': {
+                    title: 'Six Sigma Green Belt',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    description: 'Advanced-level certification in Six Sigma methodology for process improvement.'
+                },
+                'six-sigma-yellow-belt': {
+                    title: 'Six Sigma Yellow Belt',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    description: 'Foundation-level certification in Six Sigma methodology.'
+                },
+                'iso-9001': {
+                    title: 'ISO 9001 Quality Management',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    description: 'Certification in ISO 9001 Quality Management Systems.'
+                },
+                
+                // Specializations
+                'google-project-management': {
+                    title: 'Google Project Management Specialization',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Google Project Management_page-0001.jpg',
+                    description: 'Comprehensive project management training covering initiation, planning, execution, and agile methodologies.'
+                },
+                'collaborative-robotics': {
+                    title: 'Collaborative Robotics in Industry',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Collaborative Robotics in Industry_page-0001.jpg',
+                    description: 'Specialization in collaborative robotics applications in industrial settings.'
+                },
+                'battery-technologies': {
+                    title: 'Battery Technologies Specialization',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Technologies_page-0001.jpg',
+                    description: 'In-depth study of battery technologies, including lithium-based, Zn and Ni batteries, and applications in electric vehicles.'
+                },
+                'solidworks': {
+                    title: 'SOLIDWORKS 3D CAD for Education',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS 3D CAD for Education_page-0001.jpg',
+                    description: 'Specialization in SOLIDWORKS 3D CAD software, covering sketching, extrusion, feature patterns, and assemblies.'
+                },
+                'digital-manufacturing': {
+                    title: 'Digital Technology in Manufacturing',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Technology in Manufacturing_page-0001.jpg',
+                    description: 'Specialization focusing on digital technologies and Industry 4.0 applications in manufacturing.'
+                },
+                'ai-agent-developer': {
+                    title: 'AI Agent Developer',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agent Developer_page-0001.jpg',
+                    description: 'Specialization in developing AI agents and agentic AI architecture using Python and generative AI.'
+                },
+                'autonomous-vehicle': {
+                    title: 'Autonomous Vehicle Engineering',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Vehicle Engineering_page-0001.jpg',
+                    description: 'Specialization in autonomous vehicle engineering, covering modeling, simulation, and autonomous systems.'
+                },
+                'systems-engineering': {
+                    title: 'Introduction to Systems Engineering',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Introduction to Systems Engineering_page-0001.jpg',
+                    description: 'Specialization introducing systems engineering principles and their application to the design process.'
+                },
+                'ai-mechanical': {
+                    title: 'AI for Mechanical Engineers',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Mechanical Engineers_page-0001.jpg',
+                    description: 'Specialization focusing on AI applications in mechanical engineering, including autonomous vehicles, robotics, and design optimization.'
+                },
+
+                // Individual Courses - Vanderbilt University
+                'prompt-engineering': {
+                    title: 'Prompt Engineering for ChatGPT',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Prompt Engineering for ChatGPT_page-0001.jpg',
+                    description: 'Course covering advanced prompt engineering techniques for optimizing interactions with ChatGPT and other language models.'
+                },
+                'chatgpt-analysis': {
+                    title: 'ChatGPT Advanced Data Analysis',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/ChatGPT Advanced Data Analysis_page-0001.jpg',
+                    description: 'Training in using ChatGPT for advanced data analysis and interpretation tasks.'
+                },
+                'openai-gpts': {
+                    title: 'OpenAI GPTs: Creating Your Own Custom AI Assistants',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/OpenAI GPTs Creating Your Own Custom AI Assistants_page-0001.jpg',
+                    description: 'Course on creating custom AI assistants using OpenAI GPTs platform.'
+                },
+                'trustworthy-ai': {
+                    title: 'Trustworthy Generative AI',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Trustworthy Generative AI_page-0001.jpg',
+                    description: 'Training in ensuring the reliability and trustworthiness of generative AI systems.'
+                },
+                'ai-agents-python': {
+                    title: 'AI Agents and Agentic AI Architecture in Python',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI Architecture in Python_page-0001.jpg',
+                    description: 'Course on building AI agents and agentic architectures using Python.'
+                },
+                'ai-agents-genai': {
+                    title: 'AI Agents and Agentic AI with Python & Generative AI',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI with Python & Generative AI_page-0001.jpg',
+                    description: 'Advanced course on AI agents combining Python programming with generative AI capabilities.'
+                },
+
+                // Individual Courses - Dassault Systèmes
+                'solidworks-foundations': {
+                    title: 'SOLIDWORKS Foundations: Sketching and Extrusion',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Foundations Sketching and Extrusion_page-0001.jpg',
+                    description: 'Fundamental course covering sketching and extrusion techniques in SOLIDWORKS 3D CAD software.'
+                },
+                'solidworks-patterns': {
+                    title: 'SOLIDWORKS Feature Patterns and Sweeps',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Feature Patterns and Sweeps_page-0001.jpg',
+                    description: 'Course on advanced feature patterns and sweep operations in SOLIDWORKS.'
+                },
+                'solidworks-advanced': {
+                    title: 'SOLIDWORKS Advanced Sketching and Reference Geometry',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Advanced Sketching and Reference Geometry_page-0001.jpg',
+                    description: 'Advanced sketching techniques and reference geometry in SOLIDWORKS.'
+                },
+                'solidworks-revolution': {
+                    title: 'SOLIDWORKS Revolution and Cut Features',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Revolution and Cut Features_page-0001.jpg',
+                    description: 'Course covering revolution and cut features in SOLIDWORKS 3D modeling.'
+                },
+                'solidworks-assemblies': {
+                    title: 'SOLIDWORKS Assemblies and Exam Level Part Modeling',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Assemblies and Exam Level Part Modeling_page-0001.jpg',
+                    description: 'Advanced course on assemblies and exam-level part modeling in SOLIDWORKS.'
+                },
+
+                // Individual Courses - Google
+                'job-search-ai': {
+                    title: 'Accelerate Your Job Search with AI',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Accelerate Your Job Search with AI_page-0001.jpg',
+                    description: 'Course on leveraging AI tools to enhance job search strategies and outcomes.'
+                },
+                'project-initiation': {
+                    title: 'Project Initiation: Starting a Successful Project',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Initiation Starting a Successful Project_page-0001.jpg',
+                    description: 'Course focused on the initial phases of project management, including stakeholder analysis and project charter development.'
+                },
+                'project-planning': {
+                    title: 'Project Planning: Putting It All Together',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Planning Putting It All Together_page-0001.jpg',
+                    description: 'Comprehensive project planning course covering scheduling, resource allocation, and risk management.'
+                },
+                'project-foundations': {
+                    title: 'Foundations of Project Management',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Foundations of Project Management_page-0001.jpg',
+                    description: 'The foundational course covering the core concepts, skills, and tools necessary for successful project management.'
+                },
+                'project-capstone': {
+                    title: 'Capstone: Applying Project Management in the Real World',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Capstone Applying Project Management in the Real World_page-0001.jpg',
+                    description: 'The final course, involving a capstone project where project management principles are applied to simulated real-world scenarios.'
+                },
+                'project-execution': {
+                    title: 'Project Execution: Running the Project',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Execution Running the Project_page-0001.jpg',
+                    description: 'Focuses on the execution phase, including managing teams, communication, managing conflicts, and stakeholder engagement.'
+                },
+                'agile-pm': {
+                    title: 'Agile Project Management',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Agile Project Management_page-0001.jpg',
+                    description: 'Specialized course on Agile methodologies, including Scrum, Kanban, and their application in project environments.'
+                },
+
+                // Individual Courses - University of Colorado Boulder
+                'systems-need': {
+                    title: 'The Need for Systems Engineering',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/The Need for Systems Engineering_page-0001.jpg',
+                    description: 'Fundamental principles and importance of systems engineering in complex project development and management.'
+                },
+                'systems-design': {
+                    title: 'Applying Systems Engineering to the Design Process',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Applying Systems Engineering to the Design Process_page-0001.jpg',
+                    description: 'Practical application of systems engineering methodologies throughout the product design lifecycle.'
+                },
+                'systems-program': {
+                    title: 'Systems Engineering and Program Management',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Systems Engineering and Program Management_page-0001.jpg',
+                    description: 'Integration of systems engineering principles with program management for successful project execution.'
+                },
+                'motor-control': {
+                    title: 'Motors and Motor Control Circuits',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Motors and Motor Control Circuits_page-0001.jpg',
+                    description: 'Comprehensive study of electric motors and control circuit design for industrial applications.'
+                },
+                'sensor-design': {
+                    title: 'Sensors and Sensor Circuit Design',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Sensors and Sensor Circuit Design_page-0001.jpg',
+                    description: 'Design and implementation of sensor systems and associated electronic circuits for data acquisition.'
+                },
+
+                // Individual Courses - University at Buffalo, SUNY
+                'manufacturing-analysis': {
+                    title: 'Advanced Manufacturing Process Analysis',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Advanced Manufacturing Process Analysis_page-0001.jpg',
+                    description: 'Advanced techniques for analyzing and optimizing manufacturing processes and systems.'
+                },
+                'mbse': {
+                    title: 'MBSE: Model-Based Systems Engineering',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/MBSE Model-Based Systems Engineering_page-0001.jpg',
+                    description: 'Model-Based Systems Engineering approaches for complex system design and development.'
+                },
+                'digital-manufacturing': {
+                    title: 'Digital Manufacturing & Design',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing & Design_page-0001.jpg',
+                    description: 'Digital technologies and methodologies transforming modern manufacturing and design processes.'
+                },
+                'digital-thread-components': {
+                    title: 'Digital Thread: Components',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Components_page-0001.jpg',
+                    description: 'Fundamental components and architecture of digital thread implementation in manufacturing.'
+                },
+                'digital-thread-implementation': {
+                    title: 'Digital Thread: Implementation',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Implementation_page-0001.jpg',
+                    description: 'Practical implementation strategies for digital thread in industrial and manufacturing environments.'
+                },
+
+                // Individual Courses - Arizona State University
+                'zn-ni-batteries': {
+                    title: 'Zn and Ni Based Batteries',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Zn and Ni Based Batteries_page-0001.jpg',
+                    description: 'Comprehensive study of Zinc and Nickel-based battery technologies and their applications.'
+                },
+                'primary-secondary-batteries': {
+                    title: 'Primary and Secondary Batteries',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Primary and Secondary Batteries_page-0001.jpg',
+                    description: 'Fundamental principles and differences between primary (disposable) and secondary (rechargeable) batteries.'
+                },
+                'batteries-ev': {
+                    title: 'Batteries and Electric Vehicles',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Batteries and Electric Vehicles_page-0001.jpg',
+                    description: 'Battery technologies and systems specifically designed for electric vehicle applications.'
+                },
+                'battery-manufacturing': {
+                    title: 'Battery Comparison, Manufacturing, and Packaging',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Comparison, Manufacturing, and Packaging_page-0001.jpg',
+                    description: 'Comparative analysis, manufacturing processes, and packaging solutions for various battery types.'
+                },
+                'lithium-batteries': {
+                    title: 'Lithium Based Batteries',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Lithium Based Batteries_page-0001.jpg',
+                    description: 'Advanced study of lithium-ion and lithium-polymer battery technologies and their applications.'
+                },
+
+                // Individual Courses - L&T EduTech 
+                'cps-solutions': {
+                    title: 'CPS solution for Industries',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/CPS solution for Industries_page-0001.jpg',
+                    description: 'Cyber-Physical Systems solutions and their implementation in industrial automation and smart factories.'
+                },
+                'robotics-fundamentals': {
+                    title: 'Fundamentals of Robotics & Industrial Automation',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Fundamentals of Robotics & Industrial Automation_page-0001.jpg',
+                    description: 'Core principles of robotics systems and their application in industrial automation processes.'
+                },
+                'industry-4': {
+                    title: 'Industry 4.0: PLM, Value Chain, and Smart Factory',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industry 4.0 PLM, Value Chain, and Smart Factory_page-0001.jpg',
+                    description: 'Industry 4.0 concepts including Product Lifecycle Management, value chain optimization, and smart factory implementation.'
+                },
+                'digital-manufacturing-intro': {
+                    title: 'Digital Manufacturing: Introduction and Smart Design',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing Introduction and Smart Design_page-0001.jpg',
+                    description: 'Introduction to digital manufacturing technologies and smart design principles for modern production.'
+                },
+                'fluid-systems': {
+                    title: 'Industrial Fluid systems & Smart Factory Automation',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industrial Fluid systems & Smart Factory Automation_page-0001.jpg',
+                    description: 'Industrial fluid systems integration with smart factory automation and control systems.'
+                },
+                'robotics-engineering': {
+                    title: 'Robotics Engineering & Applications',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Robotics Engineering & Applications_page-0001.jpg',
+                    description: 'Advanced robotics engineering principles and practical applications in industrial and commercial settings.'
+                },
+
+                // Individual Courses - Università di Napoli Federico II
+                'mechanical-simulation': {
+                    title: 'Modelling and simulation of mechanical systems',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Modelling and simulation of mechanical systems_page-0001.jpg',
+                    description: 'Computational modeling and simulation techniques for analyzing mechanical systems and components.'
+                },
+                'aerospace-systems': {
+                    title: 'Autonomous Aerospace Systems',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Aerospace Systems_page-0001.jpg',
+                    description: 'Autonomous systems and control technologies for aerospace applications and unmanned vehicles.'
+                },
+                'big-data-tour': {
+                    title: 'A quick tour on Big Data and Business Intelligence',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/A quick tour on Big Data and Business Intelligence_page-0001.jpg',
+                    description: 'Overview of big data technologies and business intelligence tools for data-driven decision making.'
+                },
+
+                // Individual Courses - University of Michigan
+                'ai-autonomous': {
+                    title: 'AI for Autonomous Vehicles and Robotics',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Autonomous Vehicles and Robotics_page-0001.jpg',
+                    description: 'Artificial intelligence applications in autonomous vehicle navigation and robotic systems control.'
+                },
+                'ai-energy': {
+                    title: 'AI for Energy and Biomedical Applications',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Energy and Biomedical Applications_page-0001.jpg',
+                    description: 'AI technologies applied to energy systems optimization and biomedical engineering solutions.'
+                },
+                'ai-design': {
+                    title: 'AI for Design and Optimization',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Design and Optimization_page-0001.jpg',
+                    description: 'Artificial intelligence methods for engineering design optimization and performance enhancement.'
+                }
+            };
+
             // Function to close modal
             function closeModal() {
                 modal.classList.remove('active');
@@ -1400,41 +1400,7 @@
                 }
             });
         });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const countElements = document.querySelectorAll('.stat-count');
 
-            // --- Count Up Animation Logic ---
-            const animateCount = (el) => {
-                const target = parseInt(el.getAttribute('data-target'));
-                const suffix = el.getAttribute('data-suffix') || '';
-                const duration = 1500; // 1.5 seconds
-                let startTime;
-
-                const step = (timestamp) => {
-                    if (!startTime) startTime = timestamp;
-                    const progress = timestamp - startTime;
-                    const percentage = Math.min(progress / duration, 1);
-                    // Use Math.round for better visual rounding effect
-                    const value = Math.round(percentage * target);
-
-                    el.textContent = value + suffix;
-
-                    if (percentage < 1) {
-                        window.requestAnimationFrame(step);
-                    }
-                };
-
-                window.requestAnimationFrame(step);
-            };
-
-            // Run the animation immediately when the page structure is loaded
-            countElements.forEach(el => animateCount(el));
-            
-            // --- End Count Up Animation Logic ---
-        });
-        
         // Header navigation functionality
         const navLinks = document.querySelectorAll('.link-item');
         
@@ -1488,6 +1454,40 @@
                 setState('center', 'home-link');
              }, 50);
         };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countElements = document.querySelectorAll('.stat-count');
+
+            // --- Count Up Animation Logic ---
+            const animateCount = (el) => {
+                const target = parseInt(el.getAttribute('data-target'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                const duration = 1500; // 1.5 seconds
+                let startTime;
+
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = timestamp - startTime;
+                    const percentage = Math.min(progress / duration, 1);
+                    // Use Math.round for better visual rounding effect
+                    const value = Math.round(percentage * target);
+
+                    el.textContent = value + suffix;
+
+                    if (percentage < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+
+                window.requestAnimationFrame(step);
+            };
+
+            // Run the animation immediately when the page structure is loaded
+            countElements.forEach(el => animateCount(el));
+            
+            // --- End Count Up Animation Logic ---
+        });
     </script>
 </body>
 </html>
