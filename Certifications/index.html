@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications & Achievements | Professional Portfolio</title>
+    <title>Certifications | M Areeb R</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDtqc1pS6u5hGhA+nN6Q8Ww14t4c4iT5L44C/O11jF5g5uU/R2o8N/R5b6uP5hGhA+nN6Q8Ww14t4c4iT5L44C/O11jF5g5uU/R2o8N/R5b6uP5q4Q8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- Configure Tailwind for custom theme and use of Inter font -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        // Using your provided hex codes
                         'primary-blue': '#1D4ED8',
                         'secondary-gray': '#E5E7EB',
                         'dark-text': '#1F2937',
                         'accent-green': '#10B981',
                         'accent-purple': '#8B5CF6',
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -24,6 +31,7 @@
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-in-out',
                         'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -33,6 +41,10 @@
                         slideUp: {
                             '0%': { transform: 'translateY(20px)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
                         }
                     }
                 }
@@ -56,13 +68,115 @@
         
         /* Custom animations */
         .certificate-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
+            transform: scale(1);
+            opacity: 1;
+            height: auto;
+            margin-bottom: 1.5rem; /* Equivalent to mb-6 */
+            cursor: pointer;
+        }
+        /* Style for hidden cards for smooth filtering */
+        .certificate-card.hidden {
+            opacity: 0;
+            height: 0;
+            margin-bottom: 0;
+            transform: scale(0.95);
+            pointer-events: none;
         }
         .certificate-card:hover {
             transform: translateY(-5px);
         }
         
-        /* Grade indicator styles */
+        /* Filter button styling */
+        .filter-btn {
+            @apply font-medium text-gray-700 transition duration-300;
+        }
+        .filter-btn.active {
+            @apply bg-primary-blue text-white shadow-xl ring-2 ring-primary-blue;
+        }
+        
+        /* Course list item styling */
+        .course-item {
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+        .course-item:hover {
+            background-color: #f0f4ff; /* Subtle hover effect */
+        }
+        .view-icon {
+            opacity: 0.6;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .course-item:hover .view-icon {
+            opacity: 1;
+            transform: translateX(2px);
+        }
+        
+        /* Modal styling - WIDER MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 95%; /* Increased from 90% */
+            max-width: 1000px; /* Increased from 800px */
+            max-height: 90vh;
+            overflow: hidden;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-body {
+            padding: 1.5rem;
+            max-height: calc(90vh - 120px);
+            overflow-y: auto;
+        }
+        .modal-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6B7280;
+            transition: color 0.2s;
+        }
+        .modal-close:hover {
+            color: #374151;
+        }
+        
+        /* Grade indicator styles (keeping for future features) */
         .grade-badge {
             position: relative;
             overflow: hidden;
@@ -77,9 +191,188 @@
             background-color: rgba(255, 255, 255, 0.2);
             z-index: 0;
         }
+        
+        /* Custom Text Shadow for the green glow effect */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Ensures body uses the Inter font throughout */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
+        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            .main-header {
+                height: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            /* New rule for the right-side wrapper to stack its contents on mobile */
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+            }
+            
+            .logo {
+                margin-bottom: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px; /* Space between nav and social */
+            }
+            
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            .social-icons {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+        
+        /* Add a transition to the main content area for a smoother experience */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
+        
+        /* Custom styles for the footer shadow and bulge effect */
+        .footer-bulge {
+            position: relative;
+            /* Mimics the original inset shadow */
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+
+        /* Pseudo-element to create the curved edge (bulge/cutout) at the top center */
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px; /* How far up the curve goes */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Width of the bulge */
+            height: 60px; /* Height of the curve */
+            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50) */
+            background-color: #f9fafb; 
+            border-radius: 0 0 100px 100px; /* Semi-circle border radius at the bottom */
+            /* Subtle shadow to define the cutout edge */
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
+            z-index: 10; /* Below the arrow, but visually 'above' the footer content */
+        }
+
+        /* Arrow button positioning and hover effect */
+        .top-button-container {
+            position: absolute;
+            width: 40px; /* Smaller width for arrow */
+            height: 40px; 
+            left: 50%;
+            /* Centering and positioning the arrow right on the curve */
+            top: -20px; 
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20; /* Ensure arrow is on top of the bulge */
+        }
+
+        .top-button-container:hover {
+            /* Scale up and keep centered */
+            transform: scale(1.1) translateX(-50%); 
+        }
+        
+        /* New: Glow effect for text links on hover/focus */
+        .link-glow-hover:hover,
+        .link-glow-hover:focus {
+            /* Subtle text shadow for the glow effect using the new brand color's RGBA equivalent */
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+            /* Add a small lift effect */
+            transform: translateY(-1px); 
+        }
+
+        /* New: Change the SVG arrow color and add glow on hover */
+        .top-button-container:hover svg {
+            stroke: #4caf50; /* Change arrow color to brand-primary green */
+            /* Drop shadow for glow effect on the SVG stroke */
+            filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
+        }
+
+        /* Custom scroll behavior for smooth transition */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-dark-text min-h-screen">
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen pt-[60px] md:pt-[60px]" id="top">
+    <!-- Header -->
+    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Brand Name - REPLACED WITH FAVICON IMAGE -->
+            <div class="logo text-white select-none flex items-center">
+                <img 
+                    src="assets/images/favicon.png" 
+                    alt="Areeb Rizwan Logo" 
+                    class="h-8 w-8 rounded-full shadow-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/4caf50/ffffff?text=AR'"
+                >
+            </div>
+            
+            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
+            <div class="nav-right-wrapper flex items-center space-x-16"> <!-- Updated space-x-12 to space-x-16 for more separation -->
+                
+                <!-- Nav Links -->
+                <nav class="nav-links flex">
+                    <!-- Home link uses setState('center') to remain on the SPA home page -->
+                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <!-- About link navigates externally -->
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <!-- Portfolio link navigates externally -->
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    
+                    <!-- Blog link (UPDATED) -->
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <!-- Contact link -->
+                    <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                </nav>
+                
+                <!-- Social Icons (New Section) -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
     <!-- Header Section (White Background) -->
     <header class="bg-white text-dark-text py-12 shadow-xl border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,8 +381,8 @@
                 
                 <!-- Left Side: Heading and Subtext (Slightly smaller heading) -->
                 <div class="text-center md:text-left md:w-5/12 mb-8 md:mb-0">
-                    <h1 class="text-6xl sm:text-7xl md:text-6xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900 tracking-tight">
-                        Certifications.
+                    <h1 class="text-6xl sm:text-7xl md:text-7xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
+                        Certificates.
                     </h1>
                     <p class="text-xl max-w-xl mx-auto md:mx-0 text-gray-600">A comprehensive showcase of my completed professional training and continuous learning.</p>
                 </div>
@@ -164,7 +457,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Six Sigma Black Belt -->
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-500 hover:shadow-xl" data-category="professional">
+                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-500 hover:shadow-xl" data-category="professional" data-certificate="six-sigma-black-belt">
                     <div class="flex items-start justify-between mb-4">
                         <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                             <span class="text-green-600 font-bold text-sm">IMC</span>
@@ -177,11 +470,17 @@
                     <p class="text-sm text-gray-600 mb-4">International Management Consultancy (IMC)</p>
                     <div class="flex justify-between items-center text-sm text-gray-500">
                         <span>Expert Level</span>
+                        <span class="text-primary-blue font-medium cursor-pointer hover:underline flex items-center">
+                            View
+                            <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
                     </div>
                 </div>
                 
                 <!-- Six Sigma Green Belt -->
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-400 hover:shadow-xl" data-category="professional">
+                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-400 hover:shadow-xl" data-category="professional" data-certificate="six-sigma-green-belt">
                     <div class="flex items-start justify-between mb-4">
                         <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                             <span class="text-green-600 font-bold text-sm">IMC</span>
@@ -194,11 +493,17 @@
                     <p class="text-sm text-gray-600 mb-4">International Management Consultancy (IMC)</p>
                     <div class="flex justify-between items-center text-sm text-gray-500">
                         <span>Advanced Level</span>
+                        <span class="text-primary-blue font-medium cursor-pointer hover:underline flex items-center">
+                            View
+                            <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
                 <!-- Six Sigma Yellow Belt -->
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-yellow-500 hover:shadow-xl" data-category="professional">
+                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-yellow-500 hover:shadow-xl" data-category="professional" data-certificate="six-sigma-yellow-belt">
                     <div class="flex items-start justify-between mb-4">
                         <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                             <span class="text-yellow-600 font-bold text-sm">IMC</span>
@@ -211,11 +516,17 @@
                     <p class="text-sm text-gray-600 mb-4">International Management Consultancy (IMC)</p>
                     <div class="flex justify-between items-center text-sm text-gray-500">
                         <span>Foundation Level</span>
+                        <span class="text-primary-blue font-medium cursor-pointer hover:underline flex items-center">
+                            View
+                            <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
                 <!-- ISO 9001 -->
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary-blue hover:shadow-xl" data-category="professional">
+                <div class="certificate-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary-blue hover:shadow-xl" data-category="professional" data-certificate="iso-9001">
                     <div class="flex items-start justify-between mb-4">
                         <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                             <span class="text-blue-600 font-bold text-sm">IMC</span>
@@ -228,6 +539,12 @@
                     <p class="text-sm text-gray-600 mb-4">International Management Consultancy (IMC)</p>
                     <div class="flex justify-between items-center text-sm text-gray-500">
                         <span>Quality Management</span>
+                        <span class="text-primary-blue font-medium cursor-pointer hover:underline flex items-center">
+                            View
+                            <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -244,7 +561,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- Specialization Card Template -->
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="google-project-management">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
                             ⭐
@@ -252,14 +569,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">Google Project Management</h3>
                             <p class="text-sm text-gray-500 mb-2">Google</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="collaborative-robotics">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl">
                             ⚙️
@@ -267,14 +592,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">Collaborative Robotics in Industry</h3>
                             <p class="text-sm text-gray-500 mb-2">L&T EduTech</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="battery-technologies">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center text-teal-600 text-xl">
                             🔋
@@ -282,14 +615,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">Battery Technologies</h3>
                             <p class="text-sm text-gray-500 mb-2">Arizona State University</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="solidworks">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600 text-xl">
                             📐
@@ -297,14 +638,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">SOLIDWORKS 3D CAD for Education</h3>
                             <p class="text-sm text-gray-500 mb-2">Dassault Systèmes</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-100 text-sky-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-100 text-sky-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="digital-manufacturing">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 text-xl">
                             🏭
@@ -312,14 +661,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">Digital Technology in Manufacturing</h3>
                             <p class="text-sm text-gray-500 mb-2">L&T EduTech</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="ai-agent-developer">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center text-pink-600 text-xl">
                             🧠
@@ -327,14 +684,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">AI Agent Developer</h3>
                             <p class="text-sm text-gray-500 mb-2">Vanderbilt University</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="autonomous-vehicle">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 text-xl">
                             🚗
@@ -342,14 +707,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">Autonomous Vehicle Engineering</h3>
                             <p class="text-sm text-gray-500 mb-2">Università di Napoli Federico II</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="systems-engineering">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-xl">
                             🏗️
@@ -357,14 +730,22 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">Introduction to Systems Engineering</h3>
                             <p class="text-sm text-gray-500 mb-2">University of Colorado Boulder</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization">
+                <div class="certificate-card bg-white rounded-xl shadow-md p-5 border border-gray-200 hover:shadow-lg" data-category="specialization" data-certificate="ai-mechanical">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center text-rose-600 text-xl">
                             🤖
@@ -372,9 +753,17 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold leading-tight mb-1">AI for Mechanical Engineers</h3>
                             <p class="text-sm text-gray-500 mb-2">University of Michigan</p>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800">
-                                Specialization
-                            </span>
+                            <div class="flex justify-between items-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800">
+                                    Specialization
+                                </span>
+                                <span class="text-primary-blue text-sm font-medium cursor-pointer hover:underline flex items-center">
+                                    View
+                                    <svg class="w-4 h-4 ml-1 view-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -402,78 +791,124 @@
     </main>
     
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2023 Professional Portfolio | All Certificates Verified</p>
-            <p class="text-gray-400 text-sm mt-2">Last Updated: November 2023</p>
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative">
+        <div class="max-w-screen-xl mx-auto px-5">
+
+            <!-- Arrow Container (Integrated into the bulge) -->
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <!-- Modern Arrowhead SVG (The color change and glow is now handled via the custom CSS) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <!-- Main footer content: Copyright and Nav -->
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Left Section (Copyright) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <!-- Updated with new glow class and hover color -->
+                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-brand-primary transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddique
+                    </a>
+                </div>
+                
+                <!-- Right Section (Navigation) -->
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <!-- Updated all links with new glow class and hover color -->
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </footer>
 
+    <!-- Certificate Modal -->
+    <div class="modal-overlay" id="certificateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="text-xl font-bold text-gray-900">Certificate Title</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img id="modalImage" src="" alt="Certificate" class="modal-image mx-auto">
+                    <p id="modalDescription" class="mt-4 text-gray-600"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Data structure for the Coursera Courses
+        // Data structure for the Coursera Courses with certificate IDs
         const courses = [
             // Vanderbilt University (AI/GPT)
-            { title: "Prompt Engineering for ChatGPT", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800" },
-            { title: "ChatGPT Advanced Data Analysis", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800" },
-            { title: "OpenAI GPTs: Creating Your Own Custom AI Assistants", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800" },
-            { title: "Trustworthy Generative AI", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800" },
-            { title: "AI Agents and Agentic AI Architecture in Python", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800" },
-            { title: "AI Agents and Agentic AI with Python & Generative AI", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800" },
+            { title: "Prompt Engineering for ChatGPT", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800", certificateId: "prompt-engineering" },
+            { title: "ChatGPT Advanced Data Analysis", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800", certificateId: "chatgpt-analysis" },
+            { title: "OpenAI GPTs: Creating Your Own Custom AI Assistants", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800", certificateId: "openai-gpts" },
+            { title: "Trustworthy Generative AI", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800", certificateId: "trustworthy-ai" },
+            { title: "AI Agents and Agentic AI Architecture in Python", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800", certificateId: "ai-agents-python" },
+            { title: "AI Agents and Agentic AI with Python & Generative AI", provider: "Vanderbilt University", grade: "100%", tagColor: "bg-purple-100 text-purple-800", certificateId: "ai-agents-genai" },
 
             // Dassault Systèmes (SOLIDWORKS)
-            { title: "SOLIDWORKS Foundations: Sketching and Extrusion", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800" },
-            { title: "SOLIDWORKS Feature Patterns and Sweeps", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800" },
-            { title: "SOLIDWORKS Advanced Sketching and Reference Geometry", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800" },
-            { title: "SOLIDWORKS Revolution and Cut Features", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800" },
-            { title: "SOLIDWORKS Assemblies and Exam Level Part Modeling", provider: "Dassault Systèmes", grade: "82.50%", tagColor: "bg-sky-100 text-sky-800" },
+            { title: "SOLIDWORKS Foundations: Sketching and Extrusion", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800", certificateId: "solidworks-foundations" },
+            { title: "SOLIDWORKS Feature Patterns and Sweeps", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800", certificateId: "solidworks-patterns" },
+            { title: "SOLIDWORKS Advanced Sketching and Reference Geometry", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800", certificateId: "solidworks-advanced" },
+            { title: "SOLIDWORKS Revolution and Cut Features", provider: "Dassault Systèmes", grade: "100%", tagColor: "bg-sky-100 text-sky-800", certificateId: "solidworks-revolution" },
+            { title: "SOLIDWORKS Assemblies and Exam Level Part Modeling", provider: "Dassault Systèmes", grade: "82.50%", tagColor: "bg-sky-100 text-sky-800", certificateId: "solidworks-assemblies" },
 
             // Google (Project Management)
-            { title: "Accelerate Your Job Search with AI", provider: "Google", grade: "100%", tagColor: "bg-red-100 text-red-800" },
-            { title: "Project Initiation: Starting a Successful Project", provider: "Google", grade: "100%", tagColor: "bg-red-100 text-red-800" },
-            { title: "Project Planning: Putting It All Together", provider: "Google", grade: "99%", tagColor: "bg-red-100 text-red-800" },
-            { title: "Foundations of Project Management", provider: "Google", grade: "93.80%", tagColor: "bg-red-100 text-red-800" },
-            { title: "Capstone: Applying Project Management in the Real World", provider: "Google", grade: "92.18%", tagColor: "bg-red-100 text-red-800" },
-            { title: "Project Execution: Running the Project", provider: "Google", grade: "91.62%", tagColor: "bg-red-100 text-red-800" },
-            { title: "Agile Project Management", provider: "Google", grade: "90%", tagColor: "bg-red-100 text-red-800" },
+            { title: "Accelerate Your Job Search with AI", provider: "Google", grade: "100%", tagColor: "bg-red-100 text-red-800", certificateId: "job-search-ai" },
+            { title: "Project Initiation: Starting a Successful Project", provider: "Google", grade: "100%", tagColor: "bg-red-100 text-red-800", certificateId: "project-initiation" },
+            { title: "Project Planning: Putting It All Together", provider: "Google", grade: "99%", tagColor: "bg-red-100 text-red-800", certificateId: "project-planning" },
+            { title: "Foundations of Project Management", provider: "Google", grade: "93.80%", tagColor: "bg-red-100 text-red-800", certificateId: "project-foundations" },
+            { title: "Capstone: Applying Project Management in the Real World", provider: "Google", grade: "92.18%", tagColor: "bg-red-100 text-red-800", certificateId: "project-capstone" },
+            { title: "Project Execution: Running the Project", provider: "Google", grade: "91.62%", tagColor: "bg-red-100 text-red-800", certificateId: "project-execution" },
+            { title: "Agile Project Management", provider: "Google", grade: "90%", tagColor: "bg-red-100 text-red-800", certificateId: "agile-pm" },
 
             // University of Colorado Boulder (Systems/Circuits)
-            { title: "The Need for Systems Engineering", provider: "University of Colorado Boulder", grade: "100%", tagColor: "bg-orange-100 text-orange-800" },
-            { title: "Applying Systems Engineering to the Design Process", provider: "University of Colorado Boulder", grade: "95.20%", tagColor: "bg-orange-100 text-orange-800" },
-            { title: "Systems Engineering and Program Management", provider: "University of Colorado Boulder", grade: "91.19%", tagColor: "bg-orange-100 text-orange-800" },
-            { title: "Motors and Motor Control Circuits", provider: "University of Colorado Boulder", grade: "90.62%", tagColor: "bg-orange-100 text-orange-800" },
-            { title: "Sensors and Sensor Circuit Design", provider: "University of Colorado Boulder", grade: "82.80%", tagColor: "bg-orange-100 text-orange-800" },
+            { title: "The Need for Systems Engineering", provider: "University of Colorado Boulder", grade: "100%", tagColor: "bg-orange-100 text-orange-800", certificateId: "systems-need" },
+            { title: "Applying Systems Engineering to the Design Process", provider: "University of Colorado Boulder", grade: "95.20%", tagColor: "bg-orange-100 text-orange-800", certificateId: "systems-design" },
+            { title: "Systems Engineering and Program Management", provider: "University of Colorado Boulder", grade: "91.19%", tagColor: "bg-orange-100 text-orange-800", certificateId: "systems-program" },
+            { title: "Motors and Motor Control Circuits", provider: "University of Colorado Boulder", grade: "90.62%", tagColor: "bg-orange-100 text-orange-800", certificateId: "motor-control" },
+            { title: "Sensors and Sensor Circuit Design", provider: "University of Colorado Boulder", grade: "82.80%", tagColor: "bg-orange-100 text-orange-800", certificateId: "sensor-design" },
 
             // University at Buffalo (Digital Manufacturing)
-            { title: "Advanced Manufacturing Process Analysis", provider: "University at Buffalo, SUNY", grade: "98%", tagColor: "bg-yellow-100 text-yellow-800" },
-            { title: "MBSE: Model-Based Systems Engineering", provider: "University at Buffalo, SUNY", grade: "94.73%", tagColor: "bg-yellow-100 text-yellow-800" },
-            { title: "Digital Manufacturing & Design", provider: "University at Buffalo, SUNY", grade: "93.75%", tagColor: "bg-yellow-100 text-yellow-800" },
-            { title: "Digital Thread: Components", provider: "University at Buffalo, SUNY", grade: "91.03%", tagColor: "bg-yellow-100 text-yellow-800" },
-            { title: "Digital Thread: Implementation", provider: "University at Buffalo, SUNY", grade: "86.82%", tagColor: "bg-yellow-100 text-yellow-800" },
+            { title: "Advanced Manufacturing Process Analysis", provider: "University at Buffalo, SUNY", grade: "98%", tagColor: "bg-yellow-100 text-yellow-800", certificateId: "manufacturing-analysis" },
+            { title: "MBSE: Model-Based Systems Engineering", provider: "University at Buffalo, SUNY", grade: "94.73%", tagColor: "bg-yellow-100 text-yellow-800", certificateId: "mbse" },
+            { title: "Digital Manufacturing & Design", provider: "University at Buffalo, SUNY", grade: "93.75%", tagColor: "bg-yellow-100 text-yellow-800", certificateId: "digital-manufacturing" },
+            { title: "Digital Thread: Components", provider: "University at Buffalo, SUNY", grade: "91.03%", tagColor: "bg-yellow-100 text-yellow-800", certificateId: "digital-thread-components" },
+            { title: "Digital Thread: Implementation", provider: "University at Buffalo, SUNY", grade: "86.82%", tagColor: "bg-yellow-100 text-yellow-800", certificateId: "digital-thread-implementation" },
 
             // Arizona State University (Batteries)
-            { title: "Zn and Ni Based Batteries", provider: "Arizona State University", grade: "100%", tagColor: "bg-teal-100 text-teal-800" },
-            { title: "Primary and Secondary Batteries", provider: "Arizona State University", grade: "94%", tagColor: "bg-teal-100 text-teal-800" },
-            { title: "Batteries and Electric Vehicles", provider: "Arizona State University", grade: "93.59%", tagColor: "bg-teal-100 text-teal-800" },
-            { title: "Battery Comparison, Manufacturing, and Packaging", provider: "Arizona State University", grade: "92%", tagColor: "bg-teal-100 text-teal-800" },
-            { title: "Lithium Based Batteries", provider: "Arizona State University", grade: "91.25%", tagColor: "bg-teal-100 text-teal-800" },
+            { title: "Zn and Ni Based Batteries", provider: "Arizona State University", grade: "100%", tagColor: "bg-teal-100 text-teal-800", certificateId: "zn-ni-batteries" },
+            { title: "Primary and Secondary Batteries", provider: "Arizona State University", grade: "94%", tagColor: "bg-teal-100 text-teal-800", certificateId: "primary-secondary-batteries" },
+            { title: "Batteries and Electric Vehicles", provider: "Arizona State University", grade: "93.59%", tagColor: "bg-teal-100 text-teal-800", certificateId: "batteries-ev" },
+            { title: "Battery Comparison, Manufacturing, and Packaging", provider: "Arizona State University", grade: "92%", tagColor: "bg-teal-100 text-teal-800", certificateId: "battery-manufacturing" },
+            { title: "Lithium Based Batteries", provider: "Arizona State University", grade: "91.25%", tagColor: "bg-teal-100 text-teal-800", certificateId: "lithium-batteries" },
 
             // L&T EduTech (Robotics/Industry 4.0)
-            { title: "CPS solution for Industries", provider: "L&T EduTech", grade: "95%", tagColor: "bg-green-100 text-green-800" },
-            { title: "Fundamentals of Robotics & Industrial Automation", provider: "L&T EduTech", grade: "89.99%", tagColor: "bg-green-100 text-green-800" },
-            { title: "Industry 4.0: PLM, Value Chain, and Smart Factory", provider: "L&T EduTech", grade: "87.97%", tagColor: "bg-green-100 text-green-800" },
-            { title: "Digital Manufacturing: Introduction and Smart Design", provider: "L&T EduTech", grade: "85.66%", tagColor: "bg-green-100 text-green-800" },
-            { title: "Industrial Fluid systems & Smart Factory Automation", provider: "L&T EduTech", grade: "85.34%", tagColor: "bg-green-100 text-green-800" },
-            { title: "Robotics Engineering & Applications", provider: "L&T EduTech", grade: "81.75%", tagColor: "bg-green-100 text-green-800" },
+            { title: "CPS solution for Industries", provider: "L&T EduTech", grade: "95%", tagColor: "bg-green-100 text-green-800", certificateId: "cps-solutions" },
+            { title: "Fundamentals of Robotics & Industrial Automation", provider: "L&T EduTech", grade: "89.99%", tagColor: "bg-green-100 text-green-800", certificateId: "robotics-fundamentals" },
+            { title: "Industry 4.0: PLM, Value Chain, and Smart Factory", provider: "L&T EduTech", grade: "87.97%", tagColor: "bg-green-100 text-green-800", certificateId: "industry-4" },
+            { title: "Digital Manufacturing: Introduction and Smart Design", provider: "L&T EduTech", grade: "85.66%", tagColor: "bg-green-100 text-green-800", certificateId: "digital-manufacturing-intro" },
+            { title: "Industrial Fluid systems & Smart Factory Automation", provider: "L&T EduTech", grade: "85.34%", tagColor: "bg-green-100 text-green-800", certificateId: "fluid-systems" },
+            { title: "Robotics Engineering & Applications", provider: "L&T EduTech", grade: "81.75%", tagColor: "bg-green-100 text-green-800", certificateId: "robotics-engineering" },
 
             // Università di Napoli Federico II (Automotive/Simulation)
-            { title: "Modelling and simulation of mechanical systems", provider: "Università di Napoli Federico II", grade: "100%", tagColor: "bg-indigo-100 text-indigo-800" },
-            { title: "Autonomous Aerospace Systems", provider: "Università di Napoli Federico II", grade: "90%", tagColor: "bg-indigo-100 text-indigo-800" },
-            { title: "A quick tour on Big Data and Business Intelligence", provider: "Università di Napoli Federico II", grade: "89.72%", tagColor: "bg-indigo-100 text-indigo-800" },
+            { title: "Modelling and simulation of mechanical systems", provider: "Università di Napoli Federico II", grade: "100%", tagColor: "bg-indigo-100 text-indigo-800", certificateId: "mechanical-simulation" },
+            { title: "Autonomous Aerospace Systems", provider: "Università di Napoli Federico II", grade: "90%", tagColor: "bg-indigo-100 text-indigo-800", certificateId: "aerospace-systems" },
+            { title: "A quick tour on Big Data and Business Intelligence", provider: "Università di Napoli Federico II", grade: "89.72%", tagColor: "bg-indigo-100 text-indigo-800", certificateId: "big-data-tour" },
 
             // University of Michigan (AI)
-            { title: "AI for Autonomous Vehicles and Robotics", provider: "University of Michigan", grade: "100%", tagColor: "bg-rose-100 text-rose-800" },
-            { title: "AI for Energy and Biomedical Applications", provider: "University of Michigan", grade: "98.21%", tagColor: "bg-rose-100 text-rose-800" },
-            { title: "AI for Design and Optimization", provider: "University of Michigan", grade: "95.55%", tagColor: "bg-rose-100 text-rose-800" },
+            { title: "AI for Autonomous Vehicles and Robotics", provider: "University of Michigan", grade: "100%", tagColor: "bg-rose-100 text-rose-800", certificateId: "ai-autonomous" },
+            { title: "AI for Energy and Biomedical Applications", provider: "University of Michigan", grade: "98.21%", tagColor: "bg-rose-100 text-rose-800", certificateId: "ai-energy" },
+            { title: "AI for Design and Optimization", provider: "University of Michigan", grade: "95.55%", tagColor: "bg-rose-100 text-rose-800", certificateId: "ai-design" },
         ];
 
         // Group courses by provider for clean display
@@ -488,53 +923,69 @@
 
         const courseListContainer = document.getElementById('course-list');
         
-        // Loop through the grouped courses and generate HTML
-        for (const [provider, courseArray] of Object.entries(groupedCourses)) {
-            // Determine the tag color for the provider group (use the first course's color)
-            const providerTagColor = courseArray[0].tagColor;
+        // Function to render the course list
+        function renderCourseList() {
+            courseListContainer.innerHTML = ''; // Clear existing content
 
-            // Create a group header
-            const groupHeader = `
-                <div class="pt-4 pb-2">
-                    <span class="inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium ${providerTagColor}">
-                        ${provider} (${courseArray.length} Courses)
-                    </span>
-                </div>
-            `;
-            courseListContainer.innerHTML += groupHeader;
+            // Loop through the grouped courses and generate HTML
+            for (const [provider, courseArray] of Object.entries(groupedCourses)) {
+                // Determine the tag color for the provider group (use the first course's color)
+                const providerTagColor = courseArray[0].tagColor;
 
-            // Create list items for each course in the group
-            courseArray.forEach(course => {
-                // Determine grade badge color based on percentage
-                const gradePercent = parseInt(course.grade);
-                let gradeColor = "bg-green-100 text-green-800";
-                if (gradePercent < 85) {
-                    gradeColor = "bg-yellow-100 text-yellow-800";
-                } else if (gradePercent < 90) {
-                    gradeColor = "bg-blue-100 text-blue-800";
-                }
-                
-                const listItem = `
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-3 px-2 hover:bg-secondary-gray/50 rounded-lg transition">
-                        <p class="text-base font-medium text-dark-text leading-snug">
-                            ${course.title}
-                        </p>
-                        <div class="mt-1 sm:mt-0 flex items-center space-x-2 text-sm text-gray-700">
-                            <span class="font-semibold text-primary-blue">Grade:</span>
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${gradeColor}">
-                                ${course.grade}
-                            </span>
-                        </div>
+                // Create a group header
+                const groupHeader = `
+                    <div class="pt-4 pb-2">
+                        <span class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${providerTagColor} shadow-md">
+                            ${provider} (${courseArray.length} Courses)
+                        </span>
                     </div>
                 `;
-                courseListContainer.innerHTML += listItem;
-            });
+                courseListContainer.innerHTML += groupHeader;
+
+                // Create list items for each course in the group
+                courseArray.forEach(course => {
+                    // Determine grade badge color based on percentage
+                    const gradePercent = parseFloat(course.grade);
+                    let gradeColor = "bg-green-100 text-green-800"; // 95%+
+                    if (gradePercent < 95 && gradePercent >= 90) {
+                        gradeColor = "bg-blue-100 text-blue-800"; // 90% - 94.9%
+                    } else if (gradePercent < 90 && gradePercent >= 85) {
+                        gradeColor = "bg-yellow-100 text-yellow-800"; // 85% - 89.9%
+                    } else if (gradePercent < 85) {
+                        gradeColor = "bg-red-100 text-red-800"; // Below 85%
+                    }
+                    
+                    const listItem = `
+                        <div class="course-item flex flex-col sm:flex-row justify-between items-start sm:items-center py-3 px-2 rounded-lg transition" data-certificate="${course.certificateId}">
+                            <p class="text-base font-medium text-dark-text leading-snug flex-1 pr-4">
+                                ${course.title}
+                            </p>
+                            <div class="mt-1 sm:mt-0 flex items-center space-x-3 text-sm text-gray-700 whitespace-nowrap">
+                                <span class="font-semibold text-primary-blue hidden sm:inline">Grade:</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${gradeColor}">
+                                    ${course.grade}
+                                </span>
+                                <span class="text-primary-blue flex items-center view-icon">
+                                    View
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    courseListContainer.innerHTML += listItem;
+                });
+            }
         }
 
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
+            renderCourseList(); // Render the course list
+
             const filterButtons = document.querySelectorAll('.filter-btn');
             const categorySections = document.querySelectorAll('.category-section');
+            const certificateCards = document.querySelectorAll('.certificate-card');
             
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -546,6 +997,7 @@
                     
                     const filterValue = this.getAttribute('data-filter');
                     
+                    // Filter sections
                     categorySections.forEach(section => {
                         if (filterValue === 'all' || section.getAttribute('data-category') === filterValue) {
                             section.style.display = 'block';
@@ -553,9 +1005,489 @@
                             section.style.display = 'none';
                         }
                     });
+                    
+                    // Filter individual cards within sections
+                    certificateCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
                 });
             });
         });
+
+        // Certificate data for all certificate types
+        const certificateData = {
+            // Professional Certifications
+            'six-sigma-black-belt': {
+                title: 'Six Sigma Black Belt',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                description: 'Expert-level certification in Six Sigma methodology for process improvement and quality management.'
+            },
+            'six-sigma-green-belt': {
+                title: 'Six Sigma Green Belt',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                description: 'Advanced-level certification in Six Sigma methodology for process improvement.'
+            },
+            'six-sigma-yellow-belt': {
+                title: 'Six Sigma Yellow Belt',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                description: 'Foundation-level certification in Six Sigma methodology.'
+            },
+            'iso-9001': {
+                title: 'ISO 9001 Quality Management',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                description: 'Certification in ISO 9001 Quality Management Systems.'
+            },
+            
+            // Specializations
+            'google-project-management': {
+                title: 'Google Project Management Specialization',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Google Project Management_page-0001.jpg',
+                description: 'Comprehensive project management training covering initiation, planning, execution, and agile methodologies.'
+            },
+            'collaborative-robotics': {
+                title: 'Collaborative Robotics in Industry',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Collaborative Robotics in Industry_page-0001.jpg',
+                description: 'Specialization in collaborative robotics applications in industrial settings.'
+            },
+            'battery-technologies': {
+                title: 'Battery Technologies Specialization',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Technologies_page-0001.jpg',
+                description: 'In-depth study of battery technologies, including lithium-based, Zn and Ni batteries, and applications in electric vehicles.'
+            },
+            'solidworks': {
+                title: 'SOLIDWORKS 3D CAD for Education',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS 3D CAD for Education_page-0001.jpg',
+                description: 'Specialization in SOLIDWORKS 3D CAD software, covering sketching, extrusion, feature patterns, and assemblies.'
+            },
+            'digital-manufacturing': {
+                title: 'Digital Technology in Manufacturing',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Technology in Manufacturing_page-0001.jpg',
+                description: 'Specialization focusing on digital technologies and Industry 4.0 applications in manufacturing.'
+            },
+            'ai-agent-developer': {
+                title: 'AI Agent Developer',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agent Developer_page-0001.jpg',
+                description: 'Specialization in developing AI agents and agentic AI architecture using Python and generative AI.'
+            },
+            'autonomous-vehicle': {
+                title: 'Autonomous Vehicle Engineering',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Vehicle Engineering_page-0001.jpg',
+                description: 'Specialization in autonomous vehicle engineering, covering modeling, simulation, and autonomous systems.'
+            },
+            'systems-engineering': {
+                title: 'Introduction to Systems Engineering',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Introduction to Systems Engineering_page-0001.jpg',
+                description: 'Specialization introducing systems engineering principles and their application to the design process.'
+            },
+            'ai-mechanical': {
+                title: 'AI for Mechanical Engineers',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Mechanical Engineers_page-0001.jpg',
+                description: 'Specialization focusing on AI applications in mechanical engineering, including autonomous vehicles, robotics, and design optimization.'
+            },
+
+            // Individual Courses - Vanderbilt University
+            'prompt-engineering': {
+                title: 'Prompt Engineering for ChatGPT',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Prompt Engineering for ChatGPT_page-0001.jpg',
+                description: 'Course covering advanced prompt engineering techniques for optimizing interactions with ChatGPT and other language models.'
+            },
+            'chatgpt-analysis': {
+                title: 'ChatGPT Advanced Data Analysis',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/ChatGPT Advanced Data Analysis_page-0001.jpg',
+                description: 'Training in using ChatGPT for advanced data analysis and interpretation tasks.'
+            },
+            'openai-gpts': {
+                title: 'OpenAI GPTs: Creating Your Own Custom AI Assistants',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/OpenAI GPTs Creating Your Own Custom AI Assistants_page-0001.jpg',
+                description: 'Course on creating custom AI assistants using OpenAI GPTs platform.'
+            },
+            'trustworthy-ai': {
+                title: 'Trustworthy Generative AI',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Trustworthy Generative AI_page-0001.jpg',
+                description: 'Training in ensuring the reliability and trustworthiness of generative AI systems.'
+            },
+            'ai-agents-python': {
+                title: 'AI Agents and Agentic AI Architecture in Python',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI Architecture in Python_page-0001.jpg',
+                description: 'Course on building AI agents and agentic architectures using Python.'
+            },
+            'ai-agents-genai': {
+                title: 'AI Agents and Agentic AI with Python & Generative AI',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI with Python & Generative AI_page-0001.jpg',
+                description: 'Advanced course on AI agents combining Python programming with generative AI capabilities.'
+            },
+
+            // Individual Courses - Dassault Systèmes
+            'solidworks-foundations': {
+                title: 'SOLIDWORKS Foundations: Sketching and Extrusion',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Foundations Sketching and Extrusion_page-0001.jpg',
+                description: 'Fundamental course covering sketching and extrusion techniques in SOLIDWORKS 3D CAD software.'
+            },
+            'solidworks-patterns': {
+                title: 'SOLIDWORKS Feature Patterns and Sweeps',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Feature Patterns and Sweeps_page-0001.jpg',
+                description: 'Course on advanced feature patterns and sweep operations in SOLIDWORKS.'
+            },
+            'solidworks-advanced': {
+                title: 'SOLIDWORKS Advanced Sketching and Reference Geometry',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Advanced Sketching and Reference Geometry_page-0001.jpg',
+                description: 'Advanced sketching techniques and reference geometry in SOLIDWORKS.'
+            },
+            'solidworks-revolution': {
+                title: 'SOLIDWORKS Revolution and Cut Features',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Revolution and Cut Features_page-0001.jpg',
+                description: 'Course covering revolution and cut features in SOLIDWORKS 3D modeling.'
+            },
+            'solidworks-assemblies': {
+                title: 'SOLIDWORKS Assemblies and Exam Level Part Modeling',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Assemblies and Exam Level Part Modeling_page-0001.jpg',
+                description: 'Advanced course on assemblies and exam-level part modeling in SOLIDWORKS.'
+            },
+
+            // Individual Courses - Google
+            'job-search-ai': {
+                title: 'Accelerate Your Job Search with AI',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Accelerate Your Job Search with AI_page-0001.jpg',
+                description: 'Course on leveraging AI tools to enhance job search strategies and outcomes.'
+            },
+            'project-initiation': {
+                title: 'Project Initiation: Starting a Successful Project',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Initiation Starting a Successful Project_page-0001.jpg',
+                description: 'Course focused on the initial phases of project management, including stakeholder analysis and project charter development.'
+            },
+            'project-planning': {
+                title: 'Project Planning: Putting It All Together',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Planning Putting It All Together_page-0001.jpg',
+                description: 'Comprehensive project planning course covering scheduling, resource allocation, and risk management.'
+            },
+            'project-foundations': {
+                title: 'Foundations of Project Management',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Foundations of Project Management_page-0001.jpg',
+                description: 'The foundational course covering the core concepts, skills, and tools necessary for successful project management.'
+            },
+            'project-capstone': {
+                title: 'Capstone: Applying Project Management in the Real World',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Capstone Applying Project Management in the Real World_page-0001.jpg',
+                description: 'The final course, involving a capstone project where project management principles are applied to simulated real-world scenarios.'
+            },
+            'project-execution': {
+                title: 'Project Execution: Running the Project',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Execution Running the Project_page-0001.jpg',
+                description: 'Focuses on the execution phase, including managing teams, communication, managing conflicts, and stakeholder engagement.'
+            },
+            'agile-pm': {
+                title: 'Agile Project Management',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Agile Project Management_page-0001.jpg',
+                description: 'Specialized course on Agile methodologies, including Scrum, Kanban, and their application in project environments.'
+            },
+
+            // Individual Courses - University of Colorado Boulder
+            'systems-need': {
+                title: 'The Need for Systems Engineering',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/The Need for Systems Engineering_page-0001.jpg',
+                description: 'Fundamental principles and importance of systems engineering in complex project development and management.'
+            },
+            'systems-design': {
+                title: 'Applying Systems Engineering to the Design Process',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Applying Systems Engineering to the Design Process_page-0001.jpg',
+                description: 'Practical application of systems engineering methodologies throughout the product design lifecycle.'
+            },
+            'systems-program': {
+                title: 'Systems Engineering and Program Management',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Systems Engineering and Program Management_page-0001.jpg',
+                description: 'Integration of systems engineering principles with program management for successful project execution.'
+            },
+            'motor-control': {
+                title: 'Motors and Motor Control Circuits',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Motors and Motor Control Circuits_page-0001.jpg',
+                description: 'Comprehensive study of electric motors and control circuit design for industrial applications.'
+            },
+            'sensor-design': {
+                title: 'Sensors and Sensor Circuit Design',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Sensors and Sensor Circuit Design_page-0001.jpg',
+                description: 'Design and implementation of sensor systems and associated electronic circuits for data acquisition.'
+            },
+
+            // Individual Courses - University at Buffalo, SUNY
+            'manufacturing-analysis': {
+                title: 'Advanced Manufacturing Process Analysis',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Advanced Manufacturing Process Analysis_page-0001.jpg',
+                description: 'Advanced techniques for analyzing and optimizing manufacturing processes and systems.'
+            },
+            'mbse': {
+                title: 'MBSE: Model-Based Systems Engineering',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/MBSE Model-Based Systems Engineering_page-0001.jpg',
+                description: 'Model-Based Systems Engineering approaches for complex system design and development.'
+            },
+            'digital-manufacturing': {
+                title: 'Digital Manufacturing & Design',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing & Design_page-0001.jpg',
+                description: 'Digital technologies and methodologies transforming modern manufacturing and design processes.'
+            },
+            'digital-thread-components': {
+                title: 'Digital Thread: Components',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Components_page-0001.jpg',
+                description: 'Fundamental components and architecture of digital thread implementation in manufacturing.'
+            },
+            'digital-thread-implementation': {
+                title: 'Digital Thread: Implementation',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Implementation_page-0001.jpg',
+                description: 'Practical implementation strategies for digital thread in industrial and manufacturing environments.'
+            },
+
+            // Individual Courses - Arizona State University
+            'zn-ni-batteries': {
+                title: 'Zn and Ni Based Batteries',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Zn and Ni Based Batteries_page-0001.jpg',
+                description: 'Comprehensive study of Zinc and Nickel-based battery technologies and their applications.'
+            },
+            'primary-secondary-batteries': {
+                title: 'Primary and Secondary Batteries',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Primary and Secondary Batteries_page-0001.jpg',
+                description: 'Fundamental principles and differences between primary (disposable) and secondary (rechargeable) batteries.'
+            },
+            'batteries-ev': {
+                title: 'Batteries and Electric Vehicles',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Batteries and Electric Vehicles_page-0001.jpg',
+                description: 'Battery technologies and systems specifically designed for electric vehicle applications.'
+            },
+            'battery-manufacturing': {
+                title: 'Battery Comparison, Manufacturing, and Packaging',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Comparison, Manufacturing, and Packaging_page-0001.jpg',
+                description: 'Comparative analysis, manufacturing processes, and packaging solutions for various battery types.'
+            },
+            'lithium-batteries': {
+                title: 'Lithium Based Batteries',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Lithium Based Batteries_page-0001.jpg',
+                description: 'Advanced study of lithium-ion and lithium-polymer battery technologies and their applications.'
+            },
+
+            // Individual Courses - L&T EduTech 
+            'cps-solutions': {
+                title: 'CPS solution for Industries',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/CPS solution for Industries_page-0001.jpg',
+                description: 'Cyber-Physical Systems solutions and their implementation in industrial automation and smart factories.'
+            },
+            'robotics-fundamentals': {
+                title: 'Fundamentals of Robotics & Industrial Automation',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Fundamentals of Robotics & Industrial Automation_page-0001.jpg',
+                description: 'Core principles of robotics systems and their application in industrial automation processes.'
+            },
+            'industry-4': {
+                title: 'Industry 4.0: PLM, Value Chain, and Smart Factory',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industry 4.0 PLM, Value Chain, and Smart Factory_page-0001.jpg',
+                description: 'Industry 4.0 concepts including Product Lifecycle Management, value chain optimization, and smart factory implementation.'
+            },
+            'digital-manufacturing-intro': {
+                title: 'Digital Manufacturing: Introduction and Smart Design',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing Introduction and Smart Design_page-0001.jpg',
+                description: 'Introduction to digital manufacturing technologies and smart design principles for modern production.'
+            },
+            'fluid-systems': {
+                title: 'Industrial Fluid systems & Smart Factory Automation',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industrial Fluid systems & Smart Factory Automation_page-0001.jpg',
+                description: 'Industrial fluid systems integration with smart factory automation and control systems.'
+            },
+            'robotics-engineering': {
+                title: 'Robotics Engineering & Applications',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Robotics Engineering & Applications_page-0001.jpg',
+                description: 'Advanced robotics engineering principles and practical applications in industrial and commercial settings.'
+            },
+
+            // Individual Courses - Università di Napoli Federico II
+            'mechanical-simulation': {
+                title: 'Modelling and simulation of mechanical systems',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Modelling and simulation of mechanical systems_page-0001.jpg',
+                description: 'Computational modeling and simulation techniques for analyzing mechanical systems and components.'
+            },
+            'aerospace-systems': {
+                title: 'Autonomous Aerospace Systems',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Aerospace Systems_page-0001.jpg',
+                description: 'Autonomous systems and control technologies for aerospace applications and unmanned vehicles.'
+            },
+            'big-data-tour': {
+                title: 'A quick tour on Big Data and Business Intelligence',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/A quick tour on Big Data and Business Intelligence_page-0001.jpg',
+                description: 'Overview of big data technologies and business intelligence tools for data-driven decision making.'
+            },
+
+            // Individual Courses - University of Michigan
+            'ai-autonomous': {
+                title: 'AI for Autonomous Vehicles and Robotics',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Autonomous Vehicles and Robotics_page-0001.jpg',
+                description: 'Artificial intelligence applications in autonomous vehicle navigation and robotic systems control.'
+            },
+            'ai-energy': {
+                title: 'AI for Energy and Biomedical Applications',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Energy and Biomedical Applications_page-0001.jpg',
+                description: 'AI technologies applied to energy systems optimization and biomedical engineering solutions.'
+            },
+            'ai-design': {
+                title: 'AI for Design and Optimization',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Design and Optimization_page-0001.jpg',
+                description: 'Artificial intelligence methods for engineering design optimization and performance enhancement.'
+            }
+        };
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('certificateModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImage = document.getElementById('modalImage');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalClose = document.getElementById('modalClose');
+            const certificateCards = document.querySelectorAll('.certificate-card');
+            
+            // Function to close modal
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+
+            // Function to open modal with certificate data
+            function openCertificateModal(certificateId) {
+                if (certificateId && certificateData[certificateId]) {
+                    const data = certificateData[certificateId];
+                    modalTitle.textContent = data.title;
+                    modalImage.src = data.image;
+                    modalImage.alt = data.title;
+                    modalDescription.textContent = data.description;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            }
+
+            // Add click event to all certificate cards
+            certificateCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const certificateId = this.getAttribute('data-certificate');
+                    openCertificateModal(certificateId);
+                });
+            });
+
+            // Add click event to all course items using event delegation
+            courseListContainer.addEventListener('click', function(event) {
+                let target = event.target;
+                // Traverse up to find the closest course-item
+                while (target && !target.classList.contains('course-item')) {
+                    target = target.parentElement;
+                }
+                
+                if (target) {
+                    const certificateId = target.getAttribute('data-certificate');
+                    openCertificateModal(certificateId);
+                }
+            });
+
+            // Close modal when close button is clicked
+            modalClose.addEventListener('click', closeModal);
+
+            // Close modal when clicking outside the content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countElements = document.querySelectorAll('.stat-count');
+
+            // --- Count Up Animation Logic ---
+            const animateCount = (el) => {
+                const target = parseInt(el.getAttribute('data-target'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                const duration = 1500; // 1.5 seconds
+                let startTime;
+
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = timestamp - startTime;
+                    const percentage = Math.min(progress / duration, 1);
+                    // Use Math.round for better visual rounding effect
+                    const value = Math.round(percentage * target);
+
+                    el.textContent = value + suffix;
+
+                    if (percentage < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+
+                window.requestAnimationFrame(step);
+            };
+
+            // Run the animation immediately when the page structure is loaded
+            countElements.forEach(el => animateCount(el));
+            
+            // --- End Count Up Animation Logic ---
+        });
+        
+        // Header navigation functionality
+        const navLinks = document.querySelectorAll('.link-item');
+        
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url && url !== '#blog' && url !== '#contact') {
+                setTimeout(() => {
+                    // For demonstration, we prevent actual navigation in the sandbox
+                    console.log(`Simulating navigation to: ${url}`);
+                    // window.location.href = url; // Uncomment this for live usage
+                }, 300); // 300ms matches the transition-all duration
+            }
+        }
+
+        /**
+         * Refactored state setting for CLICKS/LINKS
+         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
+         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
+         */
+        function setState(targetState, linkId) {
+            // Reset all link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            });
+
+            // Set the new active state/link
+            const activeLink = document.getElementById(linkId);
+            if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+            
+            // Console log to show state change (e.g., for panel animation)
+            console.log(`Application state changed to: ${targetState}`);
+        }
+
+        // Initialize with 'Home' active on load
+        window.onload = () => {
+             // Use a slight delay to ensure all DOM elements are registered
+             setTimeout(() => {
+                setState('center', 'home-link');
+             }, 50);
+        };
     </script>
 </body>
 </html>
