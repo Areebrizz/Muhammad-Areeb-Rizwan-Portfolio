@@ -88,7 +88,7 @@
         
         /* Hero Section Container */
         .hero-section {
-            height: 100vh;
+            height: 95vh;
             width: 100vw;
             position: relative;
             background-color: #333;
@@ -213,7 +213,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 99%;
+            height: 100%;
             background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/new15.png'); 
             background-size: cover; 
             background-repeat: no-repeat;
@@ -223,45 +223,42 @@
         }
 
         /* CENTRAL GIFS POSITIONED OVER HANDS */
-             .central-gifs-container {
-                position: relative;
-                top: auto;
-                left: auto;
-                width: 100%;
-                height: auto;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                padding: 20px 10px;
-                z-index: 50;
-                margin-top: -50px;
-                pointer-events: auto;
-            }
+        .central-gifs-container {
+            /* Tailwind handles most of this now (absolute top-0 left-0 w-full h-full z-36 pointer-events-none) */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Changed from auto to 100% to fill parent */
+            display: block; /* Overrides flex/space-around logic to rely on absolute children */
+            pointer-events: none; /* Allows clicks to pass through container */
+            z-index: 40;
+        }
 
         .central-gif {
             position: absolute;
-            width: clamp(200px, 16vw, 300px);
+            width: clamp(200px, 16vw, 300px); /* Responsive width */
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            pointer-events: auto;
+            pointer-events: auto; /* Re-enables clicks for the GIF itself */
             cursor: pointer;
             border-radius: 8px;
+            /* Added shadow for better visibility */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         .central-gif:hover {
             transform: scale(1.1);
         }
 
-        /* POSITION THE GIFS OVER YOUR HANDS */
+        /* POSITION THE GIFS OVER YOUR HANDS - These are primarily handled by Tailwind classes in HTML, but defined here for completeness */
         .gif-left-hand {
-            top: 63%; 
-            left: 57%; 
+            /* top: 63%; left: 57%; */
         }
 
         .gif-right-hand {
-            top: 64%; 
-            right: 59%; 
+            /* top: 64%; right: 59%; */
         }
 
         /* LEFT/RIGHT STATE CONTENT */
@@ -373,7 +370,7 @@
         /* Hover Guide Text */
         .hover-guide {
             position: absolute;
-            bottom: 20px;
+            bottom: 27px;
             left: 0;
             width: 100%;
             text-align: center;
@@ -778,128 +775,84 @@
             </div>
         </div>
     </header>
-    <script>
-        const navLinks = document.querySelectorAll('.link-item');
-        
-        /**
-         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
-         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
-         * @param {string} url - The external URL to navigate to (optional).
-         * @param {string} linkId - The ID of the link that was clicked.
-         */
-        function navigateState(targetState, url, linkId) {
-            // 1. Update active link state
-            setState(targetState, linkId);
 
-            // 2. Wait for the transition to start/complete (300ms) and then navigate
-            if (url && url !== '#blog' && url !== '#contact') {
-                setTimeout(() => {
-                    // For demonstration, we prevent actual navigation in the sandbox
-                    console.log(`Simulating navigation to: ${url}`);
-                    // window.location.href = url; // Uncomment this for live usage
-                }, 300); // 300ms matches the transition-all duration
-            }
-        }
+<!-- Hero Section -->
+<section class="hero-section" id="heroSection">
 
-        /**
-         * Refactored state setting for CLICKS/LINKS
-         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
-         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
-         */
-        function setState(targetState, linkId) {
-            // Reset all link active states
-            navLinks.forEach(link => {
-                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
-                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
-            });
+  <!-- Center State -->
+  <div class="state-center" id="stateCenter">
 
-            // Set the new active state/link
-            const activeLink = document.getElementById(linkId);
-            if (activeLink) {
-                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
-                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
-            }
-            
-            // Console log to show state change (e.g., for panel animation)
-            console.log(`Application state changed to: ${targetState}`);
-        }
+    <!-- Background Image -->
+    <div class="center-image"></div>
 
-        // Initialize with 'Home' active on load
-        window.onload = () => {
-             // Use a slight delay to ensure all DOM elements are registered
-             setTimeout(() => {
-                setState('center', 'home-link');
-             }, 50);
-        };
-    </script>
-
-    <!-- Hero Section -->
-    <section class="hero-section" id="heroSection">
-        
-        <div class="state-center" id="stateCenter">
-            
-            <div class="center-image">
-                
-                <!-- GIFs Container -->
-                <div class="central-gifs-container absolute top-0 left-0 w-full h-full z-36 pointer-events-none opacity-100 transition-opacity duration-500 delay-300">
-                    <!-- Left GIF (Buggy) - Links to Portfolio -->
-                    <img 
-                        src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/buggy.gif" 
-                        alt="Buggy Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-left-hand top-[63%] left-[57%] pointer-events-auto hover:scale-105" 
-                        onclick="navigateState('right', 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=Mech+GIF+Missing'"
-                    >
-                    <!-- Right GIF (Drone) - Links to About -->
-                    <img 
-                        src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/drone.gif" 
-                        alt="Drone Mechanical GIF" 
-                        class="central-gif absolute w-[clamp(200px,16vw,300px)] h-auto object-contain cursor-pointer rounded-lg transition-transform duration-300 gif-right-hand top-[64%] right-[59%] pointer-events-auto hover:scale-105" 
-                        onclick="navigateState('left', 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html')" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/100x100/282c34/ffffff?text=I4.0+GIF+Missing'"
-                    >
-                </div>
-                
-            </div>
-            <div class="center-content">
-                
-                <div class="center-layout">
-                    
-                    <div class="center-right-text">
-                        <h1 class="center-title-main">I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong></h1>
-                        <div class="moto-container">
-                            <p class="moto-slogan">Faith. Discipline. Excellence.</p>
-                        </div>
-                    </div>
-                    
-                    </div>
-            </div>
-            
-            <!-- Hover Guide Text -->
-            <div class="hover-guide">
-                <p>Hover near the edges to explore my professional profiles</p>
-            </div>
+    <!-- Center Text Content -->
+    <div class="center-content">
+      <div class="center-layout">
+        <div class="center-right-text">
+          <h1 class="center-title-main">
+            I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong>
+          </h1>
+          <div class="moto-container">
+            <p class="moto-slogan">Faith. Discipline. Excellence.</p>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="state-left" id="stateLeft">
-            <div class="side-wrapper">
-                <h1>MECHANICAL ENGINEER</h1>
-                <p class="moto">Building efficiency from precision and discipline.</p>
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="side-button">About Me</a>
-            </div>
-            <div class="side-image-placeholder"></div>
-        </div>
+    <!-- Hover Guide -->
+    <div class="hover-guide">
+      <p><i>Hover near the edges to explore my professional profiles</i></p>
+    </div>
 
-        <div class="state-right" id="stateRight">
-            <div class="side-wrapper">
-                <h1>AUTOMATION SPECIALIST</h1>
-                <p class="moto">Automating the future of intelligent manufacturing.</p>
-                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="side-button">My Portfolio</a>
-            </div>
-            <div class="side-image-placeholder"></div>
-        </div>
+  </div>
 
-    </section>
+  <!-- Left State -->
+  <div class="state-left" id="stateLeft">
+    <div class="side-wrapper">
+      <h1>MECHANICAL ENGINEER</h1>
+      <p class="moto">Building efficiency from precision and discipline.</p>
+      <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="side-button">About Me</a>
+    </div>
+    <div class="side-image-placeholder"></div>
+  </div>
+
+  <!-- Right State -->
+  <div class="state-right" id="stateRight">
+    <div class="side-wrapper">
+      <h1>AUTOMATION SPECIALIST</h1>
+      <p class="moto">Automating the future of intelligent manufacturing.</p>
+      <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="side-button">My Portfolio</a>
+    </div>
+    <div class="side-image-placeholder"></div>
+  </div>
+
+
+    <!-- Central GIFs (Clickable links, no visible container) -->
+    <div class="central-gifs-container absolute inset-0 z-40 pointer-events-none">
+
+        <!-- Left GIF (Buggy) -->
+        <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" 
+           class="absolute top-[63%] left-[57%] w-[clamp(200px,16vw,300px)] pointer-events-auto">
+            <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/buggy.gif" 
+                 alt="Buggy Mechanical GIF" 
+                 class="w-full h-auto rounded-lg transition-transform duration-300 hover:scale-110"
+                 onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c4c4c/ffffff?text=Mech+GIF+Missing'" />
+        </a>
+
+        <!-- Right GIF (Drone) -->
+        <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" 
+           class="absolute top-[64%] right-[59%] w-[clamp(200px,16vw,300px)] pointer-events-auto">
+            <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/drone.gif" 
+                 alt="Drone Mechanical GIF" 
+                 class="w-full h-auto rounded-lg transition-transform duration-300 hover:scale-110"
+                 onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c4c4c/ffffff?text=I4.0+GIF+Missing'" />
+        </a>
+
+    </div>
+
+</section>
+
+
 
     <!-- Highlights Section -->
     <section class="highlights-section">
@@ -966,14 +919,15 @@
     </footer>
 
     <script>
+        // Global variables
         const hero = document.getElementById('heroSection');
         const center = document.getElementById('stateCenter');
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         const navLinks = document.querySelectorAll('.link-item');
-        
         const EDGE_TRIGGER = 0.25; // 25% from edges
 
+        // Mouse movement handler for side slides
         function handleMouseMove(e) {
             const rect = hero.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -989,6 +943,15 @@
                 currentState = 'center';
             }
 
+            updateState(currentState);
+        }
+        
+        function handleMouseLeave() {
+            updateState('center');
+        }
+
+        // Update the visual state based on mouse position
+        function updateState(currentState) {
             if (currentState === 'center') {
                 center.classList.remove('hidden');
                 left.classList.remove('active');
@@ -1003,15 +966,6 @@
                 right.classList.add('active');
             }
         }
-        
-        function handleMouseLeave() {
-            center.classList.remove('hidden');
-            left.classList.remove('active');
-            right.classList.remove('active');
-        }
-
-        hero.addEventListener('mousemove', handleMouseMove);
-        hero.addEventListener('mouseleave', handleMouseLeave);
         
         /**
          * Triggers the visual transition via setState, then navigates to the external URL after a delay.
@@ -1041,13 +995,15 @@
         function setState(targetState, linkId) {
             // Reset all link active states
             navLinks.forEach(link => {
-                link.classList.remove('active-link');
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             });
 
             // Set the new active state/link
             const activeLink = document.getElementById(linkId);
             if (activeLink) {
-                activeLink.classList.add('active-link');
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
             
             // Console log to show state change (e.g., for panel animation)
@@ -1056,10 +1012,14 @@
 
         // Initialize with 'Home' active on load
         window.onload = () => {
-             // Use a slight delay to ensure all DOM elements are registered
-             setTimeout(() => {
+            // Add event listeners for side slide functionality
+            hero.addEventListener('mousemove', handleMouseMove);
+            hero.addEventListener('mouseleave', handleMouseLeave);
+            
+            // Use a slight delay to ensure all DOM elements are registered
+            setTimeout(() => {
                 setState('center', 'home-link');
-             }, 50);
+            }, 50);
         };
     </script>
 </body>
