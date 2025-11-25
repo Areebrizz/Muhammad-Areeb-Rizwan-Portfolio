@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammad Areeb Rizwan - Mechanical Engineer</title>
+    <title>Home | M. Areeb Rizwan</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
     <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Load Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDtqc1pS6u5hGhA+nN6Q8Ww14t4c4iT5L44C/O11jF5g5uU/R2o8N/R5b6uP5hGhA+nN6Q8Ww14t4c4iT5L44C/O11jF5g5uU/R2o8N/R5b6uP5q4Q8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script>
         // Tailwind Configuration
@@ -20,6 +20,8 @@
                         'custom-green': '#4caf50',
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
+                        'primary-blue': '#3b82f6',
+                        'primary-green': '#10b981'
                     }
                 }
             }
@@ -95,6 +97,20 @@
             overflow: hidden;
         }
 
+        /* --- BACKGROUND VIDEO --- */
+        /* Video is now a direct child of hero-section, not state-center */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 10;
+            filter: blur(5px);
+            transform: scale(1.02); /* Prevents dark edges from blur */
+        }
+
         /* --- STATE-BASED CONTAINERS --- */
 
         /* 1. Center/Default State */
@@ -104,9 +120,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/background%2011.png.png');
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -131,18 +144,12 @@
         .state-left {
             left: 0;
             width: 50%;
-            background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/background%2022.png.png');
-            background-size: cover;
-            background-position: center;
             justify-content: flex-start;
         }
 
         .state-right {
             right: 0;
             width: 50%;
-            background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/background%2033.png');
-            background-size: cover;
-            background-position: center;
             justify-content: flex-end;
         }
         
@@ -219,46 +226,34 @@
             background-repeat: no-repeat;
             background-position: center;
             z-index: 34;
-            position: relative; 
         }
 
         /* CENTRAL GIFS POSITIONED OVER HANDS */
         .central-gifs-container {
-            /* Tailwind handles most of this now (absolute top-0 left-0 w-full h-full z-36 pointer-events-none) */
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; /* Changed from auto to 100% to fill parent */
-            display: block; /* Overrides flex/space-around logic to rely on absolute children */
-            pointer-events: none; /* Allows clicks to pass through container */
+            height: 100%; 
+            display: block;
+            pointer-events: none;
             z-index: 40;
         }
 
         .central-gif {
             position: absolute;
-            width: clamp(200px, 16vw, 300px); /* Responsive width */
+            width: clamp(200px, 16vw, 300px);
             height: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            pointer-events: auto; /* Re-enables clicks for the GIF itself */
+            pointer-events: auto;
             cursor: pointer;
             border-radius: 8px;
-            /* Added shadow for better visibility */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         .central-gif:hover {
             transform: scale(1.1);
-        }
-
-        /* POSITION THE GIFS OVER YOUR HANDS - These are primarily handled by Tailwind classes in HTML, but defined here for completeness */
-        .gif-left-hand {
-            /* top: 63%; left: 57%; */
-        }
-
-        .gif-right-hand {
-            /* top: 64%; right: 59%; */
         }
 
         /* LEFT/RIGHT STATE CONTENT */
@@ -327,16 +322,20 @@
         .state-left .side-image-placeholder {
             right: 0;
             background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/formal1.png'); 
-            z-index: 20;
-            background-size: cover;
-            background-position:30% center;
-            width: 80%;
+
         }
 
         .state-right .side-image-placeholder {
             left: 0;
             background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/new8.png'); 
         }
+/* Hide GIFs when side states are active */
+.state-left.active ~ .central-gifs-container,
+.state-right.active ~ .central-gifs-container {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
 
         /* ACTIVE STATE STYLES */
         .state-center.hidden {
@@ -385,68 +384,6 @@
             50% { opacity: 0.3; }
         }
 
-        /* Highlights Section */
-        .highlights-section {
-            padding: 80px 5%;
-            background-color: #111;
-            color: white;
-        }
-
-        .highlights-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 50px;
-            color: white;
-        }
-
-        .highlights-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .highlight-tile {
-            background-color: #222;
-            border-radius: 12px;
-            overflow: hidden;
-            width: 300px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .highlight-tile:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-
-        .highlight-image {
-            height: 200px;
-            background-color: #333;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .highlight-content {
-            padding: 20px;
-        }
-
-        .highlight-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #4CAF50;
-        }
-
-        .highlight-description {
-            font-size: 1rem;
-            color: #ccc;
-            line-height: 1.5;
-        }
-
         /* Footer Styles */
         .footer-bulge {
             position: relative;
@@ -462,7 +399,7 @@
             transform: translateX(-50%);
             width: 200px;
             height: 60px;
-            background-color: #111;
+            background-color: #f8f9fa;
             border-radius: 0 0 100px 100px;
             box-shadow: 0 3px 5px rgba(0,0,0,0.05);
             z-index: 10;
@@ -699,17 +636,6 @@
                 top: 0;
                 order: 1;
             }
-            
-            /* Highlights section on mobile */
-            .highlights-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .highlight-tile {
-                width: 90%;
-                max-width: 350px;
-            }
         }
 
         /* Active link styling */
@@ -779,53 +705,56 @@
 <!-- Hero Section -->
 <section class="hero-section" id="heroSection">
 
-  <!-- Center State -->
-  <div class="state-center" id="stateCenter">
+    <!-- Background Video (now outside of state containers) -->
+    <video class="background-video" autoplay muted loop playsinline>
+        <source src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/industry2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-    <!-- Background Image -->
-    <div class="center-image"></div>
+    <!-- Center State -->
+    <div class="state-center" id="stateCenter">
+        <!-- Center Image Overlay -->
+        <div class="center-image"></div>
 
-    <!-- Center Text Content -->
-    <div class="center-content">
-      <div class="center-layout">
-        <div class="center-right-text">
-          <h1 class="center-title-main">
-            I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong>
-          </h1>
-          <div class="moto-container">
-            <p class="moto-slogan">Faith. Discipline. Excellence.</p>
-          </div>
+        <!-- Center Text Content -->
+        <div class="center-content">
+            <div class="center-layout">
+                <div class="center-right-text">
+                    <h1 class="center-title-main">
+                        I'm Muhammad Areeb Rizwan Siddiqui, a <strong>Mechanical Engineer</strong>
+                    </h1>
+                    <div class="moto-container">
+                        <p class="moto-slogan">Faith. Discipline. Excellence.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Hover Guide -->
+        <div class="hover-guide">
+            <p><i>Hover near the edges to explore my professional profiles</i></p>
+        </div>
     </div>
 
-    <!-- Hover Guide -->
-    <div class="hover-guide">
-      <p><i>Hover near the edges to explore my professional profiles</i></p>
+    <!-- Left State -->
+    <div class="state-left" id="stateLeft">
+        <div class="side-wrapper">
+            <h1>MECHANICAL ENGINEER</h1>
+            <p class="moto">Building efficiency from precision and discipline.</p>
+            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="side-button">About Me</a>
+        </div>
+        <div class="side-image-placeholder"></div>
     </div>
 
-  </div>
-
-  <!-- Left State -->
-  <div class="state-left" id="stateLeft">
-    <div class="side-wrapper">
-      <h1>MECHANICAL ENGINEER</h1>
-      <p class="moto">Building efficiency from precision and discipline.</p>
-      <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="side-button">About Me</a>
+    <!-- Right State -->
+    <div class="state-right" id="stateRight">
+        <div class="side-wrapper">
+            <h1>AUTOMATION SPECIALIST</h1>
+            <p class="moto">Automating the future of intelligent manufacturing.</p>
+            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="side-button">My Portfolio</a>
+        </div>
+        <div class="side-image-placeholder"></div>
     </div>
-    <div class="side-image-placeholder"></div>
-  </div>
-
-  <!-- Right State -->
-  <div class="state-right" id="stateRight">
-    <div class="side-wrapper">
-      <h1>AUTOMATION SPECIALIST</h1>
-      <p class="moto">Automating the future of intelligent manufacturing.</p>
-      <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="side-button">My Portfolio</a>
-    </div>
-    <div class="side-image-placeholder"></div>
-  </div>
-
 
     <!-- Central GIFs (Clickable links, no visible container) -->
     <div class="central-gifs-container absolute inset-0 z-40 pointer-events-none">
@@ -852,32 +781,93 @@
 
 </section>
 
-
-
     <!-- Highlights Section -->
-    <section class="highlights-section">
-        <h2 class="highlights-title">Professional Highlights</h2>
-        <div class="highlights-container">
-            <div class="highlight-tile">
-                <div class="highlight-image" style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/formal1.png')"></div>
-                <div class="highlight-content">
-                    <h3 class="highlight-title">Mechanical Design</h3>
-                    <p class="highlight-description">Expert in CAD modeling, FEA analysis, and product development with a focus on precision engineering and optimization.</p>
-                </div>
+    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-gray-50" id="highlights">
+        <div class="max-w-7xl mx-auto">
+            <!-- Title Area -->
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gray-900">Professional Highlights</h2>
+                <!-- Custom separator line -->
+                <div class="w-20 h-1 mx-auto bg-gradient-to-r from-primary-blue to-primary-green rounded-full mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Explore my key areas of expertise and see how I can bring value to your projects.
+                </p>
             </div>
-            <div class="highlight-tile">
-                <div class="highlight-image" style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/new8.png')"></div>
-                <div class="highlight-content">
-                    <h3 class="highlight-title">Automation Systems</h3>
-                    <p class="highlight-description">Specialized in Industry 4.0 technologies, robotics integration, and smart manufacturing solutions.</p>
+            
+            <!-- Highlights Container -->
+            <div class="flex flex-wrap justify-center gap-8">
+                
+                <!-- Highlight Tile 1: Mechanical Design -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden w-full sm:w-80 lg:w-96 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-primary-blue to-primary-green text-white px-4 py-1.5 rounded-full text-xs font-semibold z-10 shadow-md">Featured</div>
+                    
+                    <div class="h-56 bg-cover bg-center relative" 
+                         style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/mechdesign.png')">
+                        <!-- Gradient overlay for smoother transition -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 flex items-center space-x-2">
+                            <i class="fas fa-cogs text-primary-blue"></i>
+                            <span>Mechanical Design</span>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            Expert in CAD modeling, FEA analysis, and product development with a focus on precision engineering and optimization across industrial sectors.
+                        </p>
+                        <a href="#" class="inline-flex items-center space-x-2 text-primary-blue font-semibold transition-all duration-300 hover:text-blue-700 hover:space-x-3 text-sm">
+                            <span>Check out my projects</span>
+                            <i class="fas fa-arrow-right text-xs transition-transform duration-300"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="highlight-tile">
-                <div class="highlight-image" style="background-color: #333;"></div>
-                <div class="highlight-content">
-                    <h3 class="highlight-title">Project Management</h3>
-                    <p class="highlight-description">Proven track record of delivering complex engineering projects on time and within budget constraints.</p>
+                
+                <!-- Highlight Tile 2: Automation Systems -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden w-full sm:w-80 lg:w-96 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative">
+                    
+                    <div class="h-56 bg-cover bg-center relative" 
+                         style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 flex items-center space-x-2">
+                            <i class="fas fa-robot text-primary-blue"></i>
+                            <span>Automation Systems</span>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            Specialized in Industry 4.0 technologies, robotics integration, and smart manufacturing solutions to maximize efficiency and throughput.
+                        </p>
+                        <a href="#" class="inline-flex items-center space-x-2 text-primary-blue font-semibold transition-all duration-300 hover:text-blue-700 hover:space-x-3 text-sm">
+                            <span>View automation work</span>
+                            <i class="fas fa-arrow-right text-xs transition-transform duration-300"></i>
+                        </a>
+                    </div>
                 </div>
+                
+                <!-- Highlight Tile 3: Project Management -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden w-full sm:w-80 lg:w-96 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative">
+                    
+                    <div class="h-56 bg-cover bg-center relative" 
+                         style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/projectmanag.png')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900 flex items-center space-x-2">
+                            <i class="fas fa-tasks text-primary-blue"></i>
+                            <span>Project Management</span>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            Proven track record of delivering complex engineering projects on time and within budget constraints using Agile methodologies.
+                        </p>
+                        <a href="#" class="inline-flex items-center space-x-2 text-primary-blue font-semibold transition-all duration-300 hover:text-blue-700 hover:space-x-3 text-sm">
+                            <span>See completed projects</span>
+                            <i class="fas fa-arrow-right text-xs transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
