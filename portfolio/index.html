@@ -538,12 +538,12 @@
             
             <div class="nav-right-wrapper flex items-center space-x-16 sm:space-x-4 md:space-x-16">
                 
-                           <nav class="nav-links flex">
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                <nav class="nav-links flex">
+                    <a href="#main-content" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="#" id="about-link" onclick="navigateState('left', 'about.html', 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="#professional" id="portfolio-link" onclick="setState('right', 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <a href="#" id="blog-link" onclick="navigateState('none', 'blogs.html', 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="#footer" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
                 <div class="social-icons flex items-center space-x-4">
@@ -577,7 +577,7 @@
         <div class="max-w-[1040px] mx-auto flex flex-wrap items-center -mx-4">
             <div id="text-main" class="w-full lg:w-5/12 px-4 mb-8 lg:mb-0">
                 <p class="text-xl font-medium text-brand-primary mb-3">Discipline. Integrity. Excellence.</p>
-                <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-gray-900">Muhammad Areeb Rizwan.</h1>
+                <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-gray-900">Portfolio.</h1>
                 <p class="text-xl lg:text-2xl text-subtle-text mb-6">Mechanical Engineer and Automation Specialist</p>
                 <p class="text-lg leading-relaxed text-gray-700">I combine mechanical engineering and automation to solve complex industrial challenges, having led process optimization projects for manufacturing plants, and my own startup,<b>"The AeroTechLAB"</b>.</p>
                 
@@ -596,7 +596,7 @@
             </div>
              <!-- Image/Visual Placeholder -->
                 <div id="img-main" class="w-full lg:w-7/12 px-4 text-center">
-                    <img class="max-w-full h-auto rounded-xl shadow-2xl border-4 border-white mx-auto transform hover:scale-[1.01] transition-transform duration-500" src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/generation.jpg" alt="Product design portfolio image mockup">
+                    <img class="max-w-full h-auto rounded-xl shadow-2xl border-4 border-white mx-auto transform hover:scale-[1.01] transition-transform duration-500" src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/mechie1.webp" alt="Product design portfolio image mockup">
                 </div>
             </div>
         </section>
@@ -630,55 +630,149 @@
         </section>
 
     <!-- NEW SECTION: Professional Experience -->
-    <section id="experience" class="py-12 px-8 lg:px-16 bg-white border-b border-gray-200">
-        <div class="max-w-[1200px] mx-auto">
-            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Professional Experience</h2>
+    <style>
+        /* Define a custom color and font for a professional look (Consistent with Certificates section) */
+        :root {
+            --color-brand-primary: #047857; /* Emerald-700 */
+        }
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .border-brand-primary { border-color: var(--color-brand-primary); }
+        .bg-brand-primary { background-color: var(--color-brand-primary); }
+        .text-subtle-text { color: #4b5563; /* Gray-600 */ }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+        }
+
+        /* Enhanced card effect for Experience section: Lifts and casts a stronger shadow on hover */
+        .card-lift {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-lift:hover {
+            transform: translateY(-8px); /* Slightly more aggressive lift */
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+        /* Style for the link arrow to slide on hover */
+        .arrow-link i {
+            transition: transform 0.3s ease-in-out;
+        }
+        .arrow-link:hover i {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="min-h-screen">
+    <!-- Experience Section (Updated) -->
+    <section id="experience" class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Header -->
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-14 text-center">
+                Professional <span class="text-brand-primary">Journey</span>
+            </h2>
+            
+            <!-- Experience Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Experience Card 1 -->
-                <a href="#" class="block bg-gray-100 rounded-xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl">
-                    <!-- Updated Image Placeholder: H-80 -->
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/MMCL.png" alt="Master Motor Corporation Visual" class="w-full h-80 object-cover rounded-xl mx-auto mb-4 border-2 border-brand-primary/10 group-hover:border-brand-primary transition-colors">
-                    <h3 class="text-xl font-bold mb-1 text-gray-900">Graduate Trainee Engineer - Production</h3>
-                    <p class="text-brand-primary font-medium mb-3">Master Motor Corporation (Pvt.) Limited</p>
-                    <span class="mt-4 inline-block text-sm font-semibold text-brand-primary/80 group-hover:text-brand-primary transition-all">
-                        View MMCL Report <i class="fas fa-long-arrow-alt-right ml-1"></i>
+                <!-- Experience Card 1: MMCL -->
+                <!-- Cards now use a white background, have better shadows, and lift on hover -->
+                <a href="#" class="block bg-white rounded-2xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl border border-gray-100 hover:border-brand-primary/50">
+                    
+                    <!-- Image: Height adjusted slightly (h-72) and now has a subtle gray border -->
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/MMCL.png" alt="Master Motor Corporation Visual" class="w-full h-76 object-cover rounded-xl mx-auto mb-5 border-2 border-gray-200 group-hover:border-brand-primary/80 transition-all duration-300">
+                    
+                    <!-- Content -->
+                    <h3 class="text-xl font-bold mb-1 text-gray-900 group-hover:text-brand-primary transition-colors">Graduate Trainee Engineer - Production</h3>
+                    <p class="text-sm text-subtle-text font-medium mb-4">Master Motor Corporation (Pvt.) Limited</p>
+                    
+                    <!-- Call to Action Link: Updated text and use of fa-arrow-right for a modern look -->
+                    <span class="inline-block text-sm font-semibold text-brand-primary/90 group-hover:text-brand-primary transition-all duration-300 border-b border-brand-primary/50 group-hover:border-brand-primary pb-0.5 arrow-link">
+                        Access Detailed MMCL Report <i class="fas fa-arrow-right ml-1"></i>
                     </span>
                 </a>
 
-                <!-- Experience Card 2 -->
-                <a href="#" class="block bg-gray-100 rounded-xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl">
-                    <!-- Updated Image Placeholder: H-80 -->
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/Tristar1.png" alt="Tristar Transport Visual" class="w-full h-80 object-cover rounded-xl mx-auto mb-4 border-2 border-brand-primary/10 group-hover:border-brand-primary transition-colors">
-                    <h3 class="text-xl font-bold mb-1 text-gray-900">M.T.O - Heavy Vehicle Maintenance</h3>
-                    <p class="text-brand-primary font-medium mb-3">Tristar Transport Pvt Ltd.</p>
-                    <span class="mt-4 inline-block text-sm font-semibold text-brand-primary/80 group-hover:text-brand-primary transition-all">
-                        View Tristar Report <i class="fas fa-long-arrow-alt-right ml-1"></i>
+                <!-- Experience Card 2: Tristar -->
+                <a href="#" class="block bg-white rounded-2xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl border border-gray-100 hover:border-brand-primary/50">
+                    
+                    <!-- Image -->
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/Tristar1.png" alt="Tristar Transport Visual" class="w-full h-76 object-cover rounded-xl mx-auto mb-5 border-2 border-gray-200 group-hover:border-brand-primary/80 transition-all duration-300">
+                    
+                    <!-- Content -->
+                    <h3 class="text-xl font-bold mb-1 text-gray-900 group-hover:text-brand-primary transition-colors">Management Trainee Officer - Heavy Vehicle Maintenance</h3>
+                    <p class="text-sm text-subtle-text font-medium mb-4">Tristar Transport (Pvt.) Limited</p>
+                    
+                    <!-- Call to Action Link -->
+                    <span class="inline-block text-sm font-semibold text-brand-primary/90 group-hover:text-brand-primary transition-all duration-300 border-b border-brand-primary/50 group-hover:border-brand-primary pb-0.5 arrow-link">
+                        Access Detailed Tristar Report <i class="fas fa-arrow-right ml-1"></i>
                     </span>
                 </a>
 
-                <!-- Experience Card 3 -->
-                <a href="#" class="block bg-gray-100 rounded-xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl">
-                    <!-- Updated Image Placeholder: H-80 -->
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png" alt="SM Denim Textile Mills Visual" class="w-full h-80 object-cover rounded-xl mx-auto mb-4 border-2 border-brand-primary/10 group-hover:border-brand-primary transition-colors">
-                    <h3 class="text-xl font-bold mb-1 text-gray-900">Management Trainee Officer - Maintenance</h3>
-                    <p class="text-brand-primary font-medium mb-3">SM Denim Textile Mills</p>
-                    <span class="mt-4 inline-block text-sm font-semibold text-brand-primary/80 group-hover:text-brand-primary transition-all">
-                        View SM Denim Report <i class="fas fa-long-arrow-alt-right ml-1"></i>
+                <!-- Experience Card 3: SM Denim -->
+                <a href="#" class="block bg-white rounded-2xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl border border-gray-100 hover:border-brand-primary/50">
+                    
+                    <!-- Image -->
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png" alt="SM Denim Textile Mills Visual" class="w-full h-76 object-cover rounded-xl mx-auto mb-5 border-2 border-gray-200 group-hover:border-brand-primary/80 transition-all duration-300">
+                    
+                    <!-- Content -->
+                    <h3 class="text-xl font-bold mb-1 text-gray-900 group-hover:text-brand-primary transition-colors">Management Trainee Officer - Maintenance</h3>
+                    <p class="text-sm text-subtle-text font-medium mb-4">SM Denim Textile Mills</p>
+                    
+                    <!-- Call to Action Link -->
+                    <span class="inline-block text-sm font-semibold text-brand-primary/90 group-hover:text-brand-primary transition-all duration-300 border-b border-brand-primary/50 group-hover:border-brand-primary pb-0.5 arrow-link">
+                        Access Detailed SM Denim Report <i class="fas fa-arrow-right ml-1"></i>
                     </span>
                 </a>
 
             </div>
         </div>
     </section>
+</div>
         
     <!-- SECTION 3: Entrepreneurial Experience -->
-    <section id="entrepreneurial" class="py-20 px-8 lg:px-16 bg-white border-t border-b border-gray-200">
-        <div class="max-w-[1200px] mx-auto">
-            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Entrepreneurial Journey</h2>
-            
-            <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-2xl overflow-hidden card-lift hover:shadow-brand-primary/30">
+    <style>
+        /* Define custom colors and font for consistency (from original snippet) */
+        :root {
+            --color-brand-primary: #047857; /* Emerald-700 */
+            --color-subtle-text: #6b7280; /* Defined for clarity */
+        }
+        /* Custom Classes for reusability */
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .text-subtle-text { color: var(--color-subtle-text); }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+        }
+        
+        /* Aesthetic lift effect on hover */
+        .card-lift {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-lift:hover {
+            transform: translateY(-5px);
+            /* Soft shadow using the brand color */
+            box-shadow: 0 20px 25px -5px rgba(4, 120, 87, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container to center content and apply background -->
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+
+        <!-- Entrepreneurial Journey Header (Original Block 1) -->
+        <header class="mb-12 mt-12 w-full max-w-6xl">
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center">
+                <span class="text-brand-primary">Entrepreneurial</span> Journey
+            </h2>
+        </header>
+
+        <!-- Main Card Section (Original Block 2 - Fixed nesting) -->
+        <section class="w-full max-w-6xl">
+            <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-2xl overflow-hidden card-lift">
+                
                 <!-- Text/Description Column -->
                 <div class="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
                     <span class="text-sm uppercase tracking-widest text-subtle-text font-bold mb-2">My Startup</span>
@@ -690,14 +784,10 @@
                     </a>
                 </div>
 
-                <!-- Responsive Presentation Column (Replaced Image Collage) -->
+                <!-- Responsive Presentation Column -->
                 <div class="lg:w-1/2 p-4 flex items-center justify-center bg-gray-50">
                     <!-- The aspect-video class (16:9) ensures the iframe scales correctly on all devices. -->
                     <div class="w-full aspect-video rounded-lg shadow-xl overflow-hidden border-2 border-brand-primary/20">
-                        <!-- 
-                            IMPORTANT: Replace the 'src' value below with the actual embed URL 
-                            you get when you publish your Google Slides or PowerPoint presentation.
-                        -->
                         <iframe
                             src="https://docs.google.com/presentation/d/e/2PACX-1vSxB-P4Yjl7B8_PzSiJiI8cNpKN6Ai2j4U_ciszZPQxj3mXzsxTpHPS979zgNhuxYhmEu5w3m73GbFn/pubembed?start=true&loop=true&delayms=3000"
                             frameborder="0"
@@ -711,41 +801,98 @@
                     </div>
                 </div>
             </div>
+        </section>
+    </div>
+        <!-- SECTION 5: Certificates/Achievements -->
+    <style>
+        /* Define a custom color and font for a professional look */
+        :root {
+            --color-brand-primary: #047857; /* Emerald-700 */
+        }
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .border-brand-primary { border-color: var(--color-brand-primary); }
+        .bg-brand-primary { background-color: var(--color-brand-primary); }
+        .text-subtle-text { color: #4b5563; /* Gray-600 */ }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+        }
+
+        /* Custom lift effect for cards */
+        .card-effect {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #10b981; /* Emerald-500 hover highlight */
+        }
+    </style>
+<div class="min-h-screen">
+    <section id="certificates" class="py-16 sm:py-20 px-4 sm:px-8 lg:px-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto text-center">
+            
+            <!-- Header -->
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+                Certifications & <span class="text-brand-primary">Achievements</span>
+            </h2>
+            <p class="text-lg sm:text-xl text-subtle-text mb-12 max-w-3xl mx-auto">
+                A selection of my formal education, professional certifications, and competitive recognition, demonstrating continuous growth.
+            </p>
+            
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12">
+                
+                <!-- Card 1: Education -->
+                <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                    <i class="fa-solid fa-seedling text-4xl text-brand-primary mb-3"></i>
+                    <p class="text-sm font-semibold text-gray-800 leading-snug">BE in Mechanical Engineering</p>
+                    <p class="text-xs text-gray-500 mt-1">Foundational knowledge</p>
+                </div>
+                
+                <!-- Card 2: Professional Certification -->
+                <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                    <i class="fa-solid fa-crosshairs text-4xl text-brand-primary mb-3"></i>
+                    <p class="text-sm font-semibold text-gray-800 leading-snug">Six Sigma Black Belt Certified</p>
+                    <p class="text-xs text-gray-500 mt-1">Process excellence</p>
+                </div>
+                
+                <!-- Card 3: Specific Skill -->
+                <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                    <i class="fa-solid fa-robot text-4xl text-brand-primary mb-3"></i>
+                    <p class="text-sm font-semibold text-gray-800 leading-snug">Smart Manufacturing Course</p>
+                    <p class="text-xs text-gray-500 mt-1">IoT & Automation</p>
+                </div>
+                
+                <!-- Card 4: Award -->
+                <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                    <i class="fa-solid fa-lightbulb text-4xl text-brand-primary mb-3"></i>
+                    <p class="text-sm font-semibold text-gray-800 leading-snug">Top Startup Pitch Winner 2023</p>
+                    <p class="text-xs text-gray-500 mt-1">Innovation & Strategy</p>
+                </div>
+            </div>
+
+            <!-- Unified Call-to-Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                
+                <!-- Primary Button for Certifications -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/index.html" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 bg-brand-primary text-white font-semibold rounded-full shadow-lg hover:bg-emerald-600 transition-all duration-300 transform hover:scale-[1.05] active:scale-[0.98] ring-4 ring-emerald-300 ring-opacity-50">
+                    <i class="fa-solid fa-certificate mr-2"></i>
+                    View All 50+ Certifications
+                </a>
+                
+                <!-- Secondary Button for Achievements -->
+                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Achievements/index.html" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-brand-primary border-2 border-brand-primary font-semibold rounded-full shadow-lg hover:bg-emerald-50 transition-all duration-300 transform hover:scale-[1.05] active:scale-[0.98]">
+                    <i class="fa-solid fa-trophy mr-2"></i>
+                    View All 20+ Achievements
+                    <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                </a>
+            </div>
         </div>
     </section>
+</div>
 
-        <!-- SECTION 5: Certificates/Achievements -->
-        <section id="certificates" class="py-20 px-8 lg:px-16 bg-white">
-            <div class="max-w-[1040px] mx-auto text-center">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Certificates & Achievements</h2>
-                <p class="text-xl text-subtle-text mb-10 max-w-2xl mx-auto">A selection of my formal education, professional certifications, and recognition.</p>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
-                        <i class="fas fa-graduation-cap text-3xl text-brand-primary mb-2"></i>
-                        <p class="text-sm font-semibold">Google UX Design Cert.</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
-                        <i class="fas fa-medal text-3xl text-brand-primary mb-2"></i>
-                        <p class="text-sm font-semibold">ScrumMaster Certified</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
-                        <i class="fas fa-microchip text-3xl text-brand-primary mb-2"></i>
-                        <p class="text-sm font-semibold">AI in Product Course</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-xl shadow-md border-t-4 border-brand-primary">
-                        <i class="fas fa-trophy text-3xl text-brand-primary mb-2"></i>
-                        <p class="text-sm font-semibold">Top Designer Award 2024</p>
-                    </div>
-                </div>
-
-                <button class="px-8 py-4 bg-brand-primary text-white font-bold rounded-lg shadow-xl hover:bg-green-600 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                    View All 15+ Certifications
-                </button>
-            </div>
-        </section>
-        
-    </div>
     
     <!-- Footer with Bulge/Cutout Effect -->
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative">
@@ -836,45 +983,44 @@
             }, 50);
         };
 
-        // 3D Carousel JavaScript
-        const portfolioData = [
-            {
-                id: 1,
-                title: 'AI Defect Detector',
-                description: 'Modernizing the conversational interface for a banking platform with improved user flows and accessibility.',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
-                tech: ['Figma', 'UX Research', 'Prototyping']
-            },
-            {
-                id: 2,
-                title: 'Weeding Robot',
-                description: 'Creating a unified data visualization platform for executive monitoring with real-time analytics.',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
-                tech: ['Data Viz', 'Design System', 'React']
-            },
-            {
-                id: 3,
-                title: 'Trainer RC-Plane',
-                description: 'A complete UX flow for rapid, flexible flight and hotel bookings with intuitive search and filtering.',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
-                tech: ['Mobile UX', 'User Interviews', ':)']
-            },
-            {
-                id: 4,
-                title: 'Automated Inventory System',
-                description: 'A/B testing and redesign to reduce cart abandonment rates by 15% with streamlined payment flows.',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
-                tech: ['Conversion Rate', 'A/B Testing', 'Analytics']
-            },
-            {
-                id: 5,
-                title: 'Production MES',
-                description: 'Simplified the complex application process for a government agency with improved accessibility.',
-                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
-                tech: ['Accessibility', 'GovTech', 'WCAG']
-            }
-        ];
-
+// 3D Carousel JavaScript
+const portfolioData = [
+    {
+        id: 1,
+        title: 'AI Defect Detector',
+        description: 'Computer vision system that automates quality control with 99.2% accuracy in detecting manufacturing defects.',
+        image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+        tech: ['Python', 'OpenCV', 'TensorFlow', 'Computer Vision']
+    },
+    {
+        id: 2,
+        title: 'Weeding Robot',
+        description: 'Autonomous agricultural robot that reduces herbicide usage by 85% through precision weed detection and removal.',
+        image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+        tech: ['ROS', 'Computer Vision', 'Arduino', 'Precision Agriculture']
+    },
+    {
+        id: 3,
+        title: 'Trainer RC-Plane',
+        description: 'Modular training aircraft with integrated flight telemetry, reducing learning curve by 40% for beginner pilots.',
+        image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+        tech: ['CAD Design', 'Aerodynamics', '3D Printing', 'Flight Control Systems']
+    },
+    {
+        id: 4,
+        title: 'Automated Inventory System',
+        description: 'Real-time inventory tracking system that reduced stock discrepancies by 92% and improved supply chain efficiency.',
+        image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+        tech: ['IoT Sensors', 'Cloud Computing', 'Data Analytics', 'RFID Technology']
+    },
+    {
+        id: 5,
+        title: 'Production MES',
+        description: 'Manufacturing Execution System that increased production throughput by 35% through real-time process optimization.',
+        image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+        tech: ['MES', 'SCADA', 'Industrial IoT', 'Data Visualization']
+    }
+];
         let currentIndex = 0;
         const carousel = document.getElementById('carousel');
         const indicatorsContainer = document.getElementById('indicators');
