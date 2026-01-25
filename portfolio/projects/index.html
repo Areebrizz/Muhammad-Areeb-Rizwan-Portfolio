@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects Portfolio - Muhammad Areeb Rizwan Siddiqui</title>
+    <!-- Favicon: Green Circle with White 'A' using SVG Data URI -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%234caf50'/%3E%3Ctext x='50%' y='65%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='60' fill='white' font-weight='900'%3EA%3C/text%3E%3C/svg%3E">
+    
+    <!-- Use Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
+                        'light-bg': '#f9fafb',
+                        'light-card': '#ffffff',
+                        'text-dark': '#1f2937',
+                        'text-medium': '#4b5563',
+                        'border-light': '#e5e7eb',
+                        'accent-light': '#f3f4f6',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Text Shadow for the green glow effect */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+        }
+        
+        /* Ensures body uses the Inter font throughout */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: padding-top 0.3s ease-out; /* Smooth transition for dynamic padding */
+            background-color: #f9fafb;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #4caf50;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3d8b40;
+        }
+        
+        /* Project card hover effects - COMPACT VERSION */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+            max-height: 500px; /* Reduced from original */
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px); /* Reduced from -10px */
+            border-color: #4caf50;
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.08); /* Reduced shadow */
+        }
+        
+        /* Tech tag styling */
+        .tech-tag {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.3s ease;
+            color: #1f2937;
+        }
+        
+        .tech-tag:hover {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: #4caf50;
+            transform: scale(1.05);
+        }
+        
+        /* Floating images container */
+        .floating-container {
+            perspective: 1000px;
+        }
+        
+        .floating-img {
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Reduced shadow */
+            border: 2px solid transparent;
+        }
+        
+        .floating-img:hover {
+            border-color: #4caf50;
+            transform: translateZ(15px); /* Reduced from 20px */
+        }
+        
+        /* Section divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4caf50, transparent);
+            margin: 40px 0; /* Reduced from 60px */
+        }
+        
+        /* Footer styling */
+        .footer-bulge {
+            position: relative;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.05);
+            background-color: #f3f4f6;
+        }
+
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 60px;
+            background-color: #f9fafb;
+            border-radius: 0 0 100px 100px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .top-button-container {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20;
+        }
+
+        .top-button-container:hover {
+            transform: scale(1.1) translateX(-50%);
+        }
+        
+        .link-glow-hover:hover,
+        .link-glow-hover:focus {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .top-button-container:hover svg {
+            stroke: #4caf50;
+            filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.5));
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Mobile responsive header stacking and sizing (aligned with sm: 640px) */
+        @media (max-width: 640px) {
+            .main-header {
+                height: 110px;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+                flex-grow: 1;
+                justify-content: space-around;
+            }
+            
+            .logo-container {
+                margin-bottom: 5px;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .nav-links a, .dropdown button {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            #portfolio-dropdown-menu {
+                display: none !important;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .hero-title {
+                font-size: 3rem !important;
+            }
+            
+            /* Mobile project card adjustments */
+            .project-card {
+                max-height: none; /* Allow natural height on mobile */
+                margin-bottom: 30px; /* Reduced from 48px */
+            }
+            
+            .project-image-content {
+                height: 180px !important; /* Reduced from 256-320px */
+            }
+        }
+        
+        /* Compact project card styles */
+        .compact-card {
+            padding: 20px !important; /* Reduced from 32px */
+        }
+        
+        .compact-image {
+            height: 200px !important; /* Reduced from 256-320px */
+        }
+        
+        .compact-title {
+            font-size: 1.5rem !important; /* Reduced from 2-3rem */
+            margin-bottom: 12px !important; /* Reduced from 16px */
+        }
+        
+        .compact-section {
+            margin-bottom: 16px !important; /* Reduced from 24px */
+        }
+        
+        .compact-section-content {
+            font-size: 0.95rem !important; /* Slightly smaller text */
+            line-height: 1.5 !important;
+        }
+        
+        @media (min-width: 641px) {
+            .compact-card {
+                padding: 24px !important;
+            }
+            
+            .compact-image {
+                height: 220px !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 min-h-screen" id="top">
+
+    <!-- Updated Header -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Name Area -->
+            <div class="logo-container text-white select-none flex items-center">
+                <img src="https://placehold.co/32x32/4caf50/ffffff?text=A" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/808080/ffffff?text=X'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    M. Areeb Rizwan
+                </span>
+            </div>
+            
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
+                
+                <nav class="nav-links flex">
+                    <!-- Nav Links -->
+                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/projects.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/professional-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/entrepreneurial-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/researches.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/certifications.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/achievements.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content-area" class="content-area pt-8 px-4 md:px-8 max-w-7xl mx-auto bg-light-bg">
+        <!-- Hero Section -->
+        <section class="hero-section mb-16 mt-12">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="lg:w-1/2 animate-fade-in">
+                    <h1 class="hero-title text-5xl md:text-6xl font-black mb-6 text-text-dark">
+                        My <span class="text-custom-green">Projects</span> Portfolio
+                    </h1>
+                    <p class="text-text-medium text-lg mb-8 leading-relaxed">
+                        A collection of my technical projects, each solving real-world problems with innovative solutions. From full-stack applications to AI-powered tools, explore my journey through code and creativity.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#featured-projects" class="px-6 py-3 bg-custom-green text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fas fa-rocket mr-2"></i>Explore Projects
+                        </a>
+                        <a href="https://github.com/AreebRizz" target="_blank" class="px-6 py-3 bg-transparent border border-custom-green text-custom-green font-semibold rounded-lg hover:bg-custom-green hover:text-white transition-all duration-300">
+                            <i class="fab fa-github mr-2"></i>GitHub Profile
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Floating Images Container -->
+                <div class="lg:w-1/2 floating-container relative h-96">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-custom-green/10 to-transparent rounded-full blur-3xl"></div>
+                    
+                    <div class="floating-img absolute top-8 right-8 w-56 h-40 rounded-xl overflow-hidden z-10 animate-float" style="animation-delay: 0s;">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce Project" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="floating-img absolute top-32 left-4 w-48 h-32 rounded-xl overflow-hidden z-20 animate-float" style="animation-delay: 1s;">
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Health App Project" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="floating-img absolute bottom-8 right-4 w-52 h-36 rounded-xl overflow-hidden z-30 animate-float" style="animation-delay: 2s;">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Task Management Project" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section mb-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+                    <div class="text-3xl font-bold text-custom-green mb-2">21+</div>
+                    <div class="text-text-medium text-sm">Projects Completed</div>
+                </div>
+                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+                    <div class="text-3xl font-bold text-custom-green mb-2">12</div>
+                    <div class="text-text-medium text-sm">Technologies Mastered</div>
+                </div>
+                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+                    <div class="text-3xl font-bold text-custom-green mb-2">3</div>
+                    <div class="text-text-medium text-sm">Years Experience</div>
+                </div>
+                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+                    <div class="text-3xl font-bold text-custom-green mb-2">100%</div>
+                    <div class="text-text-medium text-sm">Client Satisfaction</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Featured Projects -->
+        <section id="featured-projects" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-text-dark">
+                Featured <span class="text-custom-green">Projects</span>
+            </h2>
+            
+            <!-- Project 1 -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.1s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-2/5 p-6">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="E-Commerce Platform" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Jan 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-shopping-cart text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Modern E-Commerce Platform</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Small to medium businesses lack an affordable, scalable e-commerce solution with advanced features like real-time inventory management, personalized recommendations, and seamless payment integration.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                A full-featured e-commerce platform with admin dashboard, customer analytics, AI-powered recommendations, multi-payment gateway support, and mobile-responsive design.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MongoDB</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Express</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Stripe API</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Firebase</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 (Alternating Layout) -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.15s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-heartbeat text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">AI-Powered Health Tracker</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                People struggle to maintain consistent health routines and track progress effectively across multiple metrics like exercise, nutrition, sleep, and mental wellbeing.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                An intelligent health tracking application that uses machine learning to provide personalized recommendations, goal setting, and progress visualization based on user data.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Flutter</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Firebase</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">REST API</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Google Fit API</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fab fa-github mr-2"></i> View Source Code
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Health Tracker App" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Aug 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.2s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-2/5 p-6">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Task Management System" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Nov 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-tasks text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Collaborative Task Management System</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Teams need a more intuitive way to collaborate on projects, track tasks, and visualize workflow progress without switching between multiple tools.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                A unified task management platform with real-time collaboration, customizable workflows, progress tracking, and integration with popular development and communication tools.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Vue.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Django</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">WebSocket</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Docker</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">OAuth 2.0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fas fa-external-link-alt mr-2"></i> View Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW PROJECT 4 - AI Chatbot -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.25s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-robot text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Intelligent AI Chatbot Assistant</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Businesses spend excessive time on customer support queries, FAQs, and repetitive tasks that could be automated with intelligent conversation.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                A context-aware chatbot using NLP and machine learning to handle customer inquiries, provide personalized responses, and integrate with business systems.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NLTK</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">FastAPI</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">WebSocket</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fab fa-github mr-2"></i> View Source Code
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="AI Chatbot" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Feb 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW PROJECT 5 - Smart Home Automation -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.3s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-2/5 p-6">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Smart Home System" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Jun 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-home text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">IoT Smart Home Automation System</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Traditional home automation systems are expensive, proprietary, and lack interoperability between different smart devices and platforms.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                An open-source IoT platform that connects various smart devices, provides energy monitoring, automated routines, and voice control through a unified interface.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Raspberry Pi</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MQTT</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React Native</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">AWS IoT</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fas fa-external-link-alt mr-2"></i> View Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW PROJECT 6 - Blockchain Voting System -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.35s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-vote-yea text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Blockchain-based Voting System</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Traditional voting systems face challenges with transparency, security, and accessibility, leading to concerns about election integrity and voter fraud.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                A decentralized voting platform leveraging blockchain technology to ensure tamper-proof, transparent, and secure digital voting with verifiable results.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Ethereum</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Solidity</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Web3.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">IPFS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fab fa-github mr-2"></i> View Source Code
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1620336655055-bd87c8d4b6c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Blockchain Voting" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Apr 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW PROJECT 7 - Data Analytics Dashboard -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.4s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-2/5 p-6">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Data Analytics Dashboard" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Sep 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-line text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Real-time Business Analytics Dashboard</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Businesses struggle to consolidate data from multiple sources and gain actionable insights in real-time for timely decision-making.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                A comprehensive analytics platform that aggregates data from various sources, provides interactive visualizations, predictive analytics, and automated reporting.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">D3.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Redis</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">FastAPI</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Docker</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW PROJECT 8 - Mobile Learning App -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.45s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-graduation-cap text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Interactive Mobile Learning Platform</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Traditional e-learning platforms lack engagement, personalization, and effective assessment methods for modern learners.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                A gamified learning app with interactive courses, progress tracking, peer collaboration, and AI-driven personalized learning paths.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Flutter</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MongoDB</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Socket.io</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">AWS S3</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Firebase Auth</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fab fa-google-play mr-2"></i> View on Play Store
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Mobile Learning App" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Dec 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW PROJECT 9 - Supply Chain Management -->
+            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.5s;">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-2/5 p-6">
+                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Supply Chain Management" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Mar 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-truck text-custom-green text-lg"></i>
+                            </div>
+                            <h3 class="project-name compact-title font-bold text-text-dark">Supply Chain Management System</h3>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                Companies struggle with supply chain visibility, inventory management, and coordination between suppliers, manufacturers, and distributors.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                            </div>
+                            <div class="section-content compact-section-content text-text-medium">
+                                An end-to-end supply chain platform with real-time tracking, predictive analytics for demand forecasting, automated inventory management, and supplier integration.
+                            </div>
+                        </div>
+                        
+                        <div class="description-section compact-section mb-4">
+                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                            </div>
+                            <div class="tech-tags flex flex-wrap gap-2">
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Java</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Spring Boot</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Kafka</span>
+                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Docker</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                                <i class="fas fa-external-link-alt mr-2"></i> View Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Updated Footer with Bulge Design -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-text-medium text-base pt-10 pb-6 relative">
+        <!-- Arrow Container (Integrated into the bulge) -->
+        <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </a>
+        
+        <!-- Main footer content -->
+        <div class="max-w-screen-xl mx-auto px-5">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Left Section (Copyright) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-custom-green transition duration-300 font-medium">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <!-- Right Section (Navigation) -->
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <li><a href="#" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Home</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">About</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Portfolio</a></li>
+                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Blog</a></li>
+                        <li><a href="#contact" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('.link-item');
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640; // Matches CSS breakpoint
+
+        /**
+         * Dynamically sets the body's top padding based on the header's current height.
+         */
+        function adjustBodyPadding() {
+            // Wait for the header's height to settle based on CSS media queries
+            setTimeout(() => {
+                const headerHeight = header.offsetHeight;
+                body.style.paddingTop = `${headerHeight}px`;
+            }, 50);
+        }
+
+        /**
+         * Toggles the visibility of the dropdown menu.
+         * @param {Event} event - The click event.
+         * @param {string} menuId - The ID of the menu element.
+         */
+        function toggleDropdown(event, menuId) {
+            // Prevent link navigation if it's the button
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            
+            // Do not show dropdown on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                return;
+            }
+
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            const isHidden = menu.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Show menu
+                menu.classList.remove('hidden');
+                menu.classList.add('block');
+                button.setAttribute('aria-expanded', 'true');
+                if (caret) caret.classList.add('rotate-180');
+            } else {
+                // Hide menu
+                menu.classList.remove('block');
+                menu.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                if (caret) caret.classList.remove('rotate-180');
+            }
+        }
+
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target) && !portfolioMenu.classList.contains('hidden')) {
+                portfolioMenu.classList.add('hidden');
+                portfolioMenu.classList.remove('block');
+                portfolioButton.setAttribute('aria-expanded', 'false');
+                const caret = portfolioButton.querySelector('.fa-caret-down');
+                if (caret) caret.classList.remove('rotate-180');
+            }
+        });
+
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url && url !== '#contact') { // Contact uses internal anchor
+                setTimeout(() => {
+                    // For demonstration, we prevent actual navigation in the sandbox
+                    console.log(`Simulating navigation to: ${url}`);
+                    // window.location.href = url; // Uncomment this for live usage
+                }, 300); // 300ms matches the transition-all duration
+            }
+        }
+
+        /**
+         * Refactored state setting for CLICKS/LINKS
+         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
+         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
+         */
+        function setState(targetState, linkId) {
+            // Reset all link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            });
+            
+            // Handle the Portfolio button separately
+            if (portfolioButton) {
+                portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+
+            // Set the new active state/link
+            const activeLink = document.getElementById(linkId);
+            // Since the dropdown items don't have IDs, we activate the *Portfolio button* itself if a link *within* the dropdown is clicked.
+            const isDropdownLink = activeLink === null && linkId === 'portfolio-link';
+
+            if (isDropdownLink) {
+                // Activate the Portfolio button visually
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            } else if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+            
+            // Console log to show state change (e.g., for panel animation)
+            console.log(`Application state changed to: ${targetState}`);
+        }
+
+        // Initialize and handle resize events
+        window.addEventListener('resize', adjustBodyPadding);
+        window.onload = () => {
+            adjustBodyPadding();
+            // Use a slight delay to ensure all DOM elements are registered
+            setTimeout(() => {
+                setState('center', 'home-link');
+                
+                // Animate project cards on scroll
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -100px 0px'
+                };
+                
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                            entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        }
+                    });
+                }, observerOptions);
+                
+                // Observe all project cards
+                document.querySelectorAll('.project-card').forEach(card => {
+                    observer.observe(card);
+                });
+            }, 50);
+        };
+    </script>
+</body>
+</html>
