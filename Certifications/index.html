@@ -82,11 +82,12 @@
                 width: 100%;
                 align-items: center;
                 margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
             }
             
-            .logo {
+            .logo-container {
                 margin-bottom: 5px;
-                font-size: 1.2rem;
             }
             
             .nav-links {
@@ -96,15 +97,15 @@
                 margin-bottom: 5px; /* Space between nav and social */
             }
             
-            .nav-links a {
+            .nav-links a, .dropdown button {
                 margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
 
-            .social-icons {
-                justify-content: center;
-                width: 100%;
+            /* Hide the dropdown menu on mobile for cleaner stacking, but keep the Portfolio link visible */
+            #portfolio-dropdown-menu {
+                display: none !important;
             }
         }
         
@@ -317,43 +318,78 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-dark-text min-h-screen pt-[60px] md:pt-[60px]" id="top">
-    <!-- Header -->
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen" id="top">
+    <!-- Header (UPDATED VERSION) -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
-            <!-- Logo/Brand Name - REPLACED WITH FAVICON IMAGE -->
-            <div class="logo text-white select-none flex items-center">
-                <img 
-                    src="assets/images/favicon.png" 
-                    alt="Areeb Rizwan Logo" 
-                    class="h-8 w-8 rounded-full shadow-lg"
-                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/4caf50/ffffff?text=AR'"
-                >
+            <!-- Logo/Name Area - Now includes the image logo followed by the name -->
+            <div class="logo-container text-white select-none flex items-center">
+                
+                <!-- NEW: Image Logo (using a placeholder for a 32x32 green circle with white 'A') -->
+                <img src="https://placehold.co/32x32/4caf50/ffffff?text=A" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/808080/ffffff?text=X'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    M. Areeb Rizwan
+                </span>
             </div>
             
-            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
-            <div class="nav-right-wrapper flex items-center space-x-16"> <!-- Updated space-x-12 to space-x-16 for more separation -->
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
                 
-                <!-- Nav Links -->
                 <nav class="nav-links flex">
-                    <!-- Home link uses setState('center') to remain on the SPA home page -->
-                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <!-- Nav Links -->
+                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     
-                    <!-- About link navigates externally -->
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     
-                    <!-- Portfolio link navigates externally -->
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- UPDATED: Added bg-black/80 for translucent black and backdrop-blur-sm -->
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <!-- UPDATED: Changed hover:bg-gray-700 to hover:bg-white/10 for translucent style -->
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/projects.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/professional-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/entrepreneurial-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/researches.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/certifications.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/achievements.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <!-- Blog link (UPDATED) -->
                     <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
                     
-                    <!-- Contact link -->
                     <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
-                <!-- Social Icons (New Section) -->
+                <!-- Social Media Icons -->
                 <div class="social-icons flex items-center space-x-4">
                     <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
@@ -374,7 +410,7 @@
     </header>
 
     <!-- Header Section (White Background) -->
-    <header class="bg-white text-dark-text py-12 shadow-xl border-b border-gray-200">
+    <header class="bg-white text-dark-text py-12 shadow-xl border-b border-gray-200" style="margin-top: 60px;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Two-Column Layout for Desktop, Stacked for Mobile -->
             <div class="md:flex md:items-center md:justify-between animate-fade-in">
@@ -1403,7 +1439,78 @@
 
         // Header navigation functionality
         const navLinks = document.querySelectorAll('.link-item');
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640; // Matches CSS breakpoint
         
+        /**
+         * Dynamically sets the body's top padding based on the header's current height.
+         */
+        function adjustBodyPadding() {
+            // Wait for the header's height to settle based on CSS media queries
+            setTimeout(() => {
+                const headerHeight = header.offsetHeight;
+                body.style.paddingTop = `${headerHeight}px`;
+            }, 50);
+        }
+
+        /**
+         * Toggles the visibility of the dropdown menu.
+         * @param {Event} event - The click event.
+         * @param {string} menuId - The ID of the menu element.
+         */
+        function toggleDropdown(event, menuId) {
+            // Prevent link navigation if it's the button
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            
+            // Do not show dropdown on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                return;
+            }
+
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            const isHidden = menu.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Show menu
+                menu.classList.remove('hidden');
+                menu.classList.add('block');
+                button.setAttribute('aria-expanded', 'true');
+                if (caret) caret.classList.add('rotate-180');
+            } else {
+                // Hide menu
+                menu.classList.remove('block');
+                menu.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                if (caret) caret.classList.remove('rotate-180');
+            }
+        }
+
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target) && !portfolioMenu.classList.contains('hidden')) {
+                portfolioMenu.classList.add('hidden');
+                portfolioMenu.classList.remove('block');
+                portfolioButton.setAttribute('aria-expanded', 'false');
+                const caret = portfolioButton.querySelector('.fa-caret-down');
+                if (caret) caret.classList.remove('rotate-180');
+            }
+        });
+
         /**
          * Triggers the visual transition via setState, then navigates to the external URL after a delay.
          * @param {string} targetState - 'left', 'center', 'right', or 'none'.
@@ -1435,10 +1542,26 @@
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             });
+            
+            // Handle the Portfolio button separately
+            if (portfolioButton) {
+                portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+
 
             // Set the new active state/link
             const activeLink = document.getElementById(linkId);
-            if (activeLink) {
+            // Since the dropdown items don't have IDs, we activate the *Portfolio button* itself if a link *within* the dropdown is clicked.
+            const isDropdownLink = activeLink === null && linkId === 'portfolio-link';
+
+            if (isDropdownLink) {
+                // Activate the Portfolio button visually
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            } else if (activeLink) {
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
                 activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
@@ -1447,12 +1570,14 @@
             console.log(`Application state changed to: ${targetState}`);
         }
 
-        // Initialize with 'Home' active on load
+        // Initialize and handle resize events
+        window.addEventListener('resize', adjustBodyPadding);
         window.onload = () => {
-             // Use a slight delay to ensure all DOM elements are registered
-             setTimeout(() => {
+            adjustBodyPadding();
+            // Use a slight delay to ensure all DOM elements are registered
+            setTimeout(() => {
                 setState('center', 'home-link');
-             }, 50);
+            }, 50);
         };
     </script>
     <script>
