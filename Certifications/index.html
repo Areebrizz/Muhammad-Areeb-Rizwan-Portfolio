@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications | M Areeb R</title>
-    <!-- Load Tailwind CSS -->
+    <title>Certifications | Areeb Rizwan</title>
+<!-- Favicon Links -->
+    <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+
+<!-- For better Google Search appearance, also add Open Graph and Twitter Cards -->
+    <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,6 +33,7 @@
                         'custom-green': '#4caf50',
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
+                        'brand-primary': '#4caf50',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -62,12 +72,17 @@
         /* Ensures body uses the Inter font throughout */
         body {
             font-family: 'Inter', sans-serif;
+            padding-top: 60px; /* Default for desktop */
         }
 
         /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
         @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
             .main-header {
-                height: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+                height: 110px !important; /* Override the desktop height */
             }
             
             .nav-content {
@@ -103,9 +118,22 @@
                 padding: 3px 0;
             }
 
-            /* Hide the dropdown menu on mobile for cleaner stacking, but keep the Portfolio link visible */
-            #portfolio-dropdown-menu {
-                display: none !important;
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
+                justify-content: center;
+                margin: 0 8px;
+            }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
             }
         }
         
@@ -277,6 +305,17 @@
             z-index: 10; /* Below the arrow, but visually 'above' the footer content */
         }
 
+        /* Style for active Portfolio button on certifications page */
+        .page-certifications #portfolio-dropdown-button {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
+
+        .page-certifications #portfolio-dropdown-button:hover {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
+
         /* Arrow button positioning and hover effect */
         .top-button-container {
             position: absolute;
@@ -312,13 +351,35 @@
             filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
         }
 
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
         /* Custom scroll behavior for smooth transition */
         html {
             scroll-behavior: smooth;
         }
+
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
+
+        /* Ensure links are properly styled */
+        .link-item {
+            position: relative;
+        }
+
+        /* Active link styling */
+        .active-link {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-dark-text min-h-screen" id="top">
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen page-certifications" id="top">
     <!-- Header (UPDATED VERSION) -->
     <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
@@ -326,14 +387,14 @@
             <!-- Logo/Name Area - Now includes the image logo followed by the name -->
             <div class="logo-container text-white select-none flex items-center">
                 
-                <!-- NEW: Image Logo (using a placeholder for a 32x32 green circle with white 'A') -->
-                <img src="https://placehold.co/32x32/4caf50/ffffff?text=A" 
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
                      alt="Logo A" 
                      class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
-                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/808080/ffffff?text=X'" />
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
                      
                 <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
-                    M. Areeb Rizwan
+                    Areeb Rizwan
                 </span>
             </div>
             
@@ -342,9 +403,9 @@
                 
                 <nav class="nav-links flex">
                     <!-- Nav Links -->
-                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     
                     <!-- Portfolio Dropdown -->
                     <div class="dropdown relative ml-6">
@@ -353,54 +414,53 @@
                             <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
                         </button>
                         
-                        <!-- UPDATED: Added bg-black/80 for translucent black and backdrop-blur-sm -->
+                        <!-- Dropdown Menu -->
                         <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
                             <div class="py-1" role="none">
-                                <!-- UPDATED: Changed hover:bg-gray-700 to hover:bg-white/10 for translucent style -->
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
                                     <span class="font-semibold">View All Portfolio</span>
                                 </a>
                                 <hr class="border-gray-700 mx-2">
                                 
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/projects.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Projects
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/professional-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Professional Experience
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/entrepreneurial-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Entrepreneurial Experience
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/researches.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Researches
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/certifications.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Certifications
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/achievements.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Achievements
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
                     
-                    <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
                 <!-- Social Media Icons -->
                 <div class="social-icons flex items-center space-x-4">
-                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
@@ -844,8 +904,8 @@
                 <!-- Left Section (Copyright) -->
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
                     <!-- Updated with new glow class and hover color -->
-                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-brand-primary transition duration-300">
-                        © 2025 Muhammad Areeb Rizwan Siddique
+                    <a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
                 
@@ -853,11 +913,11 @@
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
                         <!-- Updated all links with new glow class and hover color -->
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="https://areebrizz.github.io://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
+                        <li><a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -1063,317 +1123,317 @@
             const modalClose = document.getElementById('modalClose');
             const certificateCards = document.querySelectorAll('.certificate-card');
             
-            // Certificate data for all certificate types
+            // Certificate data for all certificate types - FIXED IMAGE URLs
             const certificateData = {
-                // Professional Certifications
+                // Professional Certifications - Added placeholder images
                 'six-sigma-black-belt': {
                     title: 'Six Sigma Black Belt',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/placeholder-certificate.jpg',
                     description: 'Expert-level certification in Six Sigma methodology for process improvement and quality management.'
                 },
                 'six-sigma-green-belt': {
                     title: 'Six Sigma Green Belt',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/placeholder-certificate.jpg',
                     description: 'Advanced-level certification in Six Sigma methodology for process improvement.'
                 },
                 'six-sigma-yellow-belt': {
                     title: 'Six Sigma Yellow Belt',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/placeholder-certificate.jpg',
                     description: 'Foundation-level certification in Six Sigma methodology.'
                 },
                 'iso-9001': {
                     title: 'ISO 9001 Quality Management',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/placeholder-certificate.jpg',
                     description: 'Certification in ISO 9001 Quality Management Systems.'
                 },
                 
                 // Specializations
                 'google-project-management': {
                     title: 'Google Project Management Specialization',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Google Project Management_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Google%20Project%20Management_page-0001.jpg',
                     description: 'Comprehensive project management training covering initiation, planning, execution, and agile methodologies.'
                 },
                 'collaborative-robotics': {
                     title: 'Collaborative Robotics in Industry',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Collaborative Robotics in Industry_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Collaborative%20Robotics%20in%20Industry_page-0001.jpg',
                     description: 'Specialization in collaborative robotics applications in industrial settings.'
                 },
                 'battery-technologies': {
                     title: 'Battery Technologies Specialization',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Technologies_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery%20Technologies_page-0001.jpg',
                     description: 'In-depth study of battery technologies, including lithium-based, Zn and Ni batteries, and applications in electric vehicles.'
                 },
                 'solidworks': {
                     title: 'SOLIDWORKS 3D CAD for Education',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS 3D CAD for Education_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS%203D%20CAD%20for%20Education_page-0001.jpg',
                     description: 'Specialization in SOLIDWORKS 3D CAD software, covering sketching, extrusion, feature patterns, and assemblies.'
                 },
                 'digital-manufacturing': {
                     title: 'Digital Technology in Manufacturing',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Technology in Manufacturing_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital%20Technology%20in%20Manufacturing_page-0001.jpg',
                     description: 'Specialization focusing on digital technologies and Industry 4.0 applications in manufacturing.'
                 },
                 'ai-agent-developer': {
                     title: 'AI Agent Developer',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agent Developer_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20Agent%20Developer_page-0001.jpg',
                     description: 'Specialization in developing AI agents and agentic AI architecture using Python and generative AI.'
                 },
                 'autonomous-vehicle': {
                     title: 'Autonomous Vehicle Engineering',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Vehicle Engineering_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous%20Vehicle%20Engineering_page-0001.jpg',
                     description: 'Specialization in autonomous vehicle engineering, covering modeling, simulation, and autonomous systems.'
                 },
                 'systems-engineering': {
                     title: 'Introduction to Systems Engineering',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Introduction to Systems Engineering_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Introduction%20to%20Systems%20Engineering_page-0001.jpg',
                     description: 'Specialization introducing systems engineering principles and their application to the design process.'
                 },
                 'ai-mechanical': {
                     title: 'AI for Mechanical Engineers',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Mechanical Engineers_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20for%20Mechanical%20Engineers_page-0001.jpg',
                     description: 'Specialization focusing on AI applications in mechanical engineering, including autonomous vehicles, robotics, and design optimization.'
                 },
 
                 // Individual Courses - Vanderbilt University
                 'prompt-engineering': {
                     title: 'Prompt Engineering for ChatGPT',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Prompt Engineering for ChatGPT_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Prompt%20Engineering%20for%20ChatGPT_page-0001.jpg',
                     description: 'Course covering advanced prompt engineering techniques for optimizing interactions with ChatGPT and other language models.'
                 },
                 'chatgpt-analysis': {
                     title: 'ChatGPT Advanced Data Analysis',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/ChatGPT Advanced Data Analysis_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/ChatGPT%20Advanced%20Data%20Analysis_page-0001.jpg',
                     description: 'Training in using ChatGPT for advanced data analysis and interpretation tasks.'
                 },
                 'openai-gpts': {
                     title: 'OpenAI GPTs: Creating Your Own Custom AI Assistants',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/OpenAI GPTs Creating Your Own Custom AI Assistants_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/OpenAI%20GPTs%20Creating%20Your%20Own%20Custom%20AI%20Assistants_page-0001.jpg',
                     description: 'Course on creating custom AI assistants using OpenAI GPTs platform.'
                 },
                 'trustworthy-ai': {
                     title: 'Trustworthy Generative AI',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Trustworthy Generative AI_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Trustworthy%20Generative%20AI_page-0001.jpg',
                     description: 'Training in ensuring the reliability and trustworthiness of generative AI systems.'
                 },
                 'ai-agents-python': {
                     title: 'AI Agents and Agentic AI Architecture in Python',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI Architecture in Python_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20Agents%20and%20Agentic%20AI%20Architecture%20in%20Python_page-0001.jpg',
                     description: 'Course on building AI agents and agentic architectures using Python.'
                 },
                 'ai-agents-genai': {
                     title: 'AI Agents and Agentic AI with Python & Generative AI',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI Agents and Agentic AI with Python & Generative AI_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20Agents%20and%20Agentic%20AI%20with%20Python%20&%20Generative%20AI_page-0001.jpg',
                     description: 'Advanced course on AI agents combining Python programming with generative AI capabilities.'
                 },
 
                 // Individual Courses - Dassault Systèmes
                 'solidworks-foundations': {
                     title: 'SOLIDWORKS Foundations: Sketching and Extrusion',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Foundations Sketching and Extrusion_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS%20Foundations%20Sketching%20and%20Extrusion_page-0001.jpg',
                     description: 'Fundamental course covering sketching and extrusion techniques in SOLIDWORKS 3D CAD software.'
                 },
                 'solidworks-patterns': {
                     title: 'SOLIDWORKS Feature Patterns and Sweeps',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Feature Patterns and Sweeps_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS%20Feature%20Patterns%20and%20Sweeps_page-0001.jpg',
                     description: 'Course on advanced feature patterns and sweep operations in SOLIDWORKS.'
                 },
                 'solidworks-advanced': {
                     title: 'SOLIDWORKS Advanced Sketching and Reference Geometry',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Advanced Sketching and Reference Geometry_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS%20Advanced%20Sketching%20and%20Reference%20Geometry_page-0001.jpg',
                     description: 'Advanced sketching techniques and reference geometry in SOLIDWORKS.'
                 },
                 'solidworks-revolution': {
                     title: 'SOLIDWORKS Revolution and Cut Features',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Revolution and Cut Features_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS%20Revolution%20and%20Cut%20Features_page-0001.jpg',
                     description: 'Course covering revolution and cut features in SOLIDWORKS 3D modeling.'
                 },
                 'solidworks-assemblies': {
                     title: 'SOLIDWORKS Assemblies and Exam Level Part Modeling',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS Assemblies and Exam Level Part Modeling_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/SOLIDWORKS%20Assemblies%20and%20Exam%20Level%20Part%20Modeling_page-0001.jpg',
                     description: 'Advanced course on assemblies and exam-level part modeling in SOLIDWORKS.'
                 },
 
                 // Individual Courses - Google
                 'job-search-ai': {
                     title: 'Accelerate Your Job Search with AI',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Accelerate Your Job Search with AI_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Accelerate%20Your%20Job%20Search%20with%20AI_page-0001.jpg',
                     description: 'Course on leveraging AI tools to enhance job search strategies and outcomes.'
                 },
                 'project-initiation': {
                     title: 'Project Initiation: Starting a Successful Project',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Initiation Starting a Successful Project_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project%20Initiation%20Starting%20a%20Successful%20Project_page-0001.jpg',
                     description: 'Course focused on the initial phases of project management, including stakeholder analysis and project charter development.'
                 },
                 'project-planning': {
                     title: 'Project Planning: Putting It All Together',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Planning Putting It All Together_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project%20Planning%20Putting%20It%20All%20Together_page-0001.jpg',
                     description: 'Comprehensive project planning course covering scheduling, resource allocation, and risk management.'
                 },
                 'project-foundations': {
                     title: 'Foundations of Project Management',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Foundations of Project Management_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Foundations%20of%20Project%20Management_page-0001.jpg',
                     description: 'The foundational course covering the core concepts, skills, and tools necessary for successful project management.'
                 },
                 'project-capstone': {
                     title: 'Capstone: Applying Project Management in the Real World',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Capstone Applying Project Management in the Real World_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Capstone%20Applying%20Project%20Management%20in%20the%20Real%20World_page-0001.jpg',
                     description: 'The final course, involving a capstone project where project management principles are applied to simulated real-world scenarios.'
                 },
                 'project-execution': {
                     title: 'Project Execution: Running the Project',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project Execution Running the Project_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Project%20Execution%20Running%20the%20Project_page-0001.jpg',
                     description: 'Focuses on the execution phase, including managing teams, communication, managing conflicts, and stakeholder engagement.'
                 },
                 'agile-pm': {
                     title: 'Agile Project Management',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Agile Project Management_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Agile%20Project%20Management_page-0001.jpg',
                     description: 'Specialized course on Agile methodologies, including Scrum, Kanban, and their application in project environments.'
                 },
 
                 // Individual Courses - University of Colorado Boulder
                 'systems-need': {
                     title: 'The Need for Systems Engineering',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/The Need for Systems Engineering_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/The%20Need%20for%20Systems%20Engineering_page-0001.jpg',
                     description: 'Fundamental principles and importance of systems engineering in complex project development and management.'
                 },
                 'systems-design': {
                     title: 'Applying Systems Engineering to the Design Process',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Applying Systems Engineering to the Design Process_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Applying%20Systems%20Engineering%20to%20the%20Design%20Process_page-0001.jpg',
                     description: 'Practical application of systems engineering methodologies throughout the product design lifecycle.'
                 },
                 'systems-program': {
                     title: 'Systems Engineering and Program Management',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Systems Engineering and Program Management_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Systems%20Engineering%20and%20Program%20Management_page-0001.jpg',
                     description: 'Integration of systems engineering principles with program management for successful project execution.'
                 },
                 'motor-control': {
                     title: 'Motors and Motor Control Circuits',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Motors and Motor Control Circuits_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Motors%20and%20Motor%20Control%20Circuits_page-0001.jpg',
                     description: 'Comprehensive study of electric motors and control circuit design for industrial applications.'
                 },
                 'sensor-design': {
                     title: 'Sensors and Sensor Circuit Design',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Sensors and Sensor Circuit Design_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Sensors%20and%20Sensor%20Circuit%20Design_page-0001.jpg',
                     description: 'Design and implementation of sensor systems and associated electronic circuits for data acquisition.'
                 },
 
                 // Individual Courses - University at Buffalo, SUNY
                 'manufacturing-analysis': {
                     title: 'Advanced Manufacturing Process Analysis',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Advanced Manufacturing Process Analysis_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Advanced%20Manufacturing%20Process%20Analysis_page-0001.jpg',
                     description: 'Advanced techniques for analyzing and optimizing manufacturing processes and systems.'
                 },
                 'mbse': {
                     title: 'MBSE: Model-Based Systems Engineering',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/MBSE Model-Based Systems Engineering_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/MBSE%20Model-Based%20Systems%20Engineering_page-0001.jpg',
                     description: 'Model-Based Systems Engineering approaches for complex system design and development.'
                 },
                 'digital-manufacturing': {
                     title: 'Digital Manufacturing & Design',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing & Design_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital%20Manufacturing%20&%20Design_page-0001.jpg',
                     description: 'Digital technologies and methodologies transforming modern manufacturing and design processes.'
                 },
                 'digital-thread-components': {
                     title: 'Digital Thread: Components',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Components_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital%20Thread%20Components_page-0001.jpg',
                     description: 'Fundamental components and architecture of digital thread implementation in manufacturing.'
                 },
                 'digital-thread-implementation': {
                     title: 'Digital Thread: Implementation',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Thread Implementation_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital%20Thread%20Implementation_page-0001.jpg',
                     description: 'Practical implementation strategies for digital thread in industrial and manufacturing environments.'
                 },
 
                 // Individual Courses - Arizona State University
                 'zn-ni-batteries': {
                     title: 'Zn and Ni Based Batteries',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Zn and Ni Based Batteries_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Zn%20and%20Ni%20Based%20Batteries_page-0001.jpg',
                     description: 'Comprehensive study of Zinc and Nickel-based battery technologies and their applications.'
                 },
                 'primary-secondary-batteries': {
                     title: 'Primary and Secondary Batteries',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Primary and Secondary Batteries_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Primary%20and%20Secondary%20Batteries_page-0001.jpg',
                     description: 'Fundamental principles and differences between primary (disposable) and secondary (rechargeable) batteries.'
                 },
                 'batteries-ev': {
                     title: 'Batteries and Electric Vehicles',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Batteries and Electric Vehicles_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Batteries%20and%20Electric%20Vehicles_page-0001.jpg',
                     description: 'Battery technologies and systems specifically designed for electric vehicle applications.'
                 },
                 'battery-manufacturing': {
                     title: 'Battery Comparison, Manufacturing, and Packaging',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery Comparison, Manufacturing, and Packaging_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Battery%20Comparison,%20Manufacturing,%20and%20Packaging_page-0001.jpg',
                     description: 'Comparative analysis, manufacturing processes, and packaging solutions for various battery types.'
                 },
                 'lithium-batteries': {
                     title: 'Lithium Based Batteries',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Lithium Based Batteries_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Lithium%20Based%20Batteries_page-0001.jpg',
                     description: 'Advanced study of lithium-ion and lithium-polymer battery technologies and their applications.'
                 },
 
                 // Individual Courses - L&T EduTech 
                 'cps-solutions': {
                     title: 'CPS solution for Industries',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/CPS solution for Industries_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/CPS%20solution%20for%20Industries_page-0001.jpg',
                     description: 'Cyber-Physical Systems solutions and their implementation in industrial automation and smart factories.'
                 },
                 'robotics-fundamentals': {
                     title: 'Fundamentals of Robotics & Industrial Automation',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Fundamentals of Robotics & Industrial Automation_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Fundamentals%20of%20Robotics%20&%20Industrial%20Automation_page-0001.jpg',
                     description: 'Core principles of robotics systems and their application in industrial automation processes.'
                 },
                 'industry-4': {
                     title: 'Industry 4.0: PLM, Value Chain, and Smart Factory',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industry 4.0 PLM, Value Chain, and Smart Factory_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industry%204.0%20PLM,%20Value%20Chain,%20and%20Smart%20Factory_page-0001.jpg',
                     description: 'Industry 4.0 concepts including Product Lifecycle Management, value chain optimization, and smart factory implementation.'
                 },
                 'digital-manufacturing-intro': {
                     title: 'Digital Manufacturing: Introduction and Smart Design',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital Manufacturing Introduction and Smart Design_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Digital%20Manufacturing%20Introduction%20and%20Smart%20Design_page-0001.jpg',
                     description: 'Introduction to digital manufacturing technologies and smart design principles for modern production.'
                 },
                 'fluid-systems': {
                     title: 'Industrial Fluid systems & Smart Factory Automation',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industrial Fluid systems & Smart Factory Automation_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Industrial%20Fluid%20systems%20&%20Smart%20Factory%20Automation_page-0001.jpg',
                     description: 'Industrial fluid systems integration with smart factory automation and control systems.'
                 },
                 'robotics-engineering': {
                     title: 'Robotics Engineering & Applications',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Robotics Engineering & Applications_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Robotics%20Engineering%20&%20Applications_page-0001.jpg',
                     description: 'Advanced robotics engineering principles and practical applications in industrial and commercial settings.'
                 },
 
                 // Individual Courses - Università di Napoli Federico II
                 'mechanical-simulation': {
                     title: 'Modelling and simulation of mechanical systems',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Modelling and simulation of mechanical systems_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Modelling%20and%20simulation%20of%20mechanical%20systems_page-0001.jpg',
                     description: 'Computational modeling and simulation techniques for analyzing mechanical systems and components.'
                 },
                 'aerospace-systems': {
                     title: 'Autonomous Aerospace Systems',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous Aerospace Systems_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/Autonomous%20Aerospace%20Systems_page-0001.jpg',
                     description: 'Autonomous systems and control technologies for aerospace applications and unmanned vehicles.'
                 },
                 'big-data-tour': {
                     title: 'A quick tour on Big Data and Business Intelligence',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/A quick tour on Big Data and Business Intelligence_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/A%20quick%20tour%20on%20Big%20Data%20and%20Business%20Intelligence_page-0001.jpg',
                     description: 'Overview of big data technologies and business intelligence tools for data-driven decision making.'
                 },
 
                 // Individual Courses - University of Michigan
                 'ai-autonomous': {
                     title: 'AI for Autonomous Vehicles and Robotics',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Autonomous Vehicles and Robotics_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20for%20Autonomous%20Vehicles%20and%20Robotics_page-0001.jpg',
                     description: 'Artificial intelligence applications in autonomous vehicle navigation and robotic systems control.'
                 },
                 'ai-energy': {
                     title: 'AI for Energy and Biomedical Applications',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Energy and Biomedical Applications_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20for%20Energy%20and%20Biomedical%20Applications_page-0001.jpg',
                     description: 'AI technologies applied to energy systems optimization and biomedical engineering solutions.'
                 },
                 'ai-design': {
                     title: 'AI for Design and Optimization',
-                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI for Design and Optimization_page-0001.jpg',
+                    image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/Certifications/images/AI%20for%20Design%20and%20Optimization_page-0001.jpg',
                     description: 'Artificial intelligence methods for engineering design optimization and performance enhancement.'
                 }
             };
@@ -1446,17 +1506,6 @@
         const mobileBreakpoint = 640; // Matches CSS breakpoint
         
         /**
-         * Dynamically sets the body's top padding based on the header's current height.
-         */
-        function adjustBodyPadding() {
-            // Wait for the header's height to settle based on CSS media queries
-            setTimeout(() => {
-                const headerHeight = header.offsetHeight;
-                body.style.paddingTop = `${headerHeight}px`;
-            }, 50);
-        }
-
-        /**
          * Toggles the visibility of the dropdown menu.
          * @param {Event} event - The click event.
          * @param {string} menuId - The ID of the menu element.
@@ -1467,29 +1516,42 @@
                 event.preventDefault();
             }
             
-            // Do not show dropdown on mobile
-            if (window.innerWidth <= mobileBreakpoint) {
-                return;
-            }
-
             const menu = document.getElementById(menuId);
             const button = document.getElementById(menuId.replace('-menu', '-button'));
             const caret = button.querySelector('.fa-caret-down');
 
-            const isHidden = menu.classList.contains('hidden');
-            
-            if (isHidden) {
-                // Show menu
-                menu.classList.remove('hidden');
-                menu.classList.add('block');
-                button.setAttribute('aria-expanded', 'true');
-                if (caret) caret.classList.add('rotate-180');
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
             } else {
-                // Hide menu
-                menu.classList.remove('block');
-                menu.classList.add('hidden');
-                button.setAttribute('aria-expanded', 'false');
-                if (caret) caret.classList.remove('rotate-180');
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
             }
         }
 
@@ -1501,35 +1563,31 @@
         // Close the dropdown if the user clicks outside of it
         document.addEventListener('click', function(event) {
             const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
             // Check if the click is outside the dropdown container AND the menu is currently visible
-            if (dropdownContainer && !dropdownContainer.contains(event.target) && !portfolioMenu.classList.contains('hidden')) {
-                portfolioMenu.classList.add('hidden');
-                portfolioMenu.classList.remove('block');
-                portfolioButton.setAttribute('aria-expanded', 'false');
-                const caret = portfolioButton.querySelector('.fa-caret-down');
-                if (caret) caret.classList.remove('rotate-180');
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (!portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
             }
         });
-
-        /**
-         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
-         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
-         * @param {string} url - The external URL to navigate to (optional).
-         * @param {string} linkId - The ID of the link that was clicked.
-         */
-        function navigateState(targetState, url, linkId) {
-            // 1. Update active link state
-            setState(targetState, linkId);
-
-            // 2. Wait for the transition to start/complete (300ms) and then navigate
-            if (url && url !== '#blog' && url !== '#contact') {
-                setTimeout(() => {
-                    // For demonstration, we prevent actual navigation in the sandbox
-                    console.log(`Simulating navigation to: ${url}`);
-                    // window.location.href = url; // Uncomment this for live usage
-                }, 300); // 300ms matches the transition-all duration
-            }
-        }
 
         /**
          * Refactored state setting for CLICKS/LINKS
@@ -1548,7 +1606,6 @@
                 portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
-
 
             // Set the new active state/link
             const activeLink = document.getElementById(linkId);
@@ -1570,21 +1627,55 @@
             console.log(`Application state changed to: ${targetState}`);
         }
 
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url && url !== 'https://areebrizwan.com/blog' && url !== 'https://areebrizwan.com/contact') {
+                setTimeout(() => {
+                    // For demonstration, we prevent actual navigation in the sandbox
+                    console.log(`Simulating navigation to: ${url}`);
+                    // window.location.href = url; // Uncomment this for live usage
+                }, 300); // 300ms matches the transition-all duration
+            }
+        }
+
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            const headerHeight = header.offsetHeight;
+            body.style.paddingTop = `${headerHeight}px`;
+        }
+
         // Initialize and handle resize events
-        window.addEventListener('resize', adjustBodyPadding);
-        window.onload = () => {
-            adjustBodyPadding();
-            // Use a slight delay to ensure all DOM elements are registered
-            setTimeout(() => {
-                setState('center', 'home-link');
-            }, 50);
-        };
-    </script>
-    <script>
+        window.addEventListener('resize', initializeBodyPadding);
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBodyPadding();
+            
+            // Check if we're on certifications page
+            if (document.body.classList.contains('page-certifications')) {
+                setTimeout(() => {
+                    setState('right', 'portfolio-link');
+                }, 50);
+            } else {
+                setTimeout(() => {
+                    setState('center', 'home-link');
+                }, 50);
+            }
+        });
+
+        // Count up animation
         document.addEventListener('DOMContentLoaded', () => {
             const countElements = document.querySelectorAll('.stat-count');
 
-            // --- Count Up Animation Logic ---
             const animateCount = (el) => {
                 const target = parseInt(el.getAttribute('data-target'));
                 const suffix = el.getAttribute('data-suffix') || '';
@@ -1610,8 +1701,6 @@
 
             // Run the animation immediately when the page structure is loaded
             countElements.forEach(el => animateCount(el));
-            
-            // --- End Count Up Animation Logic ---
         });
     </script>
 </body>
