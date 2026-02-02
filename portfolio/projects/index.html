@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects Portfolio - Muhammad Areeb Rizwan Siddiqui</title>
-    <!-- Favicon: Green Circle with White 'A' using SVG Data URI -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%234caf50'/%3E%3Ctext x='50%' y='65%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='60' fill='white' font-weight='900'%3EA%3C/text%3E%3C/svg%3E">
-    
-    <!-- Use Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Areeb Rizwan</title>
+    <!-- Favicon Links -->
+    <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
 
+    <!-- For better Google Search appearance, also add Open Graph and Twitter Cards -->
+    <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Configure Tailwind for custom theme and use of Inter font -->
     <script>
-        // Tailwind Configuration
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        // Using your provided hex codes
+                        'primary-blue': '#1D4ED8',
+                        'secondary-gray': '#E5E7EB',
+                        'dark-text': '#1F2937',
+                        'accent-green': '#10B981',
+                        'accent-purple': '#8B5CF6',
                         'custom-green': '#4caf50',
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
-                        'light-bg': '#f9fafb',
-                        'light-card': '#ffffff',
-                        'text-dark': '#1f2937',
-                        'text-medium': '#4b5563',
-                        'border-light': '#e5e7eb',
-                        'accent-light': '#f3f4f6',
+                        'brand-primary': '#4caf50',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
                         }
                     }
                 }
@@ -54,16 +62,106 @@
         }
     </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
         /* Custom Text Shadow for the green glow effect */
         .text-shadow-green {
-            text-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
         
         /* Ensures body uses the Inter font throughout */
         body {
             font-family: 'Inter', sans-serif;
-            transition: padding-top 0.3s ease-out; /* Smooth transition for dynamic padding */
-            background-color: #f9fafb;
+            padding-top: 60px; /* Default for desktop */
+        }
+
+        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
+        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
+            .main-header {
+                height: 110px !important; /* Override the desktop height */
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            /* New rule for the right-side wrapper to stack its contents on mobile */
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
+            }
+            
+            .logo-container {
+                margin-bottom: 5px;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px; /* Space between nav and social */
+            }
+            
+            .nav-links a, .dropdown button {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
+                justify-content: center;
+                margin: 0 8px;
+            }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+        }
+        
+        /* Add a transition to the main content area for a smoother experience */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
+        
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
+
+        /* Ensure links are properly styled */
+        .link-item {
+            position: relative;
+        }
+
+        /* Active link styling */
+        .active-link {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
         }
 
         /* Custom scrollbar */
@@ -288,15 +386,17 @@
     <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
-            <!-- Logo/Name Area -->
+            <!-- Logo/Name Area - Now includes the image logo followed by the name -->
             <div class="logo-container text-white select-none flex items-center">
-                <img src="https://placehold.co/32x32/4caf50/ffffff?text=A" 
+                
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
                      alt="Logo A" 
                      class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
-                     onerror="this.onerror=null; this.src='https://placehold.co/32x32/808080/ffffff?text=X'" />
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
                      
                 <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
-                    M. Areeb Rizwan
+                    Areeb Rizwan
                 </span>
             </div>
             
@@ -305,9 +405,9 @@
                 
                 <nav class="nav-links flex">
                     <!-- Nav Links -->
-                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     
                     <!-- Portfolio Dropdown -->
                     <div class="dropdown relative ml-6">
@@ -316,52 +416,53 @@
                             <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
                         </button>
                         
+                        <!-- Dropdown Menu -->
                         <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
                             <div class="py-1" role="none">
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
                                     <span class="font-semibold">View All Portfolio</span>
                                 </a>
                                 <hr class="border-gray-700 mx-2">
                                 
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/projects.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Projects
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/professional-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Professional Experience
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/entrepreneurial-experience.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Entrepreneurial Experience
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/researches.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Researches
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/certifications.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Certifications
                                 </a>
-                                <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/achievements.html" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
                                     Achievements
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
                     
-                    <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
                 <!-- Social Media Icons -->
                 <div class="social-icons flex items-center space-x-4">
-                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
@@ -383,8 +484,8 @@
                         A collection of my technical projects, each solving real-world problems with innovative solutions. From full-stack applications to AI-powered tools, explore my journey through code and creativity.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#featured-projects" class="px-6 py-3 bg-custom-green text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1">
-                            <i class="fas fa-rocket mr-2"></i>Explore Projects
+                        <a href="https://areebrizwan.com/portfolio" class="px-6 py-3 bg-custom-green text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fas fa-rocket mr-2"></i>View Portfolio
                         </a>
                         <a href="https://github.com/AreebRizz" target="_blank" class="px-6 py-3 bg-transparent border border-custom-green text-custom-green font-semibold rounded-lg hover:bg-custom-green hover:text-white transition-all duration-300">
                             <i class="fab fa-github mr-2"></i>GitHub Profile
@@ -1048,7 +1149,7 @@
                 
                 <!-- Left Section (Copyright) -->
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
-                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-custom-green transition duration-300 font-medium">
+                    <a href="https://areebrizwan.com" class="link-glow-hover hover:text-custom-green transition duration-300 font-medium">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
@@ -1056,11 +1157,11 @@
                 <!-- Right Section (Navigation) -->
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="#" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Home</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">About</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Portfolio</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Blog</a></li>
-                        <li><a href="#contact" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Contact</a></li>
+                        <li><a href="https://areebrizwan.com/" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -1068,24 +1169,14 @@
     </footer>
 
     <script>
+        // Header navigation functionality
         const navLinks = document.querySelectorAll('.link-item');
         const portfolioButton = document.getElementById('portfolio-dropdown-button');
         const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
         const header = document.getElementById('main-header');
         const body = document.body;
         const mobileBreakpoint = 640; // Matches CSS breakpoint
-
-        /**
-         * Dynamically sets the body's top padding based on the header's current height.
-         */
-        function adjustBodyPadding() {
-            // Wait for the header's height to settle based on CSS media queries
-            setTimeout(() => {
-                const headerHeight = header.offsetHeight;
-                body.style.paddingTop = `${headerHeight}px`;
-            }, 50);
-        }
-
+        
         /**
          * Toggles the visibility of the dropdown menu.
          * @param {Event} event - The click event.
@@ -1097,29 +1188,42 @@
                 event.preventDefault();
             }
             
-            // Do not show dropdown on mobile
-            if (window.innerWidth <= mobileBreakpoint) {
-                return;
-            }
-
             const menu = document.getElementById(menuId);
             const button = document.getElementById(menuId.replace('-menu', '-button'));
             const caret = button.querySelector('.fa-caret-down');
 
-            const isHidden = menu.classList.contains('hidden');
-            
-            if (isHidden) {
-                // Show menu
-                menu.classList.remove('hidden');
-                menu.classList.add('block');
-                button.setAttribute('aria-expanded', 'true');
-                if (caret) caret.classList.add('rotate-180');
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
             } else {
-                // Hide menu
-                menu.classList.remove('block');
-                menu.classList.add('hidden');
-                button.setAttribute('aria-expanded', 'false');
-                if (caret) caret.classList.remove('rotate-180');
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
             }
         }
 
@@ -1131,35 +1235,31 @@
         // Close the dropdown if the user clicks outside of it
         document.addEventListener('click', function(event) {
             const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
             // Check if the click is outside the dropdown container AND the menu is currently visible
-            if (dropdownContainer && !dropdownContainer.contains(event.target) && !portfolioMenu.classList.contains('hidden')) {
-                portfolioMenu.classList.add('hidden');
-                portfolioMenu.classList.remove('block');
-                portfolioButton.setAttribute('aria-expanded', 'false');
-                const caret = portfolioButton.querySelector('.fa-caret-down');
-                if (caret) caret.classList.remove('rotate-180');
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (!portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
             }
         });
-
-        /**
-         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
-         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
-         * @param {string} url - The external URL to navigate to (optional).
-         * @param {string} linkId - The ID of the link that was clicked.
-         */
-        function navigateState(targetState, url, linkId) {
-            // 1. Update active link state
-            setState(targetState, linkId);
-
-            // 2. Wait for the transition to start/complete (300ms) and then navigate
-            if (url && url !== '#contact') { // Contact uses internal anchor
-                setTimeout(() => {
-                    // For demonstration, we prevent actual navigation in the sandbox
-                    console.log(`Simulating navigation to: ${url}`);
-                    // window.location.href = url; // Uncomment this for live usage
-                }, 300); // 300ms matches the transition-all duration
-            }
-        }
 
         /**
          * Refactored state setting for CLICKS/LINKS
@@ -1196,38 +1296,65 @@
             }
             
             // Console log to show state change (e.g., for panel animation)
-            console.log(`Application state changed to: ${targetState}`);
+            console.log(`Application state changed to: ${targetState}, Active link: ${linkId}`);
+        }
+
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url) {
+                console.log(`Would navigate to: ${url}`);
+                // In a real implementation, you would uncomment the line below:
+                // setTimeout(() => { window.location.href = url; }, 300);
+            }
+        }
+
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            const headerHeight = header.offsetHeight;
+            body.style.paddingTop = `${headerHeight}px`;
         }
 
         // Initialize and handle resize events
-        window.addEventListener('resize', adjustBodyPadding);
-        window.onload = () => {
-            adjustBodyPadding();
-            // Use a slight delay to ensure all DOM elements are registered
+        window.addEventListener('resize', initializeBodyPadding);
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBodyPadding();
+            
+            // Set initial active state
             setTimeout(() => {
                 setState('center', 'home-link');
-                
-                // Animate project cards on scroll
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -100px 0px'
-                };
-                
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('opacity-100', 'translate-y-0');
-                            entry.target.classList.remove('opacity-0', 'translate-y-10');
-                        }
-                    });
-                }, observerOptions);
-                
-                // Observe all project cards
-                document.querySelectorAll('.project-card').forEach(card => {
-                    observer.observe(card);
-                });
             }, 50);
-        };
+            
+            // Animate project cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
     </script>
 </body>
 </html>
