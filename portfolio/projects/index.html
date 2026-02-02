@@ -42,6 +42,8 @@
                         'fade-in': 'fadeIn 0.5s ease-in-out',
                         'slide-up': 'slideUp 0.5s ease-out',
                         'zoom-in': 'zoomIn 0.3s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'count-up': 'countUp 2s ease-out forwards',
                     },
                     keyframes: {
                         fadeIn: {
@@ -55,6 +57,14 @@
                         zoomIn: {
                             '0%': { transform: 'scale(0.9)', opacity: '0' },
                             '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        countUp: {
+                            '0%': { content: '"0"' },
+                            '100%': { content: 'attr(data-count)' }
                         }
                     }
                 }
@@ -218,11 +228,26 @@
             transition: all 0.5s ease;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Reduced shadow */
             border: 2px solid transparent;
+            animation: float 6s ease-in-out infinite;
         }
         
         .floating-img:hover {
             border-color: #4caf50;
             transform: translateZ(15px); /* Reduced from 20px */
+            animation-play-state: paused;
+        }
+        
+        /* Different animation delays for floating effect */
+        .floating-img:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .floating-img:nth-child(2) {
+            animation-delay: 2s;
+        }
+        
+        .floating-img:nth-child(3) {
+            animation-delay: 4s;
         }
         
         /* Section divider */
@@ -344,6 +369,27 @@
             .project-image-content {
                 height: 180px !important; /* Reduced from 256-320px */
             }
+            
+            /* Mobile floating images adjustments */
+            .floating-img {
+                width: 40% !important;
+                height: 120px !important;
+            }
+            
+            .floating-img:nth-child(1) {
+                top: 10px !important;
+                right: 10px !important;
+            }
+            
+            .floating-img:nth-child(2) {
+                top: 100px !important;
+                left: 10px !important;
+            }
+            
+            .floating-img:nth-child(3) {
+                bottom: 10px !important;
+                right: 10px !important;
+            }
         }
         
         /* Compact project card styles */
@@ -377,6 +423,22 @@
             .compact-image {
                 height: 220px !important;
             }
+        }
+        
+        /* Counting animation styles */
+        .counter {
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .counter.animate {
+            animation: countUp 2s ease-out forwards;
+        }
+        
+        /* Stats numbers animation */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+            display: inline-block;
         }
     </style>
 </head>
@@ -497,15 +559,15 @@
                 <div class="lg:w-1/2 floating-container relative h-96">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-custom-green/10 to-transparent rounded-full blur-3xl"></div>
                     
-                    <div class="floating-img absolute top-8 right-8 w-56 h-40 rounded-xl overflow-hidden z-10 animate-float" style="animation-delay: 0s;">
+                    <div class="floating-img absolute top-8 right-8 w-56 h-40 rounded-xl overflow-hidden z-10">
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce Project" class="w-full h-full object-cover">
                     </div>
                     
-                    <div class="floating-img absolute top-32 left-4 w-48 h-32 rounded-xl overflow-hidden z-20 animate-float" style="animation-delay: 1s;">
+                    <div class="floating-img absolute top-32 left-4 w-48 h-32 rounded-xl overflow-hidden z-20">
                         <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Health App Project" class="w-full h-full object-cover">
                     </div>
                     
-                    <div class="floating-img absolute bottom-8 right-4 w-52 h-36 rounded-xl overflow-hidden z-30 animate-float" style="animation-delay: 2s;">
+                    <div class="floating-img absolute bottom-8 right-4 w-52 h-36 rounded-xl overflow-hidden z-30">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Task Management Project" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -516,19 +578,19 @@
         <section class="stats-section mb-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2">21+</div>
+                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="projects-count" data-count="21">0</div>
                     <div class="text-text-medium text-sm">Projects Completed</div>
                 </div>
                 <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2">12</div>
+                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="tech-count" data-count="12">0</div>
                     <div class="text-text-medium text-sm">Technologies Mastered</div>
                 </div>
                 <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2">3</div>
+                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="years-count" data-count="3">0</div>
                     <div class="text-text-medium text-sm">Years Experience</div>
                 </div>
                 <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2">100%</div>
+                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="satisfaction-count" data-count="100">0</div>
                     <div class="text-text-medium text-sm">Client Satisfaction</div>
                 </div>
             </div>
@@ -1323,6 +1385,63 @@
             body.style.paddingTop = `${headerHeight}px`;
         }
 
+        /**
+         * Animate counting numbers
+         * @param {HTMLElement} element - The element containing the number
+         * @param {number} target - The target number to count to
+         * @param {number} duration - Duration in milliseconds
+         */
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16); // 60fps
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        /**
+         * Initialize counter animations when stats section is in view
+         */
+        function initializeCounters() {
+            const statsSection = document.querySelector('.stats-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Get all stat number elements
+                        const projectsCount = document.getElementById('projects-count');
+                        const techCount = document.getElementById('tech-count');
+                        const yearsCount = document.getElementById('years-count');
+                        const satisfactionCount = document.getElementById('satisfaction-count');
+                        
+                        // Get target values from data attributes
+                        const projectsTarget = parseInt(projectsCount.getAttribute('data-count'));
+                        const techTarget = parseInt(techCount.getAttribute('data-count'));
+                        const yearsTarget = parseInt(yearsCount.getAttribute('data-count'));
+                        const satisfactionTarget = parseInt(satisfactionCount.getAttribute('data-count'));
+                        
+                        // Start animations with different durations for visual effect
+                        setTimeout(() => animateCounter(projectsCount, projectsTarget), 100);
+                        setTimeout(() => animateCounter(techCount, techTarget), 300);
+                        setTimeout(() => animateCounter(yearsCount, yearsTarget), 500);
+                        setTimeout(() => animateCounter(satisfactionCount, satisfactionTarget), 700);
+                        
+                        // Stop observing after animation starts
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        }
+
         // Initialize and handle resize events
         window.addEventListener('resize', initializeBodyPadding);
         
@@ -1334,6 +1453,9 @@
             setTimeout(() => {
                 setState('center', 'home-link');
             }, 50);
+            
+            // Initialize counters
+            initializeCounters();
             
             // Animate project cards on scroll
             const observerOptions = {
