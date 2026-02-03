@@ -34,6 +34,11 @@
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
                         'brand-primary': '#4caf50',
+                        // Added missing colors
+                        'light-bg': '#f9fafb',
+                        'text-dark': '#1F2937',
+                        'text-medium': '#6B7280',
+                        'border-light': '#E5E7EB'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -467,9 +472,9 @@
                 
                 <nav class="nav-links flex">
                     <!-- Nav Links -->
-                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return false;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     
-                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     
                     <!-- Portfolio Dropdown -->
                     <div class="dropdown relative ml-6">
@@ -481,36 +486,36 @@
                         <!-- Dropdown Menu -->
                         <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
                             <div class="py-1" role="none">
-                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return false;">
                                     <span class="font-semibold">View All Portfolio</span>
                                 </a>
                                 <hr class="border-gray-700 mx-2">
                                 
-                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
                                     Projects
                                 </a>
-                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
                                     Professional Experience
                                 </a>
-                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
                                     Entrepreneurial Experience
                                 </a>
-                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
                                     Researches
                                 </a>
-                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
                                     Certifications
                                 </a>
-                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return false;">
                                     Achievements
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
                     
-                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
                 <!-- Social Media Icons -->
@@ -559,15 +564,15 @@
                 <div class="lg:w-1/2 floating-container relative h-96">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-custom-green/10 to-transparent rounded-full blur-3xl"></div>
                     
-                    <div class="floating-img absolute top-8 right-8 w-56 h-40 rounded-xl overflow-hidden z-10">
+                    <div class="floating-img absolute top-8 right-8 w-56 h-40 rounded-xl overflow-hidden z-10 animate-float" style="animation-delay: 0s;">
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce Project" class="w-full h-full object-cover">
                     </div>
                     
-                    <div class="floating-img absolute top-32 left-4 w-48 h-32 rounded-xl overflow-hidden z-20">
+                    <div class="floating-img absolute top-32 left-4 w-48 h-32 rounded-xl overflow-hidden z-20 animate-float" style="animation-delay: 1s;">
                         <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Health App Project" class="w-full h-full object-cover">
                     </div>
                     
-                    <div class="floating-img absolute bottom-8 right-4 w-52 h-36 rounded-xl overflow-hidden z-30">
+                    <div class="floating-img absolute bottom-8 right-4 w-52 h-36 rounded-xl overflow-hidden z-30 animate-float" style="animation-delay: 2s;">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Task Management Project" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -575,624 +580,631 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="stats-section mb-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="projects-count" data-count="21">0</div>
-                    <div class="text-text-medium text-sm">Projects Completed</div>
-                </div>
-                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="tech-count" data-count="12">0</div>
-                    <div class="text-text-medium text-sm">Technologies Mastered</div>
-                </div>
-                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="years-count" data-count="3">0</div>
-                    <div class="text-text-medium text-sm">Years Experience</div>
-                </div>
-                <div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
-                    <div class="text-3xl font-bold text-custom-green mb-2 stat-number" id="satisfaction-count" data-count="100">0</div>
-                    <div class="text-text-medium text-sm">Client Satisfaction</div>
-                </div>
-            </div>
-        </section>
+	<section class="stats-section mb-12">
+   	<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        	<div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+            	<div class="text-3xl font-bold text-custom-green mb-2">
+                	<span class="stat-number" id="projects-count" data-count="25">0</span>+
+            	</div>
+            	<div class="text-text-medium text-sm">Projects Completed</div>
+        	</div>
+        	<div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+            	<div class="text-3xl font-bold text-custom-green mb-2">
+                	<span class="stat-number" id="tech-count" data-count="12">0</span>+
+            	</div>
+            	<div class="text-text-medium text-sm">Technologies Mastered</div>
+        	</div>
+        	<div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+            	<div class="text-3xl font-bold text-custom-green mb-2">
+                	<span class="stat-number" id="years-count" data-count="2">0</span>+
+            	</div>
+            	<div class="text-text-medium text-sm">Years Experience</div>
+        	</div>
+        	<div class="bg-white p-5 rounded-xl text-center border border-border-light hover:border-custom-green transition-all duration-300 shadow-sm">
+            	<div class="text-3xl font-bold text-custom-green mb-2">
+                	<span class="stat-number" id="satisfaction-count" data-count="100">0</span>%
+            	</div>
+            	<div class="text-text-medium text-sm">Employer Satisfaction</div>
+        	</div>
+    	</div>
+	</section>
 
         <div class="section-divider"></div>
 
-        <!-- Featured Projects -->
-        <section id="featured-projects" class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-text-dark">
-                Featured <span class="text-custom-green">Projects</span>
-            </h2>
-            
-            <!-- Project 1 -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.1s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-6">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="E-Commerce Platform" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Jan 2023</span>
-                            </div>
-                        </div>
+<!-- Featured Projects -->
+<section id="featured-projects" class="mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-text-dark">
+        Featured <span class="text-custom-green">Projects</span>
+    </h2>
+    
+    <!-- Project 1 -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.1s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-2/5 p-6">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Industrial Hybrid Energy System Designer (Solar + Grid + Battery)" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Jan 2023</span>
                     </div>
-                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-shopping-cart text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Modern E-Commerce Platform</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Small to medium businesses lack an affordable, scalable e-commerce solution with advanced features like real-time inventory management, personalized recommendations, and seamless payment integration.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                A full-featured e-commerce platform with admin dashboard, customer analytics, AI-powered recommendations, multi-payment gateway support, and mobile-responsive design.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MongoDB</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Express</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Stripe API</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Firebase</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
-                            </a>
-                        </div>
+                </div>
+            </div>
+            <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-solar-panel text-custom-green text-lg"></i>
                     </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">Industrial Hybrid Energy System Designer (Solar + Grid + Battery)</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Industrial energy systems face high electricity costs, reliability requirements, and pressure to reduce carbon emissions with poorly sized renewable systems.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A machine learning application that predicts composite material tensile strength using dual ML models (Neural Network & Linear Regression) based on 9+ material parameters.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">scikit-learn</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Pandas</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NumPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://github.com/AreebRizz/energy-system-designer" target="_blank" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Project 2 (Alternating Layout) -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.15s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-robot text-custom-green text-lg"></i>
+                    </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">Additive Manufacturing Digital Twin</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Predicting thermal history, microstructure evolution, and defect risks in Laser Powder Bed Fusion (LPBF) is complex and requires specialized knowledge.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A physics-informed simulation platform combined with data-driven components to predict melt pool geometry, grain size evolution, and defect risks in additive manufacturing processes.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NumPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Matplotlib</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">SciPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://github.com/AreebRizz/additive-manufacturing-twin" target="_blank" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fab fa-github mr-2"></i> View Source Code
+                    </a>
                 </div>
             </div>
             
-            <!-- Project 2 (Alternating Layout) -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.15s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-heartbeat text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">AI-Powered Health Tracker</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                People struggle to maintain consistent health routines and track progress effectively across multiple metrics like exercise, nutrition, sleep, and mental wellbeing.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                An intelligent health tracking application that uses machine learning to provide personalized recommendations, goal setting, and progress visualization based on user data.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Flutter</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Firebase</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">REST API</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Google Fit API</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fab fa-github mr-2"></i> View Source Code
-                            </a>
-                        </div>
+            <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Additive Manufacturing Digital Twin" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Aug 2023</span>
                     </div>
-                    
-                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Health Tracker App" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Aug 2023</span>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Project 3 -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.2s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-2/5 p-6">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="EcoLens - Advanced LCA Intelligence Platform" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Nov 2023</span>
                     </div>
+                </div>
+            </div>
+            <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-leaf text-custom-green text-lg"></i>
+                    </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">EcoLens - Advanced LCA Intelligence Platform</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Traditional Life Cycle Assessment (LCA) software is complex, expensive, and inaccessible to non-experts. Sustainability data is fragmented, and meeting ISO compliance for Environmental Product Declarations (EPDs) is time-consuming.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A professional-grade LCA platform that democratizes environmental impact analysis with guided workflows for beginners and advanced tools for experts. Provides ISO 14040/44 compliance, statistical validation, and automated EPD preparation.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Matplotlib</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Django</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Pandas</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NumPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://areebrizwan.com/projects/ecolens-case-study" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fas fa-external-link-alt mr-2"></i> View Case Study
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 4 - MES -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.25s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-industry text-custom-green text-lg"></i>
+                    </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">MMCL Production Ultimate Database</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Manufacturing companies lack integrated systems for production tracking, quality control, and user management in a single platform.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A comprehensive production management system with real-time production line visualization, quality metrics tracking, user authentication, and audit logging.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Supabase</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NumPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MES</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://github.com/AreebRizz/mmcl-production-database" target="_blank" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fab fa-github mr-2"></i> View Source Code
+                    </a>
                 </div>
             </div>
             
-            <!-- Project 3 -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.2s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-6">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Task Management System" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Nov 2023</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-tasks text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Collaborative Task Management System</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Teams need a more intuitive way to collaborate on projects, track tasks, and visualize workflow progress without switching between multiple tools.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                A unified task management platform with real-time collaboration, customizable workflows, progress tracking, and integration with popular development and communication tools.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Vue.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Django</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">WebSocket</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Docker</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">OAuth 2.0</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fas fa-external-link-alt mr-2"></i> View Case Study
-                            </a>
-                        </div>
+            <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Production MES" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Feb 2023</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- NEW PROJECT 4 - AI Chatbot -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.25s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-robot text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Intelligent AI Chatbot Assistant</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Businesses spend excessive time on customer support queries, FAQs, and repetitive tasks that could be automated with intelligent conversation.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                A context-aware chatbot using NLP and machine learning to handle customer inquiries, provide personalized responses, and integrate with business systems.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NLTK</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">FastAPI</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">WebSocket</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fab fa-github mr-2"></i> View Source Code
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="AI Chatbot" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Feb 2023</span>
-                            </div>
-                        </div>
+    <!-- Project 5 - Virtual Materials Testing Laboratory (VMTL) -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.3s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-2/5 p-6">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Virtual Materials Testing Laboratory (VMTL)" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Jun 2023</span>
                     </div>
                 </div>
             </div>
+            <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-flask text-custom-green text-lg"></i>
+                    </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">Virtual Materials Testing Laboratory (VMTL)</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Physical materials testing requires expensive equipment and specialized facilities, limiting accessibility for education and research.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A comprehensive virtual laboratory for simulating material testing, microstructure design, and alloy development with ISO 6892-1 alignment. Enables virtual experiments without physical equipment.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Pandas</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">SciPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://areebrizwan.com/projects/vmtl-documentation" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fas fa-external-link-alt mr-2"></i> View Documentation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <!-- NEW PROJECT 5 - Smart Home Automation -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.3s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-6">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Smart Home System" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Jun 2023</span>
-                            </div>
-                        </div>
+    <!-- Project 6 - Advanced Composite Material Tensile Strength Predictor -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.35s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-cube text-custom-green text-lg"></i>
                     </div>
-                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-home text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">IoT Smart Home Automation System</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Traditional home automation systems are expensive, proprietary, and lack interoperability between different smart devices and platforms.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                An open-source IoT platform that connects various smart devices, provides energy monitoring, automated routines, and voice control through a unified interface.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Raspberry Pi</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MQTT</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React Native</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">AWS IoT</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fas fa-external-link-alt mr-2"></i> View Documentation
-                            </a>
-                        </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">Advanced Composite Material Tensile Strength Predictor</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Predicting tensile strength of composite materials requires extensive experimental testing which is time-consuming and expensive.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A machine learning application that predicts composite material tensile strength using dual ML models (Neural Network & Linear Regression) based on 9+ material parameters.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">scikit-learn</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Pandas</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NumPy</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://github.com/AreebRizz/composite-material-predictor" target="_blank" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fab fa-github mr-2"></i> View Source Code
+                    </a>
+                </div>
+            </div>
+            
+            <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1620336655055-bd87c8d4b6c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Advanced Composite Material" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Apr 2023</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- NEW PROJECT 6 - Blockchain Voting System -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.35s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-vote-yea text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Blockchain-based Voting System</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Traditional voting systems face challenges with transparency, security, and accessibility, leading to concerns about election integrity and voter fraud.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                A decentralized voting platform leveraging blockchain technology to ensure tamper-proof, transparent, and secure digital voting with verifiable results.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Ethereum</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Solidity</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Web3.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">IPFS</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fab fa-github mr-2"></i> View Source Code
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1620336655055-bd87c8d4b6c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Blockchain Voting" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Apr 2023</span>
-                            </div>
-                        </div>
+    <!-- Project 7 - AI-Based Solar PV Fault Detection -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.4s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-2/5 p-6">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="AI-Based Solar PV Fault Detection" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Sep 2023</span>
                     </div>
                 </div>
             </div>
+            <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-solar-panel text-custom-green text-lg"></i>
+                    </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">AI-Based Solar PV Fault Detection</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Early detection of faults in solar photovoltaic systems is challenging, leading to reduced efficiency and unexpected maintenance costs.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        An AI-powered decision-support system for anomaly detection, fault diagnosis, and performance monitoring of solar PV systems with IEC 61724 compliance.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">IEC 61724</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">scikit-learn</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">TensorFlow</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://github.com/AreebRizz/solar-pv-fault-detection" target="_blank" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <!-- NEW PROJECT 7 - Data Analytics Dashboard -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.4s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-6">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Data Analytics Dashboard" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Sep 2023</span>
-                            </div>
-                        </div>
+    <!-- Project 8 - Factory Energy Retrofit Simulator -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.45s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-cogs text-custom-green text-lg"></i>
                     </div>
-                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-chart-line text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Real-time Business Analytics Dashboard</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Businesses struggle to consolidate data from multiple sources and gain actionable insights in real-time for timely decision-making.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                A comprehensive analytics platform that aggregates data from various sources, provides interactive visualizations, predictive analytics, and automated reporting.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">D3.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Redis</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">FastAPI</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Docker</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
-                            </a>
-                        </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">Factory Energy Retrofit Simulator</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Industrial facilities struggle with escalating energy costs and inefficient motor/lighting systems, lacking tools for rapid energy audit and retrofit analysis.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        A professional industrial energy audit tool that simulates motor upgrades, VFD installation, and LED retrofits with financial projections and prioritized recommendations.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Pandas</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">NumPy</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Matplotlib</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://areebrizwan.com/projects/factory-energy-case-study" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fas fa-external-link-alt mr-2"></i> View Case Study
+                    </a>
+                </div>
+            </div>
+            
+            <div class="lg:w-2/5 p-6 order-1 lg:order-2">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Factory Energy Retrofit Simulator" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Mar 2024</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- NEW PROJECT 8 - Mobile Learning App -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.45s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-3/5 p-6 order-2 lg:order-1 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-graduation-cap text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Interactive Mobile Learning Platform</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Traditional e-learning platforms lack engagement, personalization, and effective assessment methods for modern learners.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                A gamified learning app with interactive courses, progress tracking, peer collaboration, and AI-driven personalized learning paths.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Flutter</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Node.js</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">MongoDB</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Socket.io</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">AWS S3</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Firebase Auth</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fab fa-google-play mr-2"></i> View on Play Store
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:w-2/5 p-6 order-1 lg:order-2">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Mobile Learning App" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Dec 2023</span>
-                            </div>
-                        </div>
+    <!-- Project 9 - Supply Chain Management -->
+    <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.5s;">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-2/5 p-6">
+                <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Supply Chain Management" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Oct 2023</span>
                     </div>
                 </div>
             </div>
-
-            <!-- NEW PROJECT 9 - Supply Chain Management -->
-            <div class="project-card mb-10 bg-white rounded-2xl overflow-hidden border border-border-light animate-slide-up shadow-md compact-card" style="animation-delay: 0.5s;">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-2/5 p-6">
-                        <div class="project-image-content compact-image rounded-xl overflow-hidden mb-4 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="Supply Chain Management" 
-                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="flex justify-center">
-                            <div class="inline-flex items-center px-3 py-1.5 bg-custom-green/10 text-custom-green rounded-full text-sm">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                <span>Mar 2024</span>
-                            </div>
-                        </div>
+            <div class="lg:w-3/5 p-6 flex flex-col justify-center">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
+                        <i class="fas fa-truck text-custom-green text-lg"></i>
                     </div>
-                    <div class="lg:w-3/5 p-6 flex flex-col justify-center">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-custom-green/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-truck text-custom-green text-lg"></i>
-                            </div>
-                            <h3 class="project-name compact-title font-bold text-text-dark">Supply Chain Management System</h3>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                Companies struggle with supply chain visibility, inventory management, and coordination between suppliers, manufacturers, and distributors.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
-                            </div>
-                            <div class="section-content compact-section-content text-text-medium">
-                                An end-to-end supply chain platform with real-time tracking, predictive analytics for demand forecasting, automated inventory management, and supplier integration.
-                            </div>
-                        </div>
-                        
-                        <div class="description-section compact-section mb-4">
-                            <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
-                                <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
-                            </div>
-                            <div class="tech-tags flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Java</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Spring Boot</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">React</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">PostgreSQL</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Kafka</span>
-                                <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Docker</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm">
-                                <i class="fas fa-external-link-alt mr-2"></i> View Case Study
-                            </a>
-                        </div>
+                    <h3 class="project-name compact-title font-bold text-text-dark">Industrial Supply Chain Optimization System</h3>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2 text-sm"></i> Problem Statement
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        Manufacturing companies struggle with supply chain inefficiencies, inventory management, and coordination between suppliers, manufacturers, and distributors.
                     </div>
                 </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-sm"></i> Solution
+                    </div>
+                    <div class="section-content compact-section-content text-text-medium">
+                        An end-to-end supply chain optimization platform with real-time tracking, predictive analytics for demand forecasting, automated inventory management, and supplier integration.
+                    </div>
+                </div>
+                
+                <div class="description-section compact-section mb-4">
+                    <div class="section-heading text-custom-green font-semibold text-base mb-1 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-sm"></i> Technologies Used
+                    </div>
+                    <div class="tech-tags flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Python</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Pandas</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Streamlit</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">scikit-learn</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Plotly</span>
+                        <span class="tech-tag px-3 py-1.5 rounded-full text-xs font-medium">Supabase</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://areebrizwan.com/projects/supply-chain-case-study" class="inline-flex items-center text-custom-green hover:text-white hover:bg-custom-green border border-custom-green px-4 py-2 rounded-lg transition-all duration-300 text-sm cursor-pointer">
+                        <i class="fas fa-external-link-alt mr-2"></i> View Case Study
+                    </a>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
     </main>
 
@@ -1219,11 +1231,11 @@
                 <!-- Right Section (Navigation) -->
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="https://areebrizwan.com/" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Home</a></li>
-                        <li><a href="https://areebrizwan.com/about" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">About</a></li>
-                        <li><a href="https://areebrizwan.com/portfolio" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Portfolio</a></li>
-                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Blog</a></li>
-                        <li><a href="https://areebrizwan.com/contact" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Contact</a></li>
+                        <li><a href="https://areebrizwan.com/" onclick="navigateState('center', this.href, 'home-link'); return false;" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact" onclick="navigateState('none', this.href, 'contact-link'); return false;" class="link-glow-hover hover:text-custom-green transition duration-300 rounded-sm font-medium">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -1245,18 +1257,17 @@
          * @param {string} menuId - The ID of the menu element.
          */
         function toggleDropdown(event, menuId) {
-            // Prevent link navigation if it's the button
-            if (event.target.tagName !== 'A') {
-                event.preventDefault();
-            }
+            event.preventDefault();
+            event.stopPropagation();
             
             const menu = document.getElementById(menuId);
             const button = document.getElementById(menuId.replace('-menu', '-button'));
             const caret = button.querySelector('.fa-caret-down');
-
-            // Check if we're on mobile
-            if (window.innerWidth <= mobileBreakpoint) {
-                // On mobile, toggle active class for mobile-specific styling
+            
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            if (isMobile) {
+                // Mobile behavior
                 const isActive = menu.classList.contains('active');
                 if (isActive) {
                     menu.classList.remove('active');
@@ -1276,12 +1287,10 @@
                 if (isHidden) {
                     // Show menu
                     menu.classList.remove('hidden');
-                    menu.classList.add('block');
                     button.setAttribute('aria-expanded', 'true');
                     if (caret) caret.classList.add('rotate-180');
                 } else {
                     // Hide menu
-                    menu.classList.remove('block');
                     menu.classList.add('hidden');
                     button.setAttribute('aria-expanded', 'false');
                     if (caret) caret.classList.remove('rotate-180');
@@ -1314,7 +1323,6 @@
                     // On desktop, check for hidden class
                     if (!portfolioMenu.classList.contains('hidden')) {
                         portfolioMenu.classList.add('hidden');
-                        portfolioMenu.classList.remove('block');
                         portfolioButton.setAttribute('aria-expanded', 'false');
                         const caret = portfolioButton.querySelector('.fa-caret-down');
                         if (caret) caret.classList.remove('rotate-180');
@@ -1373,10 +1381,12 @@
 
             // 2. Wait for the transition to start/complete (300ms) and then navigate
             if (url) {
-                console.log(`Would navigate to: ${url}`);
-                // In a real implementation, you would uncomment the line below:
-                // setTimeout(() => { window.location.href = url; }, 300);
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 100);
             }
+            
+            return false;
         }
 
         // Initialize body padding based on header height
@@ -1449,10 +1459,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeBodyPadding();
             
-            // Set initial active state
-            setTimeout(() => {
-                setState('center', 'home-link');
-            }, 50);
+            // Set initial active state based on current page
+            const currentPath = window.location.pathname;
+            let activeLinkId = 'home-link';
+            
+            if (currentPath.includes('/about')) activeLinkId = 'about-link';
+            else if (currentPath.includes('/portfolio')) activeLinkId = 'portfolio-link';
+            else if (currentPath.includes('/blog')) activeLinkId = 'blog-link';
+            else if (currentPath.includes('/contact')) activeLinkId = 'contact-link';
+            
+            setState('center', activeLinkId);
             
             // Initialize counters
             initializeCounters();
@@ -1466,15 +1482,25 @@
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
             }, observerOptions);
             
             // Observe all project cards
             document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(card);
+            });
+            
+            // Add click handlers to project action buttons
+            document.querySelectorAll('.project-card button').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('This project demo link would be implemented in a live version. For now, please visit my GitHub profile for source code.');
+                });
             });
         });
     </script>
