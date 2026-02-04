@@ -38,19 +38,67 @@
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #555; }
+    
+    /* Footer styles */
+    .footer-bulge {
+      position: relative;
+      box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+      background-color: #f3f4f6;
+    }
+
+    .footer-bulge::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 60px;
+      background-color: white;
+      border-radius: 0 0 100px 100px;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+
+    .top-button-container {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+      z-index: 20;
+    }
+
+    .top-button-container:hover {
+      transform: scale(1.1) translateX(-50%);
+    }
+    
+    .link-glow-hover:hover,
+    .link-glow-hover:focus {
+      text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .top-button-container:hover svg {
+      stroke: #4caf50;
+      filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7));
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
-<body class="min-h-screen bg-slate-50 py-10 px-4 print:p-0 print:bg-white font-sans text-slate-800">
+<body class="min-h-screen bg-slate-50 py-10 px-4 print:p-0 print:bg-white font-sans text-slate-800 flex flex-col">
 
-  <div id="app" class="max-w-5xl mx-auto">
+  <div id="app" class="max-w-5xl mx-auto flex-grow">
 
     <!-- Controls: tabs + print button -->
     <div id="controls" class="mb-6 flex flex-col sm:flex-row justify-between gap-4 print:hidden items-start">
       <div class="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto">
-        <div class="mb-2 sm:mb-0">
-          <h1 class="text-xl font-bold text-slate-800">Multi-Version Resume</h1>
-          <p class="text-xs text-slate-600">Select a tailored resume for different sectors</p>
-        </div>
         <div id="version-tabs" class="inline-flex bg-white rounded-lg shadow-sm p-1 border border-slate-200 overflow-x-auto max-w-full"></div>
       </div>
 
@@ -66,13 +114,41 @@
     <div id="resumeRoot" class="bg-white shadow-2xl rounded-xl overflow-hidden print:shadow-none print:rounded-none border border-slate-200 print:border-none break-inside-avoid">
       <!-- Header will be injected -->
     </div>
-
-    <!-- Footer note -->
-    <div class="mt-6 text-center text-slate-500 text-sm print:hidden">
-      <p>Each version is tailored for specific job sectors. Use the tabs to switch between different resume versions.</p>
-    </div>
-
   </div>
+
+  <!-- Footer -->
+  <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative print:hidden">
+    <div class="max-w-5xl mx-auto px-5">
+      <!-- Arrow Container (Integrated into the bulge) -->
+      <a href="#app" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </a>
+      
+      <!-- Main footer content: Copyright and Nav -->
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        
+        <!-- Left Section (Copyright) -->
+        <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+          <a href="https://areebrizwan.com" class="link-glow-hover hover:text-green-500 transition duration-300">
+            © 2025 Muhammad Areeb Rizwan Siddiqui
+          </a>
+        </div>
+        
+        <!-- Right Section (Navigation) -->
+        <nav id="nav-footer" class="order-1 lg:order-2">
+          <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+            <li><a href="https://areebrizwan.com" class="link-glow-hover hover:text-green-500 transition duration-300 rounded-sm">Home</a></li>
+            <li><a href="https://areebrizwan.com/about/" class="link-glow-hover hover:text-green-500 transition duration-300 rounded-sm">About</a></li>
+            <li><a href="https://aareebrizwan.com/portfolio/" class="link-glow-hover hover:text-green-500 transition duration-300 rounded-sm">Portfolio</a></li>
+            <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-green-500 transition duration-300 rounded-sm">Blog</a></li>
+            <li><a href="https://areebrizwan.com/contact/" class="link-glow-hover hover:text-green-500 transition duration-300 rounded-sm">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
 
   <script>
     /************************************************************************
@@ -934,10 +1010,6 @@
             ` : ''}
           </main>
         </div>
-
-        <footer class="bg-slate-50 border-t border-slate-200 p-6 text-center text-slate-400 text-[10px] print:hidden">
-          Version: ${e(vData.label)} • Built with HTML, Tailwind CSS & Lucide • Updated: ${new Date().toLocaleDateString()}
-        </footer>
       `;
 
       // Replace lucide icons in the newly created DOM
