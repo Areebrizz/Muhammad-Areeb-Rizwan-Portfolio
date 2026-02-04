@@ -3,27 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mechanical Engineer Portfolio - About Me</title>
+    <title>About | Areeb Rizwan</title>
+    <!-- Favicon Links -->
+    <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+
+    <!-- For better Google Search appearance, also add Open Graph and Twitter Cards -->
+    <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuMKMZ+o+cGYe7q0xK+fK0t2zDUD3bS41rW+3o2h/a/1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <!-- Load Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Configure Tailwind for custom theme and use of Inter font -->
     <script>
-        // --- Merged Tailwind Configuration ---
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
                     colors: {
-                        // Original Colors
-                        'custom-gray': '#f5f5f5', // Used for section background
-                        'accent-blue': '#1c7ed6',
-                        // Header Colors
+                        // Using your provided hex codes
+                        'primary-blue': '#1D4ED8',
+                        'secondary-gray': '#E5E7EB',
+                        'dark-text': '#1F2937',
+                        'accent-green': '#10B981',
+                        'accent-purple': '#8B5CF6',
                         'custom-green': '#4caf50',
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
-                        'text-dark': '#374151', // Added for Mission/Vision text
+                        'brand-primary': '#4caf50',
+                        'accent-blue': '#1D4ED8',
+                        'custom-gray': '#F9FAFB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    },
+                    boxShadow: {
+                        '3xl-accent': '0 25px 50px -12px rgba(29, 78, 216, 0.25)',
                     }
                 }
             }
@@ -32,22 +69,25 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
-        /* Custom styles for text shadow (used on hover and active state) */
+        /* Custom Text Shadow for the green glow effect */
         .text-shadow-green {
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
         
-        .shadow-3xl-accent {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 
-                        0 10px 20px -5px rgba(28, 126, 214, 0.3); /* Custom accent shadow */
+        /* Ensures body uses the Inter font throughout */
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 60px; /* Default for desktop */
         }
 
-        /* --- Custom CSS for New Header/Footer Structure --- */
-
-        /* Mobile Responsive Header Styles */
-        @media (max-width: 640px) {
+        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
+        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
             .main-header {
-                height: 110px; 
+                height: 110px !important; /* Override the desktop height */
             }
             
             .nav-content {
@@ -56,35 +96,83 @@
                 height: 100%; 
             }
 
+            /* New rule for the right-side wrapper to stack its contents on mobile */
             .nav-right-wrapper {
                 flex-direction: column; 
                 width: 100%;
                 align-items: center;
                 margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
             }
             
-            .logo {
+            .logo-container {
                 margin-bottom: 5px;
-                font-size: 1.2rem;
             }
             
             .nav-links {
                 display: flex;
                 justify-content: center;
                 width: 100%;
-                margin-bottom: 5px;
+                margin-bottom: 5px; /* Space between nav and social */
+                flex-wrap: wrap;
             }
             
-            .nav-links a {
+            .nav-links a, .dropdown button {
                 margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
 
-            .social-icons {
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
                 justify-content: center;
-                width: 100%;
+                margin: 0 8px;
             }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+            
+            /* Adjust about section padding for mobile */
+            .about-section {
+                padding-top: 80px !important;
+            }
+        }
+        
+        /* Add a transition to the main content area for a smoother experience */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
+        
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
+
+        /* Ensure links are properly styled */
+        .link-item {
+            position: relative;
+        }
+
+        /* Active link styling */
+        .active-link {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
         }
 
         /* Footer Bulge Styles */
@@ -152,7 +240,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 
                         0 0 20px rgba(76, 175, 80, 0.2); /* Soft custom-green glow */
             border-radius: 12px;
-            border: 1px solid theme('colors.accent-blue');
+            border: 1px solid #1D4ED8;
         }
 
         /* Flip card on hover - Applies the intense "Greenglare" */
@@ -176,58 +264,110 @@
             padding: 1rem;
             border-radius: 12px;
             box-sizing: border-box;
-            background-color: theme('colors.white');
-            color: theme('colors.text-dark');
+            background-color: white;
+            color: #1F2937;
         }
 
         /* Back specific styles (Slightly different background) */
         .flip-card-back {
             transform: rotateY(180deg);
-            background-color: theme('colors.custom-gray'); 
+            background-color: #F9FAFB; 
         }
 
         /* --- END MISSION/VISION Styles --- */
+        
+        /* Custom class for about section */
+        .about-section {
+            padding-top: 120px;
+        }
     </style>
 </head>
-<body id="top" class="bg-white font-sans text-gray-800">
-
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen" id="top">
+    <!-- Header (UPDATED VERSION) -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
-            <div class="logo text-white select-none flex items-center">
-                <!-- Using a placeholder for the logo -->
-                <img 
-                    src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
-                    alt="Areeb Rizwan Logo" 
-                    class="h-8 w-8 rounded-full shadow-lg"
-                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a1a1a/ffffff?text=AR';"
-                >
+            <!-- Logo/Name Area - Now includes the image logo followed by the name -->
+            <div class="logo-container text-white select-none flex items-center">
+                
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    Areeb Rizwan
+                </span>
             </div>
             
-            <div class="nav-right-wrapper flex items-center space-x-16">
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
                 
                 <nav class="nav-links flex">
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" id="home-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                    <!-- Nav Links -->
+                    <a href="https://areebrizwan.com/" id="home-link" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <a href="https://areebrizwan.com/about" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://areebrizwan.com/blog" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <a href="https://areebrizwan.com/contact" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
+                <!-- Social Media Icons -->
                 <div class="social-icons flex items-center space-x-4">
-                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
+
             </div>
         </div>
     </header>
@@ -236,7 +376,7 @@
     </div>
 
     <!-- About Section -->
-    <section class="pt-[140px] pb-10 md:pt-[120px] md:pb-12 bg-custom-gray">
+    <section class="about-section pb-10 md:pb-12 bg-custom-gray">
         <div class="container mx-auto px-4 md:px-8 max-w-7xl">
             <div class="bg-white p-6 md:p-12 rounded-3xl shadow-2xl">
                 <div class="flex flex-col md:flex-row items-center justify-between">
@@ -246,22 +386,22 @@
                             about.
                         </h1>
                         <p class="text-xl md:text-2xl text-accent-blue font-semibold mb-6">
-                            I’m a Mechanical Engineer and Automation Specialist based in Pakistan.
+                            I'm a Mechanical Engineer and Automation Specialist based in Pakistan.
                         </p>
                         <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
                             I enjoy transforming mechanical precision into smart, efficient systems that shape the future of automation.
-                            When I’m not engineering solutions, I’m exploring new technologies, working on personal innovations, or helping others bring their ideas to life.
+                            When I'm not engineering solutions, I'm exploring new technologies, working on personal innovations, or helping others bring their ideas to life.
                         </p>
                         
                         <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                            <a href="https://your-google-drive-link-here" 
+                            <a href="https://areebrizwan/portfolio/resume" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 class="flex-1 text-center px-5 py-2.5 bg-accent-blue text-white font-medium rounded-lg shadow-lg hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
                                 My Resume
                             </a>
 
-                            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" 
+                            <a href="https://areebrizwan.com/portfolio" 
                                 class="flex-1 text-center px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
                                 My Work
                             </a>
@@ -275,7 +415,7 @@
                             class="w-full max-w-md rounded-lg shadow-2xl transition-all duration-500 
                                 group-hover:rotate-3 group-hover:scale-105 group-hover:shadow-3xl-accent"
                             style="transform-style: preserve-3d; transform: perspective(1000px) rotateY(0deg) rotateX(0deg); 
-                                    box-shadow: 0 20px 40px rgba(0,0,0,0.3); /* Initial 3D shadow */"
+                                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);"
                             onmousemove="handleTilt(event, this)"
                             onmouseleave="resetTilt(this)"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/94A3B8/ffffff?text=Profile+Photo';"
@@ -302,7 +442,7 @@
                         </div>
                         <div class="flip-card-back">
                             <!-- UPDATED: Mission statement text -->
-                            <p class="text-md md:text-lg leading-relaxed text-text-dark/90">
+                            <p class="text-md md:text-lg leading-relaxed text-gray-700">
                                 Engineering smarter systems and meaningful change, where innovation meets purpose.
                             </p>
                         </div>
@@ -317,7 +457,7 @@
                         </div>
                         <div class="flip-card-back">
                             <!-- UPDATED: Vision statement text -->
-                            <p class="text-md md:text-lg leading-relaxed text-text-dark/90">
+                            <p class="text-md md:text-lg leading-relaxed text-gray-700">
                                 To build a world where technology uplifts people, connects possibilities, and inspires generations to dream bigger.
                             </p>
                         </div>
@@ -331,32 +471,32 @@
     <!-- Life Outside Engineering Section -->
     <section class="pt-10 pb-16 md:pt-12 md:pb-20 bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-7xl">
-               <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Outside Engineering</h2>
+               <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Beyond Engineering</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
                 
                 <!-- Gallery Items are now interactive to open the Lightbox -->
-                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/kid1crop1.jpg" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/C4B5FD/ffffff?text=New+Tech';" >
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="New Technologies" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/kid1crop1.jpg" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+Tech';" >
                 </a>
                 
-                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/flagfix1.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/FCA5A5/ffffff?text=Project+Work';">
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Innovation Project" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/flagfix1.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=Project+Work';">
                 </a>
                 
-                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/podium.jpg" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/7DD3FC/ffffff?text=Formal+Event';">
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Formal Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/podium.jpg" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+Event';">
                 </a>
                 
-                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/startupaccelerator1.jpg" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/F0ABFC/ffffff?text=Background+Exp';">
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Exploring Backgrounds" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/startupaccelerator1.jpg" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+Exp';">
                 </a>
                 
-                <a href="httpsia://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/naraan.jpg" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/A7F3D0/ffffff?text=Innovations';">
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Personal Innovations" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/naraan.jpg" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Innovations';">
                 </a>
                 
-                <a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/myjourney/index.html" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
-                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/gym1fix3.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https:://placehold.co/200x150/FDBA74/ffffff?text=Creative+Time';">
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Creative Moment" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/gym1fix3.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Creative+Time';">
                 </a>
             </div>
         </div>
@@ -404,18 +544,18 @@
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300">
+                    <a href="https://areebrizwan.com" class="hover:text-custom-green transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
                 
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
-                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
-                        <li><a href="httpsIA://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/index.html" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
+                        <li><a href="https://areebrizwan.com" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="hover:text-custom-green transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact" class="hover:text-custom-green transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -423,7 +563,7 @@
     </footer>
     
     <script>
-        // Custom Toast Notification implementation (Replaces alert())
+        // Custom Toast Notification implementation
         function showToast(message) {
             const container = document.getElementById('toast-container');
             if (!container) return;
@@ -488,25 +628,24 @@
         }
 
         // --- Navigation State Logic ---
-        const navLinks = document.querySelectorAll('.nav-links .link-item');
+        const navLinks = document.querySelectorAll('.nav-links .link-item, #portfolio-dropdown-button');
 
         function setState(activeId) {
             // 1. Reset all link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
-                link.classList.add('text-text-light');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             });
 
             // 2. Set the new active link by matching the ID
             const activeLink = document.getElementById(activeId);
             if (activeLink) {
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
-                activeLink.classList.remove('text-text-light');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
         }
-        // --- End Navigation State Logic ---
-        
-        // --- Lightbox Logic (New Feature) ---
+
+        // --- Lightbox Logic ---
         const modal = document.getElementById('lightbox-modal');
         const modalImage = document.getElementById('lightbox-image');
         const modalCaption = document.getElementById('lightbox-caption');
@@ -519,65 +658,144 @@
             modalCaption.textContent = caption;
             modalLink.href = linkUrl;
             modal.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
-            modalCloseButton.focus(); // Focus on close button for accessibility
+            document.body.classList.add('overflow-hidden');
+            modalCloseButton.focus();
         }
 
         function closeLightbox() {
             modal.classList.add('hidden');
             document.body.classList.remove('overflow-hidden');
-            // Re-focus on the element that triggered the modal for better accessibility (omitted for brevity)
         }
 
-        modalCloseButton.addEventListener('click', closeLightbox);
+        if (modalCloseButton) {
+            modalCloseButton.addEventListener('click', closeLightbox);
+        }
         
         // Close when clicking outside the inner modal content
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeLightbox(); 
-            }
-        });
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeLightbox(); 
+                }
+            });
+        }
 
         // Close on Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
                 closeLightbox();
             }
         });
-        // --- End Lightbox Logic ---
 
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set 'About' active on page load, as this is the About page.
-            setState('about-link'); 
+        // --- Header navigation functionality ---
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640;
+        
+        /**
+         * Toggles the visibility of the dropdown menu.
+         */
+        function toggleDropdown(event, menuId) {
+            event.preventDefault();
+            event.stopPropagation();
             
-            // Add click listeners for graceful navigation and state setting to main nav links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Stop default navigation immediately
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
 
-                    const targetUrl = this.href;
-                    const targetId = this.id;
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
+            } else {
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
+            }
+        }
 
-                    // Set visual state instantly
-                    setState(targetId); 
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
 
-                    // Show toast message
-                    showToast(`Navigating to ${this.textContent.trim()}...`);
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu && portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (portfolioMenu && !portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
+            }
+        });
 
-                    // Perform actual navigation after a small delay for visual feedback
-                    setTimeout(() => {
-                        window.location.href = targetUrl;
-                    }, 300);
-                });
-            });
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                body.style.paddingTop = `${headerHeight}px`;
+            }
+        }
 
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set 'About' active on page load
+            setState('about-link');
+            
+            // Initialize body padding
+            initializeBodyPadding();
+            
+            // Add click listeners for gallery items
             const carouselItems = document.querySelectorAll('.gallery-item');
             
-            // Update gallery item click to open lightbox instead of immediate navigation
             carouselItems.forEach(item => {
                 item.addEventListener('click', function(e) {
-                    e.preventDefault(); // STOP default navigation
+                    e.preventDefault();
                     
                     const imageUrl = this.querySelector('img').src;
                     const caption = this.getAttribute('data-caption');
@@ -597,7 +815,29 @@
                     }
                 });
             });
+            
+            // Add click listeners for main navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Don't prevent default for actual navigation
+                    // Just update the active state
+                    const targetId = this.id;
+                    setState(targetId);
+                });
+            });
+            
+            // Add click listeners for dropdown menu items
+            const dropdownItems = document.querySelectorAll('#portfolio-dropdown-menu a');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Set portfolio button as active
+                    setState('portfolio-dropdown-button');
+                });
+            });
         });
+
+        // Handle resize events
+        window.addEventListener('resize', initializeBodyPadding);
     </script>
 </body>
 </html>
