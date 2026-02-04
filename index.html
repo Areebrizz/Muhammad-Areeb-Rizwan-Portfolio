@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Areeb Rizwan</title>
+    <title>Home | Areeb Rizwan</title>
 
 <!-- Favicon Links -->
     <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
@@ -30,7 +30,35 @@
                         'dark-bg': '#111',
                         'text-light': '#e0e0e0',
                         'primary-blue': '#3b82f6',
-                        'primary-green': '#10b981'
+                        'primary-green': '#10b981',
+                        'brand-primary': '#4caf50'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
@@ -47,6 +75,7 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            padding-top: 60px; /* Default for desktop */
         }
 
         /* Custom Text Shadow for the green glow effect */
@@ -56,8 +85,12 @@
         
         /* Mobile responsive header height and layout */
         @media (max-width: 640px) {
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
             .main-header {
-                height: 110px;
+                height: 110px !important; /* Override the desktop height */
             }
             
             .nav-content {
@@ -71,32 +104,62 @@
                 width: 100%;
                 align-items: center;
                 margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
             }
             
-            .logo {
+            .logo-container {
                 margin-bottom: 5px;
-                font-size: 1.2rem;
             }
             
             .nav-links {
                 display: flex;
                 justify-content: center;
                 width: 100%;
-                margin-bottom: 5px;
+                margin-bottom: 5px; /* Space between nav and social */
             }
             
-            .nav-links a {
+            .nav-links a, .dropdown button {
                 margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
 
-            .social-icons {
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
                 justify-content: center;
-                width: 100%;
+                margin: 0 8px;
+            }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
             }
         }
         
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
+
+        /* Ensure links are properly styled */
+        .link-item {
+            position: relative;
+        }
+
         /* Hero Section Container */
         .hero-section {
             height: 95vh;
@@ -338,6 +401,7 @@
             left: 0;
             background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/new8.png'); 
         }
+
 /* Hide GIFs when side states are active */
 .state-left.active ~ .central-gifs-container,
 .state-right.active ~ .central-gifs-container {
@@ -652,57 +716,369 @@
             color: #4CAF50 !important;
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
         }
+
+        /* ===================== */
+        /* NEW HIGHLIGHTS STYLES */
+        /* ===================== */
+        
+        /* Highlights Grid - 4 columns on desktop */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Highlight Card Styles */
+        .highlight-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: #4CAF50;
+        }
+
+        .highlight-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .highlight-card:hover .highlight-overlay {
+            opacity: 1;
+        }
+
+        .highlight-icon {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+            color: #4CAF50;
+            font-size: 1.2rem;
+        }
+
+        .highlight-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .highlight-teaser {
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .highlight-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-top: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-cta:hover {
+            color: #3d8b40;
+        }
+
+        .cta-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-cta:hover .cta-icon {
+            transform: translateX(4px);
+        }
+
+        /* Stats Badge */
+        .stat-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #4CAF50;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Mobile Carousel */
+        .highlights-carousel {
+            display: none;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #D1D5DB;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #4CAF50;
+            transform: scale(1.2);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 10;
+            color: #4CAF50;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow.prev {
+            left: 1rem;
+        }
+
+        .carousel-arrow.next {
+            right: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1280px) {
+            .highlights-grid {
+                gap: 1rem;
+            }
+            
+            .highlight-image {
+                height: 180px;
+            }
+            
+            .highlight-content {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .highlight-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .highlights-grid {
+                display: none;
+            }
+            
+            .highlights-carousel {
+                display: block;
+            }
+            
+            .highlight-image {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .highlight-image {
+                height: 180px;
+            }
+            
+            .highlight-content {
+                padding: 1rem;
+            }
+            
+            .highlight-title {
+                font-size: 1.1rem;
+            }
+            
+            .highlight-teaser {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Section spacing */
+        .highlights-section {
+            padding: 5rem 1rem;
+            background: linear-gradient(to bottom, #FFFFFF, #F9FAFB);
+        }
+
+        @media (max-width: 768px) {
+            .highlights-section {
+                padding: 3rem 1rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-dark-bg text-white min-h-screen pt-[60px] md:pt-[60px]" id="top">
-
-    <!-- Header -->
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen" id="top">
+    <!-- Header (UPDATED VERSION from second HTML file) -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
             
-            <!-- Logo/Brand Name -->
-            <div class="logo text-white select-none flex items-center">
-                <img 
-                    src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
-                    alt="Areeb Rizwan Logo" 
-                    class="h-8 w-8 rounded-full shadow-lg"
-                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/4caf50/ffffff?text=AR'"
-                >
+            <!-- Logo/Name Area - Now includes the image logo followed by the name -->
+            <div class="logo-container text-white select-none flex items-center">
+                
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    Areeb Rizwan
+                </span>
             </div>
             
-            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
-            <div class="nav-right-wrapper flex items-center space-x-16">
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
                 
-                <!-- Nav Links -->
                 <nav class="nav-links flex">
-                    <!-- Home link uses setState('center') to remain on the SPA home page -->
-                    <a href="#" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    <!-- Nav Links -->
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
                     
-                    <!-- About link navigates externally -->
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
                     
-                    <!-- Portfolio link navigates externally -->
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <!-- Blog link -->
-                    <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blogs/" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
                     
-                    <!-- Contact link -->
-                    <a href="#contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
-                <!-- Social Icons -->
+                <!-- Social Media Icons -->
                 <div class="social-icons flex items-center space-x-4">
-                    <a href="#" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
@@ -750,7 +1126,7 @@
         <div class="side-wrapper">
             <h1>MECHANICAL ENGINEER</h1>
             <p class="moto">Building efficiency from precision and discipline.</p>
-            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/index.html" class="side-button">About Me</a>
+            <a href="https://areebrizwan.com/about" class="side-button">About Me</a>
         </div>
         <div class="side-image-placeholder"></div>
     </div>
@@ -760,7 +1136,7 @@
         <div class="side-wrapper">
             <h1>AUTOMATION SPECIALIST</h1>
             <p class="moto">Automating the future of intelligent manufacturing.</p>
-            <a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/index.html" class="side-button">My Portfolio</a>
+            <a href="https://areebrizwan.com/portfolio" class="side-button">My Portfolio</a>
         </div>
         <div class="side-image-placeholder"></div>
     </div>
@@ -790,96 +1166,246 @@
 
 </section>
 
-    <!-- Highlights Section -->
-    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-gray-50" id="highlights">
-        <div class="max-w-7xl mx-auto">
-            <!-- Title Area -->
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gray-900">Professional Highlights</h2>
-                <!-- Custom separator line -->
-                <div class="w-20 h-1 mx-auto bg-gradient-to-r from-primary-blue to-primary-green rounded-full mb-8"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Explore my key areas of expertise and see how I can bring value to your projects.
-                </p>
+<!-- Highlights Section -->
+<section class="highlights-section" id="highlights">
+    <div class="max-w-7xl mx-auto">
+        <!-- Title Area -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl sm:text-5xl font-extrabold mb-3 text-gray-900">Professional Highlights</h2>
+            <!-- Custom separator line -->
+            <div class="w-20 h-1 mx-auto bg-gradient-to-r from-primary-blue to-primary-green rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto px-4">
+                Quick insights into my expertise. Explore each area to see detailed projects and achievements.
+            </p>
+        </div>
+        
+        <!-- Desktop Grid (4 columns) -->
+        <div class="highlights-grid">
+            
+            <!-- Highlight 1: Mechanical Design Specialist -->
+            <div class="highlight-card">
+                <div class="highlight-image" 
+                     style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="highlight-overlay"></div>
+                    <div class="highlight-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="stat-badge">30% Efficiency</div>
+                </div>
+                <div class="highlight-content">
+                    <h3 class="highlight-title">Mechanical Design Specialist</h3>
+                    <p class="highlight-teaser">
+                        From concept to precision manufacturing - see how I engineered <span class="metric-highlight">30% more efficient systems</span> through optimized CAD modeling and FEA analysis.
+                    </p>
+                    <a href="https://areebrizwan.com/portfolio/projects" class="highlight-cta">
+                        See my designs
+                        <i class="fas fa-arrow-right cta-icon"></i>
+                    </a>
+                </div>
             </div>
             
-            <!-- Highlights Container -->
-            <div class="flex flex-wrap justify-center gap-8">
-                
-                <!-- Highlight Tile 1: Mechanical Design -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden w-full sm:w-80 lg:w-96 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative">
-                    <div class="absolute top-4 right-4 bg-gradient-to-r from-primary-blue to-primary-green text-white px-4 py-1.5 rounded-full text-xs font-semibold z-10 shadow-md">Featured</div>
-                    
-                    <div class="h-56 bg-cover bg-center relative" 
-                         style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/mechdesign.png')">
-                        <!-- Gradient overlay for smoother transition -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90"></div>
+            <!-- Highlight 2: Industry 4.0 Automation Expert -->
+            <div class="highlight-card">
+                <div class="highlight-image" 
+                     style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="highlight-overlay"></div>
+                    <div class="highlight-icon">
+                        <i class="fas fa-robot"></i>
                     </div>
-                    
-                    <div class="p-6 relative">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 flex items-center space-x-2">
-                            <i class="fas fa-cogs text-primary-blue"></i>
-                            <span>Mechanical Design</span>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            Expert in CAD modeling, FEA analysis, and product development with a focus on precision engineering and optimization across industrial sectors.
-                        </p>
-                        <a href="#" class="inline-flex items-center space-x-2 text-primary-blue font-semibold transition-all duration-300 hover:text-blue-700 hover:space-x-3 text-sm">
-                            <span>Check out my projects</span>
-                            <i class="fas fa-arrow-right text-xs transition-transform duration-300"></i>
-                        </a>
+                    <div class="stat-badge">Industry 4.0</div>
+                </div>
+                <div class="highlight-content">
+                    <h3 class="highlight-title">Industry 4.0 Automation Expert</h3>
+                    <p class="highlight-teaser">
+                        Transforming traditional manufacturing with <span class="metric-highlight">robotics and smart systems</span> that increase throughput by <span class="metric-highlight">up to 40%</span> while reducing operational costs.
+                    </p>
+                    <a href="https://areebrizwan.com/portfolio/professionalexperience" class="highlight-cta">
+                        Automation portfolio
+                        <i class="fas fa-arrow-right cta-icon"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Highlight 3: Project Leadership -->
+            <div class="highlight-card">
+                <div class="highlight-image" 
+                     style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="highlight-overlay"></div>
+                    <div class="highlight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-badge">On-time Delivery</div>
+                </div>
+                <div class="highlight-content">
+                    <h3 class="highlight-title">Project Leadership</h3>
+                    <p class="highlight-teaser">
+                        Leading cross-functional teams to deliver <span class="metric-highlight">complex engineering solutions on time, every time</span>, with a <span class="metric-highlight">95% project success rate</span> and satisfied stakeholders.
+                    </p>
+                    <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="highlight-cta">
+                        View case studies
+                        <i class="fas fa-arrow-right cta-icon"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Highlight 4: Research & Innovation -->
+            <div class="highlight-card">
+                <div class="highlight-image" 
+                     style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <div class="highlight-overlay"></div>
+                    <div class="highlight-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="stat-badge">Innovation</div>
+                </div>
+                <div class="highlight-content">
+                    <h3 class="highlight-title">Research & Innovation</h3>
+                    <p class="highlight-teaser">
+                        Pushing boundaries in <span class="metric-highlight">sustainable engineering and smart materials</span> with published research and patented solutions for tomorrow's challenges.
+                    </p>
+                    <a href="https://areebrizwan.com/portfolio/researches" class="highlight-cta">
+                        Explore research
+                        <i class="fas fa-arrow-right cta-icon"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Mobile Carousel -->
+        <div class="highlights-carousel">
+            <button class="carousel-arrow prev" aria-label="Previous highlight">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide">
+                    <div class="highlight-card">
+                        <div class="highlight-image" 
+                             style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                            <div class="highlight-overlay"></div>
+                            <div class="highlight-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="stat-badge">30% Efficiency</div>
+                        </div>
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Mechanical Design Specialist</h3>
+                            <p class="highlight-teaser">
+                                From concept to precision manufacturing - see how I engineered <span class="metric-highlight">30% more efficient systems</span> through optimized CAD modeling and FEA analysis.
+                            </p>
+                            <a href="https://areebrizwan.com/portfolio/projects" class="highlight-cta">
+                                See my designs
+                                <i class="fas fa-arrow-right cta-icon"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Highlight Tile 2: Automation Systems -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden w-full sm:w-80 lg:w-96 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative">
-                    
-                    <div class="h-56 bg-cover bg-center relative" 
-                         style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90"></div>
-                    </div>
-                    
-                    <div class="p-6 relative">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 flex items-center space-x-2">
-                            <i class="fas fa-robot text-primary-blue"></i>
-                            <span>Automation Systems</span>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            Specialized in Industry 4.0 technologies, robotics integration, and smart manufacturing solutions to maximize efficiency and throughput.
-                        </p>
-                        <a href="#" class="inline-flex items-center space-x-2 text-primary-blue font-semibold transition-all duration-300 hover:text-blue-700 hover:space-x-3 text-sm">
-                            <span>View automation work</span>
-                            <i class="fas fa-arrow-right text-xs transition-transform duration-300"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Highlight Tile 3: Project Management -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden w-full sm:w-80 lg:w-96 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative">
-                    
-                    <div class="h-56 bg-cover bg-center relative" 
-                         style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/projectmanag.png')">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90"></div>
-                    </div>
-                    
-                    <div class="p-6 relative">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-900 flex items-center space-x-2">
-                            <i class="fas fa-tasks text-primary-blue"></i>
-                            <span>Project Management</span>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            Proven track record of delivering complex engineering projects on time and within budget constraints using Agile methodologies.
-                        </p>
-                        <a href="#" class="inline-flex items-center space-x-2 text-primary-blue font-semibold transition-all duration-300 hover:text-blue-700 hover:space-x-3 text-sm">
-                            <span>See completed projects</span>
-                            <i class="fas fa-arrow-right text-xs transition-transform duration-300"></i>
-                        </a>
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="highlight-card">
+                        <div class="highlight-image" 
+                             style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                            <div class="highlight-overlay"></div>
+                            <div class="highlight-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="stat-badge">Industry 4.0</div>
+                        </div>
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Industry 4.0 Automation Expert</h3>
+                            <p class="highlight-teaser">
+                                Transforming traditional manufacturing with <span class="metric-highlight">robotics and smart systems</span> that increase throughput by <span class="metric-highlight">up to 40%</span> while reducing operational costs.
+                            </p>
+                            <a href="https://areebrizwan.com/portfolio/professionalexperience" class="highlight-cta">
+                                Automation portfolio
+                                <i class="fas fa-arrow-right cta-icon"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="highlight-card">
+                        <div class="highlight-image" 
+                             style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                            <div class="highlight-overlay"></div>
+                            <div class="highlight-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-badge">On-time Delivery</div>
+                        </div>
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Project Leadership</h3>
+                            <p class="highlight-teaser">
+                                Leading cross-functional teams to deliver <span class="metric-highlight">complex engineering solutions on time, every time</span>, with a <span class="metric-highlight">95% project success rate</span> and satisfied stakeholders.
+                            </p>
+                            <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="highlight-cta">
+                                View case studies
+                                <i class="fas fa-arrow-right cta-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="highlight-card">
+                        <div class="highlight-image" 
+                             style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                            <div class="highlight-overlay"></div>
+                            <div class="highlight-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="stat-badge">Innovation</div>
+                        </div>
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Research & Innovation</h3>
+                            <p class="highlight-teaser">
+                                Pushing boundaries in <span class="metric-highlight">sustainable engineering and smart materials</span> with published research and patented solutions for tomorrow's challenges.
+                            </p>
+                            <a href="https://areebrizwan.com/portfolio/researches" class="highlight-cta">
+                                Explore research
+                                <i class="fas fa-arrow-right cta-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-arrow next" aria-label="Next highlight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-nav">
+                <div class="carousel-dot active" data-slide="0"></div>
+                <div class="carousel-dot" data-slide="1"></div>
+                <div class="carousel-dot" data-slide="2"></div>
+                <div class="carousel-dot" data-slide="3"></div>
             </div>
         </div>
-    </section>
+        
+        <!-- Dual Buttons Section -->
+        <div class="text-center mt-12 space-y-4 md:space-y-0 md:flex md:justify-center md:space-x-6">
+            <!-- View Portfolio Button - Vibrant Green -->
+            <a href="https://areebrizwan.com/portfolio" 
+               class="btn-portfolio inline-flex items-center px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                <span>View Complete Portfolio</span>
+                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+            </a>
+            
+            <!-- Book Services Button - Vibrant Blue -->
+            <a href="https://areebrizwan.com/contact" 
+               class="btn-services inline-flex items-center px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                <i class="fas fa-calendar-check mr-3"></i>
+                <span>Book My Services</span>
+            </a>
+        </div>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative">
@@ -898,7 +1424,7 @@
                 
                 <!-- Left Section (Copyright) -->
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
-                    <a href="https://areebrizz.github.io/" class="link-glow-hover hover:text-brand-primary transition duration-300">
+                    <a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
@@ -906,11 +1432,11 @@
                 <!-- Right Section (Navigation) -->
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
-                        <li><a href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/contact/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
+                        <li><a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -924,7 +1450,7 @@
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         const navLinks = document.querySelectorAll('.link-item');
-        const EDGE_TRIGGER = 0.25; // 25% from edges
+        const EDGE_TRIGGER = 0.4; // 25% from edges
 
         // Mouse movement handler for side slides
         function handleMouseMove(e) {
@@ -986,6 +1512,97 @@
             }
         }
 
+        // Header navigation functionality
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640; // Matches CSS breakpoint
+        
+        /**
+         * Toggles the visibility of the dropdown menu.
+         * @param {Event} event - The click event.
+         * @param {string} menuId - The ID of the menu element.
+         */
+        function toggleDropdown(event, menuId) {
+            // Prevent link navigation if it's the button
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
+            } else {
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (!portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
+            }
+        });
+
         /**
          * Refactored state setting for CLICKS/LINKS
          * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
@@ -997,29 +1614,158 @@
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             });
+            
+            // Handle the Portfolio button separately
+            if (portfolioButton) {
+                portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
 
             // Set the new active state/link
             const activeLink = document.getElementById(linkId);
-            if (activeLink) {
+            // Since the dropdown items don't have IDs, we activate the *Portfolio button* itself if a link *within* the dropdown is clicked.
+            const isDropdownLink = activeLink === null && linkId === 'portfolio-link';
+
+            if (isDropdownLink) {
+                // Activate the Portfolio button visually
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            } else if (activeLink) {
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
                 activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
             
             // Console log to show state change (e.g., for panel animation)
-            console.log(`Application state changed to: ${targetState}`);
+            console.log(`Application state changed to: ${targetState}, Active link: ${linkId}`);
         }
 
-        // Initialize with 'Home' active on load
-        window.onload = () => {
-            // Add event listeners for side slide functionality
-            hero.addEventListener('mousemove', handleMouseMove);
-            hero.addEventListener('mouseleave', handleMouseLeave);
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            const headerHeight = header.offsetHeight;
+            body.style.paddingTop = `${headerHeight}px`;
+        }
+
+        // Carousel functionality for mobile
+        function initializeCarousel() {
+            const carousel = document.querySelector('.highlights-carousel');
+            if (!carousel) return;
             
-            // Use a slight delay to ensure all DOM elements are registered
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const prevBtn = carousel.querySelector('.carousel-arrow.prev');
+            const nextBtn = carousel.querySelector('.carousel-arrow.next');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            // Function to update carousel position
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Next slide
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Auto-rotate every 5 seconds
+            let autoSlideInterval = setInterval(nextSlide, 5000);
+            
+            // Pause auto-rotate on hover
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            });
+            
+            // Button event listeners
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            
+            // Dot event listeners
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Touch/swipe support for mobile
+            let startX = 0;
+            let endX = 0;
+            
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            track.addEventListener('touchmove', (e) => {
+                endX = e.touches[0].clientX;
+            });
+            
+            track.addEventListener('touchend', () => {
+                const threshold = 50;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        // Swipe left - next
+                        nextSlide();
+                    } else {
+                        // Swipe right - previous
+                        prevSlide();
+                    }
+                }
+            });
+            
+            // Initialize
+            updateCarousel();
+        }
+
+        // Initialize everything
+        function initializeAll() {
+            initializeBodyPadding();
+            
+            // Add event listeners for side slide functionality
+            if (hero) {
+                hero.addEventListener('mousemove', handleMouseMove);
+                hero.addEventListener('mouseleave', handleMouseLeave);
+            }
+            
+            // Initialize carousel
+            initializeCarousel();
+            
+            // Set initial active state
             setTimeout(() => {
                 setState('center', 'home-link');
             }, 50);
-        };
+        }
+
+        // Initialize and handle resize events
+        window.addEventListener('resize', initializeBodyPadding);
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializeAll);
     </script>
 </body>
 </html>
