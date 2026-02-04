@@ -1,27 +1,1030 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Resume | Areeb Rizwan</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide-react@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel">
-      // Paste your entire App.jsx code here
-      // Replace import statements with:
-      const { useState, useRef, useEffect } = React;
-      const {
-        Mail, Globe, Linkedin, MapPin, Download, ExternalLink, Award,
-        Briefcase, Cpu, Code, Settings, GraduationCap, CheckCircle2,
-        Languages, Microscope
-      } = LucideReact;
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume | Areeb Rizwan</title>
+
+  <!-- Tailwind CDN for utility classes (quick demo / development) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide icons (will replace <i data-lucide="...">) -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.257.0/dist/lucide.min.js"></script>
+
+  <style>
+    /* Print tweaks and small custom styles */
+    @media print {
+      @page { margin: 0; size: A4; }
+      body { background: white; padding: 0; }
+      aside { background-color: #f8fafc !important; -webkit-print-color-adjust: exact; }
+      .marker\:text-blue-500::marker { color: #2563eb !important; }
+      .print\\:hidden { display: none !important; }
+      .print\\:bg-white { background: white !important; }
+      .print\\:shadow-none { box-shadow: none !important; }
+      .print\\:rounded-none { border-radius: 0 !important; }
+      .print\\:p-0 { padding: 0 !important; }
+      .break-inside-avoid { break-inside: avoid; }
+      .page-break-before { page-break-before: always; }
+    }
+
+    /* Keep a little spacing for printed pages */
+    html, body { height: 100%; }
+
+    /* Tiny responsive adjustments for standalone file */
+    .max-w-5xl { max-width: 72rem; }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 py-10 px-4 print:p-0 print:bg-white font-sans text-slate-800">
+
+  <div id="app" class="max-w-5xl mx-auto">
+
+    <!-- Controls: tabs + print button -->
+    <div id="controls" class="mb-6 flex flex-col sm:flex-row justify-between gap-4 print:hidden items-start">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto">
+        <div class="mb-2 sm:mb-0">
+          <h1 class="text-xl font-bold text-slate-800">Multi-Version Resume</h1>
+          <p class="text-xs text-slate-600">Select a tailored resume for different sectors</p>
+        </div>
+        <div id="version-tabs" class="inline-flex bg-white rounded-lg shadow-sm p-1 border border-slate-200 overflow-x-auto max-w-full"></div>
+      </div>
+
+      <div class="flex gap-3 mt-4 sm:mt-0">
+        <button id="printBtn" class="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg shadow-md hover:bg-blue-700 transition-all font-medium whitespace-nowrap">
+          <i data-lucide="download"></i>
+          Download PDF / Print
+        </button>
+      </div>
+    </div>
+
+    <!-- Resume Container -->
+    <div id="resumeRoot" class="bg-white shadow-2xl rounded-xl overflow-hidden print:shadow-none print:rounded-none border border-slate-200 print:border-none break-inside-avoid">
+      <!-- Header will be injected -->
+    </div>
+
+    <!-- Footer note -->
+    <div class="mt-6 text-center text-slate-500 text-sm print:hidden">
+      <p>Each version is tailored for specific job sectors. Use the tabs to switch between different resume versions.</p>
+    </div>
+
+  </div>
+
+  <script>
+    /************************************************************************
+     * Standalone single-file resume with version / sector tabs.
+     * - Uses Tailwind CDN for styling
+     * - Uses Lucide (CDN) for icons: elements with data-lucide will be replaced
+     * - Deep linking via ?v=<key> and URL update when switching tabs
+     * - Print button calls window.print() and prints the active version
+     ************************************************************************/
+
+    // Comprehensive versions data with all information from your resumes
+    const versions = {
+      all: {
+        key: 'all',
+        label: 'All / General',
+        title: 'Muhammad Areeb Rizwan Siddiqui',
+        subtitle: 'Mechanical Engineer | Digital & Smart Manufacturing Specialist',
+        summary: `Mechanical Engineer specializing in Digital and Smart Manufacturing, with a proven track record of deploying AI/ML, IoT, and Lean principles to drive efficiency gains in automotive and textile sectors. Experienced leading digital transformation projects (MES, Digital Twin) from conception to implementation. Entrepreneurial experience in EdTech. Seeking to deepen expertise in industrial digitalization and contribute to pioneering sustainable manufacturing solutions.`,
+        skills: [
+          'MES & Digital Twin Development',
+          'AI/ML for Quality Control',
+          'Lean Six Sigma Black Belt',
+          'Mechatronics & Embedded Systems',
+          'Materials Testing (ASTM, NDT)',
+          'Industrial IoT & Telemetry',
+          'Predictive Maintenance',
+          'Additive & CNC Manufacturing'
+        ],
+        projects: [
+          { 
+            title: 'Full-Stack Manufacturing Execution System (MES)', 
+            desc: 'Production-ready MES delivering real-time digital visibility of manufacturing lines and automated OEE analytics, eliminating manual reporting and reducing production data latency from hours to seconds.', 
+            link: 'https://mmcl-ultimate-database-by-areeb.streamlit.app/'
+          },
+          { 
+            title: 'Digital Twin - Predictive Maintenance Model', 
+            desc: 'Developed a Digital Twin-based Prescriptive Maintenance Platform for heavy-vehicle assets, integrating real-time telemetry, multi-factor risk assessment, and predictive analytics; improved uptime by 15–25%.', 
+            link: 'https://digital-twin-tyre-project-by-areeb.streamlit.app/'
+          },
+          { 
+            title: 'AI-Powered Vehicle Defect Detection System', 
+            desc: 'Developed an AI-powered vehicle defect detection system using YOLOv8 and OpenCV, deployed via Streamlit, achieving >96% defect classification accuracy across 5 defect types; reduced manual inspection time by 70%.', 
+            link: 'https://cardefectdetectormadebyareeb1.streamlit.app/'
+          },
+          { 
+            title: 'Advanced De-Dusting Plant Design', 
+            desc: 'Designed and automated a high-efficiency Pulse-Jet Baghouse filtration system (>90% efficiency) for capturing metallic fumes and waste gases, integrating IoT-enabled Continuous Emission Monitoring.', 
+            link: null
+          }
+        ],
+        experience: [
+          {
+            title: 'Trainee Engineer – Production (Process Improvement Lead)',
+            company: 'Master Motor Corporation (Pvt.) Ltd.',
+            date: 'Mar 2025 – Present',
+            bullets: [
+              'Reduced Hatrack Defects Per Unit (DPU) by 70% using root-cause analysis and 7 QC tools',
+              'Pioneered integration of AI/ML models for defect detection and predictive maintenance, automating 50% of QC tasks',
+              'Orchestrated 20+ Kaizen events with cross-functional teams, resulting in 15% increase in production throughput',
+              'Directly improved after-sales support efficiency by 12% through data-driven process interventions'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'Tristar Transport (Pvt.) Ltd.',
+            date: 'Dec 2024 – Mar 2025',
+            bullets: [
+              'Engineered and led rollout of Planned Maintenance Program (PMP), reducing fleet downtime by 40%',
+              'Increased overall mechanical efficiency by 15% through strict OEM compliance',
+              'Restructured vendor contracts and overhauled maintenance workflows, slashing average repair time by 2 days'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'SM Denim Textile Mills',
+            date: 'Jun 2024 – Nov 2024',
+            bullets: [
+              'Automated spare parts tracking and procurement system, leading to 85% reduction in machine downtime',
+              'Boosted line productivity by 30% through optimized maintenance workflows',
+              'Developed standardized maintenance protocols, cutting mean repair time and procurement errors by 50%'
+            ]
+          },
+          {
+            title: 'Mechanical Project Lead',
+            company: 'National Center of Artificial Intelligence (NCAI, NEDUET)',
+            date: 'Aug 2022 – Jun 2023',
+            bullets: [
+              'Led team of mechanical engineers to design and build a cost-effective robotic weeder',
+              'Reduced precision agriculture operational costs by 35% through optimized design and fabrication',
+              'Only 3 mechanical engineers selected university-wide for this project; chosen to lead the team'
+            ]
+          }
+        ],
+        certifications: [
+          'Certified Lean Six Sigma Black Belt',
+          'Digital Manufacturing & Design Technology - SUNY Buffalo',
+          'ISO 9001:2015 Lead Auditor',
+          'Additive Manufacturing Specialization - Arizona State University',
+          'AI for Mechanical Engineers - University of Michigan',
+          'Google Project Management Specialization'
+        ]
+      },
+
+      digital: {
+        key: 'digital',
+        label: 'Digital / Smart Manufacturing',
+        title: 'Muhammad Areeb Rizwan Siddiqui',
+        subtitle: 'Digital & Smart Manufacturing Specialist',
+        summary: `Digital Manufacturing specialist focused on MES, Digital Twins, Industrial IoT, and AI-driven quality systems. I build production-ready software and models that reduce data latency, automate QC, and enable predictive maintenance. Demonstrated ability to lead digital transformation projects from conception to implementation, resulting in significant reductions in defects, downtime, and costs.`,
+        skills: [
+          'MES Development & Implementation',
+          'Industrial IoT & Telemetry Systems',
+          'Digital Twin Modeling & Simulation',
+          'Computer Vision (YOLO / OpenCV)',
+          'OEE & Production Analytics',
+          'Predictive Maintenance Systems',
+          'Python & Streamlit Development',
+          'Lean Six Sigma (Black Belt)'
+        ],
+        projects: [
+          { 
+            title: 'Full-Stack Manufacturing Execution System (MES)', 
+            desc: 'Built a production-ready MES delivering real-time digital visibility of manufacturing lines and automated OEE analytics, eliminating manual reporting and reducing production data latency from hours to seconds.', 
+            link: 'https://mmcl-ultimate-database-by-areeb.streamlit.app/'
+          },
+          { 
+            title: 'Digital Twin - Prescriptive Maintenance Platform', 
+            desc: 'Developed a Digital Twin with real-time telemetry, multi-factor risk assessment, and predictive analytics; improved uptime by 15–25% and reduced maintenance costs by $1,800–4,800 per asset.', 
+            link: 'https://digital-twin-tyre-project-by-areeb.streamlit.app/'
+          },
+          { 
+            title: 'AI-Powered Vehicle Defect Detection', 
+            desc: 'Implemented a YOLOv8–OpenCV vision system deployed via Streamlit, achieving >96% accuracy and reducing manual inspection time by 70%.', 
+            link: 'https://cardefectdetectormadebyareeb1.streamlit.app/'
+          },
+          { 
+            title: 'AI-Based Composite Material Design Platform', 
+            desc: 'Developed an AI-driven composite material design tool using Neural Networks and regression models, achieving R² = 0.92 tensile strength prediction accuracy.', 
+            link: 'https://material-property-prediction-model-by-areeb.streamlit.app/'
+          }
+        ],
+        experience: [
+          {
+            title: 'Trainee Engineer – Production (Digital Transformation Lead)',
+            company: 'Master Motor Corporation (Pvt.) Ltd.',
+            date: 'Mar 2025 – Present',
+            bullets: [
+              'Reduced Hatrack DPU by 70% using root-cause analysis and 7 QC tools with digital tracking',
+              'Integrated AI/ML models for defect detection and predictive maintenance, automating 50% of QC tasks',
+              'Implemented real-time production dashboards increasing production efficiency by 25%',
+              'Led digital Kaizen events with cross-functional teams using data analytics tools'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'Tristar Transport (Pvt.) Ltd.',
+            date: 'Dec 2024 – Mar 2025',
+            bullets: [
+              'Digitalized maintenance workflows using IoT sensors for predictive maintenance',
+              'Implemented digital tracking for fleet maintenance, reducing downtime by 40%',
+              'Developed automated reporting system for maintenance metrics'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'SM Denim Textile Mills',
+            date: 'Jun 2024 – Nov 2024',
+            bullets: [
+              'Automated spare parts tracking system using digital inventory management',
+              'Implemented digital work orders reducing processing time by 60%',
+              'Created digital training materials for maintenance protocols'
+            ]
+          }
+        ],
+        certifications: [
+          'Digital Manufacturing & Design Technology - SUNY Buffalo',
+          'MBSE: Model-Based Systems Engineering - University at Buffalo',
+          'Digital Technologies & Future of Manufacturing - University of Michigan',
+          'AI for Mechanical Engineers - University of Michigan',
+          'Collaborative Robotics in Industry - L&T EduTech',
+          'Lean Six Sigma Black Belt'
+        ]
+      },
+
+      sustainability: {
+        key: 'sustainability',
+        label: 'Sustainability',
+        title: 'Muhammad Areeb Rizwan Siddiqui',
+        subtitle: 'Sustainable Manufacturing & Lifecycle Engineer',
+        summary: `Sustainability-focused mechanical engineer working at the intersection of lifecycle assessment, circular manufacturing, and Industry 4.0. I design cleaner production systems and lead projects to reduce emissions, reuse materials, and improve process energy efficiency. Aiming to advance applied lifecycle solutions for industry through sustainable design and manufacturing.`,
+        skills: [
+          'Life Cycle Assessment (LCA)',
+          'Sustainable Materials & Circular Economy',
+          'Energy Efficiency & Hybrid Energy Systems',
+          'Pulse-Jet Baghouse & Emission Control',
+          'Carbon Footprint Analysis',
+          'Waste Reduction & Upcycling',
+          'Sustainable Manufacturing Processes',
+          'ISO 14040/44 Compliance'
+        ],
+        projects: [
+          { 
+            title: 'Advanced De-Dusting Plant Design', 
+            desc: 'Designed a high-capacity Pulse-Jet Baghouse filtration system achieving >90% efficiency in capturing metallic fumes and waste gases, reducing airborne pollutants by ~40%.', 
+            link: null
+          },
+          { 
+            title: 'EcoLens Advanced LCA Intelligence Platform', 
+            desc: 'Built an ISO 14040/44 compliant LCA platform with 40% faster assessments and 95% cost reduction via dual-interface design.', 
+            link: null
+          },
+          { 
+            title: 'Industrial Hybrid Energy System Designer', 
+            desc: 'Engineered a hybrid energy system optimizer (≥95% reliability and 15‑40% LCOE reductions) via 8760‑hour simulations for solar PV + battery + grid systems.', 
+            link: null
+          },
+          { 
+            title: 'Zero-Waste Manufacturing Initiative', 
+            desc: 'Transformed 20% of production scrap into functional canteen furniture (30+ tables) through upcycling and circular economy principles.', 
+            link: null
+          }
+        ],
+        experience: [
+          {
+            title: 'Trainee Engineer – Production (Sustainability Lead)',
+            company: 'Master Motor Corporation (Pvt.) Ltd.',
+            date: 'Mar 2025 – Present',
+            bullets: [
+              'Spearheaded zero-waste initiative transforming 20% of production scrap into functional canteen furniture',
+              'Implemented process changes increasing energy efficiency by 15% through equipment optimization',
+              'Reduced material waste by 30% through lean manufacturing principles',
+              'Developed sustainability metrics tracking for production processes'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'Tristar Transport (Pvt.) Ltd.',
+            date: 'Dec 2024 – Mar 2025',
+            bullets: [
+              'Reduced oil waste by 2,500+ liters/year through optimized lubrication practices',
+              'Engineered closed-loop lubricant recycling system cutting costs by 30%',
+              'Implemented fuel efficiency monitoring reducing consumption by 12%'
+            ]
+          },
+          {
+            title: 'Mechanical Intern',
+            company: 'Peoples Steel Mills',
+            date: 'Sep 2023 – Nov 2023',
+            bullets: [
+              'Conducted NDT analysis on 50+ cast samples to eliminate defects like rhomboidity and cracks',
+              'Executed ASTM-standard mechanical evaluations for sustainable material selection',
+              'Analyzed grain structures and corrosion resistance for improved material longevity'
+            ]
+          }
+        ],
+        certifications: [
+          'Additive Manufacturing Specialization - Arizona State University',
+          'Battery Technologies - Arizona State University',
+          'Smart Solid Waste Management - L&T EduTech',
+          'ISO 9001:2015 Lead Auditor',
+          'Lean Six Sigma Black Belt'
+        ]
+      },
+
+      mechatronics: {
+        key: 'mechatronics',
+        label: 'Mechatronics',
+        title: 'Muhammad Areeb Rizwan Siddiqui',
+        subtitle: 'Mechatronics & Embedded Systems Engineer',
+        summary: `Mechatronics-focused engineer experienced in robotics, control systems, and low-level embedded integration for smart manufacturing and precision automation. Strong background in BLDC motor control, sensor integration, and robotic system design with hands-on fabrication experience.`,
+        skills: [
+          'Control Systems & Automation',
+          'BLDC Motor Drives & Control',
+          'Embedded Systems (Arduino, Raspberry Pi)',
+          'Robotics & Autonomous Systems',
+          'Sensor Integration & Data Acquisition',
+          'Mechatronic System Design',
+          'CNC Machining & 3D Printing',
+          'PLC Programming'
+        ],
+        projects: [
+          { 
+            title: 'Smart Farming Weeding Robot', 
+            desc: 'Led mechanical design and fabrication of cost-effective robotic weeder using 5056 aluminum, BLDC-driven wheels, and CNC-machined chassis; reduced operational costs by 35%.', 
+            link: null
+          },
+          { 
+            title: 'Propellair H-Tail Aircraft Model', 
+            desc: 'Designed and fabricated RC aircraft models; won "Safest Design Award" at national competition with H-tail balsa wood trainer plane.', 
+            link: null
+          },
+          { 
+            title: 'IoT-Enabled Environmental Monitoring System', 
+            desc: 'Developed IoT system integrating temperature, humidity, CO₂ sensors with real-time data acquisition and interactive analytics dashboards.', 
+            link: null
+          },
+          { 
+            title: 'RC Aircraft Fleet Development', 
+            desc: 'Led design and fabrication of 10+ functional RC aircraft models for STEM education, covering aerodynamics, control systems, and mechanical design.', 
+            link: null
+          }
+        ],
+        experience: [
+          {
+            title: 'Mechanical Project Lead',
+            company: 'National Center of Artificial Intelligence (NCAI, NEDUET)',
+            date: 'Aug 2022 – Jun 2023',
+            bullets: [
+              'Led mechanical team in designing and building autonomous weeding robot',
+              'Integrated BLDC motors with custom motor controllers for precise movement',
+              'Designed and fabricated CNC-machined chassis for optimal weight distribution',
+              'Collaborated with electronics team for sensor integration and control systems'
+            ]
+          },
+          {
+            title: 'Founder & CEO',
+            company: 'The AeroTechLab',
+            date: 'Jun 2023 – Feb 2024',
+            bullets: [
+              'Designed and delivered hands-on engineering curricula covering aerodynamics and control systems',
+              'Led fabrication of 10+ functional RC aircraft models with custom control systems',
+              'Developed comprehensive technical curriculum for 1,000+ students',
+              'Integrated mechatronics principles into STEM education programs'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'SM Denim Textile Mills',
+            date: 'Jun 2024 – Nov 2024',
+            bullets: [
+              'Automated industrial machinery with PLC controls and sensor integration',
+              'Implemented predictive maintenance using vibration and temperature sensors',
+              'Designed automated material handling systems for production lines'
+            ]
+          }
+        ],
+        certifications: [
+          'Raspberry Pi Projects Specialization - Johns Hopkins University',
+          'Collaborative Robotics in Industry - L&T EduTech',
+          'Self-Driving Cars Specialization - University of Toronto',
+          'Autonomous Vehicle Engineering - Università di Napoli',
+          'Mechatronics Course (A-) - NED University'
+        ]
+      },
+
+      renewable: {
+        key: 'renewable',
+        label: 'Renewable Energy',
+        title: 'Muhammad Areeb Rizwan Siddiqui',
+        subtitle: 'Renewable Energy & Hybrid Systems Engineer',
+        summary: `Engineer working on hybrid energy systems (solar PV + battery + grid) and energy-optimizing manufacturing processes to lower LCOE and increase system reliability. Focused on sustainable energy solutions, grid integration, and energy efficiency in industrial applications.`,
+        skills: [
+          'Hybrid Energy System Design',
+          '8760-hour Energy Simulations',
+          'Energy Efficiency Optimization',
+          'Solar PV System Design',
+          'Battery Energy Storage Systems',
+          'Grid Integration & Management',
+          'Thermal Energy Systems',
+          'Energy Auditing & Management'
+        ],
+        projects: [
+          { 
+            title: 'Industrial Hybrid Energy System Designer', 
+            desc: 'Engineered a hybrid energy system optimizer achieving ≥95% reliability and 15–40% LCOE reductions via 8760‑hour simulations for industrial applications.', 
+            link: null
+          },
+          { 
+            title: 'Advanced De-Dusting Plant with Energy Recovery', 
+            desc: 'Designed high-efficiency filtration system with integrated heat recovery and energy optimization via ASHRAE duct simulations and IE3 motors.', 
+            link: null
+          },
+          { 
+            title: 'Energy Efficiency Manufacturing Audit', 
+            desc: 'Conducted comprehensive energy audit of manufacturing facility identifying 25% energy savings potential through equipment upgrades and process optimization.', 
+            link: null
+          },
+          { 
+            title: 'Solar-Powered IoT Monitoring System', 
+            desc: 'Developed off-grid solar-powered environmental monitoring system for remote industrial applications.', 
+            link: null
+          }
+        ],
+        experience: [
+          {
+            title: 'Trainee Engineer – Production (Energy Efficiency Lead)',
+            company: 'Master Motor Corporation (Pvt.) Ltd.',
+            date: 'Mar 2025 – Present',
+            bullets: [
+              'Implemented energy efficiency measures reducing plant energy consumption by 15%',
+              'Conducted energy audits identifying $50,000+ annual savings opportunities',
+              'Optimized compressed air system reducing energy waste by 25%',
+              'Implemented lighting upgrades with motion sensors and LED retrofits'
+            ]
+          },
+          {
+            title: 'Management Trainee Officer – Maintenance',
+            company: 'Tristar Transport (Pvt.) Ltd.',
+            date: 'Dec 2024 – Mar 2025',
+            bullets: [
+              'Optimized fleet fuel efficiency through route planning and maintenance scheduling',
+              'Implemented idle reduction program saving 1,200+ liters of diesel monthly',
+              'Researched electric vehicle conversion feasibility for fleet operations'
+            ]
+          },
+          {
+            title: 'Final Year Project Lead',
+            company: 'NED University',
+            date: 'Nov 2023 – Aug 2024',
+            bullets: [
+              'Designed energy-efficient de-dusting plant with integrated heat recovery system',
+              'Optimized fan and motor selection for minimum energy consumption',
+              'Conducted life cycle cost analysis for sustainable equipment selection'
+            ]
+          }
+        ],
+        certifications: [
+          'Battery Technologies Specialization - Arizona State University',
+          'Additive Manufacturing Specialization - Arizona State University',
+          'Heavy Manufacturing Specialization - L&T EduTech',
+          'Lean Six Sigma Black Belt',
+          'ISO 9001:2015 Lead Auditor'
+        ]
+      },
+
+      materials: {
+        key: 'materials',
+        label: 'Materials Engineering',
+        title: 'Muhammad Areeb Rizwan Siddiqui',
+        subtitle: 'Materials-Focused Mechanical Engineer',
+        summary: `Materials-Focused Mechanical Engineer with experience in experimental characterization, advanced composites, and additive manufacturing. Skilled in digital twins to enhance material performance and sustainable manufacturing through Industry 4.0 technologies. Research interests in sustainable & circular manufacturing, advanced materials design, and smart production systems.`,
+        skills: [
+          'ASTM Mechanical Testing',
+          'Materials Characterization & Metallurgy',
+          'Advanced Composites Design',
+          'Additive Manufacturing',
+          'Digital Twin for Materials',
+          'Sustainable Materials Selection',
+          'Microstructural Analysis',
+          'Polymer & Composite Materials'
+        ],
+        projects: [
+          { 
+            title: 'Experimental Study of PVC vs WPC', 
+            desc: 'Conducted ASTM-compliant tensile, flexural, and hardness tests comparing PVC and Wood-Plastic Composite, demonstrating WPC\'s superior mechanical performance for sustainable applications.', 
+            link: null
+          },
+          { 
+            title: 'AI-Based Composite Material Design Platform', 
+            desc: 'Developed AI models predicting tensile strength with R² = 0.92, reducing experimental costs by 60% for composite material development.', 
+            link: 'https://material-property-prediction-model-by-areeb.streamlit.app/'
+          },
+          { 
+            title: 'Predictive Digital Twin for Additive Manufacturing', 
+            desc: 'Architected physics-based AM digital twin predicting defects and microstructure, reducing qualification time by 80%.', 
+            link: null
+          },
+          { 
+            title: 'Virtual Materials Testing Lab', 
+            desc: 'Developed virtual lab for microstructure-driven mechanical testing, reducing physical testing requirements by ~30%.', 
+            link: null
+          }
+        ],
+        experience: [
+          {
+            title: 'Trainee Engineer – Production (Materials Focus)',
+            company: 'Master Motor Corporation (Pvt.) Ltd.',
+            date: 'Mar 2025 – Present',
+            bullets: [
+              'Implemented AI-based quality control for material defect detection, reducing defective output by 18%',
+              'Spearheaded material substitution initiative replacing conventional materials with sustainable alternatives',
+              'Conducted material failure analysis for critical automotive components',
+              'Optimized material selection for weight reduction and cost savings'
+            ]
+          },
+          {
+            title: 'Mechanical Intern',
+            company: 'Peoples Steel Mills',
+            date: 'Sep 2023 – Nov 2023',
+            bullets: [
+              'Conducted root-cause and NDT analysis (MPI/UT) on 50+ cast samples to eliminate defects',
+              'Executed ASTM-standard mechanical and microstructural evaluations',
+              'Analyzed grain structures and corrosion resistance for material optimization',
+              'Performed hardness testing and tensile testing on steel samples'
+            ]
+          },
+          {
+            title: 'Research Assistant',
+            company: 'NED University',
+            date: '2024',
+            bullets: [
+              'Conducted comprehensive material testing on PVC and WPC samples',
+              'Published research on sustainable material alternatives for manufacturing',
+              'Developed testing protocols for composite material evaluation',
+              'Analyzed material performance under different environmental conditions'
+            ]
+          }
+        ],
+        certifications: [
+          'Additive Manufacturing Specialization - Arizona State University',
+          'Digital Manufacturing & Design Technology - SUNY Buffalo',
+          'AI for Mechanical Engineers - University of Michigan',
+          'ISO 9001:2015 Lead Auditor',
+          'Lean Six Sigma Black Belt'
+        ]
+      }
+    };
+
+    const versionsOrder = ['all', 'digital', 'sustainability', 'mechatronics', 'renewable', 'materials'];
+
+    // Common education data
+    const commonEducation = {
+      degree: 'BE Mechanical Engineering',
+      institution: 'NED University of Engineering and Technology',
+      period: 'Oct 2020 – Oct 2024',
+      location: 'Karachi, Pakistan',
+      details: 'Relevant Advanced Coursework: AI & Internet of Things (A), Mechatronics (A-), Manufacturing Processes I & II (A, A), Operations Management (A-), Machine Design (A)',
+      gpa: 'Final Year GPA: 3.69/4.0 | CGPA: 3.29/4.00',
+      thesis: 'Design Automation and Feasibility Analysis of an Advanced De-Dusting Plant to extract 150,000cfm of fumes and waste gases from an Electric Arc Furnace'
+    };
+
+    // Common entrepreneurial experience
+    const commonEntrepreneurial = {
+      title: 'Founder & CEO',
+      company: 'The AeroTechLab',
+      period: 'Jun 2023 – Feb 2024',
+      bullets: [
+        'Founded STEM education startup delivering hands-on RC aircraft construction workshops to 1,000+ students across 3+ educational institutions',
+        'Led design and fabrication of 10+ functional RC aircraft models',
+        'Developed comprehensive technical curriculum covering aerodynamics, control systems, and mechanical design',
+        'Secured partnerships with Lincoln Corner Karachi and The Educators school'
+      ]
+    };
+
+    // Common publications
+    const commonPublications = [
+      {
+        title: 'Experimental Study of Mechanical Properties of Polyvinyl Chloride (PVC) and Wood Plastic Composite (WPC)',
+        authors: 'M Areeb Rizwan, Ifrah Asif, Eylia Abbas Jafri, Sohail Hasnain',
+        year: '2024',
+        description: 'Conducted ASTM-compliant tensile, flexural, and hardness tests comparing PVC and Wood-Plastic Composite (WPC), demonstrating WPC\'s superior mechanical performance and sustainability potential; results submitted to peer-reviewed journals.'
+      }
+    ];
+
+    // Common honors and awards
+    const commonHonors = [
+      'Startup Accelerator Pitching Competition Winner – Lincoln Corner Karachi (Sep 2024)',
+      'Most Innovative Project Award – AI IoT Competition NEDUET (Apr 2024)',
+      'Safest Design Award – PropellAir 2022 Competition (Jul 2022)'
+    ];
+
+    // Common volunteering
+    const commonVolunteering = [
+      'Tree Planting Drive – Organized and participated in community environmental initiative, planting 50+ trees (Jul 2023)',
+      'Ramadan Iftar Drive – Coordinated month-long community service project, providing Iftar meals to 100+ underprivileged families (Jul-Aug 2023)'
+    ];
+
+    // Common languages
+    const commonLanguages = [
+      { language: 'English', level: 'Proficient (C2)' },
+      { language: 'Urdu', level: 'Native' },
+      { language: 'German', level: 'Basic (A1)' }
+    ];
+
+    // Common software skills
+    const commonSoftware = ['SolidWorks', 'MATLAB', 'Ansys', 'Python', 'Power BI', 'Streamlit', 'Primavera P6', 'PLC', 'AutoCAD', 'CATIA v5'];
+
+    // State
+    let activeKey = 'all';
+
+    // DOM references
+    const resumeRoot = document.getElementById('resumeRoot');
+    const versionTabs = document.getElementById('version-tabs');
+    const printBtn = document.getElementById('printBtn');
+
+    // Initialize version tabs
+    function initTabs() {
+      versionTabs.innerHTML = '';
+      versionsOrder.forEach((k) => {
+        const v = versions[k];
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'px-3 py-1.5 text-sm font-medium rounded-md focus:outline-none transition-colors whitespace-nowrap';
+        btn.setAttribute('data-key', k);
+        btn.setAttribute('aria-pressed', 'false');
+        btn.textContent = v.label;
+        btn.addEventListener('click', () => setActiveVersion(k));
+        btn.addEventListener('mouseenter', () => {
+          if (btn.getAttribute('data-key') !== activeKey) {
+            btn.classList.add('bg-blue-100', 'text-blue-700');
+          }
+        });
+        btn.addEventListener('mouseleave', () => {
+          if (btn.getAttribute('data-key') !== activeKey) {
+            btn.classList.remove('bg-blue-100', 'text-blue-700');
+          }
+        });
+        versionTabs.appendChild(btn);
+      });
+    }
+
+    // Update tab styles
+    function updateTabs() {
+      Array.from(versionTabs.children).forEach((btn) => {
+        const key = btn.getAttribute('data-key');
+        const isActive = key === activeKey;
+        btn.setAttribute('aria-pressed', String(isActive));
+        if (isActive) {
+          btn.classList.add('bg-blue-600', 'text-white');
+          btn.classList.remove('text-slate-700', 'bg-blue-100', 'text-blue-700');
+        } else {
+          btn.classList.remove('bg-blue-600', 'text-white');
+          btn.classList.add('text-slate-700', 'hover:bg-blue-50');
+        }
+      });
+    }
+
+    // Utility: escape HTML (for text content)
+    function e(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // Render the resume DOM based on activeKey
+    function renderResume() {
+      const vData = versions[activeKey];
       
-      // Rest of your App.jsx code...
-    </script>
-  </body>
+      // Determine which sections to show based on version
+      const showAllSections = activeKey === 'all';
+      const showEntrepreneurial = true; // Show for all versions
+      const showPublications = true; // Show for all versions
+      const showHonors = true; // Show for all versions
+      const showVolunteering = true; // Show for all versions
+      
+      // Build skills HTML
+      const skillsHtml = (vData.skills || []).map(s => 
+        `<div class="mb-1"><p class="text-sm text-slate-800 leading-tight">• ${e(s)}</p></div>`
+      ).join('');
+      
+      // Build projects HTML
+      const projectsHtml = (vData.projects || []).map(p => {
+        const linkHtml = p.link ? 
+          `<a href="${e(p.link)}" target="_blank" rel="noopener noreferrer" class="text-[10px] text-blue-600 flex items-center gap-1 font-bold uppercase mt-2 hover:text-blue-800 transition-colors">
+            <i data-lucide="external-link" style="width:10px;height:10px"></i> View Project
+          </a>` : 
+          '';
+        return `
+          <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 flex flex-col justify-between break-inside-avoid">
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm mb-1">${e(p.title)}</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">${e(p.desc)}</p>
+            </div>
+            ${linkHtml}
+          </div>
+        `;
+      }).join('');
+      
+      // Build experience HTML
+      const experienceHtml = (vData.experience || []).map((exp, idx) => {
+        const bullets = (exp.bullets || []).map(b => 
+          `<li class="text-sm text-slate-700 mb-1">${b}</li>`
+        ).join('');
+        return `
+          <div class="relative pl-6 border-l-2 border-slate-100 mb-6 break-inside-avoid">
+            <div class="absolute -left-[9px] top-0 w-4 h-4 ${idx === 0 ? 'bg-blue-600' : 'bg-slate-300'} rounded-full border-4 border-white"></div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1 gap-1">
+              <h3 class="font-bold text-slate-900 text-base">${e(exp.title)}</h3>
+              <span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded text-slate-600 whitespace-nowrap">${e(exp.date || '')}</span>
+            </div>
+            <p class="text-sm font-semibold text-blue-600 mb-2">${e(exp.company || '')}</p>
+            <ul class="text-sm text-slate-700 space-y-1 list-inside list-disc pl-1">
+              ${bullets}
+            </ul>
+          </div>
+        `;
+      }).join('');
+      
+      // Build certifications HTML
+      const certificationsHtml = (vData.certifications || []).map(cert => 
+        `<li class="text-xs text-slate-700 mb-1">${e(cert)}</li>`
+      ).join('');
+      
+      // Build languages HTML
+      const languagesHtml = commonLanguages.map(lang => `
+        <p class="text-xs mb-1"><span class="font-bold">${e(lang.language)}:</span> 
+        <span class="text-slate-600">${e(lang.level)}</span></p>
+      `).join('');
+      
+      // Build software skills HTML
+      const softwareHtml = commonSoftware.map(tool => 
+        `<span class="px-2 py-1 bg-white border border-slate-200 text-slate-700 text-[11px] rounded font-medium">${tool}</span>`
+      ).join('');
+      
+      // Build publications HTML
+      const publicationsHtml = commonPublications.map(pub => `
+        <div class="mb-4">
+          <h4 class="font-bold text-slate-900 text-sm italic">${e(pub.title)}</h4>
+          <p class="text-xs text-slate-600 mt-1">${e(pub.authors)} (${e(pub.year)})</p>
+          <p class="text-xs text-slate-700 mt-2">${e(pub.description)}</p>
+        </div>
+      `).join('');
+      
+      // Build honors HTML
+      const honorsHtml = commonHonors.map(honor => 
+        `<p class="text-xs text-slate-700 mb-1">• ${e(honor)}</p>`
+      ).join('');
+      
+      // Build volunteering HTML
+      const volunteeringHtml = commonVolunteering.map(vol => 
+        `<p class="text-xs text-slate-700 mb-1">• ${e(vol)}</p>`
+      ).join('');
+      
+      // Build entrepreneurial HTML
+      const entrepreneurialHtml = `
+        <div class="mb-4">
+          <h4 class="font-bold text-slate-900 text-sm">${e(commonEntrepreneurial.title)}</h4>
+          <p class="text-xs font-semibold text-blue-600">${e(commonEntrepreneurial.company)} • ${e(commonEntrepreneurial.period)}</p>
+          <ul class="text-xs text-slate-700 mt-2 space-y-1 list-disc pl-4">
+            ${commonEntrepreneurial.bullets.map(b => `<li>${e(b)}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+
+      // Build main HTML
+      resumeRoot.innerHTML = `
+        <header class="bg-slate-900 text-white p-8 md:p-12 print:p-8 break-inside-avoid">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="flex-1">
+              <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-1 uppercase">${e(vData.title)}</h1>
+              <p class="text-blue-400 text-lg font-semibold uppercase tracking-widest mb-3">${e(vData.subtitle)}</p>
+              <p class="text-slate-300 max-w-2xl text-sm leading-relaxed">${e(vData.summary)}</p>
+            </div>
+            <div class="flex flex-col gap-3 text-sm text-slate-300 whitespace-nowrap">
+              <span class="flex items-center gap-2"><i data-lucide="mail"></i> engr.areebriz@gmail.com</span>
+              <span class="flex items-center gap-2"><i data-lucide="globe"></i> www.areebrizwan.com</span>
+              <span class="flex items-center gap-2"><i data-lucide="linkedin"></i> linkedin.com/in/areebrizwan</span>
+              <span class="flex items-center gap-2"><i data-lucide="map-pin"></i> Karachi, Pakistan</span>
+              <span class="flex items-center gap-2"><i data-lucide="phone"></i> (+92) 313 1011523</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3">
+          <aside class="col-span-1 bg-slate-50 border-r border-slate-200 p-8 flex flex-col gap-8 print:bg-white break-inside-avoid">
+            <section>
+              <h2 class="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-wider mb-4 border-b-2 border-blue-500 pb-1">
+                <i data-lucide="graduation-cap"></i> Education
+              </h2>
+              <div class="space-y-3">
+                <div>
+                  <h3 class="font-bold text-slate-800 text-sm">${e(commonEducation.degree)}</h3>
+                  <p class="text-xs text-slate-600">${e(commonEducation.institution)}</p>
+                  <p class="text-xs text-slate-600">${e(commonEducation.period)} • ${e(commonEducation.location)}</p>
+                  <p class="text-xs text-slate-700 mt-2">${e(commonEducation.details)}</p>
+                  <p class="text-xs font-semibold text-blue-700 mt-1">${e(commonEducation.gpa)}</p>
+                  <p class="text-xs text-slate-600 mt-2 italic">Thesis: ${e(commonEducation.thesis)}</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-wider mb-4 border-b-2 border-blue-500 pb-1">
+                <i data-lucide="cpu"></i> Core Skills
+              </h2>
+              <div class="space-y-2">${skillsHtml}</div>
+            </section>
+
+            <section>
+              <h2 class="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-wider mb-4 border-b-2 border-blue-500 pb-1">
+                <i data-lucide="code"></i> Software & Tools
+              </h2>
+              <div class="flex flex-wrap gap-1.5">
+                ${softwareHtml}
+              </div>
+            </section>
+
+            <section>
+              <h2 class="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-wider mb-4 border-b-2 border-blue-500 pb-1">
+                <i data-lucide="check-circle"></i> Certifications
+              </h2>
+              <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4">
+                ${certificationsHtml}
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-wider mb-4 border-b-2 border-blue-500 pb-1">
+                <i data-lucide="globe"></i> Languages
+              </h2>
+              <div class="text-xs space-y-1">
+                ${languagesHtml}
+              </div>
+            </section>
+            
+            ${showVolunteering ? `
+            <section>
+              <h2 class="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-wider mb-4 border-b-2 border-blue-500 pb-1">
+                <i data-lucide="heart"></i> Volunteering
+              </h2>
+              <div class="text-xs space-y-1">
+                ${volunteeringHtml}
+              </div>
+            </section>
+            ` : ''}
+          </aside>
+
+          <main class="col-span-2 p-8 md:p-12 flex flex-col gap-10 print:p-8">
+            <section>
+              <h2 class="flex items-center gap-3 text-slate-900 font-bold uppercase tracking-widest mb-6 text-lg">
+                <i data-lucide="briefcase"></i> Professional Experience
+              </h2>
+              <div class="space-y-8">
+                ${experienceHtml}
+              </div>
+            </section>
+            
+            ${showEntrepreneurial ? `
+            <section>
+              <h2 class="flex items-center gap-3 text-slate-900 font-bold uppercase tracking-widest mb-4 text-lg">
+                <i data-lucide="rocket"></i> Entrepreneurial Experience
+              </h2>
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                ${entrepreneurialHtml}
+              </div>
+            </section>
+            ` : ''}
+
+            <section>
+              <h2 class="flex items-center gap-3 text-slate-900 font-bold uppercase tracking-widest mb-6 text-lg">
+                <i data-lucide="settings"></i> Key Projects
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${projectsHtml || '<div class="col-span-2 text-xs text-slate-500 p-4 bg-slate-50 rounded">No projects listed for this version.</div>'}
+              </div>
+            </section>
+
+            ${showPublications ? `
+            <section>
+              <h2 class="flex items-center gap-3 text-slate-900 font-bold uppercase tracking-widest mb-4 text-lg">
+                <i data-lucide="microscope"></i> Research & Publications
+              </h2>
+              <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                ${publicationsHtml}
+              </div>
+            </section>
+            ` : ''}
+
+            ${showHonors ? `
+            <section>
+              <h2 class="flex items-center gap-3 text-slate-900 font-bold uppercase tracking-widest mb-4 text-lg">
+                <i data-lucide="award"></i> Honors & Awards
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 text-xs text-slate-700">
+                ${honorsHtml}
+              </div>
+            </section>
+            ` : ''}
+          </main>
+        </div>
+
+        <footer class="bg-slate-50 border-t border-slate-200 p-6 text-center text-slate-400 text-[10px] print:hidden">
+          Version: ${e(vData.label)} • Built with HTML, Tailwind CSS & Lucide • Updated: ${new Date().toLocaleDateString()}
+        </footer>
+      `;
+
+      // Replace lucide icons in the newly created DOM
+      if (window.lucide && typeof window.lucide.replace === 'function') {
+        window.lucide.replace({ 'stroke-width': 1.5, width: 18, height: 18 });
+      }
+    }
+
+    // Change active version
+    function setActiveVersion(key, pushState = true) {
+      if (!versions[key]) return;
+      activeKey = key;
+      
+      // Update URL param
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('v', activeKey);
+        if (pushState) window.history.replaceState({}, '', url.toString());
+      } catch (err) { /* ignore */ }
+
+      // Update doc title
+      document.title = `${versions[activeKey].label} — ${versions[activeKey].title}`;
+
+      updateTabs();
+      renderResume();
+    }
+
+    // Initialize: read ?v= or hash
+    function initFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const v = params.get('v') || (window.location.hash ? window.location.hash.replace('#', '') : null);
+      if (v && versions[v]) activeKey = v;
+    }
+
+    // Print handler
+    printBtn.addEventListener('click', () => {
+      // give the browser a moment to reflow (if necessary)
+      setTimeout(() => {
+        document.title = `Resume - ${versions[activeKey].label} - ${versions[activeKey].title}`;
+        window.print();
+        // Restore original title after a delay
+        setTimeout(() => {
+          document.title = `Resume — Muhammad Areeb Rizwan Siddiqui`;
+        }, 1000);
+      }, 50);
+    });
+
+    // Initialize everything
+    function init() {
+      initTabs();
+      initFromUrl();
+      setActiveVersion(activeKey, false);
+    }
+
+    // Start when DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    // Accessibility: keyboard navigation for tabs (left/right)
+    document.addEventListener('keydown', (e) => {
+      if (e.target.closest('#version-tabs')) {
+        const focusable = Array.from(versionTabs.querySelectorAll('button'));
+        const idx = focusable.indexOf(document.activeElement);
+        if (e.key === 'ArrowRight') {
+          const next = focusable[(idx + 1) % focusable.length];
+          next.focus();
+          e.preventDefault();
+        } else if (e.key === 'ArrowLeft') {
+          const prev = focusable[(idx - 1 + focusable.length) % focusable.length];
+          prev.focus();
+          e.preventDefault();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          document.activeElement.click();
+          e.preventDefault();
+        }
+      }
+    });
+
+    // Ensure icons in tab bar are rendered (if any)
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide && typeof window.lucide.replace === 'function') {
+        window.lucide.replace({ 'stroke-width': 1.5, width: 18, height: 18 });
+      }
+    });
+  </script>
+</body>
 </html>
