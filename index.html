@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | Areeb Rizwan</title>
+    
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Muhammad Areeb Rizwan Siddiqui - Mechanical Engineer and Automation Specialist. Building efficiency from precision and discipline.">
 
 <!-- Favicon Links -->
     <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
@@ -509,6 +512,27 @@
             scroll-behavior: smooth;
         }
 
+        /* Button Styles - FIXED: Added missing button styles */
+        .btn-portfolio {
+            background: linear-gradient(135deg, #4CAF50 0%, #3d8b40 100%);
+            color: white;
+        }
+
+        .btn-services {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .btn-portfolio:hover, .btn-services:hover {
+            opacity: 0.95;
+        }
+
+        /* Metric highlight styling */
+        .metric-highlight {
+            font-weight: 600;
+            color: #4CAF50;
+        }
+
         /* Responsive Design */
         /* 1024px Optimizations */
         @media (min-width: 1024px) and (max-width: 1439px) {
@@ -708,6 +732,12 @@
                 right: 0 !important;
                 top: 0;
                 order: 1;
+            }
+
+            /* Adjust button sizes for mobile */
+            .btn-portfolio, .btn-services {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -1091,7 +1121,7 @@
 <section class="hero-section" id="heroSection">
 
     <!-- Background Video (now outside of state containers) -->
-    <video class="background-video" autoplay muted loop playsinline>
+    <video class="background-video" autoplay muted loop playsinline preload="metadata">
         <source src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/industry2.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -1150,6 +1180,7 @@
             <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/buggy.gif" 
                  alt="Buggy Mechanical GIF" 
                  class="w-full h-auto rounded-lg transition-transform duration-300 hover:scale-110"
+                 loading="lazy"
                  onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c4c4c/ffffff?text=Mech+GIF+Missing'" />
         </a>
 
@@ -1159,6 +1190,7 @@
             <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/drone.gif" 
                  alt="Drone Mechanical GIF" 
                  class="w-full h-auto rounded-lg transition-transform duration-300 hover:scale-110"
+                 loading="lazy"
                  onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c4c4c/ffffff?text=I4.0+GIF+Missing'" />
         </a>
 
@@ -1175,7 +1207,7 @@
             <!-- Custom separator line -->
             <div class="w-20 h-1 mx-auto bg-gradient-to-r from-primary-blue to-primary-green rounded-full mb-6"></div>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto px-4">
-                Quick insights into my expertise. Explore each area to see detailed projects and achievements.
+                For a deeper dive, explore each area to see detailed projects and achievements.
             </p>
         </div>
         
@@ -1185,7 +1217,7 @@
             <!-- Highlight 1: Mechanical Design Specialist -->
             <div class="highlight-card">
                 <div class="highlight-image" 
-                     style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                     style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/mechdesign.png')">
                     <div class="highlight-overlay"></div>
                     <div class="highlight-icon">
                         <i class="fas fa-cogs"></i>
@@ -1229,7 +1261,7 @@
             <!-- Highlight 3: Project Leadership -->
             <div class="highlight-card">
                 <div class="highlight-image" 
-                     style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                     style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/automation.png')">
                     <div class="highlight-overlay"></div>
                     <div class="highlight-icon">
                         <i class="fas fa-users"></i>
@@ -1251,7 +1283,7 @@
             <!-- Highlight 4: Research & Innovation -->
             <div class="highlight-card">
                 <div class="highlight-image" 
-                     style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                     style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/research.png')">
                     <div class="highlight-overlay"></div>
                     <div class="highlight-icon">
                         <i class="fas fa-flask"></i>
@@ -1283,7 +1315,7 @@
                 <div class="carousel-slide">
                     <div class="highlight-card">
                         <div class="highlight-image" 
-                             style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                             style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/mechdesign.png')">
                             <div class="highlight-overlay"></div>
                             <div class="highlight-icon">
                                 <i class="fas fa-cogs"></i>
@@ -1331,7 +1363,7 @@
                 <div class="carousel-slide">
                     <div class="highlight-card">
                         <div class="highlight-image" 
-                             style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                             style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/automation.png')">
                             <div class="highlight-overlay"></div>
                             <div class="highlight-icon">
                                 <i class="fas fa-users"></i>
@@ -1355,7 +1387,7 @@
                 <div class="carousel-slide">
                     <div class="highlight-card">
                         <div class="highlight-image" 
-                             style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                             style="background-image: url('https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/research.png')">
                             <div class="highlight-overlay"></div>
                             <div class="highlight-icon">
                                 <i class="fas fa-flask"></i>
@@ -1450,7 +1482,7 @@
         const left = document.getElementById('stateLeft');
         const right = document.getElementById('stateRight');
         const navLinks = document.querySelectorAll('.link-item');
-        const EDGE_TRIGGER = 0.4; // 25% from edges
+        const EDGE_TRIGGER = 0.45; // 25% from edges
 
         // Mouse movement handler for side slides
         function handleMouseMove(e) {
@@ -1505,9 +1537,7 @@
             // 2. Wait for the transition to start/complete (300ms) and then navigate
             if (url && url !== '#blog' && url !== '#contact') {
                 setTimeout(() => {
-                    // For demonstration, we prevent actual navigation in the sandbox
-                    console.log(`Simulating navigation to: ${url}`);
-                    // window.location.href = url; // Uncomment this for live usage
+                    window.location.href = url; // Actual navigation for live usage
                 }, 300); // 300ms matches the transition-all duration
             }
         }
@@ -1636,9 +1666,6 @@
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
                 activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
-            
-            // Console log to show state change (e.g., for panel animation)
-            console.log(`Application state changed to: ${targetState}, Active link: ${linkId}`);
         }
 
         // Initialize body padding based on header height
