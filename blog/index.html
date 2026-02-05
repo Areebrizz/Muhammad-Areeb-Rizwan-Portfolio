@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Areeb Rizwan</title>
+    <meta name="description" content="Expert insights on mechanical engineering, industrial automation, and sustainable manufacturing practices. Bridging the gap between efficiency and ecology.">
+    
+    <!-- Favicon Links -->
+    <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Engineering the Future Blog",
+        "url": "https://areebrizwan.com/blog",
+        "description": "Expert insights on mechanical engineering, industrial automation, and sustainable manufacturing practices.",
+        "publisher": {
+            "@type": "Person",
+            "name": "Muhammad Areeb Rizwan Siddiqui",
+            "url": "https://areebrizwan.com"
+        }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-green: #4caf50;
+            --primary-blue: #2563eb;
+            --primary-dark: #0f172a;
+            --secondary-dark: #1e293b;
+            --accent-teal: #0d9488;
+            --accent-amber: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            padding-top: 60px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--primary-dark);
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .bg-gray-50 {
+            background-color: var(--primary-dark) !important;
+        }
+
+        body.dark-mode .text-slate-900 {
+            color: #e2e8f0 !important;
+        }
+
+        body.dark-mode .bg-white {
+            background-color: var(--secondary-dark) !important;
+        }
+
+        body.dark-mode .text-slate-600 {
+            color: #94a3b8 !important;
+        }
+
+        body.dark-mode .border-slate-200 {
+            border-color: #334155 !important;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding-top: 110px;
+            }
+        }
+
+        /* Reading Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            z-index: 40;
+            transition: width 0.1s ease;
+        }
+
+        body.dark-mode .reading-progress {
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-amber));
+        }
+
+        @media (max-width: 640px) {
+            .reading-progress {
+                top: 110px;
+            }
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        body.dark-mode .glass-nav {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+        }
+
+        .blog-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        body.dark-mode .blog-card:hover {
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #0f172a, var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.dark-mode .gradient-text {
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        @media (max-width: 640px) {
+            .main-header {
+                height: 110px !important;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+                flex-grow: 1;
+                justify-content: space-around;
+            }
+            
+            .logo-container {
+                margin-bottom: 5px;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .nav-links a, .dropdown button {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            .dropdown button {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                margin: 0 8px;
+            }
+
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        .link-item {
+            position: relative;
+        }
+
+        .active-link {
+            color: var(--primary-green) !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
+        
+        .footer-bulge {
+            position: relative;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: #f3f4f6;
+        }
+
+        body.dark-mode .footer-bulge {
+            background-color: var(--secondary-dark);
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 60px;
+            background-color: #f9fafb;
+            border-radius: 0 0 100px 100px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        body.dark-mode .footer-bulge::before {
+            background-color: var(--primary-dark);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        .top-button-container {
+            position: absolute;
+            width: 40px;
+            height: 40px; 
+            left: 50%;
+            top: -20px; 
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.dark-mode .top-button-container {
+            background: var(--secondary-dark);
+        }
+
+        .top-button-container:hover {
+            transform: scale(1.1) translateX(-50%); 
+        }
+        
+        .link-glow-hover:hover,
+        .link-glow-hover:focus {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+            transform: translateY(-1px); 
+        }
+
+        .top-button-container:hover svg {
+            stroke: var(--primary-green);
+            filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-left: 4px solid var(--primary-green);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        body.dark-mode .notification {
+            background: var(--secondary-dark);
+            color: #e2e8f0;
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .category-badge {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .category-badge.active {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
+
+        /* Dark Mode Toggle - New Position */
+        .dark-mode-toggle-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        body.dark-mode .dark-mode-toggle-container {
+            background: var(--secondary-dark);
+            border-color: #334155;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #e5e7eb;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background: #475569;
+        }
+
+        .dark-mode-toggle::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>');
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        body.dark-mode .dark-mode-toggle::before {
+            transform: translateX(30px);
+            background-color: #fbbf24;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z"/></svg>');
+        }
+
+        /* Lazy Loading */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        body.dark-mode .skeleton {
+            background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                padding-top: 0;
+                color: black !important;
+                background: white !important;
+            }
+            
+            .blog-card {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                break-inside: avoid;
+            }
+            
+            .top-button-container,
+            .dark-mode-toggle-container,
+            .social-icons {
+                display: none !important;
+            }
+        }
+
+        /* Share Button Improvements */
+        .share-button {
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .share-button:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* External Link Button */
+        .external-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        body.dark-mode .external-link-btn {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-amber));
+        }
+
+        .external-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#1D4ED8',
+                        'secondary-gray': '#E5E7EB',
+                        'dark-text': '#1F2937',
+                        'accent-green': '#10B981',
+                        'accent-purple': '#8B5CF6',
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
+                        'brand-primary': '#4caf50',
+                        'gray-50': '#f9fafb',
+                        'gray-100': '#f3f4f6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-slate-900" id="top">
+
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="reading-progress"></div>
+
+    <!-- Dark Mode Toggle (New Position) -->
+    <div class="dark-mode-toggle-container no-print">
+        <div class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode">
+            <div class="absolute inset-0 flex items-center justify-between px-2">
+                <i class="fas fa-sun text-yellow-500 text-xs"></i>
+                <i class="fas fa-moon text-blue-300 text-xs"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <div class="logo-container text-white select-none flex items-center">
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
+                     alt="Areeb Rizwan Logo - Mechanical Engineering Portfolio" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    Areeb Rizwan
+                </span>
+            </div>
+            
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
+                
+                <nav class="nav-links flex">
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="Connect on LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Follow on Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/Areebrizz" aria-label="View GitHub Profile" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/areebrizz" aria-label="Follow on Twitter/X" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-4" id="hero-section">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                Automating a <span class="gradient-text">Sustainable</span> Industrial Future.
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                Mechanical Engineering insights at the intersection of high-speed automation and ecological responsibility. Exploring how we build the machines that power the world without costing the planet.
+            </p>
+            <div id="category-badges" class="flex flex-wrap justify-center gap-3">
+                <span data-category="all" class="category-badge active px-4 py-1.5 bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 cursor-pointer">#All</span>
+                <span data-category="automation" class="category-badge px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-full text-xs font-bold text-blue-700 dark:text-blue-300 cursor-pointer">#Automation</span>
+                <span data-category="sustainability" class="category-badge px-4 py-1.5 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full text-xs font-bold text-green-700 dark:text-green-300 cursor-pointer">#Sustainability</span>
+                <span data-category="manufacturing" class="category-badge px-4 py-1.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer">#Manufacturing</span>
+                <span data-category="robotics" class="category-badge px-4 py-1.5 bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800 rounded-full text-xs font-bold text-purple-700 dark:text-purple-300 cursor-pointer">#Robotics</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-4 pb-24" id="main-content">
+        
+        <!-- Featured Post -->
+        <section class="mb-16" id="featured-section">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-6">Featured Whitepaper</h2>
+            <article class="relative group cursor-pointer overflow-hidden rounded-3xl bg-slate-900 dark:bg-slate-800 aspect-[16/9] md:aspect-[21/9]">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" 
+                     alt="Robotic arm in clean energy plant - Automated sustainable manufacturing" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition duration-700 lazy-image"
+                     loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 dark:from-slate-900 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-12 max-w-2xl">
+                    <span class="inline-block px-3 py-1 mb-4 bg-green-600 text-white text-xs font-bold rounded uppercase">Sustainable Practices</span>
+                    <h3 class="text-2xl md:text-4xl font-bold text-white mb-4">The Net-Zero Factory: Redesigning Manufacturing for 2030</h3>
+                    <p class="text-slate-300 dark:text-slate-400 mb-6 hidden md:block">A deep dive into closed-loop manufacturing systems and the mechanical innovations reducing industrial carbon footprints by 40%.</p>
+                    <div class="flex items-center text-white text-sm font-medium">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3 text-lg">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <a href="https://areebrizwan.com/blog/net-zero-factory" class="hover:underline" target="_blank">Read Technical Report &rarr;</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Blog Feed -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Sidebar -->
+            <aside class="md:col-span-1 order-2 md:order-1">
+                <div class="sticky top-24 space-y-10">
+                    <!-- Search -->
+                    <div>
+                        <h3 class="font-bold mb-4 flex items-center dark:text-slate-200">
+                            <i class="fa-solid fa-microchip mr-2 text-blue-600"></i> Tech Search
+                        </h3>
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="search-input"
+                                placeholder="Search articles, components..." 
+                                class="w-full px-4 py-3 pl-10 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div>
+                        <h3 class="font-bold mb-4 dark:text-slate-200">The Engineer's Journal</h3>
+                        <div class="p-6 bg-slate-900 dark:bg-slate-800 text-white rounded-2xl shadow-xl">
+                            <p class="text-sm text-slate-400 mb-4">Get bi-weekly updates on industrial automation trends and mechanical efficiency breakthroughs.</p>
+                            <input 
+                                type="email" 
+                                id="newsletter-email"
+                                placeholder="Professional Email" 
+                                class="w-full px-4 py-2 mb-3 rounded-lg bg-slate-800 dark:bg-slate-700 border border-slate-700 dark:border-slate-600 text-white outline-none">
+                            <button 
+                                id="subscribe-btn"
+                                class="w-full bg-blue-600 text-white py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Domain Filters -->
+                    <div>
+                        <h3 class="font-bold mb-4 text-slate-400 dark:text-slate-500 uppercase text-xs tracking-widest">Engineering Domains</h3>
+                        <ul id="domain-filters" class="space-y-2">
+                            <li>
+                                <a href="#" data-domain="all" class="domain-filter flex justify-between items-center p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition bg-slate-100 dark:bg-slate-700">
+                                    <span class="font-semibold dark:text-slate-200">All Articles</span> 
+                                    <span class="text-slate-400 dark:text-slate-400 text-xs" data-count="all">15</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-domain="robotics" class="domain-filter flex justify-between items-center p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition dark:text-slate-300">
+                                    <span>Robotics & PLC</span> 
+                                    <span class="text-slate-400 dark:text-slate-400 text-xs" data-count="robotics">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-domain="sustainability" class="domain-filter flex justify-between items-center p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition dark:text-slate-300">
+                                    <span>Green Manufacturing</span> 
+                                    <span class="text-slate-400 dark:text-slate-400 text-xs" data-count="sustainability">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-domain="manufacturing" class="domain-filter flex justify-between items-center p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition dark:text-slate-300">
+                                    <span>CAD/CAM Optimization</span> 
+                                    <span class="text-slate-400 dark:text-slate-400 text-xs" data-count="manufacturing">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-domain="automation" class="domain-filter flex justify-between items-center p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition dark:text-slate-300">
+                                    <span>Lean Methodologies</span> 
+                                    <span class="text-slate-400 dark:text-slate-400 text-xs" data-count="automation">3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Articles List -->
+            <div class="md:col-span-2 order-1 md:order-2">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-8">Technical Articles</h2>
+                
+                <!-- Articles List -->
+                <div id="articles-container" class="space-y-8">
+                    <!-- Articles will be rendered here -->
+                </div>
+
+                <!-- Pagination -->
+                <div id="pagination-container" class="pt-10 flex justify-center">
+                    <nav id="pagination" class="flex space-x-2">
+                        <!-- Pagination will be rendered here -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 dark:text-slate-400 text-base pt-10 pb-6 relative">
+        <div class="max-w-screen-xl mx-auto px-5">
+
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300 dark:text-slate-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <li><a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm dark:text-slate-300">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm dark:text-slate-300">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm dark:text-slate-300">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm dark:text-slate-300">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm dark:text-slate-300">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Print Button (Fixed Position) -->
+    <button id="print-button" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition no-print" onclick="window.print()" title="Print article" aria-label="Print article">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // =======================
+        // DATA - Blog Articles (Expanded to 15 articles for 5 pages)
+        // =======================
+        const allArticles = [
+            {
+                id: 1,
+                category: 'automation',
+                title: 'Implementing AI-Driven Predictive Maintenance',
+                excerpt: 'How we reduced downtime by 25% on a high-speed packaging line using vibration sensors and machine learning algorithms.',
+                externalLink: 'https://areebrizwan.com/blog/ai-predictive-maintenance',
+                date: 'Jan 24, 2024',
+                readTime: '10 min read',
+                image: 'https://images.unsplash.com/photo-1565515186335-92018a442797?auto=format&fit=crop&w=800&q=80',
+                tags: ['AI', 'predictive maintenance', 'IoT sensors', 'machine learning', 'industrial automation'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Lead Mechanical Engineer'
+            },
+            {
+                id: 2,
+                category: 'sustainability',
+                title: 'Energy Recovery Systems in Heavy Manufacturing',
+                excerpt: 'Exploring heat exchangers and kinetic energy capture methods that transform waste into usable industrial power.',
+                externalLink: 'https://areebrizwan.com/blog/energy-recovery-systems',
+                date: 'Jan 18, 2024',
+                readTime: '7 min read',
+                image: 'https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=800&q=80',
+                tags: ['energy recovery', 'sustainability', 'heat exchangers', 'green manufacturing'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Sustainable Engineering Specialist'
+            },
+            {
+                id: 3,
+                category: 'manufacturing',
+                title: 'Additive Manufacturing for Tooling & Jigs',
+                excerpt: 'Accelerating assembly line setup times by 3D printing custom mechanical supports and ergonomic industrial aids.',
+                externalLink: 'https://areebrizwan.com/blog/additive-manufacturing-tooling',
+                date: 'Jan 05, 2024',
+                readTime: '6 min read',
+                image: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=800&q=80',
+                tags: ['3D printing', 'tooling', 'rapid prototyping', 'manufacturing optimization'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Manufacturing Engineer'
+            },
+            {
+                id: 4,
+                category: 'robotics',
+                title: 'Collaborative Robots in Small-Batch Production',
+                excerpt: 'Integrating cobots with human workers to maintain flexibility while achieving automation benefits in custom manufacturing.',
+                externalLink: 'https://areebrizwan.com/blog/collaborative-robots',
+                date: 'Dec 28, 2023',
+                readTime: '8 min read',
+                image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80',
+                tags: ['cobots', 'robotics', 'small-batch', 'flexible automation'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Robotics Engineer'
+            },
+            {
+                id: 5,
+                category: 'automation',
+                title: 'Vision Systems for Quality Control',
+                excerpt: 'Deploying computer vision and deep learning to detect defects at production speeds exceeding 200 parts per minute.',
+                externalLink: 'https://areebrizwan.com/blog/vision-systems-quality-control',
+                date: 'Dec 15, 2023',
+                readTime: '9 min read',
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+                tags: ['computer vision', 'quality control', 'AI', 'industrial inspection'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Automation Engineer'
+            },
+            {
+                id: 6,
+                category: 'sustainability',
+                title: 'Circular Economy in Automotive Manufacturing',
+                excerpt: 'Implementing closed-loop material systems to achieve 95% material recovery in vehicle production.',
+                externalLink: 'https://areebrizwan.com/blog/circular-economy-automotive',
+                date: 'Nov 30, 2023',
+                readTime: '12 min read',
+                image: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&w=800&q=80',
+                tags: ['circular economy', 'automotive', 'material recovery', 'sustainability'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Sustainable Manufacturing Lead'
+            },
+            {
+                id: 7,
+                category: 'manufacturing',
+                title: 'High-Speed 5-Axis Machining Strategies',
+                excerpt: 'Optimizing toolpaths and cutting parameters for complex aerospace components.',
+                externalLink: 'https://areebrizwan.com/blog/5-axis-machining',
+                date: 'Nov 20, 2023',
+                readTime: '11 min read',
+                image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80',
+                tags: ['5-axis machining', 'aerospace', 'CNC', 'toolpath optimization'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Manufacturing Engineer'
+            },
+            {
+                id: 8,
+                category: 'robotics',
+                title: 'AGV Systems for Smart Warehousing',
+                excerpt: 'Designing autonomous guided vehicle networks for 24/7 warehouse operations.',
+                externalLink: 'https://areebrizwan.com/blog/agv-systems',
+                date: 'Nov 10, 2023',
+                readTime: '8 min read',
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+                tags: ['AGV', 'warehouse automation', 'logistics', 'robotics'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Robotics Engineer'
+            },
+            {
+                id: 9,
+                category: 'automation',
+                title: 'PLC Programming Best Practices',
+                excerpt: 'Structuring industrial control logic for maintainability and scalability.',
+                externalLink: 'https://areebrizwan.com/blog/plc-programming',
+                date: 'Oct 28, 2023',
+                readTime: '10 min read',
+                image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80',
+                tags: ['PLC', 'industrial automation', 'control systems', 'programming'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Automation Engineer'
+            },
+            {
+                id: 10,
+                category: 'sustainability',
+                title: 'Water Recycling in Industrial Processes',
+                excerpt: 'Implementing zero-liquid-discharge systems in chemical manufacturing.',
+                externalLink: 'https://areebrizwan.com/blog/water-recycling',
+                date: 'Oct 15, 2023',
+                readTime: '9 min read',
+                image: 'https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=800&q=80',
+                tags: ['water recycling', 'chemical manufacturing', 'sustainability', 'ZLD'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Environmental Engineer'
+            },
+            {
+                id: 11,
+                category: 'manufacturing',
+                title: 'Lean Six Sigma in High-Volume Production',
+                excerpt: 'Reducing waste and variability in consumer electronics assembly lines.',
+                externalLink: 'https://areebrizwan.com/blog/lean-six-sigma',
+                date: 'Sep 30, 2023',
+                readTime: '13 min read',
+                image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80',
+                tags: ['lean manufacturing', 'six sigma', 'quality', 'process improvement'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Manufacturing Engineer'
+            },
+            {
+                id: 12,
+                category: 'robotics',
+                title: 'Robotic Welding for Structural Components',
+                excerpt: 'Automating complex weld paths for structural steel fabrication.',
+                externalLink: 'https://areebrizwan.com/blog/robotic-welding',
+                date: 'Sep 18, 2023',
+                readTime: '7 min read',
+                image: 'https://images.unsplash.com/photo-1533575349875-5f5c2a57c8c9?auto=format&fit=crop&w=800&q=80',
+                tags: ['robotic welding', 'steel fabrication', 'automation', 'manufacturing'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Robotics Engineer'
+            },
+            {
+                id: 13,
+                category: 'sustainability',
+                title: 'Carbon Capture in Cement Production',
+                excerpt: 'Integrating post-combustion capture systems in rotary kilns.',
+                externalLink: 'https://areebrizwan.com/blog/carbon-capture-cement',
+                date: 'Aug 25, 2023',
+                readTime: '11 min read',
+                image: 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=800&q=80',
+                tags: ['carbon capture', 'cement industry', 'sustainability', 'emissions'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Environmental Engineer'
+            },
+            {
+                id: 14,
+                category: 'manufacturing',
+                title: 'Digital Twin Implementation',
+                excerpt: 'Creating virtual replicas of production lines for simulation and optimization.',
+                externalLink: 'https://areebrizwan.com/blog/digital-twin',
+                date: 'Aug 10, 2023',
+                readTime: '14 min read',
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+                tags: ['digital twin', 'simulation', 'Industry 4.0', 'optimization'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Manufacturing Engineer'
+            },
+            {
+                id: 15,
+                category: 'robotics',
+                title: 'Mobile Manipulators for Flexible Assembly',
+                excerpt: 'Combining mobile platforms with robotic arms for dynamic production cells.',
+                externalLink: 'https://areebrizwan.com/blog/mobile-manipulators',
+                date: 'Jul 28, 2023',
+                readTime: '9 min read',
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+                tags: ['mobile robots', 'manipulators', 'flexible manufacturing', 'robotics'],
+                author: 'Areeb Rizwan',
+                authorRole: 'Robotics Engineer'
+            }
+        ];
+
+        // =======================
+        // STATE MANAGEMENT
+        // =======================
+        let currentPage = 1;
+        let articlesPerPage = 3;
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+        // =======================
+        // INITIALIZATION
+        // =======================
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDarkMode();
+            initializeBodyPadding();
+            setupImageLazyLoading();
+            setupScrollProgress();
+            renderArticles();
+            updateViewCounts();
+            
+            setTimeout(() => {
+                setState('none', 'blog-link');
+            }, 50);
+        });
+
+        // =======================
+        // DARK MODE
+        // =======================
+        function initializeDarkMode() {
+            // Check system preference
+            if (isDarkMode || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark-mode');
+                isDarkMode = true;
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                document.body.classList.remove('dark-mode');
+                isDarkMode = false;
+                localStorage.setItem('darkMode', 'false');
+            }
+            updateDarkModeToggle();
+        }
+
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            localStorage.setItem('darkMode', isDarkMode);
+            updateDarkModeToggle();
+            showNotification(isDarkMode ? 'Dark mode enabled 🌙' : 'Light mode enabled ☀️');
+        }
+
+        function updateDarkModeToggle() {
+            // Visual feedback handled by CSS
+        }
+
+        // =======================
+        // READING PROGRESS
+        // =======================
+        function setupScrollProgress() {
+            window.addEventListener('scroll', () => {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight;
+                const clientHeight = document.documentElement.clientHeight;
+                
+                if (scrollHeight <= clientHeight) return;
+                
+                const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                document.getElementById('reading-progress').style.width = `${scrollPercentage}%`;
+            });
+        }
+
+        // =======================
+        // LAZY LOADING IMAGES
+        // =======================
+        function setupImageLazyLoading() {
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+
+        // =======================
+        // FILTERING & SEARCH
+        // =======================
+        function getFilteredArticles() {
+            return allArticles.filter(article => {
+                const matchesCategory = currentCategory === 'all' || article.category === currentCategory;
+                const matchesSearch = searchQuery === '' || 
+                    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+                
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        // =======================
+        // RENDER FUNCTIONS
+        // =======================
+        function renderArticles() {
+            const filteredArticles = getFilteredArticles();
+            const startIndex = (currentPage - 1) * articlesPerPage;
+            const endIndex = startIndex + articlesPerPage;
+            const articlesToShow = filteredArticles.slice(startIndex, endIndex);
+
+            const container = document.getElementById('articles-container');
+            const paginationContainer = document.getElementById('pagination-container');
+            
+            // Show pagination
+            paginationContainer.classList.remove('hidden');
+
+            if (articlesToShow.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16">
+                        <i class="fas fa-search text-6xl text-slate-300 dark:text-slate-700 mb-4"></i>
+                        <p class="text-xl text-slate-500 dark:text-slate-400">No articles found matching your criteria.</p>
+                        <button onclick="resetFilters()" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Reset Filters
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = articlesToShow.map(article => {
+                const categoryColors = {
+                    automation: 'text-blue-600 dark:text-blue-400',
+                    sustainability: 'text-green-600 dark:text-green-400',
+                    manufacturing: 'text-slate-600 dark:text-slate-400',
+                    robotics: 'text-purple-600 dark:text-purple-400'
+                };
+
+                const categoryBgColors = {
+                    automation: 'bg-blue-100 dark:bg-blue-900/30',
+                    sustainability: 'bg-green-100 dark:bg-green-900/30',
+                    manufacturing: 'bg-slate-100 dark:bg-slate-800',
+                    robotics: 'bg-purple-100 dark:bg-purple-900/30'
+                };
+
+                return `
+                    <article class="blog-card bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/3 h-48 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700">
+                            <img src="${article.image}" 
+                                 alt="${article.title} - Engineering blog article" 
+                                 class="w-full h-full object-cover lazy-image"
+                                 loading="lazy"
+                                 onload="this.classList.add('loaded')">
+                        </div>
+                        <div class="md:w-2/3 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-2 py-1 ${categoryBgColors[article.category]} ${categoryColors[article.category]} text-xs font-bold rounded uppercase">
+                                    ${article.category}
+                                </span>
+                                <span class="text-slate-400 dark:text-slate-500 text-xs">${article.date}</span>
+                                <span class="text-slate-400 dark:text-slate-500 text-xs">•</span>
+                                <span class="text-slate-400 dark:text-slate-500 text-xs">${article.readTime}</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition cursor-pointer dark:text-slate-200">
+                                ${article.title}
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">${article.excerpt}</p>
+                            <div class="mt-auto flex items-center justify-between">
+                                <div class="flex gap-2 flex-wrap">
+                                    ${article.tags.slice(0, 2).map(tag => 
+                                        `<span class="text-xs text-slate-500 dark:text-slate-500">#${tag}</span>`
+                                    ).join('')}
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button onclick="shareArticle(${article.id})" class="share-button text-slate-400 hover:text-blue-500" title="Share article">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <a href="${article.externalLink}" 
+                                       target="_blank" 
+                                       class="${categoryColors[article.category]} font-bold text-sm hover:underline flex items-center gap-1">
+                                        Read Full Article <i class="fas fa-external-link-alt text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            renderPagination();
+            setupImageLazyLoading(); // Re-initialize lazy loading for new images
+        }
+
+        function getCategoryColor(category, type) {
+            const colors = {
+                automation: {
+                    bg: 'bg-blue-100 dark:bg-blue-900/30',
+                    text: 'text-blue-600 dark:text-blue-400'
+                },
+                sustainability: {
+                    bg: 'bg-green-100 dark:bg-green-900/30',
+                    text: 'text-green-600 dark:text-green-400'
+                },
+                manufacturing: {
+                    bg: 'bg-slate-100 dark:bg-slate-800',
+                    text: 'text-slate-600 dark:text-slate-400'
+                },
+                robotics: {
+                    bg: 'bg-purple-100 dark:bg-purple-900/30',
+                    text: 'text-purple-600 dark:text-purple-400'
+                }
+            };
+            return colors[category]?.[type] || '';
+        }
+
+        function renderPagination() {
+            const filteredArticles = getFilteredArticles();
+            const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+            const pagination = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let paginationHTML = '';
+
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage - 1})" class="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition shadow-sm">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                `;
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `
+                        <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-600 text-white border border-blue-600 shadow-sm">
+                            ${i}
+                        </button>
+                    `;
+                } else if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 1) {
+                    paginationHTML += `
+                        <button onclick="changePage(${i})" class="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition shadow-sm">
+                            ${i}
+                        </button>
+                    `;
+                } else if (Math.abs(i - currentPage) === 2) {
+                    paginationHTML += `<span class="px-2 self-center text-slate-300 dark:text-slate-600">...</span>`;
+                }
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage + 1})" class="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition shadow-sm">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                `;
+            }
+
+            pagination.innerHTML = paginationHTML;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderArticles();
+            // REMOVED window.scrollTo - this was causing the jump to top
+        }
+
+        // =======================
+        // SHARING FUNCTIONALITY
+        // =======================
+        function shareArticle(articleId, platform = 'default') {
+            const article = allArticles.find(a => a.id === articleId);
+            if (!article) return;
+
+            const url = article.externalLink || window.location.href;
+            const text = `Check out this engineering article: ${article.title}`;
+            const hashtags = 'Engineering,Automation,Sustainability';
+
+            const shareUrls = {
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`
+            };
+
+            if (platform === 'default') {
+                // Use Web Share API if available
+                if (navigator.share) {
+                    navigator.share({
+                        title: article.title,
+                        text: text,
+                        url: url
+                    }).catch(console.error);
+                } else {
+                    // Fallback to copy link
+                    copyArticleLink(articleId);
+                }
+            } else if (shareUrls[platform]) {
+                window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+            }
+        }
+
+        function copyArticleLink(articleId) {
+            const article = allArticles.find(a => a.id === articleId);
+            if (!article) return;
+            
+            const url = article.externalLink || window.location.href;
+            navigator.clipboard.writeText(url)
+                .then(() => showNotification('Link copied to clipboard! 📋'))
+                .catch(err => console.error('Failed to copy:', err));
+        }
+
+        // =======================
+        // EVENT LISTENERS
+        // =======================
+        let searchTimeout;
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchQuery = e.target.value;
+                currentPage = 1;
+                renderArticles();
+            }, 300); // Debounce with 300ms delay
+        });
+
+        // Category badges
+        document.querySelectorAll('.category-badge').forEach(badge => {
+            badge.addEventListener('click', () => {
+                const category = badge.dataset.category;
+                currentCategory = category;
+                currentPage = 1;
+
+                // Update active state
+                document.querySelectorAll('.category-badge').forEach(b => b.classList.remove('active'));
+                badge.classList.add('active');
+
+                // Update domain filters
+                document.querySelectorAll('.domain-filter').forEach(filter => {
+                    filter.classList.remove('bg-slate-100', 'dark:bg-slate-700', 'font-semibold');
+                    if (filter.dataset.domain === category) {
+                        filter.classList.add('bg-slate-100', 'dark:bg-slate-700', 'font-semibold');
+                    }
+                });
+
+                renderArticles();
+            });
+        });
+
+        // Domain filters
+        document.querySelectorAll('.domain-filter').forEach(filter => {
+            filter.addEventListener('click', (e) => {
+                e.preventDefault();
+                const domain = filter.dataset.domain;
+                currentCategory = domain;
+                currentPage = 1;
+
+                // Update active state
+                document.querySelectorAll('.domain-filter').forEach(f => {
+                    f.classList.remove('bg-slate-100', 'dark:bg-slate-700', 'font-semibold');
+                });
+                filter.classList.add('bg-slate-100', 'dark:bg-slate-700', 'font-semibold');
+
+                // Update category badges
+                document.querySelectorAll('.category-badge').forEach(badge => {
+                    badge.classList.remove('active');
+                    if (badge.dataset.category === domain) {
+                        badge.classList.add('active');
+                    }
+                });
+
+                renderArticles();
+            });
+        });
+
+        // Newsletter subscription
+        document.getElementById('subscribe-btn').addEventListener('click', () => {
+            const emailInput = document.getElementById('newsletter-email');
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                showNotification('Please enter your email address', 'error');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Simulate subscription
+            setTimeout(() => {
+                showNotification('Successfully subscribed to The Engineer\'s Journal! 🎉', 'success');
+                emailInput.value = '';
+            }, 500);
+        });
+
+        // =======================
+        // UTILITY FUNCTIONS
+        // =======================
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function showNotification(message, type = 'success') {
+            // Remove existing notifications
+            document.querySelectorAll('.notification').forEach(n => n.remove());
+
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            
+            const icon = type === 'success' ? '✓' : '⚠';
+            const bgColor = type === 'success' ? '#4caf50' : '#ef4444';
+            
+            notification.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div style="background: ${bgColor}" class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">
+                        ${icon}
+                    </div>
+                    <p class="font-medium text-slate-900 dark:text-slate-100">${message}</p>
+                </div>
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideIn 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function resetFilters() {
+            currentCategory = 'all';
+            searchQuery = '';
+            currentPage = 1;
+            document.getElementById('search-input').value = '';
+            
+            document.querySelectorAll('.category-badge').forEach(b => b.classList.remove('active'));
+            document.querySelector('[data-category="all"]').classList.add('active');
+            
+            document.querySelectorAll('.domain-filter').forEach(f => {
+                f.classList.remove('bg-slate-100', 'dark:bg-slate-700', 'font-semibold');
+            });
+            document.querySelector('[data-domain="all"]').classList.add('bg-slate-100', 'dark:bg-slate-700', 'font-semibold');
+            
+            renderArticles();
+        }
+
+        function updateViewCounts() {
+            // Count articles by category
+            const counts = {
+                'all': allArticles.length,
+                'automation': allArticles.filter(a => a.category === 'automation').length,
+                'sustainability': allArticles.filter(a => a.category === 'sustainability').length,
+                'manufacturing': allArticles.filter(a => a.category === 'manufacturing').length,
+                'robotics': allArticles.filter(a => a.category === 'robotics').length
+            };
+
+            Object.entries(counts).forEach(([key, count]) => {
+                const elements = document.querySelectorAll(`[data-count="${key}"]`);
+                elements.forEach(el => el.textContent = count);
+            });
+        }
+
+        // =======================
+        // NAVIGATION (from original code)
+        // =======================
+        const navLinks = document.querySelectorAll('.link-item');
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640;
+        
+        function toggleDropdown(event, menuId) {
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            if (window.innerWidth <= mobileBreakpoint) {
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
+            } else {
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    if (portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    if (!portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
+            }
+        });
+
+        function setState(targetState, linkId) {
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            });
+            
+            if (portfolioButton) {
+                portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+
+            const activeLink = document.getElementById(linkId);
+            const isDropdownLink = activeLink === null && linkId === 'portfolio-link';
+
+            if (isDropdownLink) {
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            } else if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+        }
+
+        function navigateState(targetState, url, linkId) {
+            setState(targetState, linkId);
+
+            if (url) {
+                console.log(`Would navigate to: ${url}`);
+            }
+        }
+
+        function initializeBodyPadding() {
+            const headerHeight = header.offsetHeight;
+            body.style.paddingTop = `${headerHeight}px`;
+        }
+
+        window.addEventListener('resize', initializeBodyPadding);
+    </script>
+</body>
+</html>
