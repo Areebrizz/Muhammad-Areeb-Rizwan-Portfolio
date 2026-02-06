@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Experience | Areeb Rizwan</title>
+    
+    <!-- Favicon Links -->
+    <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+
+    <!-- For better Google Search appearance, also add Open Graph and Twitter Cards -->
+    <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind custom config for professional theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#059669', // Professional emerald
+                        'primary-dark': '#047857',
+                        'primary-light': '#D1FAE5',
+                        'dark': '#111827',
+                        'light': '#F9FAFB',
+                        'gray-850': '#1F2937',
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
+                        'brand-primary': '#4caf50', // For footer
+                        'gray-50': '#f9fafb', // For main content background
+                        'gray-100': '#f3f4f6', // For footer background
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.4s ease-out forwards',
+                        'count-up': 'countUp 2s ease-out forwards',
+                        'zoom-in': 'zoomIn 0.3s ease-out'
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        countUp: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Load Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom Text Shadow for the green glow effect */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Custom styles */
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        /* Header adjustments for the new header */
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 60px; /* Default for desktop */
+        }
+
+        /* Mobile responsive header height and layout */
+        @media (max-width: 640px) {
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
+            .main-header {
+                height: 110px !important; /* Override the desktop height */
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            /* New rule for the right-side wrapper to stack its contents on mobile */
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
+            }
+            
+            .logo-container {
+                margin-bottom: 5px;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px; /* Space between nav and social */
+            }
+            
+            .nav-links a, .dropdown button {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
+                justify-content: center;
+                margin: 0 8px;
+            }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+        }
+        
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-border {
+            position: relative;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        /* Glass morphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Animated number counters */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .skill-tab.active {
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.2);
+        }
+        
+        .skill-content {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .job-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .job-card:hover {
+            transform: translateY(-4px) scale(1.005);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-image {
+            float: right;
+            shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-image {
+                float: none;
+                width: 100%;
+                margin: 1rem 0;
+                shape-outside: none;
+            }
+        }
+        
+        .timeline-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.3), transparent);
+        }
+        
+        /* Active link styling for header */
+        .active-link {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
+        
+        .link-item {
+            position: relative;
+        }
+        
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
+
+        /* Custom styles for the footer shadow and bulge effect */
+        .footer-bulge {
+            position: relative;
+            /* Mimics the original inset shadow */
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+
+        /* Pseudo-element to create the curved edge (bulge/cutout) at the top center */
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px; /* How far up the curve goes */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Width of the bulge */
+            height: 60px; /* Height of the curve */
+            /* IMPORTANT: This background color must match the main content's background color (bg-gray-50) */
+            background-color: #f9fafb; 
+            border-radius: 0 0 100px 100px; /* Semi-circle border radius at the bottom */
+            /* Subtle shadow to define the cutout edge */
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
+            z-index: 10; /* Below the arrow, but visually 'above' the footer content */
+        }
+
+        /* Arrow button positioning and hover effect */
+        .top-button-container {
+            position: absolute;
+            width: 40px; /* Smaller width for arrow */
+            height: 40px; 
+            left: 50%;
+            /* Centering and positioning the arrow right on the curve */
+            top: -20px; 
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20; /* Ensure arrow is on top of the bulge */
+        }
+
+        .top-button-container:hover {
+            /* Scale up and keep centered */
+            transform: scale(1.1) translateX(-50%); 
+        }
+        
+        /* New: Glow effect for text links on hover/focus */
+        .link-glow-hover:hover,
+        .link-glow-hover:focus {
+            /* Subtle text shadow for the glow effect using the new brand color's RGBA equivalent */
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+            /* Add a small lift effect */
+            transform: translateY(-1px); 
+        }
+
+        /* New: Change the SVG arrow color and add glow on hover */
+        .top-button-container:hover svg {
+            stroke: #4caf50; /* Change arrow color to brand-primary green */
+            /* Drop shadow for glow effect on the SVG stroke */
+            filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50 font-sans" id="top">
+
+    <!-- Updated Header -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Name Area -->
+            <div class="logo-container text-white select-none flex items-center">
+                
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    Areeb Rizwan
+                </span>
+            </div>
+            
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
+                
+                <nav class="nav-links flex">
+                    <!-- Nav Links -->
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 lg:px-6 py-8">
+
+        <!-- Hero / Intro Section -->
+        <section class="mb-12 lg:mb-16">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4 animate-fade-up opacity-0" style="animation-delay: 0.1s">
+                    Professional <span class="gradient-text">Experience</span>
+                </h1>
+                <p class="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-up opacity-0" style="animation-delay: 0.2s">
+                    Mechanical Engineer driving industrial innovation through Lean Manufacturing, automation, and process optimization. 
+                    Transforming production challenges into measurable business outcomes.
+                </p>
+            </div>
+            
+            <!-- Quick Stats with Glass Cards and Count-up Animation -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Stat Card 1 -->
+                <div class="glass-card p-8 rounded-2xl shadow-xl transition-all duration-500 hover:scale-105">
+                    <div class="text-center">
+                        <div class="counter">
+                            <span id="stat1" class="stat-number">0</span><span class="stat-number">%</span>
+                        </div>
+                        <div class="mt-4 text-lg font-semibold text-gray-700">Machine Downtime Reduction</div>
+                        <div class="mt-2 text-sm text-gray-500">Through automated maintenance systems</div>
+                    </div>
+                </div>
+                
+                <!-- Stat Card 2 -->
+                <div class="glass-card p-8 rounded-2xl shadow-xl transition-all duration-500 hover:scale-105">
+                    <div class="text-center">
+                        <div class="counter">
+                            <span id="stat2" class="stat-number">0</span><span class="stat-number">%</span>
+                        </div>
+                        <div class="mt-4 text-lg font-semibold text-gray-700">Quality Defects Reduced</div>
+                        <div class="mt-2 text-sm text-gray-500">AI-powered quality control implementation</div>
+                    </div>
+                </div>
+                
+                <!-- Stat Card 3 -->
+                <div class="glass-card p-8 rounded-2xl shadow-xl transition-all duration-500 hover:scale-105">
+                    <div class="text-center">
+                        <div class="counter">
+                            <span id="stat3" class="stat-number">0</span><span class="stat-number text-4xl">+</span>
+                        </div>
+                        <div class="mt-4 text-lg font-semibold text-gray-700">Kaizen Projects Led</div>
+                        <div class="mt-2 text-sm text-gray-500">Cross-functional continuous improvement</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center animate-fade-up opacity-0" style="animation-delay: 0.6s">
+                <a href="#timeline" class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-lg mr-4 mb-4">
+                    <i class="fas fa-timeline mr-2"></i>View Timeline
+                </a>
+                <a href="https://areebrizwan.com/portfolio/resume" target="_blank" class="inline-flex items-center border-2 border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary-light transition-all duration-300 hover:shadow-md mb-4">
+                    <i class="fas fa-file-pdf mr-2"></i>Download Resume
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="mb-12 lg:mb-16">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">Skills & Expertise</h2>
+                <div class="section-divider w-24 h-1 mb-4"></div>
+                <p class="text-gray-600 max-w-xl">Strategic competencies across production, maintenance, and quality systems</p>
+            </div>
+            
+            <!-- Skill Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button class="skill-tab px-4 py-2 rounded-lg font-medium transition-all duration-300 active" data-category="production">
+                    Production
+                </button>
+                <button class="skill-tab px-4 py-2 rounded-lg font-medium transition-all duration-300" data-category="maintenance">
+                    Maintenance
+                </button>
+                <button class="skill-tab px-4 py-2 rounded-lg font-medium transition-all duration-300" data-category="quality">
+                    Quality Systems
+                </button>
+                <button class="skill-tab px-4 py-2 rounded-lg font-medium transition-all duration-300" data-category="technical">
+                    Technical
+                </button>
+            </div>
+            
+            <!-- Skills Content -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <div id="production-content" class="skill-content">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Lean Manufacturing</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Kaizen Leadership</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Process Optimization</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Throughput Analysis</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Waste Reduction</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Production Planning</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Team Leadership</div>
+                        </div>
+                        <div class="bg-primary-light p-3 rounded-lg text-center">
+                            <div class="text-primary font-medium">Supply Chain</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="maintenance-content" class="skill-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Planned Maintenance</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Predictive Maintenance</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Fleet Management</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Spare Parts Systems</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Downtime Analysis</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Vendor Management</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Lubrication Systems</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg text-center border border-green-100">
+                            <div class="text-green-800 font-medium">Preventive Protocols</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="quality-content" class="skill-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Quality Control</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Root Cause Analysis</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Statistical Control</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Compliance Management</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Process Standardization</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">AI/Computer Vision QC</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Audit Systems</div>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
+                            <div class="text-emerald-800 font-medium">Continuous Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="technical-content" class="skill-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">HTML/CSS</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">Tailwind CSS</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">JavaScript</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">Java</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">Process Automation</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">Data Analysis</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">Technical Docs</div>
+                        </div>
+                        <div class="bg-teal-50 p-3 rounded-lg text-center border border-teal-100">
+                            <div class="text-teal-800 font-medium">CAD/CAM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section id="timeline" class="mb-16">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">Career Timeline</h2>
+                <div class="section-divider w-24 h-1 mb-4"></div>
+                <p class="text-gray-600 max-w-xl">Professional journey through industrial engineering roles</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Vertical line -->
+                <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary via-primary-light to-transparent"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="relative mb-10 md:mb-16">
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <div class="text-sm text-primary font-semibold mb-2 animate-slide-up opacity-0" style="animation-delay: 0.1s">2026 - Present</div>
+                            <h3 class="text-2xl font-bold mb-1 animate-slide-up opacity-0" style="animation-delay: 0.2s">Assistant Manager – Production</h3>
+                            <div class="text-lg text-gray-600 mb-3 animate-slide-up opacity-0" style="animation-delay: 0.3s">Master Motor Corporation</div>
+                        </div>
+                        
+                        <!-- Dot -->
+                        <div class="absolute left-3 md:left-1/2 md:transform md:-translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-white z-10 timeline-dot"></div>
+                        
+                        <div class="md:w-1/2 md:pl-12">
+                            <div class="job-card p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+                                <!-- Floating image -->
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop" 
+                                     alt="Production Line" 
+                                     class="floating-image w-32 h-32 md:w-48 md:h-40 object-cover rounded-lg shadow-md">
+                                
+                                <div class="mb-4">
+                                    <span class="inline-block px-3 py-1 bg-primary-light text-primary-dark text-sm font-semibold rounded-full">Current Role</span>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-primary mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Reduced DPU by 30% using AI-based computer vision and root-cause analysis, automating 50% of quality control processes</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-primary mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Led cross-functional teams in 20+ Kaizen initiatives, increasing production throughput by 15% while maintaining 100% compliance</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <div class="text-sm text-gray-500">Karachi, Pakistan | 10 Mar 2026 – Present</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative mb-10 md:mb-16">
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 order-2">
+                            <div class="text-sm text-green-600 font-semibold mb-2 animate-slide-up opacity-0" style="animation-delay: 0.4s">2023 - 2026</div>
+                            <h3 class="text-2xl font-bold mb-1 animate-slide-up opacity-0" style="animation-delay: 0.5s">Trainee Engineer – Production</h3>
+                            <div class="text-lg text-gray-600 mb-3 animate-slide-up opacity-0" style="animation-delay: 0.6s">Master Motor Corporation</div>
+                        </div>
+                        
+                        <!-- Dot -->
+                        <div class="absolute left-3 md:left-1/2 md:transform md:-translate-x-1/2 w-6 h-6 bg-green-500 rounded-full border-4 border-white z-10"></div>
+                        
+                        <div class="md:w-1/2 md:pl-12 order-1">
+                            <div class="job-card p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+                                <!-- Floating image -->
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop" 
+                                     alt="Industrial Innovation" 
+                                     class="floating-image w-32 h-32 md:w-48 md:h-40 object-cover rounded-lg shadow-md">
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Spearheaded zero-waste initiative transforming 20% of production scrap into functional canteen furniture (30+ tables)</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Reduced waste disposal costs by 15% through innovative recycling and reuse programs</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <div class="text-sm text-gray-500">Karachi, Pakistan | Oct 2023 – Mar 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative mb-10 md:mb-16">
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <div class="text-sm text-blue-600 font-semibold mb-2 animate-slide-up opacity-0" style="animation-delay: 0.7s">2024 - 2025</div>
+                            <h3 class="text-2xl font-bold mb-1 animate-slide-up opacity-0" style="animation-delay: 0.8s">Management Trainee Officer - Maintenance</h3>
+                            <div class="text-lg text-gray-600 mb-3 animate-slide-up opacity-0" style="animation-delay: 0.9s">Tristar Transport</div>
+                        </div>
+                        
+                        <!-- Dot -->
+                        <div class="absolute left-3 md:left-1/2 md:transform md:-translate-x-1/2 w-6 h-6 bg-blue-500 rounded-full border-4 border-white z-10"></div>
+                        
+                        <div class="md:w-1/2 md:pl-12">
+                            <div class="job-card p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Implemented planned maintenance program reducing fleet downtime by 40% and improving mechanical efficiency by 15%</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Optimized vendor workflows, cutting average repair turnaround time by 2 days</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Reduced oil waste by 2,500+ liters/year with closed-loop lubricant recycling system</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <div class="text-sm text-gray-500">Karachi, Pakistan | Dec 2024 – Mar 2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative">
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0 order-2">
+                            <div class="text-sm text-purple-600 font-semibold mb-2 animate-slide-up opacity-0" style="animation-delay: 1s">2024</div>
+                            <h3 class="text-2xl font-bold mb-1 animate-slide-up opacity-0" style="animation-delay: 1.1s">Management Trainee Officer - Maintenance</h3>
+                            <div class="text-lg text-gray-600 mb-3 animate-slide-up opacity-0" style="animation-delay: 1.2s">S.M. Denim Mills</div>
+                        </div>
+                        
+                        <!-- Dot -->
+                        <div class="absolute left-3 md:left-1/2 md:transform md:-translate-x-1/2 w-6 h-6 bg-purple-500 rounded-full border-4 border-white z-10"></div>
+                        
+                        <div class="md:w-1/2 md:pl-12 order-1">
+                            <div class="job-card p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+                                <!-- Floating image -->
+                                <img src="https://images.unsplash.com/photo-1577223625818-75bc1f2ac0e5?w=400&h=300&fit=crop" 
+                                     alt="Maintenance System" 
+                                     class="floating-image w-32 h-32 md:w-48 md:h-40 object-cover rounded-lg shadow-md">
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-purple-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Automated spare-parts tracking, reducing machine downtime by 85% and increasing line productivity by 30%</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-purple-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <span>Standardized maintenance protocols, reducing repair and procurement errors by 50%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <div class="text-sm text-gray-500">Karachi, Pakistan | Jun 2024 – Nov 2024</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="gradient-border rounded-2xl p-8 lg:p-10 mb-12 bg-gradient-to-br from-white to-gray-50">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Drive Industrial Innovation Together</h2>
+                <p class="text-lg text-gray-600 mb-8">Let's transform manufacturing challenges into measurable business outcomes.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://areebrizwan.com/portfolio/projects" target="_blank" 
+                       class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center justify-center">
+                        <i class="fas fa-cogs mr-2"></i>View Projects
+                    </a>
+                    <a href="https://www.linkedin.com/in/areebrizwan" target="_blank"
+                       class="px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium hover:bg-primary-light transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fab fa-linkedin-in mr-2"></i>Connect
+                    </a>
+                    <a href="https://areebrizwan.com/contact"
+                       class="px-6 py-3 bg-dark text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Updated Footer -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative">
+        <div class="max-w-screen-xl mx-auto px-5">
+
+            <!-- Arrow Container (Integrated into the bulge) -->
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <!-- Modern Arrowhead SVG (The color change and glow is now handled via the custom CSS) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <!-- Main footer content: Copyright and Nav -->
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <!-- Left Section (Copyright) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <!-- Updated with new glow class and hover color -->
+                    <a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <!-- Right Section (Navigation) -->
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <!-- Updated all links with new glow class and hover color -->
+                        <li><a href="https://areebrizwan.com" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>       
+        // Header navigation functionality
+        const navLinks = document.querySelectorAll('.link-item');
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640; // Matches CSS breakpoint
+        
+        /**
+         * Toggles the visibility of the dropdown menu.
+         */
+        function toggleDropdown(event, menuId) {
+            // Prevent link navigation if it's the button
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
+            } else {
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (!portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
+            }
+        });
+
+        /**
+         * Refactored state setting for CLICKS/LINKS
+         */
+        function setState(targetState, linkId) {
+            // Reset all link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            });
+            
+            // Handle the Portfolio button separately
+            if (portfolioButton) {
+                portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+
+            // Set the new active state/link
+            const activeLink = document.getElementById(linkId);
+            // Since the dropdown items don't have IDs, we activate the *Portfolio button* itself if a link *within* the dropdown is clicked.
+            const isDropdownLink = activeLink === null && linkId === 'portfolio-link';
+
+            if (isDropdownLink) {
+                // Activate the Portfolio button visually
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            } else if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+            
+            // Console log to show state change (e.g., for panel animation)
+            console.log(`Application state changed to: ${targetState}, Active link: ${linkId}`);
+        }
+
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url) {
+                console.log(`Would navigate to: ${url}`);
+                // In a real implementation, you would uncomment the line below:
+                // setTimeout(() => { window.location.href = url; }, 300);
+            }
+        }
+
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            const headerHeight = header.offsetHeight;
+            body.style.paddingTop = `${headerHeight}px`;
+        }
+
+        // Initialize and handle resize events
+        window.addEventListener('resize', initializeBodyPadding);
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBodyPadding();
+            
+            // Set "Professional Experience" as active link
+            setTimeout(() => {
+                // Activate the portfolio dropdown button since we're on the professional experience page
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            }, 50);
+        });
+
+        // Skill tabs functionality
+        const skillTabs = document.querySelectorAll('.skill-tab');
+        const skillContents = document.querySelectorAll('.skill-content');
+        
+        skillTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                skillTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Get category
+                const category = tab.getAttribute('data-category');
+                
+                // Hide all skill contents
+                skillContents.forEach(content => content.classList.add('hidden'));
+                
+                // Show selected skill content
+                document.getElementById(`${category}-content`).classList.remove('hidden');
+            });
+        });
+        
+        // Animated number counter
+        function animateCount(element, finalValue, duration = 2000) {
+            const startTime = performance.now();
+            const startValue = 0;
+            const suffix = finalValue.toString().includes('%') ? '%' : '';
+            const isPercentage = suffix === '%';
+            const numericValue = isPercentage ? parseFloat(finalValue) : finalValue;
+            
+            function updateCount(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                
+                let currentValue;
+                if (isPercentage) {
+                    currentValue = startValue + (numericValue - startValue) * easeOutQuart;
+                    element.textContent = currentValue.toFixed(0) + suffix;
+                } else {
+                    currentValue = Math.floor(startValue + (numericValue - startValue) * easeOutQuart);
+                    element.textContent = currentValue;
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    if (isPercentage) {
+                        element.textContent = numericValue.toFixed(0) + suffix;
+                    } else {
+                        element.textContent = numericValue;
+                    }
+                }
+            }
+            
+            requestAnimationFrame(updateCount);
+        }
+        
+        // Start counters when stats come into view
+        const statElements = {
+            stat1: { element: null, value: 85 },
+            stat2: { element: null, value: 30 },
+            stat3: { element: null, value: 20 }
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Initialize elements
+                    statElements.stat1.element = document.getElementById('stat1');
+                    statElements.stat2.element = document.getElementById('stat2');
+                    statElements.stat3.element = document.getElementById('stat3');
+                    
+                    // Start animations with slight delays for visual appeal
+                    setTimeout(() => animateCount(statElements.stat1.element, statElements.stat1.value), 300);
+                    setTimeout(() => animateCount(statElements.stat2.element, statElements.stat2.value), 600);
+                    setTimeout(() => animateCount(statElements.stat3.element, statElements.stat3.value), 900);
+                    
+                    // Unobserve after animation starts
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Observe stats section
+        const statsSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.querySelectorAll('[style*="animation-delay"]').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
