@@ -3,24 +3,1486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Muhammad Areeb Rizwan - Mechanical Engineering Projects & Experience</title>
-    <meta name="description" content="Explore Muhammad Areeb Rizwan's portfolio of mechanical engineering projects, professional experience, and technical expertise in CAD, FEA, automation, and smart manufacturing.">
-    <meta name="keywords" content="Portfolio, Projects, Mechanical Engineering, CAD, FEA, Automation, Smart Manufacturing">
-    <meta property="og:title" content="Portfolio | Muhammad Areeb Rizwan">
-    <meta property="og:description" content="20+ professional projects showcasing expertise in mechanical engineering and automation.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://areebrizwan.com/portfolio">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://areebrizwan.com/portfolio">
-    <meta name="robots" content="index, follow">
+    <title>Portfolio | Areeb Rizwan</title>
     <!-- Favicon Links -->
     <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
     <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+
+    <!-- For better Google Search appearance, also add Open Graph and Twitter Cards -->
     <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
     <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Configure Tailwind for custom theme and use of Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Using your provided hex codes
+                        'primary-blue': '#1D4ED8',
+                        'secondary-gray': '#E5E7EB',
+                        'dark-text': '#1F2937',
+                        'accent-green': '#10B981',
+                        'accent-purple': '#8B5CF6',
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
+                        'brand-primary': '#4caf50',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom Text Shadow for the green glow effect */
+        .text-shadow-green {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+        
+        /* Ensures body uses the Inter font throughout */
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 60px; /* Default for desktop */
+        }
+
+        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
+        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
+            .main-header {
+                height: 110px !important; /* Override the desktop height */
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 15px 5px 15px;
+                height: 100%; 
+            }
+
+            /* New rule for the right-side wrapper to stack its contents on mobile */
+            .nav-right-wrapper {
+                flex-direction: column; 
+                width: 100%;
+                align-items: center;
+                margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
+            }
+            
+            .logo-container {
+                margin-bottom: 5px;
+            }
+            
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 5px; /* Space between nav and social */
+            }
+            
+            .nav-links a, .dropdown button {
+                margin: 0 8px;
+                font-size: 0.8rem;
+                padding: 3px 0;
+            }
+
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
+                justify-content: center;
+                margin: 0 8px;
+            }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+        }
+        
+        /* Add a transition to the main content area for a smoother experience */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
+        
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
+
+        /* Ensure links are properly styled */
+        .link-item {
+            position: relative;
+        }
+
+        /* Active link styling */
+        .active-link {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
+
+        /* --- Card Hover Effect Enhancement --- */
+        .card-lift {
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid transparent; 
+        }
+
+        .card-lift:hover {
+            box-shadow: 0 10px 25px -5px rgba(76, 175, 80, 0.4), 0 0 0 2px rgba(76, 175, 80, 0.2); 
+            transform: translateY(-6px); 
+            border: 1px solid #4caf50;
+        }
+        
+        /* --- Footer Styles --- */
+        .footer-bulge {
+            position: relative;
+            box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: #f9fafb;
+        }
+
+        .footer-bulge::before {
+            content: '';
+            position: absolute;
+            top: -30px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; 
+            height: 60px; 
+            background-color: #ffffff; /* Must match main content bg */
+            border-radius: 0 0 100px 100px;  
+            z-index: 10;
+        }
+
+        .top-button-container {
+            position: absolute;
+            width: 40px; 
+            height: 40px; 
+            left: 50%;
+            top: -20px; 
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            z-index: 20;
+        }
+
+        .top-button-container:hover {
+            transform: scale(1.1) translateX(-50%); 
+        }
+        
+        .link-glow-hover:hover,
+        .link-glow-hover:focus {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+            transform: translateY(-1px); 
+        }
+
+        .top-button-container:hover svg {
+            stroke: #4caf50;
+            filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.7)); 
+        }
+
+        html { scroll-behavior: smooth; }
+        /* End Footer Styles */
+
+        /* Custom style for the skill tags */
+        .skill-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            margin-right: 6px;
+            margin-top: 6px;
+            border-radius: 9999px; /* Full rounded corners */
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            line-height: 1;
+        }
+
+        /* 3D Carousel Styles - Adapted to match brand colors */
+        :root {
+            --carbon-dark: #111; /* Darker background */
+            --carbon-medium: #1a1a1a; /* Card background */
+            --metal-dark: #2a2a2a;
+            --metal-light: #4a4a4a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-primary: #4caf50; /* Primary accent - brand green */
+            --accent-secondary: #66bb6a; /* Secondary accent - lighter green */
+        }
+
+        .carousel-container {
+            width: 100%;
+            max-width: 1600px;
+            height: 650px;
+            perspective: 1200px;
+            position: relative;
+            padding-top: 60px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+            cursor: pointer;
+            transform-origin: center center;
+            transform: translate(-50%, -50%); 
+        }
+
+        .carousel-item .card {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+            border: 2px solid var(--metal-dark);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .carousel-item .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.5),
+                transparent);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(500px);
+            }
+        }
+
+        .card-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 72px;
+            font-weight: 900;
+            color: rgba(76, 175, 80, 0.1);
+            font-family: 'Inter', monospace;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: var(--carbon-dark);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--metal-dark);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(50%) contrast(1.2);
+            transition: all 0.5s ease;
+            background-color: #333; 
+        }
+
+        .carousel-item:hover .card-image img {
+            filter: grayscale(0%) contrast(1.3);
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-badge {
+            padding: 5px 12px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--accent-primary);
+            border-radius: 20px;
+            font-size: 10px;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-cta {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .carousel-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+            border: 2px solid var(--metal-dark);
+            border-radius: 50%;
+            color: var(--accent-primary);
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .carousel-btn:hover {
+            border-color: var(--accent-primary);
+            box-shadow:
+                0 8px 25px rgba(76, 175, 80, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            background: var(--metal-dark);
+            border: 1px solid var(--metal-light);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+            transform: scale(1.3);
+        }
+
+        /* Responsive Design for Carousel */
+        @media (max-width: 1024px) {
+            .carousel-item {
+                width: 350px;
+                height: 300px;
+            }
+            
+            .carousel-controls {
+                bottom: -60px;
+            }
+            
+            .card-image {
+                height: 170px;
+            }
+            
+            .card-title {
+                font-size: 22px;
+            }
+            
+            .card-description {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                width: 300px;
+                height: 460px;
+            }
+            
+            .carousel-item .card {
+                padding: 20px;
+            }
+            
+            .card-image {
+                height: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+            
+            .card-description {
+                font-size: 11px;
+                margin-bottom: 15px;
+            }
+            
+            .card-tech {
+                margin-bottom: 15px;
+                gap: 6px;
+            }
+            
+            .tech-badge {
+                padding: 4px 10px;
+                font-size: 10px;
+            }
+            
+            .card-number {
+                font-size: 40px;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .card-cta {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+            
+            .carousel-controls {
+                bottom: -60px;
+                gap: 15px;
+            }
+            
+            .carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .carousel-indicators {
+                top: 20px;
+                gap: 12px;
+            }
+            
+            .indicator {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Section Navigation Overlay */
+        .section-nav-overlay {
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .section-nav-overlay.left {
+            left: 0;
+            background: linear-gradient(to right, rgba(76, 175, 80, 0.1), transparent);
+        }
+
+        .section-nav-overlay.right {
+            right: 0;
+            background: linear-gradient(to left, rgba(76, 175, 80, 0.1), transparent);
+        }
+
+        .section-nav-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav-arrow {
+            width: 60px;
+            height: 60px;
+            background: rgba(76, 175, 80, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(76, 175, 80, 1);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .section-nav-overlay {
+                width: 60px;
+            }
+            
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <h1>Portfolio - Professional Projects & Experience</h1>
-    <p>Featured projects showcase my expertise in mechanical engineering, automation, and product development.</p>
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen" id="top">
+    <!-- Header (UPDATED VERSION) -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+        <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
+            
+            <!-- Logo/Name Area - Now includes the image logo followed by the name -->
+            <div class="logo-container text-white select-none flex items-center">
+                
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    Areeb Rizwan
+                </span>
+            </div>
+            
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
+                
+                <nav class="nav-links flex">
+                    <!-- Nav Links -->
+                    <a href="https://areebrizwan.com/" id="home-link" onclick="setState('center', 'home-link'); return true;" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); return true;">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem" onclick="navigateState('right', this.href, 'portfolio-link'); toggleDropdown(event, 'portfolio-dropdown-menu'); return true;">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="setState('none', 'contact-link'); return true;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="social-icons flex items-center space-x-4">
+                    <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Navigation Overlays -->
+    <div class="section-nav-overlay left" id="left-nav">
+        <div class="nav-arrow" onclick="navigateToPreviousSection()">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+    </div>
+    
+    <div class="section-nav-overlay right" id="right-nav">
+        <div class="nav-arrow" onclick="navigateToNextSection()">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <div class="content portfolio-main content-area clearfix pt-[60px] sm:pt-[110px] min-h-screen bg-gray-50 text-content-text" id="main-content">
+        
+        <!-- SECTION 1: Intro/Hero Section -->
+        <section class="bg-gray-100 p-16 lg:p-24 border-b border-gray-200 rounded-b-xl shadow-inner" id="intro">
+            <div class="max-w-[1040px] mx-auto flex flex-wrap items-center -mx-4">
+                <div id="text-main" class="w-full lg:w-5/12 px-4 mb-8 lg:mb-0">
+                    <p class="text-xl font-medium text-brand-primary mb-3">Discipline. Integrity. Excellence.</p>
+                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-gray-900">Portfolio.</h1>
+                    <p class="text-xl lg:text-2xl text-subtle-text mb-6">Mechanical Engineer and Automation Specialist</p>
+                    <p class="text-lg leading-relaxed text-gray-700">I combine mechanical engineering and automation to solve complex industrial challenges, having led process optimization projects for manufacturing plants, and my own startup,<b>"The AeroTechLAB"</b>.</p>
+                    
+                    <!-- BUTTONS WRAPPER with FLEX for side-by-side display -->
+                    <div class="mt-8 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                        <!-- Primary Button: Explore My Work -->
+                        <a href="https://areebrizwan.com/portfolio/projects" class="inline-flex items-center justify-center px-5 py-2 bg-brand-primary text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-600 transition-all duration-300 card-lift whitespace-nowrap">
+                            Explore My Work <i class="fas fa-arrow-down ml-3"></i>
+                        </a>
+                        
+                        <!-- Secondary Button: Get in Touch -->
+                        <a href="https://areebrizwan.com/contact/" class="inline-flex items-center justify-center px-5 py-2 border-2 border-brand-primary text-brand-primary font-semibold rounded-lg shadow-md hover:bg-brand-primary hover:text-white transition-all duration-300 card-lift whitespace-nowrap">
+                            Get in Touch <i class="fas fa-envelope ml-3"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Image/Visual Placeholder -->
+                <div id="img-main" class="w-full lg:w-7/12 px-4 text-center">
+                    <img class="max-w-full h-auto rounded-xl shadow-2xl border-4 border-white mx-auto transform hover:scale-[1.01] transition-transform duration-500" src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/mechie1.webp" alt="Product design portfolio image mockup">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: My Projects (3D Carousel) -->
+        <section id="projects" class="py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-[1200px] mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Featured Top Projects</h2>
+                
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel">
+                        <!-- Carousel items will be generated by JavaScript -->
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn">‹</button>
+                        <button class="carousel-btn" id="nextBtn">›</button>
+                    </div>
+                    
+                    <div class="carousel-indicators" id="indicators">
+                        <!-- Indicators will be generated by JavaScript -->
+                    </div>
+                </div>
+
+		<div class="text-center mt-24">
+    		<a href="https://areebrizwan.com/portfolio/projects" class="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white font-bold rounded-lg shadow-xl hover:bg-brand-primary transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+        	See All 20+ Projects
+    		</a>
+		</div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Professional Experience -->
+        <section id="professional" class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-white">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Header -->
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-14 text-center">
+                    Professional <span class="text-brand-primary">Journey</span>
+                </h2>
+                
+                <!-- Experience Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Experience Card 1: MMCL -->
+                    <a href="#" class="block bg-white rounded-2xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl border border-gray-100 hover:border-brand-primary/50">
+                        
+                        <!-- Image: Height adjusted slightly (h-76) and now has a subtle gray border -->
+                        <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/MMCL.png" alt="Master Motor Corporation Visual" class="w-full h-76 object-cover rounded-xl mx-auto mb-5 border-2 border-gray-200 group-hover:border-brand-primary/80 transition-all duration-300">
+                        
+                        <!-- Content -->
+                        <h3 class="text-xl font-bold mb-1 text-gray-900 group-hover:text-brand-primary transition-colors">Graduate Trainee Engineer - Production</h3>
+                        <p class="text-sm text-subtle-text font-medium mb-4">Master Motor Corporation (Pvt.) Limited</p>
+                        
+                        <!-- Call to Action Link: Updated text and use of fa-arrow-right for a modern look -->
+                        <span class="inline-block text-sm font-semibold text-brand-primary/90 group-hover:text-brand-primary transition-all duration-300 border-b border-brand-primary/50 group-hover:border-brand-primary pb-0.5 arrow-link">
+                            Access Detailed MMCL Report <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </a>
+
+                    <!-- Experience Card 2: Tristar -->
+                    <a href="#" class="block bg-white rounded-2xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl border border-gray-100 hover:border-brand-primary/50">
+                        
+                        <!-- Image -->
+                        <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/Tristar1.png" alt="Tristar Transport Visual" class="w-full h-76 object-cover rounded-xl mx-auto mb-5 border-2 border-gray-200 group-hover:border-brand-primary/80 transition-all duration-300">
+                        
+                        <!-- Content -->
+                        <h3 class="text-xl font-bold mb-1 text-gray-900 group-hover:text-brand-primary transition-colors">Management Trainee Officer - Heavy Vehicle Maintenance</h3>
+                        <p class="text-sm text-subtle-text font-medium mb-4">Tristar Transport (Pvt.) Limited</p>
+                        
+                        <!-- Call to Action Link -->
+                        <span class="inline-block text-sm font-semibold text-brand-primary/90 group-hover:text-brand-primary transition-all duration-300 border-b border-brand-primary/50 group-hover:border-brand-primary pb-0.5 arrow-link">
+                            Access Detailed Tristar Report <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </a>
+
+                    <!-- Experience Card 3: SM Denim -->
+                    <a href="#" class="block bg-white rounded-2xl shadow-xl p-6 text-center card-lift group hover:shadow-2xl border border-gray-100 hover:border-brand-primary/50">
+                        
+                        <!-- Image -->
+                        <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png" alt="SM Denim Textile Mills Visual" class="w-full h-76 object-cover rounded-xl mx-auto mb-5 border-2 border-gray-200 group-hover:border-brand-primary/80 transition-all duration-300">
+                        
+                        <!-- Content -->
+                        <h3 class="text-xl font-bold mb-1 text-gray-900 group-hover:text-brand-primary transition-colors">Management Trainee Officer - Maintenance</h3>
+                        <p class="text-sm text-subtle-text font-medium mb-4">SM Denim Textile Mills</p>
+                        
+                        <!-- Call to Action Link -->
+                        <span class="inline-block text-sm font-semibold text-brand-primary/90 group-hover:text-brand-primary transition-all duration-300 border-b border-brand-primary/50 group-hover:border-brand-primary pb-0.5 arrow-link">
+                            Access Detailed SM Denim Report <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Entrepreneurial Experience -->
+        <section id="entrepreneurial" class="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-gray-50">
+            <div class="w-full max-w-6xl mx-auto">
+                <!-- Entrepreneurial Journey Header -->
+                <header class="mb-12 mt-12 w-full">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center">
+                        <span class="text-brand-primary">Entrepreneurial</span> Journey
+                    </h2>
+                </header>
+
+                <!-- Main Card Section -->
+                <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-2xl overflow-hidden card-lift">
+                    
+                    <!-- Text/Description Column -->
+                    <div class="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                        <span class="text-sm uppercase tracking-widest text-subtle-text font-bold mb-2">My Startup</span>
+                        <h3 class="text-4xl font-extrabold text-gray-900 mb-4">The AeroTechLAB</h3>
+                        <p class="text-lg text-gray-700 mb-6">The AeroTechLAB was my venture into engineering education and hands-on innovation. I managed the design, production, and operations to develop STEM-based RC plane kits, conduct workshops, and inspire young engineers.</p>
+                        <p class="text-base text-subtle-text mb-8">This experience sharpened my ability to lead multidisciplinary teams, merge creativity with engineering precision, and execute complex projects efficiently. It was a masterclass in entrepreneurship, problem-solving, and real-world innovation.</p>
+                        <a href="#" class="inline-flex items-center text-brand-primary font-semibold hover:underline transition-colors duration-200">
+                            Read the Full Startup Story <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Responsive Presentation Column -->
+                    <div class="lg:w-1/2 p-4 flex items-center justify-center bg-gray-50">
+                        <!-- The aspect-video class (16:9) ensures the iframe scales correctly on all devices. -->
+                        <div class="w-full aspect-video rounded-lg shadow-xl overflow-hidden border-2 border-brand-primary/20">
+                            <iframe
+                                src="https://docs.google.com/presentation/d/e/2PACX-1vSxB-P4Yjl7B8_PzSiJiI8cNpKN6Ai2j4U_ciszZPQxj3mXzsxTpHPS979zgNhuxYhmEu5w3m73GbFn/pubembed?start=true&loop=true&delayms=3000"
+                                frameborder="0"
+                                width="100%"
+                                height="100%"
+                                allowfullscreen="true"
+                                mozallowfullscreen="true"
+                                webkitallowfullscreen="true"
+                                title="AeroTechLAB Startup Presentation"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Certificates/Achievements -->
+        <section id="certificates" class="py-16 sm:py-20 px-4 sm:px-8 lg:px-16 bg-white">
+            <div class="max-w-6xl mx-auto text-center">
+                
+                <!-- Header -->
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+                    Certifications & <span class="text-brand-primary">Achievements</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-subtle-text mb-12 max-w-3xl mx-auto">
+                    A selection of my formal education, professional certifications, and competitive recognition, demonstrating continuous growth.
+                </p>
+                
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12">
+                    
+                    <!-- Card 1: Education -->
+                    <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                        <i class="fa-solid fa-seedling text-4xl text-brand-primary mb-3"></i>
+                        <p class="text-sm font-semibold text-gray-800 leading-snug">BE in Mechanical Engineering</p>
+                        <p class="text-xs text-gray-500 mt-1">Foundational knowledge</p>
+                    </div>
+                    
+                    <!-- Card 2: Professional Certification -->
+                    <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                        <i class="fa-solid fa-crosshairs text-4xl text-brand-primary mb-3"></i>
+                        <p class="text-sm font-semibold text-gray-800 leading-snug">Six Sigma Black Belt Certified</p>
+                        <p class="text-xs text-gray-500 mt-1">Process excellence</p>
+                    </div>
+                    
+                    <!-- Card 3: Specific Skill -->
+                    <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                        <i class="fa-solid fa-robot text-4xl text-brand-primary mb-3"></i>
+                        <p class="text-sm font-semibold text-gray-800 leading-snug">Smart Manufacturing Course</p>
+                        <p class="text-xs text-gray-500 mt-1">IoT & Automation</p>
+                    </div>
+                    
+                    <!-- Card 4: Award -->
+                    <div class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border-b-4 border-brand-primary card-effect">
+                        <i class="fa-solid fa-lightbulb text-4xl text-brand-primary mb-3"></i>
+                        <p class="text-sm font-semibold text-gray-800 leading-snug">Top Startup Pitch Winner 2023</p>
+                        <p class="text-xs text-gray-500 mt-1">Innovation & Strategy</p>
+                    </div>
+                </div>
+
+                <!-- Unified Call-to-Action Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    
+                    <!-- Primary Button for Certifications -->
+                    <a href="https://areebrizwan.com/Certifications" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 bg-brand-primary text-white font-semibold rounded-full shadow-lg hover:bg-emerald-600 transition-all duration-300 transform hover:scale-[1.05] active:scale-[0.98] ring-4 ring-emerald-300 ring-opacity-50">
+                        <i class="fa-solid fa-certificate mr-2"></i>
+                        View All 50+ Certifications
+                    </a>
+                    
+                    <!-- Secondary Button for Achievements -->
+                    <a href="https://areebrizwan.com/Achievements" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-brand-primary border-2 border-brand-primary font-semibold rounded-full shadow-lg hover:bg-emerald-50 transition-all duration-300 transform hover:scale-[1.05] active:scale-[0.98]">
+                        <i class="fa-solid fa-trophy mr-2"></i>
+                        View All 20+ Achievements
+                        <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer with Bulge/Cutout Effect -->
+    <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative">
+        <div class="max-w-screen-xl mx-auto px-5">
+
+            <!-- Back to Top Button -->
+            <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition duration-300">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </a>
+            
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                
+                <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
+                    <a href="#" class="link-glow-hover hover:text-brand-primary transition duration-300">
+                        © 2025 Muhammad Areeb Rizwan Siddiqui
+                    </a>
+                </div>
+                
+                <nav id="nav-footer" class="order-1 lg:order-2">
+                    <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
+                        <li><a href="https://areebrizwan.com/" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Home</a></li>
+                        <li><a href="https://areebrizwan.com/about" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">About</a></li>
+                        <li><a href="https://areebrizwan.com/portfolio" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Portfolio</a></li>
+                        <li><a href="https://areebrizwan.com/blog" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Blog</a></li>
+                        <li><a href="https://areebrizwan.com/contact" class="link-glow-hover hover:text-brand-primary transition duration-300 rounded-sm">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header navigation functionality
+        const navLinks = document.querySelectorAll('.link-item');
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640; // Matches CSS breakpoint
+        
+        /**
+         * Toggles the visibility of the dropdown menu.
+         * @param {Event} event - The click event.
+         * @param {string} menuId - The ID of the menu element.
+         */
+        function toggleDropdown(event, menuId) {
+            // Prevent link navigation if it's the button
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
+            } else {
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (!portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
+            }
+        });
+
+        /**
+         * Refactored state setting for CLICKS/LINKS
+         * @param {string} targetState - The target state ('center', 'left', 'right', 'none')
+         * @param {string} linkId - The ID of the currently active link (e.g., 'home-link')
+         */
+        function setState(targetState, linkId) {
+            // Reset all link active states
+            navLinks.forEach(link => {
+                link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            });
+            
+            // Handle the Portfolio button separately
+            if (portfolioButton) {
+                portfolioButton.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
+                portfolioButton.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+
+            // Set the new active state/link
+            const activeLink = document.getElementById(linkId);
+            // Since the dropdown items don't have IDs, we activate the *Portfolio button* itself if a link *within* the dropdown is clicked.
+            const isDropdownLink = activeLink === null && linkId === 'portfolio-link';
+
+            if (isDropdownLink) {
+                // Activate the Portfolio button visually
+                if (portfolioButton) {
+                    portfolioButton.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                    portfolioButton.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+                }
+            } else if (activeLink) {
+                activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
+                activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
+            }
+            
+            // Console log to show state change (e.g., for panel animation)
+            console.log(`Application state changed to: ${targetState}, Active link: ${linkId}`);
+        }
+
+        /**
+         * Triggers the visual transition via setState, then navigates to the external URL after a delay.
+         * @param {string} targetState - 'left', 'center', 'right', or 'none'.
+         * @param {string} url - The external URL to navigate to (optional).
+         * @param {string} linkId - The ID of the link that was clicked.
+         */
+        function navigateState(targetState, url, linkId) {
+            // 1. Update active link state
+            setState(targetState, linkId);
+
+            // 2. Wait for the transition to start/complete (300ms) and then navigate
+            if (url) {
+                console.log(`Would navigate to: ${url}`);
+                // In a real implementation, you would uncomment the line below:
+                // setTimeout(() => { window.location.href = url; }, 300);
+            }
+        }
+
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            const headerHeight = header.offsetHeight;
+            body.style.paddingTop = `${headerHeight}px`;
+        }
+
+        // Initialize and handle resize events
+        window.addEventListener('resize', initializeBodyPadding);
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBodyPadding();
+            
+            // Set initial active state
+            setTimeout(() => {
+                setState('right', 'portfolio-link');
+            }, 50);
+        });
+
+        // 3D Carousel JavaScript
+        const portfolioData = [
+            {
+                id: 1,
+                title: 'AI Defect Detector',
+                description: 'Computer vision system that automates quality control with 99.2% accuracy in detecting manufacturing defects.',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+                tech: ['Python', 'OpenCV', 'TensorFlow']
+            },
+            {
+                id: 2,
+                title: 'Weeding Robot',
+                description: 'Autonomous agricultural robot that reduces herbicide usage by 85% through precision weed detection and removal.',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+                tech: ['ROS', 'Computer Vision', 'Arduino']
+            },
+            {
+                id: 3,
+                title: 'Trainer RC-Plane',
+                description: 'Modular training aircraft with integrated flight telemetry, reducing learning curve by 40% for beginner pilots.',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+                tech: ['CAD Design', 'Aerodynamics', '3D Printing']
+            },
+            {
+                id: 4,
+                title: 'Automated Inventory System',
+                description: 'Real-time inventory tracking system that reduced stock discrepancies by 92% and improved supply chain efficiency.',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+                tech: ['IoT Sensors', 'Cloud Computing']
+            },
+            {
+                id: 5,
+                title: 'Production MES',
+                description: 'Manufacturing Execution System that increased production throughput by 35% through real-time process optimization.',
+                image: 'https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/portfolio/images/smdenim.png',
+                tech: ['MES', 'Industrial IoT', 'Data Visualization']
+            }
+        ];
+
+        let currentIndex = 0;
+        const carousel = document.getElementById('carousel');
+        const indicatorsContainer = document.getElementById('indicators');
+
+        /**
+         * Creates the HTML element for a single carousel card.
+         * @param {Object} data - The data object for the card.
+         * @param {number} index - The index of the card.
+         * @returns {HTMLElement} The carousel item div.
+         */
+        function createCarouselItem(data, index) {
+            const item = document.createElement('div');
+            item.className = 'carousel-item';
+            item.dataset.index = index;
+            
+            // Generate tech badges HTML
+            const techBadges = data.tech.map(tech => 
+                `<span class="tech-badge">${tech}</span>`
+            ).join('');
+            
+            item.innerHTML = `
+                <div class="card">
+                    <div class="card-number">0${data.id}</div>
+                    <div class="card-image">
+                        <img src="${data.image}" alt="${data.title}">
+                    </div>
+                    <h3 class="card-title">${data.title}</h3>
+                    <p class="card-description">${data.description}</p>
+                    <div class="card-tech">${techBadges}</div>
+		    <a href="https://areebrizwan.com/portfolio/projects" class="card-cta">
+    		    Explore
+		    </a>
+                </div>
+            `;
+            
+            return item;
+        }
+
+        /**
+         * Initializes the carousel by creating items and indicators.
+         */
+        function initCarousel() {
+            // Create carousel items
+            portfolioData.forEach((data, index) => {
+                const item = createCarouselItem(data, index);
+                carousel.appendChild(item);
+                
+                // Create indicator
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.dataset.index = index;
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            // Initial setup
+            updateCarousel();
+        }
+
+        /**
+         * Updates the 3D position and rotation of all carousel items based on the current index.
+         */
+        function updateCarousel() {
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            const totalItems = items.length;
+            const isMobile = window.innerWidth <= 768;
+            const isTablet = window.innerWidth <= 1024;
+            
+            items.forEach((item, index) => {
+                // Calculate relative position to the current slide
+                let offset = index - currentIndex;
+                
+                // Wrap around logic for continuous rotation
+                if (offset > totalItems / 2) {
+                    offset -= totalItems;
+                } else if (offset < -totalItems / 2) {
+                    offset += totalItems;
+                }
+                
+                const absOffset = Math.abs(offset);
+                const sign = offset < 0 ? -1 : 1;
+                
+                // Reset transform styles
+                item.style.transition = 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)';
+                
+                // Define responsive spacing and rotation values
+                let translateX_1, translateZ_1, rotation_1, scale_1;
+                let translateX_2, translateZ_2, rotation_2, scale_2;
+                let translateX_3, translateZ_3, rotation_3, scale_3;
+
+                if (isMobile) {
+                    translateX_1 = 280; translateZ_1 = -150; rotation_1 = 25; scale_1 = 0.88;
+                    translateX_2 = 420; translateZ_2 = -300; rotation_2 = 35; scale_2 = 0.75;
+                    translateX_3 = 550; translateZ_3 = -400; rotation_3 = 40; scale_3 = 0.65;
+                } else if (isTablet) {
+                    translateX_1 = 340; translateZ_1 = -200; rotation_1 = 30; scale_1 = 0.85;
+                    translateX_2 = 520; translateZ_2 = -350; rotation_2 = 40; scale_2 = 0.70;
+                    translateX_3 = 650; translateZ_3 = -450; rotation_3 = 45; scale_3 = 0.60;
+                } else { // Desktop
+                    translateX_1 = 400; translateZ_1 = -200; rotation_1 = 30; scale_1 = 0.85;
+                    translateX_2 = 600; translateZ_2 = -350; rotation_2 = 40; scale_2 = 0.70;
+                    translateX_3 = 750; translateZ_3 = -450; rotation_3 = 45; scale_3 = 0.60;
+                }
+
+                if (absOffset === 0) {
+                    // Center item: Fully visible, scaled 1.0, highest Z-index
+                    item.style.transform = 'translate(-50%, -50%) translateZ(0) scale(1)';
+                    item.style.opacity = '1';
+                    item.style.zIndex = '10';
+                } else if (absOffset === 1) {
+                    // Side items (1st layer): Translated horizontally/Z, rotated, slightly smaller
+                    const translateX = sign * translateX_1;
+                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ_1}px) rotateY(${-sign * rotation_1}deg) scale(${scale_1})`;
+                    item.style.opacity = '0.8';
+                    item.style.zIndex = '5';
+                } else if (absOffset === 2) {
+                    // Further side items (2nd layer): More translation/rotation, smaller, lower opacity
+                    const translateX = sign * translateX_2;
+                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ_2}px) rotateY(${-sign * rotation_2}deg) scale(${scale_2})`;
+                    item.style.opacity = '0.5';
+                    item.style.zIndex = '3';
+                } else if (absOffset >= 3) {
+                    // Hidden items (3rd layer and beyond): Further back, low opacity
+                    const translateX = sign * translateX_3;
+                    item.style.transform = `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ_3}px) rotateY(${-sign * rotation_3}deg) scale(${scale_3})`;
+                    item.style.opacity = '0.3';
+                    item.style.zIndex = '2';
+                } else {
+                     // Fallback for items that wrap beyond the display range
+                     item.style.transform = 'translate(-50%, -50%) translateZ(-500px) scale(0.5)';
+                     item.style.opacity = '0';
+                     item.style.zIndex = '1';
+                }
+            });
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        /**
+         * Moves the carousel to the next slide (circular).
+         */
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % portfolioData.length;
+            updateCarousel();
+        }
+
+        /**
+         * Moves the carousel to the previous slide (circular).
+         */
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + portfolioData.length) % portfolioData.length;
+            updateCarousel();
+        }
+
+        /**
+         * Navigates directly to a specific slide index.
+         * @param {number} index - The target index.
+         */
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Event listeners for carousel
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Auto-rotate carousel
+        let autoRotateInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-rotation on mouse hover (to allow interaction)
+        carousel.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
+        carousel.addEventListener('mouseleave', () => {
+            autoRotateInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault(); // Prevent page scroll
+                prevSlide();
+            }
+            if (e.key === 'ArrowRight') {
+                e.preventDefault(); // Prevent page scroll
+                nextSlide();
+            }
+        });
+
+        // Update carousel on window resize to apply responsive spacing
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateCarousel();
+            }, 250);
+        });
+
+        // Initialize carousel on load
+        document.addEventListener('DOMContentLoaded', initCarousel);
+
+        // Section Navigation Logic
+        const sections = ['intro', 'projects', 'professional', 'entrepreneurial', 'certificates'];
+        let currentSectionIndex = 0;
+
+        // Function to show/hide navigation overlays based on mouse position
+        function handleMouseMove(e) {
+            const windowWidth = window.innerWidth;
+            const mouseX = e.clientX;
+            
+            // Show left nav if mouse is in left 10% of screen
+            if (mouseX < windowWidth * 0.1 && currentSectionIndex > 0) {
+                document.getElementById('left-nav').classList.add('active');
+            } else {
+                document.getElementById('left-nav').classList.remove('active');
+            }
+            
+            // Show right nav if mouse is in right 10% of screen
+            if (mouseX > windowWidth * 0.9 && currentSectionIndex < sections.length - 1) {
+                document.getElementById('right-nav').classList.add('active');
+            } else {
+                document.getElementById('right-nav').classList.remove('active');
+            }
+        }
+
+        // Function to navigate to next section
+        function navigateToNextSection() {
+            if (currentSectionIndex < sections.length - 1) {
+                currentSectionIndex++;
+                document.getElementById(sections[currentSectionIndex]).scrollIntoView({ behavior: 'smooth' });
+                updateNavOverlays();
+            }
+        }
+
+        // Function to navigate to previous section
+        function navigateToPreviousSection() {
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                document.getElementById(sections[currentSectionIndex]).scrollIntoView({ behavior: 'smooth' });
+                updateNavOverlays();
+            }
+        }
+
+        // Function to update navigation overlays based on current section
+        function updateNavOverlays() {
+            // Hide both overlays initially
+            document.getElementById('left-nav').classList.remove('active');
+            document.getElementById('right-nav').classList.remove('active');
+            
+            // Show left nav if not at first section
+            if (currentSectionIndex > 0) {
+                document.getElementById('left-nav').classList.add('active');
+            }
+            
+            // Show right nav if not at last section
+            if (currentSectionIndex < sections.length - 1) {
+                document.getElementById('right-nav').classList.add('active');
+            }
+        }
+
+        // Update current section based on scroll position
+        function updateCurrentSection() {
+            const scrollPosition = window.scrollY + 100; // Offset for header
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i]);
+                if (section.offsetTop <= scrollPosition) {
+                    currentSectionIndex = i;
+                    break;
+                }
+            }
+            
+            updateNavOverlays();
+        }
+
+        // Event listeners for section navigation
+        document.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('scroll', updateCurrentSection);
+        
+        // Initialize section navigation
+        updateCurrentSection();
+    </script>
 </body>
 </html>
