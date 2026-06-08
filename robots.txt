@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /private/
+Disallow: /admin/
 
+Sitemap: https://areebrizwan.com/sitemap.xml
 Sitemap: https://www.areebrizwan.com/sitemap.xml
+
+Crawl-delay: 0

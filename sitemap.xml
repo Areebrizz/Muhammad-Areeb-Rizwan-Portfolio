@@ -1,33 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
   <url>
-    <loc>https://www.areebrizwan.com/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <loc>https://areebrizwan.com/</loc>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- About -->
   <url>
-    <loc>https://www.areebrizwan.com/about</loc>
-    <lastmod>2025-02-05</lastmod>
+    <loc>https://areebrizwan.com/about</loc>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.areebrizwan.com/portfolio</loc>
-    <lastmod>2025-02-05</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  
+  <!-- Portfolio Main -->
   <url>
-    <loc>https://www.areebrizwan.com/blog</loc>
-    <lastmod>2025-02-05</lastmod>
+    <loc>https://areebrizwan.com/portfolio</loc>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.95</priority>
   </url>
+  
+  <!-- Portfolio - Projects -->
   <url>
-    <loc>https://www.areebrizwan.com/contact</loc>
-    <lastmod>2025-02-05</lastmod>
+    <loc>https://areebrizwan.com/portfolio/projects</loc>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Portfolio - Professional Experience -->
+  <url>
+    <loc>https://areebrizwan.com/portfolio/professionalexperience</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Portfolio - Entrepreneurial Experience -->
+  <url>
+    <loc>https://areebrizwan.com/portfolio/entrepreneurialexperience</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- Portfolio - Researches -->
+  <url>
+    <loc>https://areebrizwan.com/portfolio/researches</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  
+  <!-- Portfolio - Resume -->
+  <url>
+    <loc>https://areebrizwan.com/portfolio/resume</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- Portfolio - Achievements -->
+  <url>
+    <loc>https://areebrizwan.com/portfolio/achievements</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- Certifications (FIXED: Now lowercase) -->
+  <url>
+    <loc>https://areebrizwan.com/certifications</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://areebrizwan.com/blog</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  
+  <!-- Contact -->
+  <url>
+    <loc>https://areebrizwan.com/contact</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
 </urlset>
