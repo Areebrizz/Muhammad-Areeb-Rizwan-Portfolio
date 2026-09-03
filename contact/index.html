@@ -151,16 +151,18 @@
     <!-- Header (Replaced with new dark, responsive, green-accented header) -->
     <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
-            
-            <!-- Logo/Brand Name -->
-            <div class="logo text-white select-none flex items-center">
-                <!-- Using a placeholder image URL for the favicon -->
-                <img 
-                    src="https://placehold.co/32x32/4caf50/ffffff?text=AR" 
-                    alt="Areeb Rizwan Logo" 
-                    class="h-8 w-8 rounded-full shadow-lg"
-                    onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a1a1a/ffffff?text=AR';"
-                >
+                        <!-- Logo/Name Area - Now includes the image logo followed by the name -->
+            <div class="logo-container text-white select-none flex items-center">
+                
+                <!-- Image Logo -->
+                <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" 
+                     alt="Logo A" 
+                     class="w-8 h-8 rounded-full mr-3 shadow-md border-2 border-custom-green"
+                     onerror="this.onerror=null; this.src='https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png'" />
+                     
+                <span class="text-lg sm:text-xl font-bold text-custom-green text-shadow-green">
+                    Areeb Rizwan
+                </span>
             </div>
             
             <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
@@ -257,16 +259,16 @@
                     <h3 class="font-bold text-xl mb-5 text-gray-800">Let's <span class="text-custom-green font-bold text-shadow-green">Connect!</span></h3>
                     <div class="flex space-x-4">
                         <!-- Green Accent Applied: hover:bg-amber-500 -> hover:bg-custom-green -->
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
+                        <a href="https://www.linkedin.com/in/areebrizwan" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-linkedin-in text-xl"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
+                        <a href="https://www.twitter.com/areebriz" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
+                        <a href="https://www.github.com/areebriz" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
+                        <a href="https://www.instagram.com/areeb.riz" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </div>
