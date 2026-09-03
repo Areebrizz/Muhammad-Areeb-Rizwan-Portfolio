@@ -3,66 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Engr. Muhammad Areeb Rizwan</title>
+    <title>About | Engr. Muhammad Areeb Rizwan</title>
+    <!-- Favicon Links -->
+    <link rel="icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="shortcut icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+
+    <!-- For better Google Search appearance, also add Open Graph and Twitter Cards -->
+    <meta property="og:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
+    <meta name="twitter:image" content="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/assets/images/faviconarab.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Load Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Tailwind Configuration and Custom Styles for Green Theme and Header -->
+    <!-- Configure Tailwind for custom theme and use of Inter font -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        // Using your provided hex codes
+                        'primary-blue': '#1D4ED8',
+                        'secondary-gray': '#E5E7EB',
+                        'dark-text': '#1F2937',
+                        'accent-green': '#10B981',
+                        'accent-purple': '#8B5CF6',
+                        'custom-green': '#4caf50',
+                        'dark-bg': '#111',
+                        'text-light': '#e0e0e0',
+                        'brand-primary': '#4caf50',
+                        'accent-blue': '#1D4ED8',
+                        'custom-gray': '#F9FAFB',
+                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                    colors: {
-                        // Defined colors used in the footer and main content
-                        'gray-50': '#f9fafb',
-                        'gray-100': '#f3f4f6', 
-                        // New colors from the navigation header
-                        'custom-green': '#4caf50', // Primary accent green (Success)
-                        'dark-bg': '#111', // Header background
-                        'text-light': '#e0e0e0', // Header link text
-                        'green-100-light': '#e8f5e9', // Lightest shade for icons
-                        'green-200-light': '#c8e6c9', // For input focus ring
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    },
+                    boxShadow: {
+                        '3xl-accent': '0 25px 50px -12px rgba(29, 78, 216, 0.25)',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Ensures smooth scrolling behavior when clicking the "Back to Top" arrow */
-        html {
-            scroll-behavior: smooth;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
-        /* Set the primary font to Inter (or system sans-serif fallback) */
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Added padding-top to account for the fixed header */
-            padding-top: 60px;
-        }
-
-        /* Custom hover effect for the main call to action button */
-        .submit-button {
-            transition: all 300ms ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-        }
-        .submit-button:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        /* Custom Text Shadow for the green glow effect (from new header) */
+        /* Custom Text Shadow for the green glow effect */
         .text-shadow-green {
             text-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
         }
+        
+        /* Ensures body uses the Inter font throughout */
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 60px; /* Default for desktop */
+        }
 
-        /* --- Mobile Responsive Header Styles (from new header) --- */
-        @media (max-width: 640px) {
+        /* Mobile responsive header height and layout (overrides Tailwind for specific behavior) */
+        @media (max-width: 640px) { /* Used 640px to align with sm: breakpoint */
+            body {
+                padding-top: 110px; /* Increased height for 3 rows: Logo, Nav Links, Social Icons */
+            }
+            
             .main-header {
-                height: 110px; 
+                height: 110px !important; /* Override the desktop height */
             }
             
             .nav-content {
@@ -71,87 +96,198 @@
                 height: 100%; 
             }
 
+            /* New rule for the right-side wrapper to stack its contents on mobile */
             .nav-right-wrapper {
                 flex-direction: column; 
                 width: 100%;
                 align-items: center;
                 margin-top: 5px;
+                flex-grow: 1; /* Allows it to take vertical space */
+                justify-content: space-around;
             }
             
-            .logo {
+            .logo-container {
                 margin-bottom: 5px;
-                font-size: 1.2rem;
             }
             
             .nav-links {
                 display: flex;
                 justify-content: center;
                 width: 100%;
-                margin-bottom: 5px;
+                margin-bottom: 5px; /* Space between nav and social */
+                flex-wrap: wrap;
             }
             
-            .nav-links a {
+            .nav-links a, .dropdown button {
                 margin: 0 8px;
                 font-size: 0.8rem;
                 padding: 3px 0;
             }
 
-            .social-icons {
+            /* Portfolio dropdown button styling for mobile */
+            .dropdown button {
+                display: flex !important; /* Ensure it's visible */
+                align-items: center;
                 justify-content: center;
-                width: 100%;
+                margin: 0 8px;
+            }
+
+            /* Show dropdown menu on mobile when clicked */
+            #portfolio-dropdown-menu.active {
+                display: block !important;
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                margin-top: 10px;
+                animation: fadeIn 0.3s ease-in-out;
             }
             
-            body {
-                /* Adjust padding for taller mobile header */
-                padding-top: 110px; 
+            /* Adjust about section padding for mobile */
+            .about-section {
+                padding-top: 80px !important;
             }
         }
+        
+        /* Add a transition to the main content area for a smoother experience */
+        .content-area {
+            transition: margin-top 0.3s ease-out;
+        }
+        
+        /* Arrow rotation for dropdown */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
 
-        /* --- Footer Bulge Styles --- */
+        /* Fix for dropdown menu on desktop */
+        #portfolio-dropdown-menu {
+            min-width: 240px;
+            z-index: 1000;
+        }
 
+        /* Ensure links are properly styled */
+        .link-item {
+            position: relative;
+        }
+
+        /* Active link styling */
+        .active-link {
+            color: #4caf50 !important;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+        }
+
+        /* Footer Bulge Styles */
         .footer-bulge {
             position: relative;
-            background-color: #f3f4ff; /* bg-gray-100 */ 
+            background-color: #f3f4ff;
             box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
         }
 
+        /* Pseudo-element to create the curved edge (bulge/cutout) at the top center */
         .footer-bulge::before {
             content: '';
             position: absolute;
-            top: -30px; 
+            top: -10px; 
             left: 50%;
             transform: translateX(-50%);
             width: 200px; 
-            height: 60px; 
-            background-color: #f9fafb; /* Matches bg-gray-50 */
+            height: 50px; 
+            /* IMPORTANT: This background color must match the main content's background color (bg-white: #ffffff or bg-custom-gray) */
+            background-color: #ffffff; /* Adjusted to match the section above it */
             border-radius: 0 0 100px 100px; 
             box-shadow: 0 3px 5px rgba(0,0,0,0.05); 
             z-index: 10;
         }
 
+        /* Arrow button positioning and hover effect */
         .top-button-container {
             position: absolute;
             width: 40px; 
             height: 40px; 
             left: 50%;
-            top: -20px; 
+            top: -16px; 
             transform: translateX(-50%);
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
-            z-index: 20; 
+            z-index: 20;
         }
 
         .top-button-container:hover {
             transform: scale(1.1) translateX(-50%); 
         }
+
+        /* --- MISSION/VISION Styles --- */
+
+        /* Flip card container */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            max-width: 450px; 
+            height: 200px; 
+            perspective: 1000px; 
+            margin: 1rem auto; 
+        }
+
+        /* Inner flip card */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s, box-shadow 0.3s; /* Added box-shadow transition */
+            transform-style: preserve-3d;
+            
+            /* UPDATED: Permanent Shadow with subtle custom-green glow */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 
+                        0 0 20px rgba(76, 175, 80, 0.2); /* Soft custom-green glow */
+            border-radius: 12px;
+            border: 1px solid #1D4ED8;
+        }
+
+        /* Flip card on hover - Applies the intense "Greenglare" */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            /* Intense custom-green glare on hover */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 40px rgba(76, 175, 80, 0.7); 
+        }
+
+        /* Front and back of the flip card */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; 
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 12px;
+            box-sizing: border-box;
+            background-color: white;
+            color: #1F2937;
+        }
+
+        /* Back specific styles (Slightly different background) */
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: #F9FAFB; 
+        }
+
+        /* --- END MISSION/VISION Styles --- */
+        
+        /* Custom class for about section */
+        .about-section {
+            padding-top: 120px;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased min-h-screen" id="top">
-
-    <!-- Header (Replaced with new dark, responsive, green-accented header) -->
-    <header class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
+<body class="bg-gray-50 font-sans text-dark-text min-h-screen" id="top">
+    <!-- Header (UPDATED VERSION) -->
+    <header id="main-header" class="main-header fixed top-0 left-0 w-full h-[60px] bg-dark-bg shadow-lg shadow-black/50 z-50">
         <div class="nav-content max-w-[1600px] mx-auto flex justify-between items-center px-4 md:px-8 h-full">
-                        <!-- Logo/Name Area - Now includes the image logo followed by the name -->
+            
+            <!-- Logo/Name Area - Now includes the image logo followed by the name -->
             <div class="logo-container text-white select-none flex items-center">
                 
                 <!-- Image Logo -->
@@ -165,20 +301,58 @@
                 </span>
             </div>
             
-            <!-- RIGHT SIDE GROUP: Navigation Links + Social Icons -->
-            <div class="nav-right-wrapper flex items-center space-x-16">
+            <!-- Navigation Links and Social Icons Wrapper -->
+            <div class="nav-right-wrapper flex items-center space-x-16 md:space-x-8 lg:space-x-16">
                 
-                <!-- Nav Links -->
                 <nav class="nav-links flex">
-                    <!-- Updated links to use navigateState -->
-                    <a href="https://areebrizwan.com" id="home-link" onclick="navigateState('center', this.href, 'home-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
-                    <a href="https://areebrizwan.com/about" id="about-link" onclick="navigateState('left', this.href, 'about-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
-                    <a href="https://areebrizwan.com/portfolio" id="portfolio-link" onclick="navigateState('right', this.href, 'portfolio-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Portfolio</a>
-                    <a href="https://areebrizwan.com/blog" id="blog-link" onclick="navigateState('none', this.href, 'blog-link'); return false;" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
-                    <a href="https://areebrizwan.com/contact" id="contact-link" onclick="navigateState('none', this.href, 'contact-link'); return false;" class="link-item text-custom-green text-shadow-green no-underline ml-6 text-base font-medium transition-colors duration-300">Contact</a>
+                    <!-- Nav Links -->
+                    <a href="https://areebrizwan.com" id="home-link" class="link-item text-text-light no-underline text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Home</a>
+                    
+                    <a href="https://areebrizwan.com/about" id="about-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">About</a>
+                    
+                    <!-- Portfolio Dropdown -->
+                    <div class="dropdown relative ml-6">
+                        <button id="portfolio-dropdown-button" class="link-item flex items-center text-text-light text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green focus:outline-none" aria-expanded="false" aria-controls="portfolio-dropdown-menu">
+                            Portfolio
+                            <i class="fas fa-caret-down ml-1 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="portfolio-dropdown-menu" class="hidden absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-black/80 backdrop-blur-sm ring-1 ring-custom-green ring-opacity-5 focus:outline-none z-10" role="menu" aria-orientation="vertical" aria-labelledby="portfolio-dropdown-button">
+                            <div class="py-1" role="none">
+                                <a href="https://areebrizwan.com/portfolio" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    <span class="font-semibold">View All Portfolio</span>
+                                </a>
+                                <hr class="border-gray-700 mx-2">
+                                
+                                <a href="https://areebrizwan.com/portfolio/projects" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Projects
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/professionalexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Professional Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/entrepreneurialexperience" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Entrepreneurial Experience
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/researches" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Researches
+                                </a>
+                                <a href="https://areebrizwan.com/Certifications" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Certifications
+                                </a>
+                                <a href="https://areebrizwan.com/portfolio/achievements" class="block px-4 py-2 text-sm text-text-light hover:bg-white/10 hover:text-custom-green transition-colors" role="menuitem">
+                                    Achievements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://areebrizwan.com/blog" id="blog-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Blog</a>
+                    
+                    <a href="https://areebrizwan.com/contact" id="contact-link" class="link-item text-text-light no-underline ml-6 text-base font-medium transition-colors duration-300 hover:text-custom-green hover:text-shadow-green">Contact</a>
                 </nav>
                 
-                <!-- Social Icons -->
+                <!-- Social Media Icons -->
                 <div class="social-icons flex items-center space-x-4">
                     <a href="https://www.linkedin.com/in/areebrizwan" aria-label="LinkedIn" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-linkedin-in"></i>
@@ -186,10 +360,10 @@
                     <a href="https://www.instagram.com/areeb.riz" aria-label="Instagram" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.github.com/AreebRiz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://github.com/Areebrizz" aria-label="GitHub" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.twitter.com/areebriz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
+                    <a href="https://x.com/areebrizz" aria-label="Twitter" class="text-text-light transition-colors duration-300 hover:text-custom-green hover:text-shadow-green text-xl">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
@@ -198,154 +372,185 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
-        <div class="flex flex-col lg:flex-row gap-16">
-            <!-- Left Side - Contact Information -->
-            <div class="lg:w-1/2">
-                <h1 class="text-5xl sm:text-6xl font-extrabold mb-4 text-gray-900">Get in Touch</h1>
-                <!-- Green Accent Applied -->
-                <h2 class="text-4xl font-light text-custom-green mb-8 text-shadow-green">Let's build something great.</h2>
-                
-                <p class="text-lg mb-12 text-gray-600">
-                    I'm always interested in new opportunities, collaborations, and conversations. Feel free to reach out if you'd like to discuss a project or say hello. I aim to respond within one business day!
-                </p>
-                
-                <div class="space-y-8">
-                    <!-- Phone -->
-                    <div class="flex items-start">
-                        <!-- Green Accent Applied: bg-amber-100 -> bg-green-100-light -->
-                        <div class="bg-green-100-light p-4 rounded-xl mr-5 shadow-inner">
-                            <!-- Green Accent Applied: text-amber-600 -> text-custom-green -->
-                            <i class="fas fa-phone text-custom-green text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">Phone</h3>
-                            <!-- Green Accent Applied: hover:text-amber-600 -> hover:text-custom-green -->
-                            <p class="text-gray-600 transition-colors hover:text-custom-green">+92 323 8177564</p>
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section pb-10 md:pb-12 bg-custom-gray">
+        <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+            <div class="bg-white p-6 md:p-12 rounded-3xl shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    
+                    <div class="md:w-5/12 mb-12 md:mb-0 md:pr-10">
+                        <h1 class="text-6xl sm:text-7xl md:text-7xl font-extrabold mb-4 md:mb-6 leading-tight text-gray-900">
+                            about.
+                        </h1>
+                        <p class="text-xl md:text-2xl text-accent-blue font-semibold mb-6">
+                            I'm a Mechanical Engineer and Automation Specialist based in Pakistan.
+                        </p>
+                        <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                            I enjoy transforming mechanical precision into smart, efficient systems that shape the future of automation.
+                            When I'm not engineering solutions, I'm exploring new technologies, working on personal innovations, or helping others bring their ideas to life.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                            <a href="https://areebrizwan/portfolio/resume" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="flex-1 text-center px-5 py-2.5 bg-accent-blue text-white font-medium rounded-lg shadow-lg hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                My Resume
+                            </a>
+
+                            <a href="https://areebrizwan.com/portfolio" 
+                                class="flex-1 text-center px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-[1.02] hover:shadow-xl">
+                                My Work
+                            </a>
                         </div>
                     </div>
                     
-                    <!-- Email -->
-                    <div class="flex items-start">
-                        <!-- Green Accent Applied: bg-amber-100 -> bg-green-100-light -->
-                        <div class="bg-green-100-light p-4 rounded-xl mr-5 shadow-inner">
-                            <!-- Green Accent Applied: text-amber-600 -> text-custom-green -->
-                            <i class="fas fa-envelope text-custom-green text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">Email</h3>
-                            <!-- Green Accent Applied: hover:text-amber-600 -> hover:text-custom-green -->
-                            <p class="text-gray-600 transition-colors hover:text-custom-green">engr.areebriz@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Location -->
-                    <div class="flex items-start">
-                        <!-- Green Accent Applied: bg-amber-100 -> bg-green-100-light -->
-                        <div class="bg-green-100-light p-4 rounded-xl mr-5 shadow-inner">
-                            <!-- Green Accent Applied: text-amber-600 -> text-custom-green -->
-                            <i class="fas fa-map-marker-alt text-custom-green text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">Location</h3>
-                            <p class="text-gray-600">Based in Karachi, Pakistan</p>
-                        </div>
+                    <div class="md:w-7/12 flex justify-center md:justify-end relative group">
+                        <img 
+                            src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/funky2.png" 
+                            alt="Profile picture" 
+                            class="w-full max-w-md rounded-lg shadow-2xl transition-all duration-500 
+                                group-hover:rotate-3 group-hover:scale-105 group-hover:shadow-3xl-accent"
+                            style="transform-style: preserve-3d; transform: perspective(1000px) rotateY(0deg) rotateX(0deg); 
+                                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);"
+                            onmousemove="handleTilt(event, this)"
+                            onmouseleave="resetTilt(this)"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x400/94A3B8/ffffff?text=Profile+Photo';"
+                        >
                     </div>
                 </div>
-                
-                <!-- Social Media Links -->
-                <div class="mt-12">
-                    <h3 class="font-bold text-xl mb-5 text-gray-800">Let's <span class="text-custom-green font-bold text-shadow-green">Connect!</span></h3>
-                    <div class="flex space-x-4">
-                        <!-- Green Accent Applied: hover:bg-amber-500 -> hover:bg-custom-green -->
-                        <a href="https://www.linkedin.com/in/areebrizwan" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="https://www.twitter.com/areebriz" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="https://www.github.com/areebriz" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/areeb.riz" class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-custom-green hover:text-white transition-all duration-300 shadow-md">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            </div>      
+        </div>
+    </section>
+
+    <!-- Mission / Vision Section -->
+    <section class="bg-white pt-10 pb-10 md:pt-12 md:pb-12">
+        <div class="relative w-full max-w-7xl mx-auto z-10 text-center px-4 md:px-8">
+            <!-- ADDED: New title matching "Life Outside Engineering" style -->
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">What Drives Me</h2>
             
-            <!-- Right Side - Contact Form -->
-            <div class="lg:w-1/2">
-                <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border border-gray-100">
-                    <h2 class="text-3xl font-bold mb-8 text-gray-900">Send Me a Message</h2>
-                    <!-- Added id for easy targeting in JavaScript -->
-                    <form id="contact-form" class="space-y-6"> 
-                        <!-- Input field styles updated for better focus state -->
-                        <div class="relative">
-                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
-                            <!-- Green Accent Applied: focus:ring-amber-200 -> focus:ring-green-200-light, focus:border-amber-500 -> focus:border-custom-green -->
-                            <input type="text" id="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <!-- UPDATED: Text changed to "My Mission" -->
+                            <h2 class="text-3xl font-bold text-accent-blue">My Mission</h2>
                         </div>
-                        
-                        <div class="relative">
-                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
-                            <!-- Green Accent Applied -->
-                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required>
+                        <div class="flip-card-back">
+                            <!-- UPDATED: Mission statement text -->
+                            <p class="text-md md:text-lg leading-relaxed text-gray-700">
+                                Engineering smarter systems and meaningful change, where innovation meets purpose.
+                            </p>
                         </div>
-                        
-                        <div class="relative">
-                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
-                            <!-- Green Accent Applied -->
-                            <input type="text" id="subject" placeholder="Project Inquiry or Collaboration" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <!-- UPDATED: Text changed to "My Vision" -->
+                            <h2 class="text-3xl font-bold text-accent-blue">My Vision</h2>
                         </div>
-                        
-                        <div class="relative">
-                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Your Message</label>
-                            <!-- Green Accent Applied -->
-                            <textarea id="message" rows="5" placeholder="Tell me about your project or idea..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-green-200-light focus:border-custom-green outline-none transition-all duration-200" required></textarea>
+                        <div class="flip-card-back">
+                            <!-- UPDATED: Vision statement text -->
+                            <p class="text-md md:text-lg leading-relaxed text-gray-700">
+                                To build a world where technology uplifts people, connects possibilities, and inspires generations to dream bigger.
+                            </p>
                         </div>
-                        
-                        <button type="submit" class="submit-button w-full bg-black text-white py-4 rounded-xl font-bold tracking-wider hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-lg">
-                            <i class="fas fa-paper-plane mr-3"></i> SEND MESSAGE
-                        </button>
-                    </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Life Outside Engineering Section -->
+    <section class="pt-10 pb-16 md:pt-12 md:pb-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 max-w-7xl">
+               <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Life Beyond Engineering</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                
+                <!-- Gallery Items are now interactive to open the Lightbox -->
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="DJ Kid" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/kid1crop1.jpg" alt="New Technologies" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/C4B5FD/ffffff?text=New+Tech';" >
+                </a>
+                
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Independence March" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/flagfix1.png" alt="Innovation Project" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FCA5A5/ffffff?text=Project+Work';">
+                </a>
+                
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="IET Event" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/podium.jpg" alt="Formal Event" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/7DD3FC/ffffff?text=Formal+Event';">
+                </a>
+                
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Startup Accelerator Winner" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/startupaccelerator1.jpg" alt="Exploring Backgrounds" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/F0ABFC/ffffff?text=Background+Exp';">
+                </a>
+                
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Travel with Areeb" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/naraan.jpg" alt="Personal Innovations" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/A7F3D0/ffffff?text=Innovations';">
+                </a>
+                
+                <a href="https://areebrizwan.com/about/myjourney" data-caption="Training" class="gallery-item block bg-white rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:ring-2 hover:ring-accent-blue/50 cursor-pointer" tabindex="0">
+                    <img src="https://areebrizz.github.io/Muhammad-Areeb-Rizwan-Portfolio/about/images/gym1fix3.png" alt="Creative Moment" class="w-full h-auto rounded-lg object-cover aspect-[4/3]" onerror="this.onerror=null;this.src='https://placehold.co/200x150/FDBA74/ffffff?text=Creative+Time';">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox/Modal Structure -->
+    <div id="lightbox-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[60] flex justify-center items-center p-4" aria-modal="true" role="dialog" tabindex="-1">
+        <div class="bg-white rounded-xl max-w-4xl w-full p-4 md:p-6 shadow-3xl-accent relative">
+            <!-- Close Button -->
+            <button id="lightbox-close" class="absolute top-3 right-3 text-gray-700 hover:text-red-500 text-4xl font-light leading-none transition duration-300" aria-label="Close image viewer">
+                &times;
+            </button>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <!-- Image Area -->
+                <div class="md:w-3/4 flex justify-center items-center">
+                    <img id="lightbox-image" src="" alt="" class="max-h-[80vh] w-full object-contain rounded-lg shadow-xl">
+                </div>
+
+                <!-- Content Area -->
+                <div class="md:w-1/4 flex flex-col justify-between p-2">
+                    <div>
+                        <h3 id="lightbox-caption" class="text-xl font-bold text-gray-900 mb-2 mt-4 md:mt-0"></h3>
+                        <p class="text-sm text-gray-500 mb-4">Click "View Journey" for details.
+                    </div>
+                    
+                    <a id="lightbox-link" href="#" target="_blank" class="w-full text-center mt-4 px-4 py-2 bg-accent-blue text-white font-medium rounded-lg shadow-md hover:bg-gray-900 transition duration-300 transform hover:scale-[1.03]">
+                        <i class="fas fa-route mr-2"></i> View Journey
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+    <!-- End Lightbox/Modal Structure -->
 
-    <!-- Toast Notification Container (Used instead of alert()) -->
-    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2">
-        <!-- Toast messages will be injected here -->
-    </div>
-
-    <!-- Sculpted Footer -->
     <footer id="footer" role="contentinfo" class="footer-bulge text-gray-600 text-base pt-10 pb-6 relative mt-16">
         <div class="max-w-screen-xl mx-auto px-5">
-
-            <!-- Arrow Container (Integrated into the bulge) -->
+            
             <a href="#top" class="top-button-container flex items-center justify-center" aria-label="Back to top">
-                <!-- SVG stroke color is light gray, but hover is dark gray (standard) -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover:stroke-custom-green transition duration-300">
                     <polyline points="18 15 12 9 6 15"></polyline>
                 </svg>
             </a>
             
-            <!-- Main footer content: Copyright and Nav -->
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 
-                <!-- Left Section (Copyright) -->
                 <div class="order-2 lg:order-1 text-center lg:text-left mt-4 lg:mt-0">
                     <a href="https://areebrizwan.com" class="hover:text-custom-green transition duration-300">
                         © 2025 Muhammad Areeb Rizwan Siddiqui
                     </a>
                 </div>
                 
-                <!-- Right Section (Navigation) -->
                 <nav id="nav-footer" class="order-1 lg:order-2">
                     <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-5 text-sm sm:text-base">
-                        <!-- Updated footer links to use the custom-green hover -->
                         <li><a href="https://areebrizwan.com" class="hover:text-custom-green transition duration-300 rounded-sm">Home</a></li>
                         <li><a href="https://areebrizwan.com/about" class="hover:text-custom-green transition duration-300 rounded-sm">About</a></li>
                         <li><a href="https://areebrizwan.com/portfolio" class="hover:text-custom-green transition duration-300 rounded-sm">Portfolio</a></li>
@@ -356,11 +561,9 @@
             </div>
         </div>
     </footer>
-
+    
     <script>
-        const navLinks = document.querySelectorAll('.link-item');
-        
-        // --- Custom Toast Notification implementation (Replaces alert()) ---
+        // Custom Toast Notification implementation
         function showToast(message) {
             const container = document.getElementById('toast-container');
             if (!container) return;
@@ -388,97 +591,253 @@
                 toast.addEventListener('transitionend', () => toast.remove());
             }, 3000);
         }
-        // --- End Toast Notification implementation ---
 
+        // Refined 3D Tilt Effect for Profile Photo (relative to element)
+        function handleTilt(event, element) {
+            const rect = element.getBoundingClientRect();
+            
+            // Calculate mouse position relative to the element's top-left corner
+            const offsetX = event.clientX - rect.left;
+            const offsetY = event.clientY - rect.top;
 
-        /**
-         * Sets the visual active state for a given link ID.
-         * @param {string} linkId - The ID of the link that is currently active.
-         */
-        function setState(linkId) {
-            // Reset all link active states
+            // Normalize coordinates to be between -0.5 and 0.5 (center is 0,0)
+            const normalizeX = (offsetX / rect.width) - 0.5;
+            const normalizeY = (offsetY / rect.height) - 0.5;
+
+            // Sensitivity factor (max tilt in degrees)
+            const sensitivity = 15;
+
+            // Invert Y-axis tilt for natural perspective (moving right tilts left)
+            const rotateY = normalizeX * sensitivity * -1; 
+            // Invert X-axis tilt for natural perspective (moving down tilts top edge away)
+            const rotateX = normalizeY * sensitivity; 
+
+            // Apply transformations
+            element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            
+            // Adjust box shadow position for 3D depth effect
+            element.style.boxShadow = `
+                ${rotateY * 1.5}px ${-rotateX * 1.5}px 30px rgba(0, 0, 0, 0.4),
+                ${rotateY * 0.75}px ${-rotateX * 0.75}px 60px rgba(28, 126, 214, 0.2)
+            `;
+        }
+
+        function resetTilt(element) {
+            element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            element.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)'; // Reset to initial shadow
+        }
+
+        // --- Navigation State Logic ---
+        const navLinks = document.querySelectorAll('.nav-links .link-item, #portfolio-dropdown-button');
+
+        function setState(activeId) {
+            // 1. Reset all link active states
             navLinks.forEach(link => {
                 link.classList.remove('active-link', 'text-custom-green', 'text-shadow-green');
                 link.classList.add('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             });
 
-            // Set the new active state/link
-            const activeLink = document.getElementById(linkId);
+            // 2. Set the new active link by matching the ID
+            const activeLink = document.getElementById(activeId);
             if (activeLink) {
                 activeLink.classList.add('active-link', 'text-custom-green', 'text-shadow-green');
                 activeLink.classList.remove('text-text-light', 'hover:text-custom-green', 'hover:text-shadow-green');
             }
         }
 
+        // --- Lightbox Logic ---
+        const modal = document.getElementById('lightbox-modal');
+        const modalImage = document.getElementById('lightbox-image');
+        const modalCaption = document.getElementById('lightbox-caption');
+        const modalLink = document.getElementById('lightbox-link');
+        const modalCloseButton = document.getElementById('lightbox-close');
 
+        function openLightbox(imageUrl, caption, linkUrl) {
+            modalImage.src = imageUrl;
+            modalImage.alt = caption;
+            modalCaption.textContent = caption;
+            modalLink.href = linkUrl;
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            modalCloseButton.focus();
+        }
+
+        function closeLightbox() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        if (modalCloseButton) {
+            modalCloseButton.addEventListener('click', closeLightbox);
+        }
+        
+        // Close when clicking outside the inner modal content
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeLightbox(); 
+                }
+            });
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+
+        // --- Header navigation functionality ---
+        const portfolioButton = document.getElementById('portfolio-dropdown-button');
+        const portfolioMenu = document.getElementById('portfolio-dropdown-menu');
+        const header = document.getElementById('main-header');
+        const body = document.body;
+        const mobileBreakpoint = 640;
+        
         /**
-         * Triggers the visual transition via setState, shows a toast, then navigates to the external URL after a delay.
-         * @param {string} targetState - 'left', 'center', 'right', or 'none'. (For logging/context, not used for visuals here).
-         * @param {string} url - The external URL to navigate to.
-         * @param {string} linkId - The ID of the link that was clicked.
+         * Toggles the visibility of the dropdown menu.
          */
-        function navigateState(targetState, url, linkId) {
-            // 1. Update active link state visually
-            setState(linkId);
-
-            // 2. Show toast notification immediately
-            const linkText = document.getElementById(linkId)?.textContent.trim() || 'another page';
-            showToast(`Navigating to ${linkText}...`);
+        function toggleDropdown(event, menuId) {
+            event.preventDefault();
+            event.stopPropagation();
             
-            // 3. Wait for the transition/toast to start (300ms) and then navigate
-            if (url) {
-                setTimeout(() => {
-                    console.log(`Redirecting to: ${url}`);
-                    window.location.href = url; 
-                }, 300); // 300ms matches the transition-all duration
+            const menu = document.getElementById(menuId);
+            const button = document.getElementById(menuId.replace('-menu', '-button'));
+            const caret = button.querySelector('.fa-caret-down');
+
+            // Check if we're on mobile
+            if (window.innerWidth <= mobileBreakpoint) {
+                // On mobile, toggle active class for mobile-specific styling
+                const isActive = menu.classList.contains('active');
+                if (isActive) {
+                    menu.classList.remove('active');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                } else {
+                    menu.classList.add('active');
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                }
+            } else {
+                // Desktop behavior
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    // Show menu
+                    menu.classList.remove('hidden');
+                    menu.classList.add('block');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (caret) caret.classList.add('rotate-180');
+                } else {
+                    // Hide menu
+                    menu.classList.remove('block');
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (caret) caret.classList.remove('rotate-180');
+                }
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
+        // Attach the toggle function to the Portfolio button
+        if (portfolioButton) {
+            portfolioButton.addEventListener('click', (event) => toggleDropdown(event, 'portfolio-dropdown-menu'));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const dropdownContainer = document.querySelector('.dropdown');
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            
+            // Check if the click is outside the dropdown container AND the menu is currently visible
+            if (dropdownContainer && !dropdownContainer.contains(event.target)) {
+                if (isMobile) {
+                    // On mobile, check for active class
+                    if (portfolioMenu && portfolioMenu.classList.contains('active')) {
+                        portfolioMenu.classList.remove('active');
+                        portfolioMenu.classList.add('hidden');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                } else {
+                    // On desktop, check for hidden class
+                    if (portfolioMenu && !portfolioMenu.classList.contains('hidden')) {
+                        portfolioMenu.classList.add('hidden');
+                        portfolioMenu.classList.remove('block');
+                        portfolioButton.setAttribute('aria-expanded', 'false');
+                        const caret = portfolioButton.querySelector('.fa-caret-down');
+                        if (caret) caret.classList.remove('rotate-180');
+                    }
+                }
+            }
+        });
+
+        // Initialize body padding based on header height
+        function initializeBodyPadding() {
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                body.style.paddingTop = `${headerHeight}px`;
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set 'About' active on page load
+            setState('about-link');
+            
+            // Initialize body padding
+            initializeBodyPadding();
+            
+            // Add click listeners for gallery items
+            const carouselItems = document.querySelectorAll('.gallery-item');
+            
+            carouselItems.forEach(item => {
+                item.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    // Basic validation check
-                    if (!this.checkValidity()) {
-                        showToast('Please fill out all required fields correctly.');
-                        return;
-                    }
-
-                    // 1. Show processing message (Toast for feedback)
-                    const submitButton = this.querySelector('button[type="submit"]');
-                    submitButton.disabled = true;
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> SENDING...';
-
-                    showToast('Sending your message, please wait...');
+                    const imageUrl = this.querySelector('img').src;
+                    const caption = this.getAttribute('data-caption');
+                    const linkUrl = this.href;
                     
-                    // 2. Simulate API call delay (1.5 seconds)
-                    setTimeout(() => {
-                        // In a real application, you would handle the server response here.
-                        
-                        // Simulate success
-                        showToast('Message sent successfully! I will respond soon.');
-                        
-                        // Reset the form and button state
-                        contactForm.reset();
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = '<i class="fas fa-paper-plane mr-3"></i> SEND MESSAGE';
-
-                    }, 1500); // Simulated delay
+                    openLightbox(imageUrl, caption, linkUrl);
                 });
-            }
-
-
-            // Initialize with 'Contact' active on load
-            window.onload = () => {
-                // Use a slight delay to ensure all DOM elements are registered
-                setTimeout(() => {
-                    // Set 'contact-link' as active since this is the contact page
-                    setState('contact-link'); 
-                }, 50);
-            };
+                
+                // Add keyboard handler for 'Enter' key to open modal
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const imageUrl = this.querySelector('img').src;
+                        const caption = this.getAttribute('data-caption');
+                        const linkUrl = this.href;
+                        openLightbox(imageUrl, caption, linkUrl);
+                    }
+                });
+            });
+            
+            // Add click listeners for main navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Don't prevent default for actual navigation
+                    // Just update the active state
+                    const targetId = this.id;
+                    setState(targetId);
+                });
+            });
+            
+            // Add click listeners for dropdown menu items
+            const dropdownItems = document.querySelectorAll('#portfolio-dropdown-menu a');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Set portfolio button as active
+                    setState('portfolio-dropdown-button');
+                });
+            });
         });
+
+        // Handle resize events
+        window.addEventListener('resize', initializeBodyPadding);
     </script>
 </body>
 </html>
