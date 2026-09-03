@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home -->
   <url>
-    <loc>https://areebrizwan.com/</loc>
+    <loc>https://areebrizwan.com</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -74,7 +74,7 @@
   
   <!-- Certifications (FIXED: Now lowercase) -->
   <url>
-    <loc>https://areebrizwan.com/certifications</loc>
+    <loc>https://areebrizwan.com/Certifications</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
